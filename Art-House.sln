@@ -13,9 +13,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Data", "Art-House.Data\Art-House.Data.csproj", "{24562A6A-D3E0-40A4-8C9C-A5CAD8B556DC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Domain", "Art-House.Domain\Art-House.Domain.csproj", "{18055719-A74A-449F-990C-90DC58E0EEE9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Domain", "Art-House.Domain\Art-House.Domain.csproj", "{18055719-A74A-449F-990C-90DC58E0EEE9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Domain.Core", "Art-House.Domain.Core\Art-House.Domain.Core.csproj", "{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Domain.Core", "Art-House.Domain.Core\Art-House.Domain.Core.csproj", "{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Web", "Art-House.Web\Art-House.Web.csproj", "{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -46,6 +52,7 @@ Global
 		{24562A6A-D3E0-40A4-8C9C-A5CAD8B556DC} = {1B1BF316-FF60-4ACC-8642-FDE736924A16}
 		{18055719-A74A-449F-990C-90DC58E0EEE9} = {1B1BF316-FF60-4ACC-8642-FDE736924A16}
 		{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52} = {1B1BF316-FF60-4ACC-8642-FDE736924A16}
+		{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB} = {33EBA0AC-2AFD-472A-B895-5FE2424E60DB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DD30F70-AD6A-49D2-9F22-AE743E3AE4D7}
