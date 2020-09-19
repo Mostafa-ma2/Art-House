@@ -19,8 +19,4 @@
     <ProjectReference Include="..\Art-House.Domain\Art-House.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Interfaces\" />
-  </ItemGroup>
-
 </Project>
