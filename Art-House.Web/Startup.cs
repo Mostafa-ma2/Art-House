@@ -2,9 +2,11 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Art_House.Data.Context;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -24,6 +26,11 @@ namespace Art_House.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
+            services.AddDbContext<DataBaseContext>(options =>
+            {
+                options.UseSqlServer(Configuration.GetSection("connectionString").GetSection("defaultConnection").Value);
+            });
+            services.AddScoped<DataBaseContext, DataBaseContext>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
