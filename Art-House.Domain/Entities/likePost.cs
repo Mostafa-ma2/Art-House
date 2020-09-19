@@ -19,7 +19,7 @@ namespace Art_House.Domain.Entities
         }
         public string IP { get; set; }
         public string UserId { get; set; }
-        public int PostsId { get; set; }
+        public string PostsId { get; set; }
         //relations
         [ForeignKey("UserId")]
         public virtual User Users { get; set; }

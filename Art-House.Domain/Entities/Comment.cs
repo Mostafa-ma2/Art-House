@@ -17,7 +17,7 @@ namespace Art_House.Domain.Entities
             LastModifiedTime = DateTime.Now;
         }
         public string UserId { get; set; }
-        public int PostId { get; set; }
+        public string PostId { get; set; }
         public string text { get; set; }
         //relations
         [ForeignKey("UserId")]

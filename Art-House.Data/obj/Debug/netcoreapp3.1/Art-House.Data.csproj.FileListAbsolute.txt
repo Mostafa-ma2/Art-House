@@ -6,3 +6,12 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcore
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcoreapp3.1\Art-House.Data.AssemblyInfo.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcoreapp3.1\Art-House.Data.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcoreapp3.1\Art-House.Data.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Debug\netcoreapp3.1\Art-House.Data.runtimeconfig.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Debug\netcoreapp3.1\Art-House.Data.runtimeconfig.dev.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Debug\netcoreapp3.1\Art-House.Domain.Core.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Debug\netcoreapp3.1\Art-House.Domain.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Debug\netcoreapp3.1\Art-House.Domain.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Debug\netcoreapp3.1\Art-House.Domain.Core.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcoreapp3.1\Art-House.Data.csproj.CopyComplete
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcoreapp3.1\Art-House.Data.genruntimeconfig.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Debug\netcoreapp3.1\Art-House.Data.csproj.CoreCompileInputs.cache

@@ -11,19 +11,18 @@ namespace Art_House.Data.Interfaces
 {
     public interface IUnitOfWork:IDisposable
     {
-        IPostTextRepository PostTextRepository { get; set; }
-        ILikePostRepository LikePostRepository { get; set; }
-        ISavePostRepository SavePostRepository { get; set; }
-        IUserRepository UserRepository { get; set; }
-        IUserAnswerRepository UserAnswerRepository { get; set; }
-        IUserInUserRepository UserInUserRepository { get; set; }
-        IQuestionsRepository QuestionsRepository { get; set; }
-        IAsnwerRepository AsnwerRepository { get; set; }
-        IGroupRepository GroupRepository { get; set; }
-        ICommentRepository CommentRepository { get; set; }
-        IOffersRepository OffersRepository { get; set; }
+        IPostTextRepository PostTextRepository { get;}
+        ILikePostRepository LikePostRepository { get;}
+        ISavePostRepository SavePostRepository { get;}
+        IUserRepository UserRepository { get; }
+        IUserAnswerRepository UserAnswerRepository { get; }
+        IUserInUserRepository UserInUserRepository { get;  }
+        IQuestionsRepository QuestionsRepository { get;  }
+        IAsnwerRepository AsnwerRepository { get; }
+        IGroupRepository GroupRepository { get;  }
+        ICommentRepository CommentRepository { get;  }
+        IOffersRepository OffersRepository { get; }
         void SaveChange();
         Task<int> SaveChangeAsync();
-
     }
 }

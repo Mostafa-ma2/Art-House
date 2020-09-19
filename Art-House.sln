@@ -17,7 +17,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Domain", "Art-Hou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Domain.Core", "Art-House.Domain.Core\Art-House.Domain.Core.csproj", "{CCFC3484-C13E-4E84-BF8D-C63D67AEAB52}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Web", "Art-House.Web\Art-House.Web.csproj", "{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Web", "Art-House.Web\Art-House.Web.csproj", "{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

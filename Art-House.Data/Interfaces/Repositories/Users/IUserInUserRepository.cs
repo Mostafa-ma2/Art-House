@@ -21,7 +21,7 @@ namespace Art_House.Data.Interfaces.Repositories.Users
 
         #region Asyncs
 
-        Task InsertAsync(User entity);
+        Task InsertAsync(UserInUser entity);
 
         Task<UserInUser> GetByIdAsync(object id);
         Task<IEnumerable<UserInUser>> GetAllAsync();

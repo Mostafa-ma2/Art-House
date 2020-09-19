@@ -1,4 +1,5 @@
 ﻿using Art_House.Domain.Entities;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,11 +7,19 @@ using System.Text;
 
 namespace Art_House.Data.Context
 {
-    public class DataBaseContext : DbContext
+    public class DataBaseContext : IdentityDbContext
     {
+        public DataBaseContext()
+        {
+
+        }
         public DataBaseContext(DbContextOptions options) : base(options)
         {
 
+        }
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer(@"Server=.;Database=Art-HouseDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
         public DbSet<User> User { get; set; }
         public DbSet<Asnwer> Asnwer { get; set; }

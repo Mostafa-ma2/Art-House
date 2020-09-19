@@ -13,7 +13,7 @@ namespace Art_House.Data.Interfaces.Repositories.Users
         IEnumerable<userAnswer> Take(int count);
         void Update(userAnswer entity);
         void Delete(object id);
-        void Delete(User entity);
+        void Delete(userAnswer entity);
         void Delete(Expression<Func<userAnswer, bool>> where);
         userAnswer GetById(object id);
         IEnumerable<userAnswer> GetAll();

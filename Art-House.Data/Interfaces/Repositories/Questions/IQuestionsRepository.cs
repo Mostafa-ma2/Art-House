@@ -21,7 +21,7 @@ namespace Art_House.Data.Interfaces.Repositories.Questions
 
         #region Asyncs
 
-        Task InsertAsync(PostText entity);
+        Task InsertAsync(Question entity);
 
         Task<Question> GetByIdAsync(object id);
         Task<IEnumerable<Question>> GetAllAsync();

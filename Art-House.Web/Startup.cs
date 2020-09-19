@@ -1,15 +1,16 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Art_House.Data.Context;
+using Art_House.Data.Interfaces;
+using Art_House.Data.Services;
+using Art_House.Domain.Entities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
 
 namespace Art_House.Web
 {
@@ -31,6 +32,15 @@ namespace Art_House.Web
                 options.UseSqlServer(Configuration.GetSection("connectionString").GetSection("defaultConnection").Value);
             });
             services.AddScoped<DataBaseContext, DataBaseContext>();
+            services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddIdentity<User, IdentityRole>(options =>
+            {
+                options.Password.RequiredUniqueChars = 0;
+                options.User.RequireUniqueEmail = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
+            })
+                           .AddEntityFrameworkStores<DataBaseContext>()
+                           .AddDefaultTokenProviders();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
