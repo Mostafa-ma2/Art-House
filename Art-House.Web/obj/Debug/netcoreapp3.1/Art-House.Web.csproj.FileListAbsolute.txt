@@ -439,3 +439,4 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Art-House.Web.csproj.CoreCompileInputs.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Art-House.Web.MvcApplicationPartsAssemblyInfo.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Art-House.Web.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\User\Index.cshtml.g.cs

@@ -11,6 +11,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
     [Area("Admin")]
     public class GroupController : Controller
     {
+        //مدیریت گروها
         #region ctor
 
         private readonly IUnitOfWork _db;
@@ -53,6 +54,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
             _notification.AddErrorToastMessage("نام و وضعیت نمی تواند خالی باشد");
             return Json(null);
         }
+
         //گرفتن ایدی گروه
         [AjaxOnly]
         [HttpPost]
