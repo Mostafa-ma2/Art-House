@@ -1,0 +1,235 @@
+﻿@model IEnumerable<Groups>
+@{
+    ViewData["Title"] = "مدیریت گروه ها";
+}
+
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">مدیریت گروه ها <a style="float: left" id="OpenCreatModal" class="btn btn-primary">افرودن گروه</a></div>
+            <div class="table-responsive">
+                <table class="table table-hover manage-u-table">
+                    <thead>
+                        <tr>
+                            <th width="70" class="text-center">#</th>
+                            <th>نام</th>
+                            <th>وضعیت</th>
+                            <th width="300">مدیریت کردن</th>
+                        </tr>
+                    </thead>
+                    <tbody id="group-list">
+                        @foreach (var item in Model)
+                        {
+                            <tr id="@item.Id">
+                                <td class="text-center">@item.Id</td>
+                                <td id="Name-@item.Id">
+                                    @item.Name
+                                </td>
+                                <td id="isActive-@item.IsDeleted ">
+                                    @if (item.IsDeleted == false)
+                                    {
+                                        <label>حذف نشده</label>
+                                    }
+                                    else
+                                    {
+                                        <label>حذف شده</label>
+                                    }
+                                </td>
+                                <td>
+                                    <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                        <i class="ti-trash"></i>
+                                    </button>
+                                    <button type="button" attr="@item.Id" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                        <i class="ti-pencil-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <div class="col-12 text-center">
+                <h3>
+                    افزودن گروه
+                </h3>
+            </div>
+            <div class="form-group">
+                <label for="">نام :</label>
+                <input type="text" class="form-control" id="creatNameGroup" name="name" value="" />
+            </div>
+            <div class="form-group">
+                <label for="">وضعیت :</label>
+                <select class="form-control" id="CreatIsDeletedGroup">
+                    <option>حذف نشده</option>
+                    <option>حذف شده</option>
+                </select>
+            </div>
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="save">افزودن</button>
+        </div>
+    </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="Updateidgroup" name="name" value="" />
+            <div class="col-12 text-center">
+                <h3>
+                    ویرایش گروه
+                </h3>
+            </div>
+            <div class="form-group">
+                <label for="">نام :</label>
+                <input type="text" class="form-control" id="UpdateNameGroup" name="name" value="" />
+            </div>
+            <div class="form-group">
+                <label for="">وضعیت :</label>
+                <select class="form-control" id="UpdateGroupIsActive">
+                    <option>حذف نشده</option>
+                    <option>حذف شده</option>
+                </select>
+            </div>
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnUpdate">ویرایش</button>
+        </div>
+    </div>
+</div>
+<!-- delete Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="DeleteID" name="name" value="" />
+            <label id="lal">
+
+            </label>
+
+            <br />
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelete">حذف</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //افزودن
+            $("#OpenCreatModal").click(function () {
+                $("#exampleModal").modal("show");
+                $("#creatNameGroup").val("");
+                $("#CreatIsDeletedGroup").val("");
+            });
+            $("#save").click(function (e) {
+                e.preventDefault();
+                var GroupName = $("#creatNameGroup").val();
+                var GroupIsDeleted = $("#CreatIsDeletedGroup").val();
+                $.ajax({
+                    type: "Post",
+                    data: { Title: GroupName, isDeleted: GroupIsDeleted },
+                    url: "/Admin/Group/AddGroup",
+                    success: function (result) {
+                        $("#exampleModal").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            var html = '<tr id="' + result.id + '">'
+                            html += '<td class="text-center">' + result.id + '</td>'
+                            html += '<td id="Name-' + result.id + '">' + GroupName + '</td>'
+                            html += '<td id="isActive-' + result.id + '">'
+                            html += '' + result.isDeleted == true ? "حذف شده" : "حذف نشده" + ''
+                            html += '</td>'
+                            html += '<td>'
+                            html += '<button type="button" attr="' + result.id + '" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-trash"></i></button>'
+                            html += '<button type="button" attr="' + result.id + '" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5"><i class="ti-pencil-alt"></i></button>'
+                            html += '</td>'
+                            html += '</tr>'
+                            $("#group-list").append(html);
+                        }
+                    }
+
+                });
+            })
+            //ویرایش کردن
+            $("#btnUpdate").click(function (e) {
+                var id = $("#Updateidgroup").val();
+                var isActive = $("#UpdateGroupIsActive").val();
+                var name = $("#UpdateNameGroup").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/Admin/Group/UpdateGroup",
+                    data: { ID: id, isDeleted: isActive, Title: name },
+                    success: function (result) {
+                        $("#exampleModal2").modal("hide");
+                        if (result != null) {
+                            document.getElementById("Name-" + result.id).innerHTML = name;
+                            if (result.isDeleted == true) {
+                                document.getElementById("isActive-" + result.id).innerHTML = "حذف شده";
+                            } else {
+                                document.getElementById("isActive-" + result.id).innerHTML = "حذف نشده";
+
+                            }
+                        }
+                    }
+
+                })
+            });
+            //حذف
+            $("#btnDelete").click(function (e) {
+                e.preventDefault();
+                var id = $("#DeleteID").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/Admin/Group/DeleteGroup",
+                    data: { ID: id },
+                    success: function (result) {
+                        $("#exampleModal3").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            $("tr#" + result.id).remove();
+                        }
+                    }
+
+                })
+            })
+        });
+        //گرفتن ایدی
+        function OpenUpdateModal(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Group/GetGroupById",
+                data: { id: attr },
+                success: function (result) {
+                    if (result != null) {
+                        $("#exampleModal2").modal("show");
+                        $("#Updateidgroup").val(result.id);
+                        $("#UpdateNameGroup").val(result.name);
+                        if (result.isDeleted) {
+                            $("#UpdateGroupIsActive").val("حذف شده");
+                        } else {
+                            $("#UpdateGroupIsActive").val("حذف نشده");
+                        }
+                    }
+                }
+            });
+        }
+        function OpenDeleteModel(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Group/GetGroupById",
+                data: { id: attr },
+                success: function (result) {
+                    if (result != null) {
+                        $("#exampleModal3").modal("show");
+                        $("#DeleteID").val(result.id);
+                        document.getElementById("lal").innerHTML = ' ایا از حذف ' + result.name + ' اطمینان دارید؟';
+                    }
+                }
+            });
+        }
+    </script>
+}

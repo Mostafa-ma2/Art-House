@@ -1,0 +1,9 @@
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.csprojAssemblyReference.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.AssemblyInfoInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.AssemblyInfo.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.csproj.CoreCompileInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Common.deps.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Common.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Common.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.pdb

@@ -1,0 +1,250 @@
+@import "fontawesome.css";
+* {
+    margin: 0;
+    padding: 0;
+    outline: none !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+small,
+span,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+label,
+ol {
+    direction: rtl !important
+}
+
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+
+/* HTML5 display-role reset for older browsers */
+
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+input {
+    text-align: right;
+    font-size: 12px !important;
+}
+
+body {
+    line-height: 1;
+    background: url('../Images/bg.png');
+    font-size: 15px !important;
+    direction: rtl;
+}
+
+ul {
+    list-style: none;
+}
+
+blockquote,
+q {
+    quotes: none;
+    border-right: 3px solid #0581bc;
+    margin: 11px;
+    background: #e7e7e7;
+}
+
+blockquote>div {
+    line-height: 8px !important;
+    padding: 10px;
+}
+
+blockquote:before,
+blockquote:after,
+q:before,
+q:after {
+    content: '';
+    content: none;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+@font-face {
+    font-family: IRANSans;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../Fonts/IrasnSANSE/Iran-Sans.eot');
+    src: url('../Fonts/IrasnSANSE/Iran-Sans.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../Fonts/IrasnSANSE/Iran-Sans.woff2') format('woff2'), /* Chrome36+, Opera24+*/
+    url('../Fonts/IrasnSANSE/Iran-Sans.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../Fonts/IrasnSANSE/Iran-Sans.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: Awesome;
+    font-style: normal;
+    font-weight: normal;
+    src: url('../Fonts/Awesome/fa-light-300.eot');
+    src: url('../Fonts/Awesome/fa-light-300.eot?#iefix') format('embedded-opentype'), /* IE6-8 */
+    url('../Fonts/Awesome/fa-light-300.woff2') format('woff2'), /* Chrome36+, Opera24+*/
+    url('../Fonts/Awesome/fa-light-300.woff') format('woff'), /* FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url('../Fonts/Awesome/fa-light-300.ttf') format('truetype');
+}
+
+a {
+    text-decoration: none !important;
+}
+
+.f-12 {
+    font-size: 12px !important;
+}
+
+.custom-control-label::after {
+    right: -19px;
+}
+
+.custom-control-label::before {
+    right: -19px;
+}
+
+.f-25 {
+    font-size: 25px !important
+}
+
+.f-20 {
+    font-size: 20px !important
+}
+
+.f-18 {
+    font-size: 18px !important
+}
+
+.f-15 {
+    font-size: 15px !important
+}
+
+.f-14 {
+    font-size: 14px !important
+}
+
+.f-13 {
+    font-size: 13px !important
+}
+
+.f-12 {
+    font-size: 12px !important
+}
+
+.p-t-40 {
+    padding-top: 40px !important;
+}
+
+.box-shadow {
+    box-shadow: 0 1.6px 3.6px 0 hsla(0, 0%, 0%, .132), 0 0.3px 0.9px 0 hsla(0, 0%, 0%, .108);
+}

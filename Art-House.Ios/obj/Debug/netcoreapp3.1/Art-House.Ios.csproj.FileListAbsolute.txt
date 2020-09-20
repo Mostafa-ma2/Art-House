@@ -1,0 +1,6 @@
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ios.csprojAssemblyReference.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ios.AssemblyInfoInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ios.AssemblyInfo.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ios.csproj.CoreCompileInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\bin\Debug\netcoreapp3.1\Art-House.Ios.deps.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\bin\Debug\netcoreapp3.1\Art-House.Ios.dll
