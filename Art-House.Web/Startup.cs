@@ -34,6 +34,11 @@ namespace Art_House.Web
             });
             services.AddScoped<DataBaseContext, DataBaseContext>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddAuthentication().AddGoogle(options =>
+            {
+                options.ClientId = Configuration.GetSection("Google").GetSection("ClientId").Value;
+                options.ClientSecret = Configuration.GetSection("Google").GetSection("ClientSecret").Value;
+            });
             services.AddIdentity<User, IdentityRole>(options =>
             {
                 options.Password.RequiredUniqueChars = 0;
@@ -42,7 +47,7 @@ namespace Art_House.Web
             })
                            .AddEntityFrameworkStores<DataBaseContext>()
                            .AddDefaultTokenProviders();
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

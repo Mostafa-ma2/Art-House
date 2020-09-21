@@ -1,48 +1,192 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Art_House.Web</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>هنر خانه</title>
+    <link rel="stylesheet" href="~/SiteTemplate/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="~/SiteTemplate/css/fontawesome.min.css">
+    <link rel="stylesheet" href="~/SiteTemplate/css/reset.css">
+    <link rel="stylesheet" href="~/SiteTemplate/css/Indexcss.css">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
-            <div class="container">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">Art_House.Web</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
-                        </li>
-                    </ul>
+    <header class="">
+        <div class="Header-logo col-md-4 col-sm-4">
+            <img src="~/SiteTemplate/Image/Untitled.png" alt="هنر خانه">
+        </div>
+        <div class="Header-Search col-md-4 col-sm-4">
+            <div class="s">
+                <input id="search" type="text" placeholder="جست و جو در مطالب و کاربران">
+                <div class="icon-search">
+                    <i class="fa fa-search"></i>
+                </div>
+                <div class="icon-exit">
+                    <i id="serchclose" onclick="rmovetext(this)" style="display: none" class="fa fa-close"></i>
                 </div>
             </div>
-        </nav>
-    </header>
-    <div class="container">
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - Art_House.Web - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
-    </footer>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
+        @if (User.Identity.IsAuthenticated)
+        {
+            <div class="profile col-md-4 col-sm-4">
+
+                <div class="profile-use">
+                    <i onclick="checkthenews()" class="fa fa-bell"></i>
+                    <div class="profile-tedad">
+                        <p>2</p>
+                    </div>
+                    <div class="profile-check" id="sk">
+                        <div class="check-text">
+                            <a href="#">علیرضا شمارا دنبال می کند</a>
+                        </div>
+                        <div class="check-text">
+                            <a href="#">علیرضا شمارا دنبال می کند</a>
+                        </div>
+                        <div class="check-text">
+                            <a href="#">علیرضا شمارا دنبال می کند</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="profile-newtext">
+                    <a href="#" alt="افزودن متن" title=" افزودن متن">بنویس !</a>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="Header-login col-md-4 col-sm-4">
+                <a asp-action="Login" asp-controller="Account" id="Login">ورود</a>
+                <a asp-action="Register" asp-controller="Account" id="Rigester">ثبت نام</a>
+            </div>
+
+        }
+
+
+    </header>
+    <main class="container">
+        <div class="main-navbar">
+            <div class="main-navbar-list">
+                <a href="#">داستان </a>
+            </div>
+            <div class="main-navbar-list">
+                <a href="#">دلنوشته</a>
+            </div>
+            <div class="main-navbar-list">
+                <a href="#">شعر</a>
+            </div>
+            <div class="main-navbar-list">
+                <a href="#">رمان</a>
+            </div>
+            <div class="main-navbar-list">
+                <a href="#">ارتباط باما</a>
+            </div>
+            <div class="main-navbar-list">
+                <a href="#">پیشنهاد به ما</a>
+            </div>
+            <div class="main-navbar-text">
+                <a href="#">نویسنده شو !</a>
+            </div>
+            <div class="main-navbar-e">
+                <i onclick="openlist()" class="fa fa-align-justify"></i>
+                <div class="lists" id="lists" style="display:none">
+                    <div class="s">
+                        <input id="search" type="text" placeholder="جست و جو در مطالب و کاربران">
+                        <div class="icon-search">
+                            <i class="fa fa-search"></i>
+                        </div>
+                    </div>
+                    <div class="main-navbar-lists">
+                        <a href="#">داستان </a>
+                    </div>
+                    <div class="main-navbar-lists">
+                        <a href="#">دلنوشته</a>
+                    </div>
+                    <div class="main-navbar-lists">
+                        <a href="#">شعر</a>
+                    </div>
+                    <div class="main-navbar-lists">
+                        <a href="#">رمان</a>
+                    </div>
+                    <div class="main-navbar-lists">
+                        <a href="#">ارتباط باما</a>
+                    </div>
+                    <div class="main-navbar-lists">
+                        <a href="#">پیشنهاد به ما</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        <div class="main">
+            <div class="main-arshiv-list  col-md-4 col-sm-12">
+                <div class="profiles">
+                    <div class="profiles-head">
+                        <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
+                        <h3>علیرضاا</h3>
+                    </div>
+                    <div class="profiles-main">
+                        <div class="text">
+                            <a href=""><i class="fa fa-user"></i> مشاهده پروفایل</a>
+                        </div>
+                    </div>
+                    <div class="profiles-main">
+                        <div class="text">
+                            <a href=""><i class="fa fa-edit"></i> ویرایش پرفایل</a>
+                        </div>
+                    </div>
+                    <div class="profiles-main">
+                        <div class="text">
+                            <a asp-action="LogOut" asp-controller="Account"><i class="fa fa-sign-out"></i> خروج</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="Visit">
+                    <div class="visit-head">
+                        <h1><i class="fa fa-eye"></i> پر بازدید ترین </h1>
+
+                    </div>
+                    <div class="visit-main">
+                        <div class="visit-text">
+                            <a href="#">نام داستان : غروب</a>
+                            <i class="fa fa-angle-double-left"></i>
+                        </div>
+                        <div class="visit-text">
+                            <a href="#">نام داستان : غروب</a>
+                            <i class="fa fa-angle-double-left"></i>
+                        </div>
+                        <div class="visit-text">
+                            <a href="#">نام داستان : غروب</a>
+                            <i class="fa fa-angle-double-left"></i>
+                        </div>
+                        <div class="visit-text">
+                            <a href="#">نام داستان : غروب</a>
+                            <i class="fa fa-angle-double-left"></i>
+                        </div>
+                    </div>
+                </div>
+                <div class="question">
+                    <div class="question-head">
+                        <p><i class="fa fa-question"></i>نظر سنجی</p>
+                    </div>
+                    <div class="question-text">
+                        <p>نظرتون درباره افزودن قابلیت نوشتن متن گروهی چیست؟</p>
+                    </div>
+                    <div class="question-check">
+                        <h2>خوبه</h2>
+                        <h2>نه جالب نیست</h2>
+                    </div>
+                </div>
+            </div>
+            @RenderBody()
+        </div>
+    </main>
+
+    <script src="~/SiteTemplate/js/jquery-3.4.1.js"></script>
+    <script src="~/SiteTemplate/js//Index.js "></script>
     @RenderSection("Scripts", required: false)
+
 </body>
+
 </html>

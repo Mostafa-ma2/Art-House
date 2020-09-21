@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Art_House.Web.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Art_House.Web.Controllers
 {
@@ -23,6 +24,7 @@ namespace Art_House.Web.Controllers
             return View();
         }
 
+        [Authorize]
         public IActionResult Privacy()
         {
             return View();

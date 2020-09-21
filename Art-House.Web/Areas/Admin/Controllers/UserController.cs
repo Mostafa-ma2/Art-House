@@ -11,6 +11,7 @@ using NToastNotify;
 
 namespace Art_House.Web.Areas.Admin.Controllers
 {
+    [Area("Admin")]
     public class UserController : Controller
     {
         //مدیریت کاربران
@@ -129,7 +130,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        #region Helpers
+        #region Helper
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> IsEmailInUse(string email)

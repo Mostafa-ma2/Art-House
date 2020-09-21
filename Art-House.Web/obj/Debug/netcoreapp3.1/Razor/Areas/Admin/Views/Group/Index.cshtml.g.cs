@@ -26,8 +26,15 @@ using Art_House.Domain.Entities;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 3 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.Users;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8d76960fa16b7df84df1b74cfa3a9206ff8e972a", @"/Areas/Admin/Views/Group/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ea8f99ee232f76a12743a149263b3558c5c5e24c", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"23a9e9e356738d8f9accab2d50a30b8153b0e476", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Group_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Groups>>
     {
         #line hidden
@@ -225,7 +232,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             BeginWriteAttribute("for", " for=\"", 3138, "\"", 3144, 0);
             EndWriteAttribute();
             WriteLiteral(">وضعیت :</label>\r\n                <select class=\"form-control\" id=\"CreatIsDeletedGroup\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a10685", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a10907", async() => {
                 WriteLiteral("حذف نشده");
             }
             );
@@ -239,7 +246,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a11666", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a11888", async() => {
                 WriteLiteral("حذف شده");
             }
             );
@@ -276,7 +283,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             BeginWriteAttribute("for", " for=\"", 4258, "\"", 4264, 0);
             EndWriteAttribute();
             WriteLiteral(">وضعیت :</label>\r\n                <select class=\"form-control\" id=\"UpdateGroupIsActive\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a14276", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a14498", async() => {
                 WriteLiteral("حذف نشده");
             }
             );
@@ -290,7 +297,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a15257", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a15479", async() => {
                 WriteLiteral("حذف شده");
             }
             );
