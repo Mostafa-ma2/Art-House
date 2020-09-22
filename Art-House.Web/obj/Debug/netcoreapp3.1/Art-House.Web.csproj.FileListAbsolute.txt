@@ -18,7 +18,6 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Art-House.Web.TagHelpers.output.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Art-House.Web.RazorCoreGenerate.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
-C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
@@ -195,7 +194,6 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Connections.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Extensions.dll
-C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Http.Features.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.HttpOverrides.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.HttpsPolicy.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Identity.dll
@@ -322,7 +320,6 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.IO.FileSystem.Watcher.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.IO.IsolatedStorage.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.IO.MemoryMappedFiles.dll
-C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.IO.Pipelines.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.IO.Pipes.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.IO.UnmanagedMemoryStream.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\refs\System.Linq.dll
@@ -445,3 +442,9 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AccountLayout.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\Register.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\PostText\AddPost.cshtml.g.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_CkEditorPartial.cshtml.g.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Http.Features.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\System.IO.Pipelines.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\Art-House.Services.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\Art-House.Services.pdb

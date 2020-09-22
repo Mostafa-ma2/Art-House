@@ -16,6 +16,7 @@ namespace Art_House.Domain.Entities
             LastModifiedTime = DateTime.Now;
         }
         public string UserId { get; set; }
+        public string Image { get; set; }
         public string GroupId { get; set; }
         public string Name { get; set; }
         public string ShortText { get; set; }

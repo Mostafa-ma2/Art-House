@@ -26,7 +26,11 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
-            "projectReferences": {}
+            "projectReferences": {
+              "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj": {
+                "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj"
+              }
+            }
           }
         },
         "warningProperties": {
@@ -260,6 +264,76 @@
         }
       }
     },
+    "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Services\\Art-House.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Services\\Art-House.Services.csproj",
+        "projectName": "Art-House.Services",
+        "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Services\\Art-House.Services.csproj",
+        "packagesPath": "C:\\Users\\Mostafa\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "C:\\Users\\Mostafa\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "netcoreapp3.1"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "netcoreapp3.1": {
+            "projectReferences": {
+              "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj": {
+                "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Microsoft.AspNetCore.Http.Features": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.Extensions.Identity.Core": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            },
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[3.1.8, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.302\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
     "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Web\\Art-House.Web.csproj": {
       "version": "1.0.0",
       "restore": {
@@ -291,6 +365,9 @@
               },
               "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj": {
                 "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj"
+              },
+              "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Services\\Art-House.Services.csproj": {
+                "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Services\\Art-House.Services.csproj"
               }
             }
           }

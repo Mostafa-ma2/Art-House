@@ -19,9 +19,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Domain.Core", "Ar
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Web", "Art-House.Web\Art-House.Web.csproj", "{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Common", "Art-House.Common\Art-House.Common.csproj", "{83B8DE67-2D3D-4EAE-89D5-DBCF28B3F9DF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Common", "Art-House.Common\Art-House.Common.csproj", "{83B8DE67-2D3D-4EAE-89D5-DBCF28B3F9DF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Ios", "Art-House.Ios\Art-House.Ios.csproj", "{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Ios", "Art-House.Ios\Art-House.Ios.csproj", "{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Services", "Art-House.Services\Art-House.Services.csproj", "{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,6 +73,7 @@ Global
 		{8F4E7AE2-BD45-4C67-AE4D-B7735E93C7AB} = {33EBA0AC-2AFD-472A-B895-5FE2424E60DB}
 		{83B8DE67-2D3D-4EAE-89D5-DBCF28B3F9DF} = {9763D431-E5A3-4D36-B617-2CC49F1100C8}
 		{973F0E52-5A95-41BA-B69E-DB3747F0BC7C} = {9763D431-E5A3-4D36-B617-2CC49F1100C8}
+		{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C} = {9763D431-E5A3-4D36-B617-2CC49F1100C8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {5DD30F70-AD6A-49D2-9F22-AE743E3AE4D7}

@@ -7,3 +7,8 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netco
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Common.pdb
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Domain.Core.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Domain.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Domain.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\bin\Debug\netcoreapp3.1\Art-House.Domain.Core.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Common\obj\Debug\netcoreapp3.1\Art-House.Common.csproj.CopyComplete

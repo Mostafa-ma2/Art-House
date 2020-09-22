@@ -168,6 +168,9 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("GroupId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("Image")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
