@@ -62,8 +62,8 @@ namespace Art_House.Web.Areas.Admin.Controllers
         {
             if (!string.IsNullOrEmpty(id))
             {
-                var platform = await _db.GroupRepository.GetByIdAsync(id);
-                return Json(platform);
+                var Group = await _db.GroupRepository.GetByIdAsync(id);
+                return Json(Group);
             }
             _notification.AddErrorToastMessage("دوباره امتحان کنید");
             return Json(null);

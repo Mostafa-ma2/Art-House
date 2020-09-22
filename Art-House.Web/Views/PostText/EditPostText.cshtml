@@ -1,13 +1,12 @@
 ﻿@model AddPostTextViewModel
-
 @{
-    ViewData["Title"] = "افزودن پست";
+    ViewData["Title"] = "ویرایش پست";
 }
-
 
 <div class="main-text-list col-md-8 col-sm-12 back-white padding-10" style="height:100%">
     <h1 class="text-center" style="margin-bottom:10px">افزودن پست</h1>
-    <form asp-action="AddPost" enctype="multipart/form-data">
+    <form asp-action="EditPostText" enctype="multipart/form-data">
+        <input type="hidden" asp-for="postText.Id" />
         <div asp-validation-summary="ModelOnly" class="text-danger"></div>
         <div class="form-group">
             <label class="control-label padding-10">گروه را انتخاب کنید</label>
@@ -21,6 +20,7 @@
         <div class="form-group">
             <label class="control-label padding-10">تصویر (اختیاری) :</label>
             <input type="file" id="input-file-now" name="image" class="form-control" />
+            <img src="~/PostTextImages/@Model.postText.Image" width="100" height="100" alt="Alternate Text" />
             <h2 style="padding: 10px;margin-top: 10px;
             background: #1b1be1a6;border-radius: 10px">
                 با انتخاب تصویر نوشته خود را زیبا کنید :)
@@ -42,7 +42,7 @@
             <span asp-validation-for="postText.Text" class="text-danger"></span>
         </div>
         <div class="form-group">
-            <input type="submit" value="افزودن" style="width:100%" class="btn btn-success" />
+            <input type="submit" value="ویرایش" style="width:100%" class="btn btn-success" />
             <a asp-action="Index" asp-controller="Home" style="width:100%;margin-top:10px" class="btn btn-danger">انصراف</a>
         </div>
     </form>

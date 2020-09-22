@@ -116,10 +116,11 @@ namespace Art_House.Web.Areas.Admin.Controllers
         }
 
         [HttpGet]
+        [Route("/Admin/User/AddToRole/userId={userId}")]
         public async Task<IActionResult> AddToRole(string userId)
         {
             if (string.IsNullOrEmpty(userId))
-                return RedirectToAction(nameof(Index));
+                return RedirectToAction("Home", "Index");
             var user = await _userManager.FindByIdAsync(userId);
             if (user == null)
                 return RedirectToAction(nameof(Index));
