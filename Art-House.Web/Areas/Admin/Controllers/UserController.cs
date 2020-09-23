@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Art_House.Common.Filters.ActionFilters;
 using Art_House.Common.ViewModels.Users;
 using Art_House.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
@@ -12,6 +13,8 @@ using NToastNotify;
 namespace Art_House.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
+
     public class UserController : Controller
     {
         //مدیریت کاربران
@@ -128,7 +131,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
             await _userManager.AddToRoleAsync(user, "Admin");
             _notification.AddSuccessToastMessage("کاربر  به درجه Admin ارتقا یافت");
 
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index");
         }
 
         #region Helper

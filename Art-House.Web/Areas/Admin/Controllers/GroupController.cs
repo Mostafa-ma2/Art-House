@@ -3,12 +3,14 @@ using System.Threading.Tasks;
 using Art_House.Common.Filters.ActionFilters;
 using Art_House.Data.Interfaces;
 using Art_House.Domain.Entities;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
 
 namespace Art_House.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
+    [Authorize(Roles = "Admin")]
     public class GroupController : Controller
     {
         //مدیریت گروها

@@ -450,3 +450,4 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\bin\Debug\netcoreapp3.1\Art-House.Services.pdb
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Areas\Admin\Views\Post\Index.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\PostText\EditPostText.cshtml.g.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Account\EditProfile.cshtml.g.cs

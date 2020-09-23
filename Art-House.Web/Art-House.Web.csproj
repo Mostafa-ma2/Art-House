@@ -283,4 +283,8 @@
     <None Include="wwwroot\AdminTemplate\plugins\bower_components\x-editable\dist\bootstrap3-editable\js\bootstrap-editable.min.js" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\PostTextImages\" />
+  </ItemGroup>
+
 </Project>

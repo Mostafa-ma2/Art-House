@@ -48,6 +48,7 @@ namespace Art_House.Web.Controllers
                 var user = new User()
                 {
                     UserName = model.UserName,
+                    CreatedTime = DateTime.Now,
                     Email = model.Email
                 };
 
@@ -62,7 +63,7 @@ namespace Art_House.Web.Controllers
                             new { username = user.Email, token = emailConfirmationToken },
                             Request.Scheme);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("EditProfile", "Account");
                 }
 
                 foreach (var error in result.Errors)
@@ -134,12 +135,19 @@ namespace Art_House.Web.Controllers
         //خروج
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> LogOut()
+        public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index", "Home");
         }
 
+        //تکمیل پروفایلل
+        [HttpGet]
+        public async Task<IActionResult> EditProfile()
+        {
+
+            return View();
+        }
 
         #region Helper
         //ایمیل چک میشه
