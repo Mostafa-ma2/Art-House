@@ -8,7 +8,7 @@ namespace Art_House.Domain.Enums
         public enum FileType
         {
             PostTextImages = 1,
-            PostImage = 2
+            ProfileImage = 2
         }
 
         public static string ParseType(FileType type)
@@ -21,7 +21,7 @@ namespace Art_House.Domain.Enums
             return type switch
             {
                 FileType.PostTextImages => "PostTextImages",
-                FileType.PostImage => "PostImages",
+                FileType.ProfileImage => "ProfileImage",
                 _ => throw new ArgumentException("please enter a valid type")
             };
         }

@@ -4,7 +4,13 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using Art_House.Common.ViewModels.Account;
+using Art_House.Data.Interfaces;
 using Art_House.Domain.Entities;
+using Art_House.Domain.Enums;
+using Art_House.Services.Interfaces;
+using EzGame.Services.FileManager;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -18,16 +24,21 @@ namespace Art_House.Web.Controllers
         //اکانت ها
         #region ctor
         private readonly UserManager<User> _userManager;
+        private readonly IUnitOfWork _db;
         private readonly SignInManager<User> _signInManager;
         private readonly IToastNotification _notification;
+        private readonly IFileManager _fileManager;
         private readonly ILogger<AccountController> _logger;
         public AccountController(UserManager<User> userManager, ILogger<AccountController> logger,
-           SignInManager<User> signInManager, IToastNotification notification)
+           SignInManager<User> signInManager, IToastNotification notification, IWebHostEnvironment webHostEnvironment,
+           IUnitOfWork db)
         {
+            _db = db;
             _userManager = userManager;
             _notification = notification;
             _signInManager = signInManager;
             _logger = logger;
+            _fileManager = new FileManager(webHostEnvironment.WebRootPath);
         }
         #endregion
 
@@ -49,7 +60,8 @@ namespace Art_House.Web.Controllers
                 {
                     UserName = model.UserName,
                     CreatedTime = DateTime.Now,
-                    Email = model.Email
+                    Email = model.Email,
+                    ProfileImg = "male-user-profile-picture_318-37825.jpg"
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -63,6 +75,7 @@ namespace Art_House.Web.Controllers
                             new { username = user.Email, token = emailConfirmationToken },
                             Request.Scheme);
 
+                    TempData["UserId"] = user.Id;
                     return RedirectToAction("EditProfile", "Account");
                 }
 
@@ -143,12 +156,41 @@ namespace Art_House.Web.Controllers
 
         //تکمیل پروفایلل
         [HttpGet]
-        public async Task<IActionResult> EditProfile()
+        public IActionResult EditProfile()
         {
-
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditProfile(EditProfileViewModel model, IFormFile image)
+        {
+            if (!ModelState.IsValid)
+            {
+                _notification.AddWarningToastMessage("نمی توانیم کاربر را پیدا کنیم لطفا وارد اکانت سپس اکانت را ویرایش کنید");
+                return RedirectToAction("Index", "Home");
+            }
+            var Userid = TempData["UserId"];
+            var user = await _userManager.FindByIdAsync(Userid.ToString());
+            if (user == null)
+            {
+                _notification.AddWarningToastMessage("نمی توانیم کاربر را پیدا کنیم لطفا وارد اکانت سپس اکانت را ویرایش کنید");
+                return RedirectToAction("Index", "Home");
+            }
+            if (image != null)
+            {
+                model.PofileImg = await _fileManager.UploadImage(image, FileManagerType.FileType.ProfileImage);
+            }
+            else
+            {
+                model.PofileImg = "male-user-profile-picture_318-37825.jpg";
+            }
+            user.ProfileImg = model.PofileImg;
+            user.Bio = model.Bio;
+            user.PhoneNumber = model.PhoneNumber;
+            await _userManager.UpdateAsync(user);
+            return RedirectToAction("Index", "Home");
+        }
         #region Helper
         //ایمیل چک میشه
         [HttpPost]

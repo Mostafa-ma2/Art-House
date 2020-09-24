@@ -1,7 +1,41 @@
-﻿
+﻿@model EditProfileViewModel
 @{
-    ViewData["Title"] = "EditProfile";
+    Layout = "~/Views/Shared/_AccountLayout.cshtml";
+    ViewData["Title"] = "تکمیل پروفایل";
 }
 
 <div class="account-box-content">
+    <h4>تکمیل پروفایل</h4>
+    <form action="/Account/EditProfile" method="POST" class="form-account text-right" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @Html.AntiForgeryToken()
+        <div class="form-account-title text-center">
+            <label for="email-phone">تصویر</label>
+            <img src="~/ProfileImage/male-user-profile-picture_318-37825.jpg"style="width: 100px; border-radius: 60px; border: 2px solid darkgray;" alt="Alternate Text" />
+            <br />
+            <input name="image" type="file"style="direction:ltr" id="Email">
+            <h2 style="padding: 10px;margin-top: 10px;
+            background: #1b1be1a6;border-radius: 10px;
+            font-size: initial;color:white">
+                با انتخاب تصویر پرفایل خود را زیبا تر کنید :)
+            </h2>
+        </div>
+        <div class="form-account-title">
+            <label for="password">شماره تلفن :(اختیاری)</label>
+            <input asp-for="PhoneNumber" type="number" class="password-input text-left" style="direction:ltr" />
+            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+        </div>
+        <div class="form-account-title">
+            <label for="password">درباره خود بنویسید :</label>
+            <textarea asp-for="Bio" class="password-input text-left ckEditor" style="direction:ltr"></textarea>
+            <span asp-validation-for="Bio" class="text-danger"></span>
+        </div>
+        <div class="form-row-account">
+            <button type="submit" class="btn btn-primary btn-block text-white btn-login">ورود</button>
+            <a href="/" class="btn btn-danger btn-block text-white btn-login">انصراف</a>
+        </div>
+    </form>
 </div>
+@section Scripts{
+    @Html.RenderPartialAsync("_CkEditorPartial")
+}

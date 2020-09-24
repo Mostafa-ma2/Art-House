@@ -31,7 +31,15 @@ namespace Art_House.Common.ViewModels.Users
         [DataType(DataType.Password)]
         [Compare(nameof(Password), ErrorMessage = "گذرواژه و تکرار ان با هم یکسان نیستند")]
         public string ConfirmPassword { get; set; }
+        [Display(Name = "تصویر")]
 
+        public string ProfileImg { get; set; }
+
+        [Display(Name = "شمارع تلفن")]
+        public string PhoonNumber { get; set; }
+
+        [Display(Name ="درباره کاربر")]
+        public string Bio { get; set; }
         public bool IsAdmin { get; set; }
     }
 }

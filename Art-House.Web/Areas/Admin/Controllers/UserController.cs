@@ -5,7 +5,12 @@ using System.Threading.Tasks;
 using Art_House.Common.Filters.ActionFilters;
 using Art_House.Common.ViewModels.Users;
 using Art_House.Domain.Entities;
+using Art_House.Domain.Enums;
+using Art_House.Services.Interfaces;
+using EzGame.Services.FileManager;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using NToastNotify;
@@ -14,7 +19,6 @@ namespace Art_House.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-
     public class UserController : Controller
     {
         //مدیریت کاربران
@@ -22,11 +26,16 @@ namespace Art_House.Web.Areas.Admin.Controllers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IToastNotification _notification;
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, IToastNotification notification)
+        private readonly IFileManager _fileManager;
+
+        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, IToastNotification notification,
+             IWebHostEnvironment webHostEnvironment)
         {
             _userManager = userManager;
             _signInManager = signInManager;
             _notification = notification;
+            _fileManager = new FileManager(webHostEnvironment.WebRootPath);
+
         }
         #endregion
 
@@ -56,6 +65,9 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
+                PhoonNumber=user.PhoneNumber,
+                ProfileImg=user.ProfileImg,
+                Bio=user.Bio,
                 userId = user.Id
             };
             return View(User);
@@ -63,7 +75,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUser(UserEditViewModel model)
+        public async Task<IActionResult> EditUser(UserEditViewModel model, IFormFile image)
         {
             if (string.IsNullOrEmpty(model.userId))
             {
@@ -81,13 +93,32 @@ namespace Art_House.Web.Areas.Admin.Controllers
                     return View(model);
                 }
             }
-
+            if (image == null)
+            {
+                model.ProfileImg = user.ProfileImg;
+            }
+            else
+            {
+                if (image.FileName != user.ProfileImg && user.ProfileImg != null)
+                {
+                    _fileManager.DeleteImage(user.ProfileImg, FileManagerType.FileType.ProfileImage);
+                    model.ProfileImg = await _fileManager.UploadImage(image,
+                        FileManagerType.FileType.ProfileImage);
+                }
+                if (user.ProfileImg == null)
+                {
+                    model.ProfileImg = await _fileManager.UploadImage(image,
+                      FileManagerType.FileType.PostTextImages);
+                }
+            }
+            user.ProfileImg = model.ProfileImg;
+            user.Bio = model.Bio;
+            user.PhoneNumber = model.PhoonNumber;
             user.Email = model.Email;
             user.UserName = model.UserName;
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             await _userManager.UpdateAsync(user);
-
             return RedirectToAction(nameof(Index));
         }
         [HttpPost]
@@ -131,7 +162,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
             await _userManager.AddToRoleAsync(user, "Admin");
             _notification.AddSuccessToastMessage("کاربر  به درجه Admin ارتقا یافت");
 
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Home");
         }
 
         #region Helper
