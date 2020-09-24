@@ -21,9 +21,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Web", "Art-House.
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Common", "Art-House.Common\Art-House.Common.csproj", "{83B8DE67-2D3D-4EAE-89D5-DBCF28B3F9DF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Ios", "Art-House.Ios\Art-House.Ios.csproj", "{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Ioc", "Art-House.Ios\Art-House.Ioc.csproj", "{973F0E52-5A95-41BA-B69E-DB3747F0BC7C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Art-House.Services", "Art-House.Services\Art-House.Services.csproj", "{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Art-House.Services", "Art-House.Services\Art-House.Services.csproj", "{AB97BCFF-8A4A-4129-A477-DB20D8FCBE5C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

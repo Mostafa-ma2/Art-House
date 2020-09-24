@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ufLRI3bpoox61knLg54zbKhqyfXOaCOHV+9lFFV4YKpcbo5vpd33kDuYtNNi5vA8EDzFqYDCPZltcRpW6+0haA==",
+  "dgSpecHash": "A9PELb6Igc6G4rBxCiFBEcN1KBl4mU3QctWVFTr5yTZf/ZZZKAev447Li74mCIUVYfhfCnipVlUretBSWYoL7w==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\Art-House.Ios.csproj",
+  "projectFilePath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\Art-House.Ioc.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Mostafa\\.nuget\\packages\\microsoft.aspnetcore.antiforgery\\2.2.0\\microsoft.aspnetcore.antiforgery.2.2.0.nupkg.sha512",
     "C:\\Users\\Mostafa\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

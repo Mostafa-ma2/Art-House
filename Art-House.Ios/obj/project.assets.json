@@ -6809,9 +6809,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\Art-House.Ios.csproj",
-      "projectName": "Art-House.Ios",
-      "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\Art-House.Ios.csproj",
+      "projectUniqueName": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\Art-House.Ioc.csproj",
+      "projectName": "Art-House.Ioc",
+      "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\Art-House.Ioc.csproj",
       "packagesPath": "C:\\Users\\Mostafa\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Ios\\obj\\",
       "projectStyle": "PackageReference",
