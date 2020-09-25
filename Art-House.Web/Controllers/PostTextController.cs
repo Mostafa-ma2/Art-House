@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Art_House.Common.Extensions;
 using Art_House.Common.Filters.ActionFilters;
 using Art_House.Common.ViewModels.PostTexts;
 using Art_House.Data.Interfaces;
@@ -58,6 +59,7 @@ namespace Art_House.Web.Controllers
             if (image != null)
                 model.postText.Image = await _fileManager.UploadImage(image, FileManagerType.FileType.PostTextImages);
             var group = _db.GroupRepository.GetAll().FirstOrDefault(a=>a.Name==model.postText.Groups.Name);
+            var DateTimeNow=DateTime.Now.ToPersianDateString();
             var PostText = new PostText()
             {
                 GroupId = group.Id,
@@ -65,7 +67,7 @@ namespace Art_House.Web.Controllers
                 Name = model.postText.Name,
                 ShortText = model.postText.ShortText,
                 Text = model.postText.Text,
-                CreatedTime = DateTime.Now,
+                CreatedTime = Convert.ToDateTime(DateTimeNow),
                 UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value,
                 Groups = group
             };

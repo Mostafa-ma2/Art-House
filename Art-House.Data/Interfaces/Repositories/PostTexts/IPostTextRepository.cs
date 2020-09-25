@@ -19,6 +19,9 @@ namespace Art_House.Data.Interfaces.Repositories.PostTexts
         IEnumerable<PostText> GetAll();
         IEnumerable<PostText> Where(Expression<Func<PostText, bool>> where);
 
+        IEnumerable<PostText> Paging(int pageId, int take);
+        IEnumerable<PostText> Paging(int pageId, int take,IEnumerable<PostText> post);
+
         #region Asyncs
 
         Task InsertAsync(PostText entity);

@@ -1,111 +1,62 @@
-﻿@{
+﻿@model IEnumerable<PostText>
+@{
     ViewData["Title"] = "هنر خانه";
 }
 
-<div class="main-text-list col-md-8 col-sm-12">
-    <div class="text-list">
-        <div class="top-pro">
-            <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-            <a href="#" id="name">پارسا</a>
-            <a href="#" id="fallow">دنبال کنید</a>
-        </div>
-        <div class="main-text">
-            <h1 class="text-center"style="margin-top:10px">نام داستان : <span>هیچی</span></h1>
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
-            <p>
-                <span style="color:#1b1be1a6"> نوضیح :  </span>
-                این متن ساختگی است این متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی
-                استاین متن ساختگی است
-            </p>
-        </div>
-        <div class="main-footer">
-            <a href="#" id="nvisande"><span>نویسدنده :</span> پارسا</a>
-            <p><span>تاریخ ثبت :</span> 1399/1/27</p>
-            <a href="#" id="bro">ادامه داستان</a>
-        </div>
-    </div>
-    <div class="text-list">
-        <div class="top-pro">
-            <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-            <a href="#" id="name">پارسا</a>
-            <a href="#" id="fallow">دنبال کنید</a>
-        </div>
-        <div class="main-text">
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
-            <h1>نام داستان : <span>هیچی</span></h1>
-            <h1>موضوع : <span>الکی</span></h1>
-            <p>
-                این متن ساختگی است این متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی
-                استاین متن ساختگی است
-            </p>
-        </div>
-        <div class="main-footer">
-            <a href="#" id="nvisande"><span>نویسدنده :</span> پارسا</a>
-            <p><span>تاریخ ثبت :</span> 1399/1/27</p>
-            <a href="#" id="bro">ادامه داستان</a>
-        </div>
-    </div>
-    <div class="text-list">
-        <div class="top-pro">
-            <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-            <a href="#" id="name">پارسا</a>
-            <a href="#" id="fallow">دنبال کنید</a>
-        </div>
-        <div class="main-text">
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
-            <h1>نام داستان : <span>هیچی</span></h1>
-            <h1>موضوع : <span>الکی</span></h1>
-            <p>
-                این متن ساختگی است این متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی
-                استاین متن ساختگی است
-            </p>
-        </div>
-        <div class="main-footer">
-            <a href="#" id="nvisande"><span>نویسدنده :</span> پارسا</a>
-            <p><span>تاریخ ثبت :</span> 1399/1/27</p>
-            <a href="#" id="bro">ادامه داستان</a>
+    <div class="main-text-list col-md-8 col-sm-12">
+        @foreach (var item in Model)
+        {
+            <div class="text-list">
+                <div class="top-pro">
+                    <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
+                    <a href="#" id="name">@item.Users.UserName</a>
+                    <a href="#" id="fallow">دنبال کنید</a>
+                </div>
+                <div class="main-text">
+                    <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                    @if (item.Image != null)
+                    {
+                        <img src="~/PostTextImages/@item.Image" alt="">
+                    }
+                    <p>
+                        <span style="color:#1b1be1a6"> نوضیح :  </span>
+                        @item.ShortText
+                    </p>
+                </div>
+                <div class="main-footer">
+                    <a href="#" id="nvisande"><span>نویسدنده :</span> @item.Users.UserName</a>
+                    <p><span>تاریخ ثبت :</span> @item.CreatedTime</p>
+                    <a href="#" id="bro">ادامه داستان</a>
+                </div>
+            </div>
+        }
+        <div class="row text-center" style="justify-content: center;">
+            <nav aria-label="Page navigation example">
+                <ul class="pagination">
+                    <li class="page-item">
+                        @if (ViewBag.PageID != 1)
+                        {
+                            var c = ViewBag.PageID - 1;
+                            <a class="page-link" href="/Products/Index?pageid=@c" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        }
+                    </li>
+                    @for (var i = 1; i <= ViewBag.CountPage - 1; i++)
+                    {
+                        <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Products/Index?pageid=@i">@i</a></li>
+
+                    }
+                <li class="page-item">
+                    @if (ViewBag.PageID != ViewBag.CountPage - 1)
+                    {
+                        var c = ViewBag.PageID + 1;
+                        <a class="page-link" href="/Products/Index?pageid=@c" aria-label="Previous">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    }
+                </li>
+                </ul>
+            </nav>
         </div>
     </div>
-    <div class="text-list">
-        <div class="top-pro">
-            <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-            <a href="#" id="name">پارسا</a>
-            <a href="#" id="fallow">دنبال کنید</a>
-        </div>
-        <div class="main-text">
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
-            <h1>نام داستان : <span>هیچی</span></h1>
-            <h1>موضوع : <span>الکی</span></h1>
-            <p>
-                این متن ساختگی است این متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی
-                استاین متن ساختگی است
-            </p>
-        </div>
-        <div class="main-footer">
-            <a href="#" id="nvisande"><span>نویسدنده :</span> پارسا</a>
-            <p><span>تاریخ ثبت :</span> 1399/1/27</p>
-            <a href="#" id="bro">ادامه داستان</a>
-        </div>
-    </div>
-    <div class="text-list">
-        <div class="top-pro">
-            <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-            <a href="#" id="name">پارسا</a>
-            <a href="#" id="fallow">دنبال کنید</a>
-        </div>
-        <div class="main-text">
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
-            <h1>نام داستان : <span>هیچی</span></h1>
-            <h1>موضوع : <span>الکی</span></h1>
-            <p>
-                این متن ساختگی است این متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی استاین متن ساختگی
-                استاین متن ساختگی است
-            </p>
-        </div>
-        <div class="main-footer">
-            <a href="#" id="nvisande"><span>نویسدنده :</span> پارسا</a>
-            <p><span>تاریخ ثبت :</span> 1399/1/27</p>
-            <a href="#" id="bro">ادامه داستان</a>
-        </div>
-    </div>
-</div>

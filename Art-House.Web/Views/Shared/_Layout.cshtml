@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="~/SiteTemplate/css/fontawesome.min.css">
     <link rel="stylesheet" href="~/SiteTemplate/css/reset.css">
     <link rel="stylesheet" href="~/SiteTemplate/css/Indexcss.css">
+    <link rel="stylesheet" href="~/SiteTemplate/css/Profile.css">
 </head>
 
 <body>
@@ -50,7 +51,7 @@
                     </div>
                 </div>
                 <div class="profile-newtext">
-                    <a href="#" alt="افزودن متن" title=" افزودن متن">بنویس !</a>
+                    <a href="/PostText/AddPost" alt="افزودن متن" title=" افزودن متن">بنویس !</a>
                 </div>
             </div>
         }
@@ -64,59 +65,7 @@
         }
     </header>
     <main class="container">
-        <div class="main-navbar">
-            <div class="main-navbar-list">
-                <a href="#">داستان </a>
-            </div>
-            <div class="main-navbar-list">
-                <a href="#">دلنوشته</a>
-            </div>
-            <div class="main-navbar-list">
-                <a href="#">شعر</a>
-            </div>
-            <div class="main-navbar-list">
-                <a href="#">رمان</a>
-            </div>
-            <div class="main-navbar-list">
-                <a href="#">ارتباط باما</a>
-            </div>
-            <div class="main-navbar-list">
-                <a href="#">پیشنهاد به ما</a>
-            </div>
-            <div class="main-navbar-text">
-                <a href="#">نویسنده شو !</a>
-            </div>
-            <div class="main-navbar-e">
-                <i onclick="openlist()" class="fa fa-align-justify"></i>
-                <div class="lists" id="lists" style="display:none">
-                    <div class="s">
-                        <input id="search" type="text" placeholder="جست و جو در مطالب و کاربران">
-                        <div class="icon-search">
-                            <i class="fa fa-search"></i>
-                        </div>
-                    </div>
-                    <div class="main-navbar-lists">
-                        <a href="#">داستان </a>
-                    </div>
-                    <div class="main-navbar-lists">
-                        <a href="#">دلنوشته</a>
-                    </div>
-                    <div class="main-navbar-lists">
-                        <a href="#">شعر</a>
-                    </div>
-                    <div class="main-navbar-lists">
-                        <a href="#">رمان</a>
-                    </div>
-                    <div class="main-navbar-lists">
-                        <a href="#">ارتباط باما</a>
-                    </div>
-                    <div class="main-navbar-lists">
-                        <a href="#">پیشنهاد به ما</a>
-                    </div>
-
-                </div>
-            </div>
-        </div>
+        @await Component.InvokeAsync("Navbar")
         <div class="main">
             <div class="main-arshiv-list  col-md-4 col-sm-12">
                 <div class="profiles">
@@ -139,7 +88,6 @@
                             <a asp-action="LogOut" asp-controller="Account"><i class="fa fa-sign-out"></i> خروج</a>
                         </div>
                     </div>
-
                 </div>
                 <div class="Visit">
                     <div class="visit-head">
@@ -184,6 +132,8 @@
 
     <script src="~/SiteTemplate/js/jquery-3.4.1.js"></script>
     <script src="~/SiteTemplate/js//Index.js "></script>
+    <script src="~/SiteTemplate/js/pr "></script>
+
     @RenderSection("Scripts", required: false)
 
 </body>

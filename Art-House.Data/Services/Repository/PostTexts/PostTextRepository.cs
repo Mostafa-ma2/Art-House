@@ -57,17 +57,17 @@ namespace Art_House.Data.Services.Repository.PostTexts
 
         public IEnumerable<PostText> GetAll()
         {
-            return _db.PostText.Include(a => a.Groups).AsEnumerable();
+            return _db.PostText.Include(a => a.Groups).Include(a=>a.Users).AsEnumerable();
         }
 
         public async Task<IEnumerable<PostText>> GetAllAsync()
         {
-            return await _db.PostText.Include(a=>a.Groups).ToListAsync();
+            return await _db.PostText.Include(a=>a.Groups).Include(a => a.Users).ToListAsync();
         }
 
         public async Task<ICollection<PostText>> GetAllAsync(Expression<Func<PostText, bool>> match)
         {
-            return await _db.PostText.Include(a => a.Groups).Where(match).ToListAsync();
+            return await _db.PostText.Include(a => a.Groups).Include(a => a.Users).Where(match).ToListAsync();
         }
 
         public async Task<PostText> GetAsync(Expression<Func<PostText, bool>> where)
@@ -118,6 +118,17 @@ namespace Art_House.Data.Services.Repository.PostTexts
             }
 
             return entities.AsEnumerable();
+        }
+        public IEnumerable<PostText> Paging(int pageid,int take, IEnumerable<PostText> post)
+        {
+            var skip = (pageid - 1) * 25;
+            return post.Where(p => !p.IsDeleted).Take(take).Skip(skip);
+        }
+
+        public IEnumerable<PostText> Paging(int pageid,int take)
+        {
+            var skip = (pageid - 1) * 25;
+            return _db.PostText.Where(a => !a.IsDeleted).Skip(skip).Take(take).ToList();
         }
 
         #region IDisposable Support

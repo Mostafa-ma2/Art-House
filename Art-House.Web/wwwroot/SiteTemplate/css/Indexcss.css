@@ -15,9 +15,11 @@
 .padding-10 {
     padding: 10px;
 }
-margin-10{
-    margin-top:10px;
+
+margin-10 {
+    margin-top: 10px;
 }
+
 .back-white {
     background-color: white;
     border-radius: 4px;
@@ -294,6 +296,7 @@ main {
                     main .main .main-text-list .text-list .top-pro img {
                         width: 42px;
                         border-radius: 43px;
+                        height: 42px;
                         border: 1px solid gray;
                     }
 

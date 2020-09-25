@@ -7,27 +7,33 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Art_House.Web.Models;
 using Microsoft.AspNetCore.Authorization;
+using Art_House.Data.Interfaces;
 
 namespace Art_House.Web.Controllers
 {
     public class HomeController : Controller
     {
+        //صفحه اصلی
+        #region ctor
         private readonly ILogger<HomeController> _logger;
+        private readonly IUnitOfWork _db;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ILogger<HomeController> logger, IUnitOfWork db)
         {
             _logger = logger;
+            _db = db;
         }
+        #endregion
 
-        public IActionResult Index()
+        //Get
+        [HttpGet]
+        public IActionResult Index(int pageId=1)
         {
-            return View();
-        }
-
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            ViewBag.PageID = pageId;
+            var getall = _db.PostTextRepository.GetAll();
+            ViewBag.CountPage = getall.Count();
+            var Post = _db.PostTextRepository.Paging(pageId, 5);
+            return View(Post);
         }
     }
 }
