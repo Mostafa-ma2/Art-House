@@ -29,6 +29,8 @@ namespace Art_House.Data.Context
         public DbSet<Offers> Offers { get; set; }
         public DbSet<PostText> PostText { get; set; }
         public DbSet<Question> Question { get; set; }
+        public DbSet<PostTextVisit> PostTextVisits { get; set; }
+
         public DbSet<userAnswer> UserAnswer { get; set; }
         public DbSet<UserInUser> UserInUser { get; set; }
         public DbSet<Comment> Comments { get; set; }

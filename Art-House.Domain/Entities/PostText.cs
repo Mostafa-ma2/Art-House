@@ -21,13 +21,14 @@ namespace Art_House.Domain.Entities
         public string Name { get; set; }
         public string ShortText { get; set; }
         public string Text { get; set; }
-
+        public ulong Visit { get; set; }
         //relations
         [ForeignKey("GroupId")]
         public virtual Groups Groups { get; set; }
         [ForeignKey("UserId")]
         public virtual User Users { get; set; }
         public virtual IEnumerable<SavePost> SavePosts { get; set; }
+        public virtual IEnumerable<PostTextVisit> PostTextVisits { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
         public virtual IEnumerable<likePost> likePost { get; set; }
     }

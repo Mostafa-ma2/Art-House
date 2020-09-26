@@ -192,6 +192,9 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<decimal>("Visit")
+                        .HasColumnType("decimal(20,0)");
+
                     b.HasKey("Id");
 
                     b.HasIndex("GroupId");
@@ -199,6 +202,40 @@ namespace Art_House.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("PostText");
+                });
+
+            modelBuilder.Entity("Art_House.Domain.Entities.PostTextVisit", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Ip")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostTextVisits");
                 });
 
             modelBuilder.Entity("Art_House.Domain.Entities.Question", b =>
@@ -637,6 +674,13 @@ namespace Art_House.Data.Migrations
                     b.HasOne("Art_House.Domain.Entities.User", "Users")
                         .WithMany("PostTexts")
                         .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("Art_House.Domain.Entities.PostTextVisit", b =>
+                {
+                    b.HasOne("Art_House.Domain.Entities.PostText", "PostText")
+                        .WithMany("PostTextVisits")
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Art_House.Domain.Entities.Question", b =>
