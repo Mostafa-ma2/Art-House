@@ -40,6 +40,7 @@ namespace Art_House.Web.Controllers
         [HttpGet]
         public async Task<IActionResult> AddPost()
         {
+            ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return View(new AddPostTextViewModel
             {
                 groups = (await _db.GroupRepository.GetAllAsync(a => !a.IsDeleted))
@@ -91,6 +92,7 @@ namespace Art_House.Web.Controllers
                 groups = (await _db.GroupRepository.GetAllAsync()),
                 postText = (await _db.PostTextRepository.GetByIdAsync(id))
             };
+            ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return View(viewModel);
         }
 

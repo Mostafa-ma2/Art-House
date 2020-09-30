@@ -27,9 +27,9 @@ namespace Art_House.Domain.Entities
         public virtual Groups Groups { get; set; }
         [ForeignKey("UserId")]
         public virtual User Users { get; set; }
-        public virtual IEnumerable<SavePost> SavePosts { get; set; }
-        public virtual IEnumerable<PostTextVisit> PostTextVisits { get; set; }
-        public virtual IEnumerable<Comment> Comments { get; set; }
-        public virtual IEnumerable<likePost> likePost { get; set; }
+        public  List<SavePost> SavePosts { get; set; }
+        public List<PostTextVisit> PostTextVisits { get; set; }
+        public List<Comment> Comments { get; set; }
+        public List<likePost> likePost { get; set; }
     }
 }

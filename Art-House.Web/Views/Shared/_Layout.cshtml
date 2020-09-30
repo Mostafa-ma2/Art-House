@@ -68,27 +68,24 @@
         @await Component.InvokeAsync("Navbar")
         <div class="main">
             <div class="main-arshiv-list  col-md-4 col-sm-12">
-                <div class="profiles">
-                    <div class="profiles-head">
-                        <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-                        <h3>علیرضاا</h3>
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div class="profiles">
+
+                        @await Component.InvokeAsync("User", ViewBag.UserId)
                     </div>
-                    <div class="profiles-main">
-                        <div class="text">
-                            <a href=""><i class="fa fa-user"></i> مشاهده پروفایل</a>
+                }
+                else
+                {
+                    <div class="profiles">
+                        <div class="login">
+                            <a asp-action="Login" asp-controller="Account">ورود</a>
+                        </div>
+                        <div class="register-box">
+                            <a asp-action="Register" asp-controller="Account">ثبت نام</a>
                         </div>
                     </div>
-                    <div class="profiles-main">
-                        <div class="text">
-                            <a href=""><i class="fa fa-edit"></i> ویرایش پرفایل</a>
-                        </div>
-                    </div>
-                    <div class="profiles-main">
-                        <div class="text">
-                            <a asp-action="LogOut" asp-controller="Account"><i class="fa fa-sign-out"></i> خروج</a>
-                        </div>
-                    </div>
-                </div>
+                }
                 <div class="Visit">
                     <div class="visit-head">
                         <h1><i class="fa fa-eye"></i> پر بازدید ترین </h1>
@@ -133,7 +130,6 @@
     <script src="~/SiteTemplate/js/jquery-3.4.1.js"></script>
     <script src="~/SiteTemplate/js//Index.js "></script>
     <script src="~/SiteTemplate/js/pr "></script>
-
     @RenderSection("Scripts", required: false)
 
 </body>

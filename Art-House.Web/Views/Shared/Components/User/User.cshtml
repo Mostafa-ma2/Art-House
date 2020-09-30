@@ -1,0 +1,25 @@
+﻿@model User
+@{
+    ViewData["Title"] = "User";
+}
+
+
+    <div class="profiles-head">
+        <img src="~/ProfileImage/@Model.ProfileImg" alt="">
+        <h3>@Model.UserName</h3>
+    </div>
+    <div class="profiles-main">
+        <div class="text">
+            <a href="/Profile/@Model.Id"><i class="fa fa-user"></i> مشاهده پروفایل</a>
+        </div>
+    </div>
+    <div class="profiles-main">
+        <div class="text">
+            <a href=""><i class="fa fa-edit"></i> ویرایش پرفایل</a>
+        </div>
+    </div>
+    <div class="profiles-main">
+        <div class="text">
+            <a asp-action="LogOut" asp-controller="Account"><i class="fa fa-sign-out"></i> خروج</a>
+        </div>
+    </div>

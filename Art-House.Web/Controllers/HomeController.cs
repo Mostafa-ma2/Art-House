@@ -8,6 +8,7 @@ using Microsoft.Extensions.Logging;
 using Art_House.Web.Models;
 using Microsoft.AspNetCore.Authorization;
 using Art_House.Data.Interfaces;
+using System.Security.Claims;
 
 namespace Art_House.Web.Controllers
 {
@@ -33,6 +34,7 @@ namespace Art_House.Web.Controllers
             var getall = _db.PostTextRepository.GetAll();
             ViewBag.CountPage = getall.Count();
             var Post = _db.PostTextRepository.Paging(pageId, 5);
+            ViewBag.UserId =User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             return View(Post);
         }
     }

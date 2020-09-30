@@ -26,11 +26,11 @@ a {
     color: #1a1f59;
 }
 
-a,
-a:hover {
-    transition: all 0.2s ease;
-    text-decoration: none !important;
-}
+    a,
+    a:hover {
+        transition: all 0.2s ease;
+        text-decoration: none !important;
+    }
 
 
 /* ========================   Header top */
@@ -40,157 +40,157 @@ header {
     display: flex;
 }
 
-header .Header-logo img {
-    width: 162px;
-    height: 70px;
-}
+    header .Header-logo img {
+        width: 162px;
+        height: 70px;
+    }
 
-header .Header-Search input {
-    width: 100%;
-    padding: 10px;
-    margin-top: 14px;
-    padding-right: 26px;
-    background: #dcdcdc6e;
-    border: 1px solid lightgray;
-    border-radius: 5px;
-}
+    header .Header-Search input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 14px;
+        padding-right: 26px;
+        background: #dcdcdc6e;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
 
-header .Header-Search input:hover {
-    background: white;
-    border: 1px solid #5a5af97a;
-}
+        header .Header-Search input:hover {
+            background: white;
+            border: 1px solid #5a5af97a;
+        }
 
-header .Header-Search .icon-search {
-    position: absolute;
-    top: 35%;
-    right: 25px;
-}
+    header .Header-Search .icon-search {
+        position: absolute;
+        top: 35%;
+        right: 25px;
+    }
 
-header .Header-Search .icon-search i {
-    color: gray;
-}
+        header .Header-Search .icon-search i {
+            color: gray;
+        }
 
-header .Header-Search .icon-exit {
-    position: absolute;
-    left: 6%;
-    top: 37%;
-    color: #5a5af97a;
-}
+    header .Header-Search .icon-exit {
+        position: absolute;
+        left: 6%;
+        top: 37%;
+        color: #5a5af97a;
+    }
 
-header .Header-login {
-    text-align: center;
-    margin-top: 29px;
-}
+    header .Header-login {
+        text-align: center;
+        margin-top: 29px;
+    }
 
-header .Header-login a {
-    padding: 10px;
-    padding-left: 43px;
-    padding-right: 43px;
-    border-radius: 4px;
-}
+        header .Header-login a {
+            padding: 10px;
+            padding-left: 43px;
+            padding-right: 43px;
+            border-radius: 4px;
+        }
 
-header .Header-login #Login {
-    border: 1px solid #1b1be1a6;
-    color: #1b1be1a6;
-}
+        header .Header-login #Login {
+            border: 1px solid #1b1be1a6;
+            color: #1b1be1a6;
+        }
 
-header .Header-login #Login:hover {
-    color: white;
-    background: #1b1be1a6;
-}
+            header .Header-login #Login:hover {
+                color: white;
+                background: #1b1be1a6;
+            }
 
-header .Header-login #Rigester {
-    color: white;
-    background: #1b1be1a6;
-}
+        header .Header-login #Rigester {
+            color: white;
+            background: #1b1be1a6;
+        }
 
-header .Header-login #Rigester:hover {
-    border: 1px solid #1b1be1a6;
-    color: #1b1be1a6;
-    background: white;
-}
+            header .Header-login #Rigester:hover {
+                border: 1px solid #1b1be1a6;
+                color: #1b1be1a6;
+                background: white;
+            }
 
-header .profile {
-    display: inline-flex;
-    justify-content: flex-end;
-    margin-top: 7px;
-}
+    header .profile {
+        display: inline-flex;
+        justify-content: flex-end;
+        margin-top: 7px;
+    }
 
-header .profile .profile-newtext {
-    border: 1px solid #1b1be1a6;
-    display: inline-table;
-    padding: 13px;
-    padding-left: 45px;
-    border-radius: 4px;
-    margin-top: 8px;
-    padding-right: 45px;
-}
+        header .profile .profile-newtext {
+            border: 1px solid #1b1be1a6;
+            display: inline-table;
+            padding: 13px;
+            padding-left: 45px;
+            border-radius: 4px;
+            margin-top: 8px;
+            padding-right: 45px;
+        }
 
-header .profile .profile-newtext:hover {
-    background: #1b1be1a6;
-}
+            header .profile .profile-newtext:hover {
+                background: #1b1be1a6;
+            }
 
-header .profile .profile-newtext a {
-    color: #1b1be1a6;
-}
+            header .profile .profile-newtext a {
+                color: #1b1be1a6;
+            }
 
-header .profile .profile-newtext:hover a {
-    color: white;
-}
+            header .profile .profile-newtext:hover a {
+                color: white;
+            }
 
-header .profile .profile-use {
-    padding: 20px;
-    position: relative;
-}
+        header .profile .profile-use {
+            padding: 20px;
+            position: relative;
+        }
 
-header .profile .profile-use i {
-    cursor: pointer;
-}
+            header .profile .profile-use i {
+                cursor: pointer;
+            }
 
-header .profile .profile-use .profile-tedad {
-    position: absolute;
-    right: 6px;
-    top: 26px;
-}
+            header .profile .profile-use .profile-tedad {
+                position: absolute;
+                right: 6px;
+                top: 26px;
+            }
 
-header .profile .profile-use .profile-tedad p {
-    padding: 3px;
-    background: #1b1be1a6;
-    color: white;
-    font-size: 10px;
-    border-radius: 16px;
-}
+                header .profile .profile-use .profile-tedad p {
+                    padding: 3px;
+                    background: #1b1be1a6;
+                    color: white;
+                    font-size: 10px;
+                    border-radius: 16px;
+                }
 
-header .profile img {
-    width: 55px;
-    cursor: pointer;
-    border-radius: 18px;
-    border: 3px solid darkgray;
-}
+        header .profile img {
+            width: 55px;
+            cursor: pointer;
+            border-radius: 18px;
+            border: 3px solid darkgray;
+        }
 
-header .profile .profile-use .profile-check {
-    position: absolute;
-    z-index: 1;
-    background: #1b1be1a6;
-    width: 187px;
-    right: -59px;
-    top: 75%;
-    border-radius: 3px;
-    opacity: 0;
-}
+        header .profile .profile-use .profile-check {
+            position: absolute;
+            z-index: 1;
+            background: #1b1be1a6;
+            width: 187px;
+            right: -59px;
+            top: 75%;
+            border-radius: 3px;
+            opacity: 0;
+        }
 
-header .profile .profile-use .profile-check .check-text {
-    padding: 10px;
-    border-bottom: 1px solid;
-}
+            header .profile .profile-use .profile-check .check-text {
+                padding: 10px;
+                border-bottom: 1px solid;
+            }
 
-header .profile .profile-use .profile-check .check-text:hover {
-    background: blueviolet;
-}
+                header .profile .profile-use .profile-check .check-text:hover {
+                    background: blueviolet;
+                }
 
-header .profile .profile-use .profile-check .check-text a {
-    color: white;
-}
+                header .profile .profile-use .profile-check .check-text a {
+                    color: white;
+                }
 
 
 /* ============================== main nav */
@@ -199,398 +199,405 @@ main {
     margin-top: 19px;
 }
 
-main .main-navbar {
-    position: relative;
-    background: white;
-    border-radius: 5px;
-    display: flex;
-}
-
-main .main-navbar .main-navbar-list {
-    padding: 11px;
-}
-
-main .main-navbar .main-navbar-list a {
-    padding-bottom: 7px;
-    color: black;
-}
-
-main .main-navbar .main-navbar-e {
-    display: none;
-}
-
-main .main-navbar .main-navbar-list a:hover {
-    color: #1b1be1a6;
-    border-bottom: 2px solid #1b1be1a6;
-}
-
-main .main-navbar .main-navbar-text {
-    position: absolute;
-    left: 12px;
-    margin-top: 10px;
-}
-
-main .main-navbar .main-navbar-text a {
-    padding: 2px;
-    padding-left: 29px;
-    border-radius: 4px;
-    padding-right: 29px;
-    background: #1b1be1a6;
-    color: white;
-}
-
-main .main-navbar .main-navbar-text a:hover {
-    border: 1px solid #1b1be1a6;
-    color: #1b1be1a6;
-    background: white;
-}
-
-
-/* ================================== prof head */
-
-main .prof-main {
-    margin-top: 15px;
-    background: white;
-    border-radius: 4px;
-}
-
-main .prof-main .head-pro {
-    position: relative;
-}
-
-main .prof-main .head-pro img {
-    width: 100%;
-    filter: contrast(0.5);
-    height: 438px;
-    border-radius: 5px;
-}
-
-main .prof-main .head-pro .profiles {
-    position: absolute;
-    top: 72%;
-    right: 13px;
-}
-
-main .prof-main .head-pro .profiles img {
-    width: 164px;
-    border-radius: 3px 25px 0;
-    filter: contrast();
-    height: 164px;
-    border: 6px solid black;
-}
-
-main .prof-main .head-pro .profiles p {
-    text-align: center;
-    font-size: 23px;
-}
-
-main .prof-main .head-pro .profiles:hover .chang-pro {
-    opacity: 1;
-    transition: all 0.3s linear 0s;
-    top: 121px;
-    left: 4px;
-}
-
-main .prof-main .head-pro .profiles .chang-pro {
-    background: #1b1be1a6;
-    position: absolute;
-    padding: 12px;
-    text-align: center;
-    border-radius: 1px 0px 0px 25px;
-    padding-right: 21px;
-    padding-left: 19px;
-    opacity: 0;
-}
-
-main .prof-main .head-pro .profiles .chang-pro a {
-    color: white;
-}
-
-main .prof-main .head-pro .change-backimg {
-    position: absolute;
-    right: 21%;
-    top: 88%;
-    background: #1b1be1a6;
-    padding: 8px;
-    border-radius: 0px 16px;
-}
-
-main .prof-main .head-pro .change-backimg:hover {
-    background: #ffffff00;
-    border: 1px solid #1b1be1a6;
-}
-
-main .prof-main .head-pro .change-backimg:hover a {
-    color: #1b1be1a6;
-}
-
-main .prof-main .head-pro .change-backimg a {
-    color: white;
-}
-
-main .prof-main .head-pro .name-pro {
-    position: absolute;
-    left: -57px;
-    font-size: 30px;
-    top: 124px;
-}
-
-main .prof-main .head-pro .faloow {
-    position: absolute;
-    left: 31px;
-    display: flex;
-    top: 87%;
-}
-
-main .prof-main .head-pro .faloow h1 {
-    padding: 13px;
-    color: white;
-    background: #0f0f5f;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-main .prof-main .head-pro .faloow h1:hover {
-    border: 1px solid #0f0f5f;
-    background: #ffffff00;
-    color: #0f0f5f;
-}
-
-main .prof-main .head-pro .faloow p {
-    padding: 13px;
-    color: #0f0f5f;
-}
-
-main .head-maiin {
-    background: white;
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    margin-top: -1px;
-    border-radius: 0px 0px 5px 5px;
-}
-
-main .head-maiin .list {
-    cursor: pointer;
-    display: table;
-}
-
-main .head-maiin .list-active {
-    cursor: pointer;
-    padding: 10px;
-    display: table;
-}
-
-main .head-maiin .list-active h2 {
-    color: #1b1be1a6;
-}
-
-main .head-maiin .list-active i {
-    color: #1b1be1a6;
-    font-size: 40px;
-}
-
-main .head-maiin .list i {
-    display: none;
-    font-size: 40px;
-}
-
-main .head-maiin .list h2 {
-    padding: 10px;
-}
-
-
-/* ======================================= post */
-
-main .posts {
-    margin-top: 14px;
-    display: inline-table;
-    margin-bottom: 10px;
-}
-
-main .posts .post-list {
-    background: white;
-    width: 359px;
-    display: inline-block;
-    border-radius: 5px;
-    margin-left: 10px;
-    height: 342px;
-    margin-bottom: 10px;
-}
-
-main .posts .post-list img {
-    width: 100%;
-    height: 201px;
-    padding: 3px;
-    border-radius: 5px;
-}
-
-main .posts .post-list .post-info {
-    display: flex;
-}
-
-main .posts .post-list .post-info span {
-    color: black;
-}
-
-main .posts .post-list .post-info p {
-    margin-left: 13px;
-    color: #1b1be1a6;
-    margin-bottom: 12px;
-}
-
-main .posts .post-list .text {
-    padding-bottom: 10px;
-    border-bottom: 1px solid;
-}
-
-main .posts .post-list .footer {
-    display: flex;
-}
-
-main .posts .post-list .footer .left #update {
-    border: 1px solid;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    position: absolute;
-    margin-top: 4px;
-    padding-bottom: 5px;
-    background: #179b17e8;
-    color: white;
-    border-radius: 4px;
-}
-
-main .posts .post-list .footer .left #update:hover {
-    background: white;
-    color: #179b17e8;
-    border: 1px solid #179b17e8;
-}
-
-main .posts .post-list .footer .left #delete {
-    border: 1px solid;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    position: absolute;
-    margin-top: 4px;
-    right: 106px;
-    background: #f90404c4;
-    color: white;
-    border-radius: 4px;
-}
-
-main .posts .post-list .footer .left #delete:hover {
-    background: white;
-    color: #f90404c4;
-    border: 1px solid #f90404c4;
-}
-
-main .posts .post-list .footer .right {
-    position: absolute;
-    left: 14px;
-    margin-top: 8px;
-}
-
-main .posts .post-list .footer .right a {
-    border: 1px solid;
-    padding-left: 15px;
-    padding-right: 15px;
-    background: #1b1be1a6;
-    color: white;
-    border-radius: 4px;
-}
-
-main .posts .post-list .footer .right a:hover {
-    background: white;
-    color: #1b1be1a6;
-    border: 1px solid #1b1be1a6;
-}
-
-
-/* ========================== ================= folow me */
-
-main .falow-me {
-    margin-top: 23px;
-    background: white;
-    margin-bottom: 10px;
-    border-radius: 4px;
-}
-
-main .falow-me h2 {
-    padding: 13px;
-}
-
-main .falow-me .falow-me-list {
-    padding: 15px;
-    display: flex;
-    position: relative;
-    border-bottom: 1px solid;
-}
-
-main .falow-me .falow-me-list:hover {
-    background: #1b1be1a6;
-}
-
-main .falow-me .falow-me-list:hover a {
-    color: white;
-}
-
-main .falow-me .falow-me-list:hover img {
-    border: 3px solid white;
-}
-
-main .falow-me .falow-me-list img {
-    width: 96px;
-    border-radius: 67px;
-    height: 96px;
-    border: 3px solid #242472d9;
-}
-
-main .falow-me .falow-me-list a {
-    margin-top: 40px;
-    margin-right: 14px;
-}
-
-main .falow-me .falow-me-list .tools {
-    position: absolute;
-    left: 24px;
-    top: 47%;
-}
-
-main .falow-me .falow-me-list .tools #visit-falow {
-    padding: 10px;
-    border: 1px solid;
-    border-radius: 5px;
-    background: #1b1be1a6;
-    color: white;
-}
-
-main .falow-me .falow-me-list .tools #visit-falow:hover {
-    background: white;
-    border: 1px solid #1b1be1a6;
-    color: #1b1be1a6;
-}
-
-main .falow-me .falow-me-list .tools #delete-falow {
-    padding: 10px;
-    border: 1px solid;
-    border-radius: 5px;
-    background: #e51616e3;
-    color: white;
-}
-
-main .falow-me .falow-me-list .tools #delete-falow:hover {
-    background: white;
-    border: 1px solid #e51616e3;
-    color: #e51616e3;
-}
+    main .main-navbar {
+        position: relative;
+        background: white;
+        border-radius: 5px;
+        display: flex;
+    }
+
+        main .main-navbar .main-navbar-list {
+            padding: 11px;
+        }
+
+            main .main-navbar .main-navbar-list a {
+                padding-bottom: 7px;
+                color: black;
+            }
+
+        main .main-navbar .main-navbar-e {
+            display: none;
+        }
+
+        main .main-navbar .main-navbar-list a:hover {
+            color: #1b1be1a6;
+            border-bottom: 2px solid #1b1be1a6;
+        }
+
+        main .main-navbar .main-navbar-text {
+            position: absolute;
+            left: 12px;
+            margin-top: 10px;
+        }
+
+            main .main-navbar .main-navbar-text a {
+                padding: 2px;
+                padding-left: 29px;
+                border-radius: 4px;
+                padding-right: 29px;
+                background: #1b1be1a6;
+                color: white;
+            }
+
+                main .main-navbar .main-navbar-text a:hover {
+                    border: 1px solid #1b1be1a6;
+                    color: #1b1be1a6;
+                    background: white;
+                }
+
+
+    /* ================================== prof head */
+
+    main .prof-main {
+        margin-top: 15px;
+        background: white;
+        border-radius: 4px;
+    }
+
+        main .prof-main .head-pro {
+            position: relative;
+        }
+
+            main .prof-main .head-pro img {
+                width: 100%;
+                filter: contrast(0.5);
+                height: 438px;
+                border-radius: 5px;
+            }
+
+            main .prof-main .head-pro .profiles {
+                position: absolute;
+                top: 72%;
+                right: 13px;
+            }
+
+                main .prof-main .head-pro .profiles img {
+                    width: 164px;
+                    border-radius: 3px 25px 0;
+                    filter: contrast();
+                    height: 164px;
+                    border: 6px solid black;
+                }
+
+                main .prof-main .head-pro .profiles p {
+                    text-align: center;
+                    font-size: 23px;
+                }
+
+                main .prof-main .head-pro .profiles:hover .chang-pro {
+                    opacity: 1;
+                    transition: all 0.3s linear 0s;
+                    top: 121px;
+                    left: 4px;
+                }
+
+                main .prof-main .head-pro .profiles .chang-pro {
+                    background: #1b1be1a6;
+                    position: absolute;
+                    padding: 12px;
+                    text-align: center;
+                    border-radius: 1px 0px 0px 25px;
+                    padding-right: 21px;
+                    padding-left: 19px;
+                    opacity: 0;
+                }
+
+                    main .prof-main .head-pro .profiles .chang-pro a {
+                        color: white;
+                    }
+
+            main .prof-main .head-pro .change-backimg {
+                position: absolute;
+                right: 21%;
+                top: 88%;
+                background: #1b1be1a6;
+                padding: 8px;
+                border-radius: 0px 16px;
+            }
+
+                main .prof-main .head-pro .change-backimg:hover {
+                    background: #ffffff00;
+                    border: 1px solid #1b1be1a6;
+                }
+
+                    main .prof-main .head-pro .change-backimg:hover a {
+                        color: #1b1be1a6;
+                    }
+
+                main .prof-main .head-pro .change-backimg a {
+                    color: white;
+                }
+
+            main .prof-main .head-pro .name-pro {
+                position: absolute;
+                left: -160px;
+                font-size: 30px;
+                top: 124px;
+            }
+
+            main .prof-main .head-pro .faloow {
+                position: absolute;
+                left: 31px;
+                display: flex;
+                top: 87%;
+            }
+
+                main .prof-main .head-pro .faloow h1 {
+                    padding: 13px;
+                    color: white;
+                    background: #0f0f5f;
+                    border-radius: 4px;
+                    cursor: pointer;
+                }
+
+                    main .prof-main .head-pro .faloow h1:hover {
+                        border: 1px solid #0f0f5f;
+                        background: #ffffff00;
+                        color: #0f0f5f;
+                    }
+
+                main .prof-main .head-pro .faloow p {
+                    padding: 13px;
+                    color: #0f0f5f;
+                }
+
+    main .head-maiin {
+        background: white;
+        display: flex;
+        text-align: center;
+        justify-content: center;
+        margin-top: -1px;
+        border-radius: 0px 0px 5px 5px;
+    }
+
+        main .head-maiin .list {
+            cursor: pointer;
+            display: table;
+        }
+
+        main .head-maiin .list-active {
+            cursor: pointer;
+            padding: 10px;
+            display: table;
+        }
+
+            main .head-maiin .list-active h2 {
+                color: #1b1be1a6;
+            }
+
+            main .head-maiin .list-active i {
+                color: #1b1be1a6;
+                font-size: 40px;
+            }
+
+        main .head-maiin .list i {
+            display: none;
+            font-size: 40px;
+        }
+
+        main .head-maiin .list h2 {
+            padding: 10px;
+        }
+
+
+    /* ======================================= post */
+
+    main .posts {
+        margin-top: 14px;
+        display: inline-table;
+        margin-bottom: 10px;
+    }
+
+        main .posts .post-list {
+            background: white;
+            width: 359px;
+            display: inline-block;
+            border-radius: 5px;
+            margin-left: 10px;
+            height: 342px;
+            margin-bottom: 10px;
+        }
+
+            main .posts .post-list img {
+                width: 100%;
+                height: 201px;
+                padding: 3px;
+                border-radius: 5px;
+            }
+
+            main .posts .post-list .post-info {
+                display: flex;
+            }
+
+                main .posts .post-list .post-info span {
+                    color: black;
+                }
+
+                main .posts .post-list .post-info p {
+                    margin-left: 13px;
+                    color: #1b1be1a6;
+                    margin-bottom: 12px;
+                }
+
+            main .posts .post-list .text {
+                padding-bottom: 10px;
+                border-bottom: 1px solid;
+            }
+
+            main .posts .post-list .footer {
+                display: flex;
+            }
+
+                main .posts .post-list .footer .left #update {
+                    border: 1px solid;
+                    padding-left: 15px;
+                    padding-right: 15px;
+                    padding-top: 5px;
+                    display: block;
+                    margin-top: 4px;
+                    padding-bottom: 5px;
+                    background: #179b17e8;
+                    color: white;
+                    border-radius: 4px;
+                }
+
+    main .Bio .Bio-me {
+        margin-top: 15px;
+        background: white;
+        padding: 16px;
+        border-radius: 5px;
+    }
+
+    main .posts .post-list .footer .left #update:hover {
+        background: white;
+        color: #179b17e8;
+        border: 1px solid #179b17e8;
+    }
+
+    main .posts .post-list .footer .left #delete {
+        border: 1px solid;
+        padding-left: 15px;
+        padding-right: 15px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: block;
+        margin-top: 4px;
+        right: 106px;
+        background: #f90404c4;
+        color: white;
+        border-radius: 4px;
+    }
+
+        main .posts .post-list .footer .left #delete:hover {
+            background: white;
+            color: #f90404c4;
+            border: 1px solid #f90404c4;
+        }
+
+    main .posts .post-list .footer .right {
+        position: absolute;
+        left: 14px;
+        margin-top: 8px;
+    }
+
+        main .posts .post-list .footer .right a {
+            border: 1px solid;
+            padding-left: 15px;
+            padding-right: 15px;
+            background: #1b1be1a6;
+            color: white;
+            border-radius: 4px;
+        }
+
+            main .posts .post-list .footer .right a:hover {
+                background: white;
+                color: #1b1be1a6;
+                border: 1px solid #1b1be1a6;
+            }
+
+
+    /* ========================== ================= folow me */
+
+    main .falow-me {
+        margin-top: 23px;
+        background: white;
+        margin-bottom: 10px;
+        border-radius: 4px;
+    }
+
+        main .falow-me h2 {
+            padding: 13px;
+        }
+
+        main .falow-me .falow-me-list {
+            padding: 15px;
+            display: flex;
+            position: relative;
+            border-bottom: 1px solid;
+        }
+
+            main .falow-me .falow-me-list:hover {
+                background: #1b1be1a6;
+            }
+
+                main .falow-me .falow-me-list:hover a {
+                    color: white;
+                }
+
+                main .falow-me .falow-me-list:hover img {
+                    border: 3px solid white;
+                }
+
+            main .falow-me .falow-me-list img {
+                width: 96px;
+                border-radius: 67px;
+                height: 96px;
+                border: 3px solid #242472d9;
+            }
+
+            main .falow-me .falow-me-list a {
+                margin-top: 40px;
+                margin-right: 14px;
+            }
+
+            main .falow-me .falow-me-list .tools {
+                position: absolute;
+                left: 24px;
+                top: 47%;
+            }
+
+                main .falow-me .falow-me-list .tools #visit-falow {
+                    padding: 10px;
+                    border: 1px solid;
+                    border-radius: 5px;
+                    background: #1b1be1a6;
+                    color: white;
+                }
+
+                    main .falow-me .falow-me-list .tools #visit-falow:hover {
+                        background: white;
+                        border: 1px solid #1b1be1a6;
+                        color: #1b1be1a6;
+                    }
+
+                main .falow-me .falow-me-list .tools #delete-falow {
+                    padding: 10px;
+                    border: 1px solid;
+                    border-radius: 5px;
+                    background: #e51616e3;
+                    color: white;
+                }
+
+                    main .falow-me .falow-me-list .tools #delete-falow:hover {
+                        background: white;
+                        border: 1px solid #e51616e3;
+                        color: #e51616e3;
+                    }
 
 
 /* ================================= media respansiv */
 
-@media (max-width: 992px) {
+@media (max-width: 1200px) {
     main .prof-main .head-pro .change-backimg {
         position: absolute;
         right: 28%;
@@ -599,6 +606,7 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
         padding: 8px;
         border-radius: 0px 16px;
     }
+
     main .head-maiin {
         justify-content: flex-end;
     }
@@ -608,9 +616,11 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
     header .Header-Search .s {
         display: none;
     }
+
     main .main-navbar .main-navbar-list {
         display: none;
     }
+
     main .main-navbar .main-navbar-e {
         display: block;
         font-size: 22px;
@@ -618,20 +628,25 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
         cursor: pointer;
         width: 100%;
     }
+
     main .main-navbar .lists {
         background: #1b1be1a6;
         margin-top: 5px;
     }
+
     main .main-navbar .main-navbar-lists {
         padding: 10px;
         font-size: 18px;
     }
-    main .main-navbar .main-navbar-lists:hover {
-        background: darkslateblue;
-    }
-    main .main-navbar .main-navbar-lists a {
-        color: white;
-    }
+
+        main .main-navbar .main-navbar-lists:hover {
+            background: darkslateblue;
+        }
+
+        main .main-navbar .main-navbar-lists a {
+            color: white;
+        }
+
     main .main-navbar input {
         width: 100%;
         padding: 10px;
@@ -641,21 +656,26 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
         border: 1px solid lightgray;
         border-radius: 5px;
     }
-    main .main-navbar input:hover {
-        background: white;
-        border: 1px solid #5a5af97a;
-    }
+
+        main .main-navbar input:hover {
+            background: white;
+            border: 1px solid #5a5af97a;
+        }
+
     main .main-navbar .icon-search {
         position: absolute;
         top: 17%;
         right: 12px;
     }
-    main .main-navbar .icon-search i {
-        color: gray;
-    }
+
+        main .main-navbar .icon-search i {
+            color: gray;
+        }
+
     main .head-maiin {
         display: grid;
     }
+
     main .prof-main .head-pro .change-backimg {
         position: absolute;
         right: 55%;
@@ -664,6 +684,7 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
         padding: 8px;
         border-radius: 0px 16px;
     }
+
     header .profile .profile-newtext {
         padding: 9px;
     }
@@ -673,6 +694,7 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
     main .prof-main .head-pro .faloow p {
         display: none;
     }
+
     main .prof-main .head-pro .faloow {
         position: absolute;
         left: 31px;
@@ -687,24 +709,34 @@ main .falow-me .falow-me-list .tools #delete-falow:hover {
         left: 6px;
         top: 75%;
     }
-    main .falow-me .falow-me-list .tools #delete-falow {
-        padding: 5px;
-        border: 1px solid;
-        border-radius: 5px;
-        background: #e51616e3;
-        color: white;
-    }
-    main .falow-me .falow-me-list .tools #visit-falow {
-        padding: 5px;
-        border: 1px solid;
-        border-radius: 5px;
-        background: #1b1be1a6;
-        color: white;
-    }
+
+        main .falow-me .falow-me-list .tools #delete-falow {
+            padding: 5px;
+            border: 1px solid;
+            border-radius: 5px;
+            background: #e51616e3;
+            color: white;
+        }
+
+        main .falow-me .falow-me-list .tools #visit-falow {
+            padding: 5px;
+            border: 1px solid;
+            border-radius: 5px;
+            background: #1b1be1a6;
+            color: white;
+        }
+
     main .prof-main .head-pro .name-pro {
         position: absolute;
         left: 38%;
         font-size: 30px;
         top: 188px;
+    }
+}
+
+@media (max-width: 851px) {
+
+    header .Header-login {
+        display: none;
     }
 }

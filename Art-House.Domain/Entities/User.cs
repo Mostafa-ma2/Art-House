@@ -23,9 +23,9 @@ namespace Art_House.Domain.Entities
         public virtual IEnumerable<userAnswer> UserAnswers { get; set; }
         public virtual IEnumerable<Comment> Comments { get; set; }
         public virtual IEnumerable<likePost> LikePosts { get; set; }
-        public virtual IEnumerable<SavePost> SavePosts { get; set; }
-        public virtual IEnumerable<PostText> PostTexts { get; set; }
-        public virtual IEnumerable<UserInUser> UserInUsers { get; set; }
+        public List<SavePost> SavePosts { get; set; }
+        public List<PostText> PostTexts { get; set; }
+        public List<UserInUser> UserInUsers { get; set; }
         public virtual IEnumerable<Offers> Offers { get; set; }
     }
 }

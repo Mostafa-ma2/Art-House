@@ -57,17 +57,17 @@ namespace Art_House.Data.Services.Repository.Users
 
         public IEnumerable<User> GetAll()
         {
-            return _db.User.AsEnumerable();
+            return _db.User.Include(a=>a.PostTexts).Include(a=>a.UserInUsers).AsEnumerable();
         }
 
         public async Task<IEnumerable<User>> GetAllAsync()
         {
-            return await _db.User.ToListAsync();
+            return await _db.User.Include(a => a.PostTexts).Include(a => a.UserInUsers).ToListAsync();
         }
 
         public async Task<ICollection<User>> GetAllAsync(Expression<Func<User, bool>> match)
         {
-            return await _db.User.Where(match).ToListAsync();
+            return await _db.User.Include(a => a.PostTexts).Include(a => a.UserInUsers).Where(match).ToListAsync();
         }
 
         public async Task<User> GetAsync(Expression<Func<User, bool>> where)

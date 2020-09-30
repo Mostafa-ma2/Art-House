@@ -1,4 +1,4 @@
-﻿
+﻿@model User
 @{
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
     ViewData["Title"] = "Index";
@@ -8,20 +8,48 @@
     <div class="head-pro">
         <img src="~/SiteTemplate/Image/metal_gear_solid_v_the_phantom_pain-1920x1080.jpg" alt="">
         <div class="profiles">
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
+            <img src="~/ProfileImage/@Model.ProfileImg" alt="">
             <div class="chang-pro">
                 <a href="#">عوض کردن پروفایل</a>
             </div>
             <div class="name-pro">
-                <h1>علی</h1>
+                <h1>@Model.UserName</h1>
             </div>
         </div>
         <div class="change-backimg">
             <a href="#"><i class="fa fa-picture-o"></i> عکس بنر را ویرایش کنید </a>
         </div>
         <div class="faloow">
-            <h1>دنبال کنید</h1>
-            <p>1200 دنبال کننده</p>
+            @if (User.Identity.Name == Model.UserName)
+            {
+                @if (Model.UserInUsers == null)
+                {
+                    <p>
+                        0 دنبال کننده
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Model.UserInUsers.Count() دنبال کننده
+                    </p>
+                } }
+            else
+            {
+                <h1>دنبال کنید</h1>
+                @if (Model.UserInUsers == null)
+                {
+                    <p>
+                        0 دنبال کننده
+                    </p>
+                }
+                else
+                {
+                    <p>
+                        @Model.UserInUsers.Count() دنبال کننده
+                    </p>
+                }
+            }
         </div>
     </div>
 </div>
@@ -51,140 +79,72 @@
         <i class="fa fa-caret-up"></i>
     </div>
 </div>
-<!-- <div class="posts">
-    <div class="post-list col-md-4 col-sm-12 col-12">
-        <img src="~/SiteTemplate/Image/code-wallpaper-14.jpg" alt="">
-        <div class="post-info">
-            <p><span>نوع : </span> شعر</p>
-            <p><span>نام : </span> شعر</p>
-            <p><span>موضوع : </span> شعر</p>
-        </div>
-        <div class="text">
-            <p>این متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هست</p>
-        </div>
-        <div class="footer">
-            <div class="left">
-                <a id="update" href="#">ویرایش</a>
-                <a id="delete" href="#">حذف</a>
+<div class="posts" style="width:100%">
+    @if (Model.PostTexts.Any())
+    {
+        @foreach (var item in Model.PostTexts)
+        {
+            <div class="post-list col-md-4 col-sm-12 col-12">
+
+                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                @if (item.Image != null)
+                {
+                    <img src="~/PostTextImages/@item.Image" alt="">
+                }
+
+                <div class="text">
+                    <p>
+                        <span style="color:#1b1be1a6"> نوضیح :  </span>
+                        @item.ShortText
+                    </p>
+                </div>
+                <div class="footer" style="display:flex">
+                    <div class="left">
+                        <a id="update" href="#">ویرایش</a>
+                        <a id="delete" href="#">حذف</a>
+                    </div>
+                    <div class="right">
+                        <a href="#">ادامه مطلب</a>
+                    </div>
+
+                </div>
+
             </div>
-            <div class="right">
-                <a href="#">ادامه مطلب</a>
-            </div>
+        }
+    }
+    else
+    {
+        <h2>هیچ پستی یافت نشد</h2>
+    }
+</div>
+@*<div>
+        <div class="falow-me">
+            @if (Model.UserName == User.Identity.Name)
+            {
+                <h2>
+                    دنبال کننده های شما
+                </h2>
+                @foreach (var item in Model.UserInUsers)
+                {
+                    <div class="falow-me-list">
+                        <img src="~/SiteTemplate/Image/male-user-profile-picture_318-37825.jpg" alt="">
+                        <a href="#">@item.</a>
+                        <div class="tools">
+                            <a id="visit-falow" href="#">مشاهده پروفایل</a>
+                            <a id="delete-falow" href="#"> حذف از دنبال کنندها</a>
+                        </div>
+                    </div>
+                }
+            }
 
         </div>
-    </div>
-    <div class="post-list col-md-4 col-sm-12 col-12">
-        <img src="~/SiteTemplate/Image/code-wallpaper-14.jpg" alt="">
-        <div class="post-info">
-            <p><span>نوع : </span> شعر</p>
-            <p><span>نام : </span> شعر</p>
-            <p><span>موضوع : </span> شعر</p>
-        </div>
-        <div class="text">
-            <p>این متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هست</p>
-        </div>
-        <div class="footer">
-            <div class="left">
-                <a id="update" href="#">ویرایش</a>
-                <a id="delete" href="#">حذف</a>
-            </div>
-            <div class="right">
-                <a href="#">ادامه مطلب</a>
-            </div>
-
-        </div>
-    </div>
-    <div class="post-list col-md-4 col-sm-12 col-12">
-        <img src="~/SiteTemplate/Image/code-wallpaper-14.jpg" alt="">
-        <div class="post-info">
-            <p><span>نوع : </span> شعر</p>
-            <p><span>نام : </span> شعر</p>
-            <p><span>موضوع : </span> شعر</p>
-        </div>
-        <div class="text">
-            <p>این متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هست</p>
-        </div>
-        <div class="footer">
-            <div class="left">
-                <a id="update" href="#">ویرایش</a>
-                <a id="delete" href="#">حذف</a>
-            </div>
-            <div class="right">
-                <a href="#">ادامه مطلب</a>
-            </div>
-
-        </div>
-    </div>
-    <div class="post-list col-md-4 col-sm-12 col-12">
-        <img src="~/SiteTemplate/Image/code-wallpaper-14.jpg" alt="">
-        <div class="post-info">
-            <p><span>نوع : </span> شعر</p>
-            <p><span>نام : </span> شعر</p>
-            <p><span>موضوع : </span> شعر</p>
-        </div>
-        <div class="text">
-            <p>این متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هست</p>
-        </div>
-        <div class="footer">
-            <div class="left">
-                <a id="update" href="#">ویرایش</a>
-                <a id="delete" href="#">حذف</a>
-            </div>
-            <div class="right">
-                <a href="#">ادامه مطلب</a>
-            </div>
-        </div>
-    </div>
-    <div class="post-list col-md-4 col-sm-12 col-12">
-        <img src="~/SiteTemplate/Image/code-wallpaper-14.jpg" alt="">
-        <div class="post-info">
-            <p><span>نوع : </span> شعر</p>
-            <p><span>نام : </span> شعر</p>
-            <p><span>موضوع : </span> شعر</p>
-        </div>
-        <div class="text">
-            <p>این متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هستاین متن ساختگی هست این متن ساختگی هست</p>
-        </div>
-        <div class="footer">
-            <div class="left">
-                <a id="update" href="#">ویرایش</a>
-                <a id="delete" href="#">حذف</a>
-            </div>
-            <div class="right">
-                <a href="#">ادامه مطلب</a>
-            </div>
-
-        </div>
-    </div>
-</div> -->
-<div>
-    <div class="falow-me">
-        <h2>
-            دنبال کننده های شما
-        </h2>
-        <div class="falow-me-list">
-            <img src="~/SiteTemplate/Image/male-user-profile-picture_318-37825.jpg" alt="">
-            <a href="#">علیزضا</a>
-            <div class="tools">
-                <a id="visit-falow" href="#">مشاهده پروفایل</a>
-                <a id="delete-falow" href="#"> حذف از دنبال کنندها</a>
-            </div>
-        </div>
-        <div class="falow-me-list">
-            <img src="~/SiteTemplate/Image/marvin-meyer-SYTO3xs06fU-unsplash.jpg" alt="">
-            <a href="#">علیزضا</a>
-            <div class="tools">
-                <a id="visit-falow" href="#">مشاهده پروفایل</a>
-                <a id="delete-falow" href="#"> حذف از دنبال کنندها</a>
-            </div>
-        </div>
-        <div class="falow-me-list">
-            <img src="~/SiteTemplate/Image/person-icon-female-user-profile-avatar-vector-18833553.jpg" alt="">
-            <a href="#">علیزضا</a>
-            <div class="tools">
-                <a id="visit-falow" href="#">مشاهده پروفایل</a>
-                <a id="delete-falow" href="#"> حذف از دنبال کنندها</a>
-            </div>
-        </div>
+    </div>*@
+<div class="Bio">
+    <div class="Bio-me">
+        <h2>درباره من :</h2>
+        <br />
+        <p>
+            @Html.Raw(Model.Bio)
+        </p>
     </div>
 </div>

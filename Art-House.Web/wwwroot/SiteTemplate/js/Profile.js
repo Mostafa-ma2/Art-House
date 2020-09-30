@@ -18,19 +18,19 @@ function rmovetext(obj) {
     var val = inputserch.value = "";
     obj.style.display = "none";
 }
-/////////////// news bell
-var sk = document.getElementById("sk");
+///////////////// news bell
+//var sk = document.getElementById("sk");
 
-function checkthenews() {
-    sk.style.opacity = 1;
-}
-sk.addEventListener("mouseleave", function() {
-    checkthenewsleve();
-});
+//function checkthenews() {
+//    sk.style.opacity = 1;
+//}
+//sk.addEventListener("mouseleave", function() {
+//    checkthenewsleve();
+//});
 
-function checkthenewsleve() {
-    sk.style.opacity = 0;
-}
+//function checkthenewsleve() {
+//    sk.style.opacity = 0;
+//}
 /// open list 
 var lists = document.getElementById("lists");
 

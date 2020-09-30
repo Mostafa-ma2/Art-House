@@ -37,21 +37,21 @@
                         @if (ViewBag.PageID != 1)
                         {
                             var c = ViewBag.PageID - 1;
-                            <a class="page-link" href="/Products/Index?pageid=@c" aria-label="Previous">
+                            <a class="page-link" href="/Home/Index?pageid=@c" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         }
                     </li>
                     @for (var i = 1; i <= ViewBag.CountPage - 1; i++)
                     {
-                        <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Products/Index?pageid=@i">@i</a></li>
+                        <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Home/Index?pageid=@i">@i</a></li>
 
                     }
                 <li class="page-item">
                     @if (ViewBag.PageID != ViewBag.CountPage - 1)
                     {
                         var c = ViewBag.PageID + 1;
-                        <a class="page-link" href="/Products/Index?pageid=@c" aria-label="Previous">
+                        <a class="page-link" href="/Home/Index?pageid=@c" aria-label="Previous">
                             <span aria-hidden="true">&raquo;</span>
                         </a>
                     }

@@ -389,6 +389,45 @@ main {
             height: 2497px;
         }
 
+            main .main .main-arshiv-list .profiles .login {
+                text-align: center;
+                padding-top: 88px;
+            }
+
+                main .main .main-arshiv-list .profiles .login a {
+                    padding-top: 13px;
+                    border: 1px solid #1b1be1a6;
+                    color: #1b1be1a6;
+                    border-radius: 6px;
+                    padding-left: 53px;
+                    padding-right: 53px;
+                    padding-bottom: 13px;
+                }
+                    main .main .main-arshiv-list .profiles .login a:hover {
+                        color: white;
+                        background: #1b1be1a6;
+                    }
+            main .main .main-arshiv-list .profiles .register-box {
+                text-align: center;
+                padding-top: 39px;
+                padding-bottom: 88px;
+            }
+
+                main .main .main-arshiv-list .profiles .register-box a {
+                    padding-top: 13px;
+                    color: white;
+                    background: #1b1be1a6;
+                    border-radius: 6px;
+                    padding-left: 43px;
+                    padding-right: 43px;
+                    padding-bottom: 13px;
+                }
+                    main .main .main-arshiv-list .profiles .register-box a:hover {
+                        border: 1px solid #1b1be1a6;
+                        color: #1b1be1a6;
+                       background-color:white;
+                    }
+
             main .main .main-arshiv-list .profiles {
                 background: white;
                 border-radius: 4px;
@@ -404,6 +443,7 @@ main {
 
                     main .main .main-arshiv-list .profiles .profiles-head img {
                         width: 77px;
+                        height: 77px;
                         border: 1px solid black;
                         border-radius: 10px;
                     }
@@ -642,4 +682,10 @@ main {
         main .main .main-text-list .text-list .main-footer #bro {
             top: 28px;
         }
+}
+@media (max-width: 851px) {
+
+    header .Header-login {
+        display:none;
+    }
 }
