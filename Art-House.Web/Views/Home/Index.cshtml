@@ -9,7 +9,7 @@
             <div class="text-list">
                 <div class="top-pro">
                     <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
-                    <a href="#" id="name">@item.Users.UserName</a>
+                    <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId" id="name">@item.Users.UserName</a>
                     <a href="#" id="fallow">دنبال کنید</a>
                 </div>
                 <div class="main-text">

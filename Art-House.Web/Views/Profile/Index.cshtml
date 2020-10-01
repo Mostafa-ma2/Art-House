@@ -78,13 +78,22 @@
         </h2>
         <i class="fa fa-caret-up"></i>
     </div>
+    @if (User.Identity.Name == Model.UserName)
+    {
+        <div class="list">
+            <a asp-action="EditUser" asp-controller="Profile" asp-route-id="@Model.Id">
+                ویرایش پروفایل
+            </a>
+            <i class="fa fa-caret-up"></i>
+        </div>
+    }
 </div>
 <div class="posts" style="width:100%">
     @if (Model.PostTexts.Any())
     {
         @foreach (var item in Model.PostTexts)
         {
-            <div class="post-list col-md-4 col-sm-12 col-12">
+            <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
 
                 <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
                 @if (item.Image != null)
@@ -99,10 +108,13 @@
                     </p>
                 </div>
                 <div class="footer" style="display:flex">
-                    <div class="left">
-                        <a id="update" href="#">ویرایش</a>
-                        <a id="delete" href="#">حذف</a>
-                    </div>
+                    @if (User.Identity.Name == Model.UserName)
+                    {
+                        <div class="left" style="display:flex">
+                            <a id="update" asp-action="EditPostText" asp-controller="PostText" asp-route-id="@item.Id">ویرایش</a>
+                            <a id="delete" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
+                        </div>
+                    }
                     <div class="right">
                         <a href="#">ادامه مطلب</a>
                     </div>
@@ -139,12 +151,70 @@
 
         </div>
     </div>*@
-<div class="Bio">
-    <div class="Bio-me">
-        <h2>درباره من :</h2>
-        <br />
-        <p>
-            @Html.Raw(Model.Bio)
-        </p>
+@*<div class="Bio">
+        <div class="Bio-me">
+            <h2>درباره من :</h2>
+            <br />
+            <p>
+                @Html.Raw(Model.Bio)
+            </p>
+        </div>
+    </div>*@
+
+
+
+<!-- delete Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="DeleteID" name="name" value="" />
+            <label id="lal">
+
+            </label>
+
+            <br />
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelete">حذف</button>
+        </div>
     </div>
 </div>
+
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //حذف
+            $("#btnDelete").click(function (e) {
+                e.preventDefault();
+                var id = $("#DeleteID").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/PostText/DeletePostText",
+                    data: { ID: id },
+                    success: function (result) {
+                        $("#exampleModal").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            $("#Post-" + result.id).remove();
+                        }
+                    }
+
+                })
+            })
+        });
+        function OpenDeleteModel(obj) {
+            debugger;
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/PostText/GetPostTextById",
+                data: { id: attr },
+                success: function (result) {
+                    $("#exampleModal").modal("show");
+                    if (result != null) {
+                        $("#DeleteID").val(result.id);
+                        document.getElementById("lal").innerHTML = ' ایا از حذف ' + result.name + ' اطمینان دارید؟';
+                    }
+                }
+            });
+        }
+    </script>
+}

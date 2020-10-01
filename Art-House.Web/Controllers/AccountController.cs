@@ -146,8 +146,7 @@ namespace Art_House.Web.Controllers
 
 
         //خروج
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        [HttpGet]
         public async Task<IActionResult> Logout()
         {
             await _signInManager.SignOutAsync();

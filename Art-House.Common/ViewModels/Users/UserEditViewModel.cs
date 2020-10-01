@@ -24,11 +24,9 @@ namespace Art_House.Common.ViewModels.Users
         public string Email { get; set; }
 
         [Display(Name = "رمز عبوز")]
-        [DataType(DataType.Password)]
         public string Password { get; set; }
 
         [Display(Name = "تکرار کلمه عبور")]
-        [DataType(DataType.Password)]
         [Compare(nameof(Password), ErrorMessage = "گذرواژه و تکرار ان با هم یکسان نیستند")]
         public string ConfirmPassword { get; set; }
         [Display(Name = "تصویر")]

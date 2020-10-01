@@ -49,13 +49,13 @@ using Art_House.Common.ViewModels.PostTexts;
 #nullable disable
 #nullable restore
 #line 6 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
-using Art_House.Common.Extensions.HtmlHelpers;
+using Art_House.Common.ViewModels.Users;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6baa80e81e7b7d1cab266859e03809a25b7f76b6", @"/Views/Shared/Components/Navbar/Navbar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"dc4c64b52ca6dba84c89cb3d5c226708be3e7715", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d4feea6e76aa7db9fea6046c4bf228818a1dc9d8", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Navbar_Navbar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Groups>>
     {
         #pragma warning disable 1998

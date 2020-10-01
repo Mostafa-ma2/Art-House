@@ -11,9 +11,9 @@
         @Html.AntiForgeryToken()
         <div class="form-account-title text-center">
             <label for="email-phone">تصویر</label>
-            <img src="~/ProfileImage/male-user-profile-picture_318-37825.jpg"style="width: 100px; border-radius: 60px; border: 2px solid darkgray;" alt="Alternate Text" />
+            <img src="~/ProfileImage/male-user-profile-picture_318-37825.jpg" style="width: 100px; border-radius: 60px; border: 2px solid darkgray;" alt="Alternate Text" />
             <br />
-            <input name="image" type="file"style="direction:ltr" id="Email">
+            <input name="image" type="file" style="direction:ltr" id="Email">
             <h2 style="padding: 10px;margin-top: 10px;
             background: #1b1be1a6;border-radius: 10px;
             font-size: initial;color:white">
@@ -32,10 +32,10 @@
         </div>
         <div class="form-row-account">
             <button type="submit" class="btn btn-primary btn-block text-white btn-login">افزودن تغییرات</button>
-            <a href="/" class="btn btn-danger btn-block text-white btn-login">انصراف</a>
+            <a href="/" class="btn btn-danger btn-block text-white btn-login">بعدا انجام میدم</a>
         </div>
     </form>
 </div>
 @section Scripts{
-    @Html.RenderPartialAsync("_CkEditorPartial")
+    @{await Html.RenderPartialAsync("_CkEditorPartial");}
 }

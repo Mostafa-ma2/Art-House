@@ -414,7 +414,7 @@ main {
             display: inline-block;
             border-radius: 5px;
             margin-left: 10px;
-            height: 342px;
+            padding: 10px;
             margin-bottom: 10px;
         }
 
