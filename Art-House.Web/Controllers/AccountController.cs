@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Art_House.Common.Filters.ActionFilters;
 using Art_House.Common.ViewModels.Account;
 using Art_House.Data.Interfaces;
 using Art_House.Domain.Entities;
@@ -61,7 +62,8 @@ namespace Art_House.Web.Controllers
                     UserName = model.UserName,
                     CreatedTime = DateTime.Now,
                     Email = model.Email,
-                    ProfileImg = "male-user-profile-picture_318-37825.jpg"
+                    ProfileImg = "male-user-profile-picture_318-37825.jpg",
+                    BackGroundImg= "Disposable-coffee-cup-pen-eyeglasses-spiral-notepad-thumbtack-pins-on-white-background-Top.jpg"
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);
@@ -189,6 +191,68 @@ namespace Art_House.Web.Controllers
             user.PhoneNumber = model.PhoneNumber;
             await _userManager.UpdateAsync(user);
             return RedirectToAction("Index", "Home");
+        }
+
+        // ارتباط بین کاربران
+        [HttpPost]
+        [AjaxOnly]
+        public async Task<IActionResult> AddCommunicationWithUsers(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _notification.AddWarningToastMessage("پست مورد نطر یافت نشد دوباره امتحان کنید");
+                return RedirectToAction("Home", "Index");
+            }
+            var GetUserId=User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            if (string.IsNullOrEmpty(GetUserId))
+            {
+                _notification.AddWarningToastMessage("کاربر مورد نطر یافت نشد دوباره امتحان کنید");
+                return RedirectToAction("Home", "Index");
+            }
+            var CheckTheConnection = _db.UserInUserRepository.Where(p => p.user == id && p.UserId == GetUserId).ToList();
+            if (CheckTheConnection.Count != 0)
+            {
+                _notification.AddErrorToastMessage("این رابطه وجود دارد");
+                return RedirectToAction("Home", "Index");
+            }
+            var addconnection = new UserInUser()
+            {
+                user = id,
+                UserId = GetUserId
+            };
+            await _db.UserInUserRepository.InsertAsync(addconnection);
+            await _db.SaveChangeAsync();
+            return View(addconnection);
+        }
+        //گرفتن ایدی 
+        [AjaxOnly]
+        [HttpPost]
+        public async Task<IActionResult> GetUserById(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _notification.AddWarningToastMessage("پست مورد نطر یافت نشد دوباره امتحان کنید");
+                return RedirectToAction("Home", "Index");
+            }
+            var UserInUserId = await _db.UserInUserRepository.GetByIdAsync(id);
+            return Json(UserInUserId);
+        }
+
+        //حذف اتصال کاربر
+        [AjaxOnly]
+        [HttpPost]
+        public ActionResult DeleteCommunicationWithUsers(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var UsrInUser = _db.UserInUserRepository.GetById(id);
+                _db.UserInUserRepository.Delete(UsrInUser);
+                _db.SaveChange();
+                _notification.AddSuccessToastMessage($"پلتفرم {UsrInUser.User.UserName} با موفقیت حذف شد.");
+                return Json(UsrInUser);
+            }
+            _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
+            return Json(null);
         }
         #region Helper
         //ایمیل چک میشه

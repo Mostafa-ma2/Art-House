@@ -31,7 +31,7 @@ namespace EzGame.Services.FileManager
                 Directory.CreateDirectory(uploadPath);
             }
 
-            if (image.ContentType == "image/jpeg" || image.ContentType == "image/svg+xml" || image.ContentType == "image/png")
+            if (image.ContentType == "image/jpeg" || image.ContentType == "image/svg+xml" || image.ContentType == "image/png" || image.ContentType == "image/jpg")
             {
                 var filePath = Path.Combine(uploadPath, image.FileName);
                 await using var fileStream = new FileStream(filePath, FileMode.Create);

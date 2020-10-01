@@ -82,7 +82,7 @@
                 var id = $("#DeleteID").val();
                 $.ajax({
                     type: "Post",
-                    url: "/admin/Post/DeletePostText",
+                    url: "/PostText/DeletePostText",
                     data: { ID: id },
                     success: function (result) {
                         $("#exampleModal3").modal("hide");
@@ -100,7 +100,7 @@
             var attr = obj.getAttribute("attr");
             $.ajax({
                 type: "Post",
-                url: "/admin/Post/GetPostTextById",
+                url: "/PostText/GetPostTextById",
                 data: { id: attr },
                 success: function (result) {
                     if (result != null) {

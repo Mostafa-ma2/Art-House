@@ -31,6 +31,8 @@ namespace Art_House.Common.ViewModels.Users
         public string ConfirmPassword { get; set; }
         [Display(Name = "تصویر")]
 
+        public string BackGroundImg { get; set; }
+
         public string ProfileImg { get; set; }
 
         [Display(Name = "شمارع تلفن")]

@@ -34,7 +34,12 @@ namespace Art_House.Web.Controllers
             var getall = _db.PostTextRepository.GetAll();
             ViewBag.CountPage = getall.Count();
             var Post = _db.PostTextRepository.Paging(pageId, 5);
-            ViewBag.UserId =User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId= User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewBag.UserId = userId;
+            foreach (var item in Post)
+            {
+                item.Users.UserInUsers = _db.UserInUserRepository.Where(p => p.user == item.UserId&&p.UserId== userId).ToList();
+            }
             return View(Post);
         }
     }

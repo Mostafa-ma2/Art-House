@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Art_House.Common.ViewModels.Users;
 using Art_House.Data.Interfaces;
@@ -50,7 +51,23 @@ namespace Art_House.Web.Controllers
                 _notification.AddWarningToastMessage("کاربر یات نشد دوبارع امتحان کنید");
                 return RedirectToAction("Index", "Home");
             }
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             GetUser.PostTexts = _db.PostTextRepository.Where(p => p.UserId == GetUser.Id).ToList();
+            GetUser.UserInUsers = _db.UserInUserRepository.Where(p => p.user == id).ToList();
+            foreach(var item in GetUser.UserInUsers)
+            {
+                if (userId == null)
+                {
+                    ViewBag.userinuser = 0;
+                    return View(GetUser);
+                }
+                if (item.UserId == userId)
+                {
+                    ViewBag.userinuser = 1;
+                    return View(GetUser);
+                }
+            }
+            ViewBag.userinuser = 0;
             return View(GetUser);
         }
 
@@ -77,7 +94,8 @@ namespace Art_House.Web.Controllers
                 PhoonNumber = user.PhoneNumber,
                 ProfileImg = user.ProfileImg,
                 Bio = user.Bio,
-                userId = user.Id
+                userId = user.Id,
+                BackGroundImg = user.BackGroundImg
             };
             return View(User);
         }
@@ -86,7 +104,7 @@ namespace Art_House.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditUser(UserEditViewModel model, IFormFile image)
+        public async Task<IActionResult> EditUser(UserEditViewModel model, IFormFile image, IFormFile backImage)
         {
             if (string.IsNullOrEmpty(model.userId)||string.IsNullOrEmpty(model.UserName)||string.IsNullOrEmpty(model.Email))
             {
@@ -118,10 +136,29 @@ namespace Art_House.Web.Controllers
                 if (user.ProfileImg == null)
                 {
                     model.ProfileImg = await _fileManager.UploadImage(image,
-                      FileManagerType.FileType.PostTextImages);
+                      FileManagerType.FileType.ProfileImage);
+                }
+            }
+            if (backImage == null)
+            {
+                model.BackGroundImg = user.BackGroundImg;
+            }
+            else
+            {
+                if (backImage.FileName != user.BackGroundImg && user.BackGroundImg != null)
+                {
+                    _fileManager.DeleteImage(user.BackGroundImg, FileManagerType.FileType.ProfileImage);
+                    model.BackGroundImg = await _fileManager.UploadImage(backImage,
+                        FileManagerType.FileType.ProfileImage);
+                }
+                if (user.BackGroundImg == null)
+                {
+                    model.BackGroundImg = await _fileManager.UploadImage(backImage,
+                      FileManagerType.FileType.ProfileImage);
                 }
             }
             user.ProfileImg = model.ProfileImg;
+            user.BackGroundImg = model.BackGroundImg;
             user.Bio = model.Bio;
             user.PhoneNumber = model.PhoonNumber;
             user.Email = model.Email;
@@ -129,7 +166,8 @@ namespace Art_House.Web.Controllers
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             await _userManager.UpdateAsync(user);
-            return RedirectToAction(nameof(Index));
+            return RedirectToAction("Index","Profile",user.Id);
         }
+
     }
 }

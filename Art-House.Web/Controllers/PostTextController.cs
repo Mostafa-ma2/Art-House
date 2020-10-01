@@ -60,7 +60,6 @@ namespace Art_House.Web.Controllers
             if (image != null)
                 model.postText.Image = await _fileManager.UploadImage(image, FileManagerType.FileType.PostTextImages);
             var group = _db.GroupRepository.GetAll().FirstOrDefault(a=>a.Name==model.postText.Groups.Name);
-            var DateTimeNow=DateTime.Now.ToPersianDateString();
             var PostText = new PostText()
             {
                 GroupId = group.Id,
@@ -68,7 +67,7 @@ namespace Art_House.Web.Controllers
                 Name = model.postText.Name,
                 ShortText = model.postText.ShortText,
                 Text = model.postText.Text,
-                CreatedTime = Convert.ToDateTime(DateTimeNow),
+                CreatedTime = DateTime.Now,
                 UserId = User.FindFirst(ClaimTypes.NameIdentifier).Value,
                 Groups = group
             };

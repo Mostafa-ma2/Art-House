@@ -54,8 +54,15 @@ using Art_House.Common.ViewModels.Users;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 7 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
+using Art_House.Common.Extensions;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ee0f5338c78e369eb78d9b96d45aa828bc67c92", @"/Views/Shared/Components/User/User.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d4feea6e76aa7db9fea6046c4bf228818a1dc9d8", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"7e96a6c2e52b4c4a47fa11854b77a0a6181e9f12", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_User_User : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<User>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -95,7 +102,7 @@ using Art_House.Common.ViewModels.Users;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n    <div class=\"profiles-head\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0ee0f5338c78e369eb78d9b96d45aa828bc67c925383", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0ee0f5338c78e369eb78d9b96d45aa828bc67c925587", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -141,7 +148,7 @@ WriteAttributeValue("", 288, Model.Id, 288, 9, false);
             BeginWriteAttribute("href", " href=\"", 449, "\"", 456, 0);
             EndWriteAttribute();
             WriteLiteral("><i class=\"fa fa-edit\"></i> ویرایش پرفایل</a>\r\n        </div>\r\n    </div>\r\n    <div class=\"profiles-main\">\r\n        <div class=\"text\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ee0f5338c78e369eb78d9b96d45aa828bc67c928257", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ee0f5338c78e369eb78d9b96d45aa828bc67c928461", async() => {
                 WriteLiteral("<i class=\"fa fa-sign-out\"></i> خروج");
             }
             );

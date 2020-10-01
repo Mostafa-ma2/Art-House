@@ -57,17 +57,17 @@ namespace Art_House.Data.Services.Repository.Users
 
         public IEnumerable<UserInUser> GetAll()
         {
-            return _db.UserInUser.AsEnumerable();
+            return _db.UserInUser.Include(p=>p.User).AsEnumerable();
         }
 
         public async Task<IEnumerable<UserInUser>> GetAllAsync()
         {
-            return await _db.UserInUser.ToListAsync();
+            return await _db.UserInUser.Include(p => p.User).ToListAsync();
         }
 
         public async Task<ICollection<UserInUser>> GetAllAsync(Expression<Func<UserInUser, bool>> match)
         {
-            return await _db.UserInUser.Where(match).ToListAsync();
+            return await _db.UserInUser.Include(p => p.User).Where(match).ToListAsync();
         }
 
         public async Task<UserInUser> GetAsync(Expression<Func<UserInUser, bool>> where)
@@ -114,7 +114,7 @@ namespace Art_House.Data.Services.Repository.Users
             IQueryable<UserInUser> entities = _db.UserInUser;
             if (where != null)
             {
-                entities = entities.Where(where);
+                entities = entities.Include(p => p.User).Where(where);
             }
 
             return entities.AsEnumerable();

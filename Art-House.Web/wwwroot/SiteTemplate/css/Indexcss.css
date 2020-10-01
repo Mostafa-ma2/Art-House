@@ -371,6 +371,22 @@ main {
                         background: #1b1be1a6;
                     }
 
+                    main .main .main-text-list .text-list .main-footer #savepost {
+                        position: absolute;
+                        left: 21%;
+                        padding: 3px;
+                        padding-top: 5px;
+                        border-radius: 4px;
+                        padding-left: 22px;
+                        padding-right: 22px;
+                        color: white;
+                        background-color: green;
+                    }
+                        main .main .main-text-list .text-list .main-footer #savepost:hover {
+                            border: 1px solid green;
+                            background: white;
+                            color: green;
+                        }
                     main .main .main-text-list .text-list .main-footer p {
                         cursor: pointer;
                     }
@@ -403,10 +419,12 @@ main {
                     padding-right: 53px;
                     padding-bottom: 13px;
                 }
+
                     main .main .main-arshiv-list .profiles .login a:hover {
                         color: white;
                         background: #1b1be1a6;
                     }
+
             main .main .main-arshiv-list .profiles .register-box {
                 text-align: center;
                 padding-top: 39px;
@@ -422,10 +440,11 @@ main {
                     padding-right: 43px;
                     padding-bottom: 13px;
                 }
+
                     main .main .main-arshiv-list .profiles .register-box a:hover {
                         border: 1px solid #1b1be1a6;
                         color: #1b1be1a6;
-                       background-color:white;
+                        background-color: white;
                     }
 
             main .main .main-arshiv-list .profiles {
@@ -683,9 +702,10 @@ main {
             top: 28px;
         }
 }
+
 @media (max-width: 851px) {
 
     header .Header-login {
-        display:none;
+        display: none;
     }
 }

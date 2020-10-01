@@ -6,18 +6,12 @@
 
 <div class="prof-main">
     <div class="head-pro">
-        <img src="~/SiteTemplate/Image/metal_gear_solid_v_the_phantom_pain-1920x1080.jpg" alt="">
+        <img src="~/ProfileImage/@Model.BackGroundImg" alt="">
         <div class="profiles">
             <img src="~/ProfileImage/@Model.ProfileImg" alt="">
-            <div class="chang-pro">
-                <a href="#">عوض کردن پروفایل</a>
-            </div>
             <div class="name-pro">
                 <h1>@Model.UserName</h1>
             </div>
-        </div>
-        <div class="change-backimg">
-            <a href="#"><i class="fa fa-picture-o"></i> عکس بنر را ویرایش کنید </a>
         </div>
         <div class="faloow">
             @if (User.Identity.Name == Model.UserName)
@@ -36,8 +30,11 @@
                 } }
             else
             {
-                <h1>دنبال کنید</h1>
-                @if (Model.UserInUsers == null)
+                if (ViewBag.userinuser == 0)
+                {
+                    <h1 onclick="AddUserConnection(this)" attr="@Model.Id">دنبال کنید</h1>
+                }
+                @if (ViewBag.userinuser == 0)
                 {
                     <p>
                         0 دنبال کننده
@@ -60,25 +57,31 @@
         </h2>
         <i class="fa fa-caret-up"></i>
     </div>
-    <div class="list">
-        <h2>
-            دنبال کننده ها
-        </h2>
-        <i class="fa fa-caret-up"></i>
-    </div>
-    <div class="list">
-        <h2>
-            ذخیره شده ها
-        </h2>
-        <i class="fa fa-caret-up"></i>
-    </div>
+    @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
+    {
+        <div class="list">
+            <h2>
+                دنبال کننده ها
+            </h2>
+            <i class="fa fa-caret-up"></i>
+        </div>
+    }
+    @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
+    {
+        <div class="list">
+            <h2>
+                ذخیره شده ها
+            </h2>
+            <i class="fa fa-caret-up"></i>
+        </div>
+    }
     <div class="list">
         <h2>
             درباره
         </h2>
         <i class="fa fa-caret-up"></i>
     </div>
-    @if (User.Identity.Name == Model.UserName)
+    @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
     {
         <div class="list">
             <a asp-action="EditUser" asp-controller="Profile" asp-route-id="@Model.Id">
@@ -89,68 +92,77 @@
     }
 </div>
 <div class="posts" style="width:100%">
-    @if (Model.PostTexts.Any())
-    {
-        @foreach (var item in Model.PostTexts)
+        @if (Model.PostTexts.Any())
         {
-            <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
+            @foreach (var item in Model.PostTexts)
+            {
+                <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
 
-                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
-                @if (item.Image != null)
-                {
-                    <img src="~/PostTextImages/@item.Image" alt="">
-                }
-
-                <div class="text">
-                    <p>
-                        <span style="color:#1b1be1a6"> نوضیح :  </span>
-                        @item.ShortText
-                    </p>
-                </div>
-                <div class="footer" style="display:flex">
-                    @if (User.Identity.Name == Model.UserName)
+                    <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                    @if (item.Image != null)
                     {
-                        <div class="left" style="display:flex">
-                            <a id="update" asp-action="EditPostText" asp-controller="PostText" asp-route-id="@item.Id">ویرایش</a>
-                            <a id="delete" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
-                        </div>
+                        <img src="~/PostTextImages/@item.Image" alt="">
                     }
-                    <div class="right">
-                        <a href="#">ادامه مطلب</a>
+
+                    <div class="text">
+                        <p>
+                            <span style="color:#1b1be1a6"> نوضیح :  </span>
+                            @item.ShortText
+                        </p>
+                    </div>
+                    <div class="footer" style="display:flex">
+                        @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
+                        {
+                            <div class="left" style="display:flex">
+                                <a id="update" asp-action="EditPostText" asp-controller="PostText" asp-route-id="@item.Id">ویرایش</a>
+                                <a id="delete" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
+                            </div>
+                        }
+                        <div class="right">
+                            <a href="#">ادامه مطلب</a>
+                        </div>
+
                     </div>
 
                 </div>
-
-            </div>
+            }
         }
-    }
-    else
-    {
-        <h2>هیچ پستی یافت نشد</h2>
-    }
-</div>
-@*<div>
-        <div class="falow-me">
-            @if (Model.UserName == User.Identity.Name)
+        else
+        {
+            <h2>هیچ پستی یافت نشد</h2>
+        }
+    </div>
+<div>
+    <div class="falow-me">
+        @if (Model.UserName == User.Identity.Name)
+        {
+            <h2>
+                دنبال کننده های شما
+            </h2>
+            @if (Model.UserInUsers != null)
             {
-                <h2>
-                    دنبال کننده های شما
-                </h2>
-                @foreach (var item in Model.UserInUsers)
+                foreach (var item in Model.UserInUsers)
                 {
-                    <div class="falow-me-list">
-                        <img src="~/SiteTemplate/Image/male-user-profile-picture_318-37825.jpg" alt="">
-                        <a href="#">@item.</a>
+                    <div class="falow-me-list" id="userr-@item.Id">
+                        <img src="~/ProfileImage/@item.User.ProfileImg" alt="">
+                        <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">@item.User.UserName</a>
                         <div class="tools">
-                            <a id="visit-falow" href="#">مشاهده پروفایل</a>
-                            <a id="delete-falow" href="#"> حذف از دنبال کنندها</a>
+                            <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">مشاهده پروفایل</a>
+                            <a id="delete-falow" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
                         </div>
                     </div>
                 }
             }
+            else
+            {
+                <div class="falow-me-list">
+                    <p>هیچ دنبال کننده ای وجود ندارد</p>
+                </div>
+            }
+        }
 
-        </div>
-    </div>*@
+    </div>
+</div>
 @*<div class="Bio">
         <div class="Bio-me">
             <h2>درباره من :</h2>
@@ -177,7 +189,20 @@
         </div>
     </div>
 </div>
+<!-- delete Modal -->
+<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="DeleteUserID" name="name" value="" />
+            <label id="lal">
 
+            </label>
+
+            <br />
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDeletee">حذف</button>
+        </div>
+    </div>
+</div>
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
@@ -192,16 +217,46 @@
                     success: function (result) {
                         $("#exampleModal").modal("hide");
                         if (result != null) {
-                            debugger;
                             $("#Post-" + result.id).remove();
                         }
                     }
 
                 })
             })
+            $("#btnDeletee").click(function (e) {
+                e.preventDefault();
+                var id = $("#DeleteUserID").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/Account/DeleteCommunicationWithUsers",
+                    data: { ID: id },
+                    success: function (result) {
+                        $("#exampleModal1").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            $("#userr-" + result.id).remove();
+                        }
+                    }
+                })
+            })
         });
+        function OpenDeleteUserModel(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Account/GetUserById",
+                data: { id: attr },
+                success: function (result) {
+                    $("#exampleModal1").modal("show");
+                    if (result != null) {
+                        debugger;
+                        $("#DeleteUserID").val(result.id);
+                        document.getElementById("lal").innerHTML = ' ایا از حذف ' + result.User.userName + ' اطمینان دارید؟';
+                    }
+                }
+            });
+        }
         function OpenDeleteModel(obj) {
-            debugger;
             var attr = obj.getAttribute("attr");
             $.ajax({
                 type: "Post",
@@ -216,5 +271,18 @@
                 }
             });
         }
+
+        function AddUserConnection(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Account/AddCommunicationWithUsers",
+                data: { id: attr },
+                success: function (result) {
+                    obj.style.display = "none";
+                }
+            });
+        }
+    
     </script>
 }
