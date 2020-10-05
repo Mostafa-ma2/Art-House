@@ -117,7 +117,7 @@
                     {
                         <div class="left" style="display:flex">
                             <a id="update" asp-action="EditPostText" asp-controller="PostText" asp-route-id="@item.Id">ویرایش</a>
-                            <a id="delete" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
+                            <a id="delete" style="cursor:pointer" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
                         </div>
                     }
                     <div class="right">
@@ -149,7 +149,7 @@
                     <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">@item.User.UserName</a>
                     <div class="tools">
                         <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">مشاهده پروفایل</a>
-                        <a id="delete-falow" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
+                        <a id="delete-falow" style="cursor:pointer" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
                     </div>
                 </div>
             }
@@ -175,27 +175,27 @@
 <div class="Save-Post" style="width:100%">
     @if (Model.PostTexts.Any())
     {
-        @foreach (var item in Model.PostTexts)
+        @foreach (var item in Model.SavePosts)
         {
-            <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
+            <div class="post-list col-md-4 col-sm-12 col-12" id="SavePost-@item.Id">
 
-                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
-                @if (item.Image != null)
+                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.PostTexts.Name</span></h1>
+                @if (item.PostTexts.Image != null)
                 {
-                    <img src="~/PostTextImages/@item.Image" alt="">
+                    <img src="~/PostTextImages/@item.PostTexts.Image" alt="">
                 }
 
                 <div class="text">
                     <p>
                         <span style="color:#1b1be1a6"> نوضیح :  </span>
-                        @item.ShortText
+                        @item.PostTexts.ShortText
                     </p>
                 </div>
                 <div class="footer" style="display:flex">
                     @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
                     {
-                        <div class="left" style="display:flex">
-                            <a id="delete" attr="@item.Id">حذف از ذخیره ها</a>
+                        <div class="left" style="display:flex;width:100%">
+                            <a id="delete" style="cursor:pointer" onclick="DeleteSavePost(this)" attr="@item.Id">حذف از ذخیره ها</a>
                         </div>
                     }
                     <div class="right">
@@ -212,7 +212,7 @@
     }
 </div>
 
-<!-- delete Modal -->
+<!-- delete Modal PostText -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="padding:10px">
@@ -226,7 +226,7 @@
         </div>
     </div>
 </div>
-<!-- delete Modal -->
+<!-- delete Modal UserInUser-->
 <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="padding:10px">
@@ -240,10 +240,25 @@
         </div>
     </div>
 </div>
+
+<!-- delete Modal savePost-->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="DeleteSavePostID" name="name" value="" />
+            <label id="lale">
+
+            </label>
+
+            <br />
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelet">حذف</button>
+        </div>
+    </div>
+</div>
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
-            //حذف
+            //حذف پست
             $("#btnDelete").click(function (e) {
                 e.preventDefault();
                 var id = $("#DeleteID").val();
@@ -260,6 +275,7 @@
 
                 })
             })
+            //حذف اتصال کاربر
             $("#btnDeletee").click(function (e) {
                 e.preventDefault();
                 var id = $("#DeleteUserID").val();
@@ -272,6 +288,23 @@
                         if (result != null) {
                             debugger;
                             $("#userr-" + result.id).remove();
+                        }
+                    }
+                })
+            })
+            //حذف پست سیو شدع
+            $("#btnDelet").click(function (e) {
+                e.preventDefault();
+                var id = $("#DeleteSavePostID").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/PostText/DeleteSavePost",
+                    data: { ID: id },
+                    success: function (result) {
+                        $("#exampleModal3").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            $("#SavePost-" + result.id).remove();
                         }
                     }
                 })
@@ -309,6 +342,7 @@
             });
         }
 
+        // دنبال کردن
         function AddUserConnection(obj) {
             var attr = obj.getAttribute("attr");
             $.ajax({
@@ -316,10 +350,28 @@
                 url: "/Account/AddCommunicationWithUsers",
                 data: { id: attr },
                 success: function (result) {
-                    obj.style.display = "none";
+                    obj.remove();
                 }
             });
         }
 
+
+        //SavePoSt
+        function DeleteSavePost(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/PostText/GetSavePostById",
+                data: { id: attr },
+                success: function (result) {
+                    $("#exampleModal3").modal("show");
+                    if (result != null) {
+                        debugger;
+                        $("#DeleteSavePostID").val(result.id);
+                        document.getElementById("lale").innerHTML = 'ایا از حذف این پست سیو شده اطمینان دارید؟';
+                    }
+                }
+            });
+        }
     </script>
 }

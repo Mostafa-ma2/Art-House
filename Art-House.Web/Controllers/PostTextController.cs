@@ -59,7 +59,7 @@ namespace Art_House.Web.Controllers
             }
             if (image != null)
                 model.postText.Image = await _fileManager.UploadImage(image, FileManagerType.FileType.PostTextImages);
-            var group = _db.GroupRepository.GetAll().FirstOrDefault(a=>a.Name==model.postText.Groups.Name);
+            var group = _db.GroupRepository.GetAll().FirstOrDefault(a => a.Name == model.postText.Groups.Name);
             var PostText = new PostText()
             {
                 GroupId = group.Id,
@@ -74,7 +74,7 @@ namespace Art_House.Web.Controllers
             await _db.PostTextRepository.InsertAsync(PostText);
             await _db.SaveChangeAsync();
             _notification.AddSuccessToastMessage("با موفقیت انجام شد");
-            return RedirectToAction("Index","Home");
+            return RedirectToAction("Index", "Home");
         }
 
         //ویرایش
@@ -98,7 +98,7 @@ namespace Art_House.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditPostText(AddPostTextViewModel model,IFormFile image)
+        public async Task<IActionResult> EditPostText(AddPostTextViewModel model, IFormFile image)
         {
             if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.Name) || string.IsNullOrEmpty(model.postText.ShortText)
             || string.IsNullOrEmpty(model.postText.Text))
@@ -113,7 +113,7 @@ namespace Art_House.Web.Controllers
             }
             else
             {
-                if (image.FileName != postText.Image && postText.Image!=null)
+                if (image.FileName != postText.Image && postText.Image != null)
                 {
                     _fileManager.DeleteImage(postText.Image, FileManagerType.FileType.PostTextImages);
                     model.postText.Image = await _fileManager.UploadImage(image,
@@ -165,8 +165,61 @@ namespace Art_House.Web.Controllers
                 }
                 _db.PostTextRepository.Delete(postText);
                 _db.SaveChange();
-                _notification.AddSuccessToastMessage($"پلتفرم {postText.Name} با موفقیت حذف شد.");
+                _notification.AddSuccessToastMessage($" {postText.Name} با موفقیت حذف شد.");
                 return Json(postText);
+            }
+            _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
+            return Json(null);
+        }
+
+        //سیو کردن پست برای کاربر
+        [AjaxOnly]
+        [HttpPost]
+        public async Task<ActionResult> AddSavePost(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+
+                var AddPost = new SavePost()
+                {
+                    UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                    PostTextId = id,
+                    CreatedTime = DateTime.Now
+                };
+                await _db.SavePostRepository.InsertAsync(AddPost);
+                await _db.SaveChangeAsync();
+                _notification.AddSuccessToastMessage($"با موفقیت سیو شد");
+                return Json(AddPost);
+            }
+            _notification.AddErrorToastMessage("پست را نمی توانیم پیدا کنیم");
+            return Json(null);
+        }
+
+        //گرفتن ایدی savePost
+        [AjaxOnly]
+        [HttpPost]
+        public async Task<IActionResult> GetSavePostById(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _notification.AddWarningToastMessage("پست مورد نطر یافت نشد دوباره امتحان کنید");
+                return RedirectToAction("Home", "Index");
+            }
+            var SavePostId = await _db.SavePostRepository.GetByIdAsync(id);
+            return Json(SavePostId);
+        }
+
+        //حذف پست
+        [AjaxOnly]
+        [HttpPost]
+        public ActionResult DeleteSavePost(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var SavePost = _db.SavePostRepository.GetById(id);
+                _db.SavePostRepository.Delete(SavePost);
+                _db.SaveChange();
+                return Json(SavePost);
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return Json(null);

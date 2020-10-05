@@ -57,17 +57,17 @@ namespace Art_House.Data.Services.Repository.PostTexts
 
         public IEnumerable<PostText> GetAll()
         {
-            return _db.PostText.Include(a => a.Groups).Include(a=>a.Users).AsEnumerable();
+            return _db.PostText.Include(a => a.Groups).Include(a=>a.Users).Include(p=>p.SavePosts).AsEnumerable();
         }
 
         public async Task<IEnumerable<PostText>> GetAllAsync()
         {
-            return await _db.PostText.Include(a=>a.Groups).Include(a => a.Users).ToListAsync();
+            return await _db.PostText.Include(a=>a.Groups).Include(a => a.Users).Include(p => p.SavePosts).ToListAsync();
         }
 
         public async Task<ICollection<PostText>> GetAllAsync(Expression<Func<PostText, bool>> match)
         {
-            return await _db.PostText.Include(a => a.Groups).Include(a => a.Users).Where(match).ToListAsync();
+            return await _db.PostText.Include(a => a.Groups).Include(a => a.Users).Include(p => p.SavePosts).Where(match).ToListAsync();
         }
 
         public async Task<PostText> GetAsync(Expression<Func<PostText, bool>> where)
@@ -127,7 +127,7 @@ namespace Art_House.Data.Services.Repository.PostTexts
 
         public IEnumerable<PostText> Paging(int pageid,int take)
         {
-            var skip = (pageid - 1) * 25;
+            var skip = (pageid - 1) * take;
             return _db.PostText.Where(a => !a.IsDeleted).Skip(skip).Take(take).OrderByDescending(p=>p.CreatedTime).ToList();
         }
 

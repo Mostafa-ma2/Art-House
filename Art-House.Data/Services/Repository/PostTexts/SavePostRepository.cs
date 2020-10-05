@@ -57,17 +57,17 @@ namespace Art_House.Data.Services.Repository.PostTexts
 
         public IEnumerable<SavePost> GetAll()
         {
-            return _db.SavePosts.AsEnumerable();
+            return _db.SavePosts.Include(p=>p.PostTexts).AsEnumerable();
         }
 
         public async Task<IEnumerable<SavePost>> GetAllAsync()
         {
-            return await _db.SavePosts.ToListAsync();
+            return await _db.SavePosts.Include(p => p.PostTexts).ToListAsync();
         }
 
         public async Task<ICollection<SavePost>> GetAllAsync(Expression<Func<SavePost, bool>> match)
         {
-            return await _db.SavePosts.Where(match).ToListAsync();
+            return await _db.SavePosts.Include(p => p.PostTexts).Where(match).ToListAsync();
         }
 
         public async Task<SavePost> GetAsync(Expression<Func<SavePost, bool>> where)
