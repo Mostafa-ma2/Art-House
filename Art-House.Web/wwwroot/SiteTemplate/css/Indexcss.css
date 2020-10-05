@@ -382,11 +382,13 @@ main {
                         color: white;
                         background-color: green;
                     }
+
                         main .main .main-text-list .text-list .main-footer #savepost:hover {
                             border: 1px solid green;
                             background: white;
                             color: green;
                         }
+
                     main .main .main-text-list .text-list .main-footer p {
                         cursor: pointer;
                     }
@@ -707,5 +709,32 @@ main {
 
     header .Header-login {
         display: none;
+    }
+
+    main .main .main-text-list .text-list .main-footer #savepost {
+        position: absolute;
+        left: 35%;
+        padding: 3px;
+        padding-top: 5px;
+        border-radius: 4px;
+        padding-left: 22px;
+        padding-right: 22px;
+        color: white;
+        background-color: green;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    main .main .main-text-list .text-list .main-footer #savepost {
+        position: absolute;
+        left: 27%;
+        padding: 3px;
+        padding-top: 5px;
+        border-radius: 4px;
+        padding-left: 22px;
+        padding-right: 22px;
+        color: white;
+        background-color: green;
     }
 }

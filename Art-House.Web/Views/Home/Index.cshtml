@@ -31,10 +31,9 @@
                 </p>
             </div>
             <div class="main-footer">
-                <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId" id="nvisande"><span>نویسدنده :</span> @item.Users.UserName</a>
                 <p><span>تاریخ ثبت :</span> @item.CreatedTime.ToPersianDateString()</p>
                 <a href="#" id="bro">ادامه داستان</a>
-                <a href="#" id="savepost">سیو کردن پست</a>
+                <a href="#" id="savepost">ذخیره پست</a>
             </div>
         </div>
     }
@@ -50,13 +49,13 @@
                         </a>
                     }
                 </li>
-                @for (var i = 1; i <= ViewBag.CountPage - 1; i++)
+                @for (var i = 1; i <= ViewBag.CountPage; i++)
                 {
                     <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Home/Index?pageid=@i">@i</a></li>
 
                 }
                 <li class="page-item">
-                    @if (ViewBag.PageID != ViewBag.CountPage - 1)
+                    @if (ViewBag.PageID != ViewBag.CountPage)
                     {
                         var c = ViewBag.PageID + 1;
                         <a class="page-link" href="/Home/Index?pageid=@c" aria-label="Previous">

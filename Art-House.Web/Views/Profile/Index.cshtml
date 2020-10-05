@@ -37,7 +37,7 @@
                 @if (ViewBag.userinuser == 0)
                 {
                     <p>
-                        0 دنبال کننده
+                        @Model.UserInUsers.Count() دنبال کننده
                     </p>
                 }
                 else
@@ -51,15 +51,15 @@
     </div>
 </div>
 <div class="head-maiin">
-    <div class="list-active">
+    <div class="list-active" attr="posts">
         <h2>
             پست ها
         </h2>
         <i class="fa fa-caret-up"></i>
     </div>
-    @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
+    @if (User.Identity.Name == Model.UserName)
     {
-        <div class="list">
+        <div class="list" attr="falow-me">
             <h2>
                 دنبال کننده ها
             </h2>
@@ -68,14 +68,14 @@
     }
     @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
     {
-        <div class="list">
+        <div class="list" attr="Save-Post">
             <h2>
                 ذخیره شده ها
             </h2>
             <i class="fa fa-caret-up"></i>
         </div>
     }
-    <div class="list">
+    <div class="list" attr="Bio">
         <h2>
             درباره
         </h2>
@@ -84,96 +84,133 @@
     @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
     {
         <div class="list">
-            <a asp-action="EditUser" asp-controller="Profile" asp-route-id="@Model.Id">
-                ویرایش پروفایل
-            </a>
+            <h2>
+                <a asp-action="EditUser" asp-controller="Profile" asp-route-id="@Model.Id">
+                    ویرایش پروفایل
+                </a>
+            </h2>
             <i class="fa fa-caret-up"></i>
         </div>
     }
 </div>
 <div class="posts" style="width:100%">
-        @if (Model.PostTexts.Any())
+    @if (Model.PostTexts.Any())
+    {
+        @foreach (var item in Model.PostTexts)
         {
-            @foreach (var item in Model.PostTexts)
-            {
-                <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
+            <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
 
-                    <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
-                    @if (item.Image != null)
+                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                @if (item.Image != null)
+                {
+                    <img src="~/PostTextImages/@item.Image" alt="">
+                }
+
+                <div class="text">
+                    <p>
+                        <span style="color:#1b1be1a6"> نوضیح :  </span>
+                        @item.ShortText
+                    </p>
+                </div>
+                <div class="footer" style="display:flex">
+                    @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
                     {
-                        <img src="~/PostTextImages/@item.Image" alt="">
-                    }
-
-                    <div class="text">
-                        <p>
-                            <span style="color:#1b1be1a6"> نوضیح :  </span>
-                            @item.ShortText
-                        </p>
-                    </div>
-                    <div class="footer" style="display:flex">
-                        @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
-                        {
-                            <div class="left" style="display:flex">
-                                <a id="update" asp-action="EditPostText" asp-controller="PostText" asp-route-id="@item.Id">ویرایش</a>
-                                <a id="delete" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
-                            </div>
-                        }
-                        <div class="right">
-                            <a href="#">ادامه مطلب</a>
+                        <div class="left" style="display:flex">
+                            <a id="update" asp-action="EditPostText" asp-controller="PostText" asp-route-id="@item.Id">ویرایش</a>
+                            <a id="delete" attr="@item.Id" onclick="OpenDeleteModel(this)">حذف</a>
                         </div>
-
+                    }
+                    <div class="right">
+                        <a href="#">ادامه مطلب</a>
                     </div>
 
+                </div>
+
+            </div>
+        }
+    }
+    else
+    {
+        <h2>هیچ پستی یافت نشد</h2>
+    }
+</div>
+<div class="falow-me">
+    @if (Model.UserName == User.Identity.Name)
+    {
+        <h2>
+            دنبال کننده های شما
+        </h2>
+        @if (Model.UserInUsers != null)
+        {
+            foreach (var item in Model.UserInUsers)
+            {
+                <div class="falow-me-list" id="userr-@item.Id">
+                    <img src="~/ProfileImage/@item.User.ProfileImg" alt="">
+                    <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">@item.User.UserName</a>
+                    <div class="tools">
+                        <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">مشاهده پروفایل</a>
+                        <a id="delete-falow" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
+                    </div>
                 </div>
             }
         }
         else
         {
-            <h2>هیچ پستی یافت نشد</h2>
+            <div class="falow-me-list">
+                <p>هیچ دنبال کننده ای وجود ندارد</p>
+            </div>
         }
-    </div>
-<div>
-    <div class="falow-me">
-        @if (Model.UserName == User.Identity.Name)
-        {
-            <h2>
-                دنبال کننده های شما
-            </h2>
-            @if (Model.UserInUsers != null)
-            {
-                foreach (var item in Model.UserInUsers)
-                {
-                    <div class="falow-me-list" id="userr-@item.Id">
-                        <img src="~/ProfileImage/@item.User.ProfileImg" alt="">
-                        <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">@item.User.UserName</a>
-                        <div class="tools">
-                            <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">مشاهده پروفایل</a>
-                            <a id="delete-falow" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
-                        </div>
-                    </div>
-                }
-            }
-            else
-            {
-                <div class="falow-me-list">
-                    <p>هیچ دنبال کننده ای وجود ندارد</p>
-                </div>
-            }
-        }
+    }
 
+</div>
+<div class="Bio">
+    <div class="Bio-me">
+        <h2>درباره من :</h2>
+        <br />
+        <p>
+            @Html.Raw(Model.Bio)
+        </p>
     </div>
 </div>
-@*<div class="Bio">
-        <div class="Bio-me">
-            <h2>درباره من :</h2>
-            <br />
-            <p>
-                @Html.Raw(Model.Bio)
-            </p>
-        </div>
-    </div>*@
+<div class="Save-Post" style="width:100%">
+    @if (Model.PostTexts.Any())
+    {
+        @foreach (var item in Model.PostTexts)
+        {
+            <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
 
+                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                @if (item.Image != null)
+                {
+                    <img src="~/PostTextImages/@item.Image" alt="">
+                }
 
+                <div class="text">
+                    <p>
+                        <span style="color:#1b1be1a6"> نوضیح :  </span>
+                        @item.ShortText
+                    </p>
+                </div>
+                <div class="footer" style="display:flex">
+                    @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
+                    {
+                        <div class="left" style="display:flex">
+                            <a id="delete" attr="@item.Id">حذف از ذخیره ها</a>
+                        </div>
+                    }
+                    <div class="right">
+                        <a href="#">ادامه مطلب</a>
+                    </div>
+                </div>
+
+            </div>
+        }
+    }
+    else
+    {
+        <h2>هیچ ذخیره ای ندارید</h2>
+    }
+</div>
 
 <!-- delete Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -283,6 +320,6 @@
                 }
             });
         }
-    
+
     </script>
 }

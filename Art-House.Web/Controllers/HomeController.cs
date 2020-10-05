@@ -32,7 +32,7 @@ namespace Art_House.Web.Controllers
         {
             ViewBag.PageID = pageId;
             var getall = _db.PostTextRepository.GetAll();
-            ViewBag.CountPage = getall.Count();
+            ViewBag.CountPage = getall.Count()/3;
             var Post = _db.PostTextRepository.Paging(pageId, 5);
             var userId= User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewBag.UserId = userId;

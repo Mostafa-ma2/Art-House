@@ -48,6 +48,6 @@
     </form>
 </div>
 @section Scripts{
-    @Html.RenderPartialAsync("_CkEditorPartial")
+    @{ await Html.RenderPartialAsync("_CkEditorPartial");}
 
 }
