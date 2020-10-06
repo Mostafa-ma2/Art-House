@@ -36,10 +36,10 @@ namespace Art_House.Web.Controllers
             var Post = _db.PostTextRepository.Paging(pageId, 5);
             var userId= User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewBag.UserId = userId;
-            foreach (var item in Post)
-            {
-                item.Users.UserInUsers = _db.UserInUserRepository.Where(p => p.user == item.UserId&&p.UserId== userId).ToList();
-            }
+            //foreach (var item in Post)
+            //{
+            //    item.Users.UserInUsers = _db.UserInUserRepository.Where(p => p.user == item.UserId&&p.UserId== userId).ToList();
+            //}
             return View(Post);
         }
     }

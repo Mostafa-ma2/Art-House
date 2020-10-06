@@ -224,5 +224,35 @@ namespace Art_House.Web.Controllers
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return Json(null);
         }
+        
+
+
+        //ادامه مطلب
+        [HttpGet]
+        public async Task<IActionResult> ReadMore(string id)
+        {
+            if (string.IsNullOrEmpty(id))
+            {
+                _notification.AddWarningToastMessage("پست مورد نطر یافت نشد دوباره امتحان کنید");
+                return RedirectToAction("Home", "Index");
+            }
+            var Post = await _db.PostTextRepository.GetByIdAsync(id);
+            ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var ip = HttpContext.Connection.RemoteIpAddress.ToString();
+            var GetVisit = _db.PostTextVisitRepository.Where(p => p.PostId == id && p.Ip == ip).ToList();
+            if(GetVisit.Count == 0)
+            {
+                var visit = new PostTextVisit()
+                {
+                    Ip = ip,
+                    PostId = id
+                };
+                await _db.PostTextVisitRepository.InsertAsync(visit);
+                Post.Visit += 1;
+                _db.PostTextRepository.Update(Post);
+                _db.SaveChange();
+            }
+            return View(Post);
+        }
     }
 }

@@ -14,6 +14,8 @@ namespace Art_House.Data.Interfaces
         IPostTextRepository PostTextRepository { get;}
         ILikePostRepository LikePostRepository { get;}
         ISavePostRepository SavePostRepository { get;}
+        IPostTextVisitRepository PostTextVisitRepository { get; }
+
         IUserRepository UserRepository { get; }
         IUserAnswerRepository UserAnswerRepository { get; }
         IUserInUserRepository UserInUserRepository { get;  }

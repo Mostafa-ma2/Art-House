@@ -835,7 +835,7 @@ main {
 
     main .prof-main .head-pro .name-pro {
         position: absolute;
-        left: 38%;
+        left: unset;
         font-size: 30px;
         top: 188px;
     }

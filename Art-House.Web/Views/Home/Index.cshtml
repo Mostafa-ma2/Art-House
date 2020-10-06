@@ -11,11 +11,13 @@
             <div class="top-pro">
                 <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
                 <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId" id="name">@item.Users.UserName</a>
-                @if (User.Identity.Name != item.Users.UserName || !User.Identity.IsAuthenticated)
+                <a href="#" style="margin-top:10px">/@item.Groups.Name</a>
+                @if (User.Identity.Name != item.Users.UserName && User.Identity.IsAuthenticated)
                 {
-                    if (item.Users.UserInUsers.Count == 0)
+                    @if (item.SavePosts.Where(p => p.UserId == ViewBag.UserId).Count() == 0)
                     {
-                        <a onclick="AddUserConnection(this)" style="cursor:pointer" attr="@item.UserId" id="fallow">دنبال کنید</a>
+                        <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@item.Id"  id="fallow">ذخیره پست</a>
+
                     }
                 }
             </div>
@@ -31,13 +33,9 @@
                 </p>
             </div>
             <div class="main-footer">
+                <p style="margin-left: 20px;"><span>بازدید :</span> @item.Visit</p>
                 <p><span>تاریخ ثبت :</span> @item.CreatedTime.ToPersianDateString()</p>
-                <a href="#" id="bro">ادامه داستان</a>
-                @if (item.SavePosts.Where(p => p.UserId == ViewBag.UserId).Count() == 0)
-                {
-                    <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@item.Id" id="savepost">ذخیره پست</a>
-
-                }
+                <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id" id="bro">ادامه داستان</a>
             </div>
         </div>
     }
@@ -73,17 +71,17 @@
 </div>
 @section Scripts{
     <script type="text/javascript">
-        function AddUserConnection(obj) {
-            var attr = obj.getAttribute("attr");
-            $.ajax({
-                type: "Post",
-                url: "/Account/AddCommunicationWithUsers",
-                data: { id: attr },
-                success: function (result) {
-                    obj.remove();
-                }
-            });
-        }
+        //function AddUserConnection(obj) {
+        //    var attr = obj.getAttribute("attr");
+        //    $.ajax({
+        //        type: "Post",
+        //        url: "/Account/AddCommunicationWithUsers",
+        //        data: { id: attr },
+        //        success: function (result) {
+        //            obj.remove();
+        //        }
+        //    });
+        //}
         function AddSavePost(obj) {
             var attr = obj.getAttribute("attr");
             $.ajax({
@@ -97,3 +95,11 @@
         }
     </script>
 }
+
+@*if (User.Identity.Name != item.Users.UserName && User.Identity.IsAuthenticated)
+{
+    if (item.Users.UserInUsers.Count == 0)
+    {
+        <a onclick="AddUserConnection(this)" style="cursor:pointer" attr="@item.UserId" id="fallow">ذخیره پست</a>
+    }
+}*@

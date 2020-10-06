@@ -25,6 +25,8 @@ namespace Art_House.Data.Services
 
         private IPostTextRepository _postTextRepository { get; set; }
         public IPostTextRepository PostTextRepository => _postTextRepository ??= new PostTextRepository(_db);
+        private IPostTextVisitRepository _postTextVisitRepository { get; set; }
+        public IPostTextVisitRepository PostTextVisitRepository => _postTextVisitRepository ??= new PostTextVisitRepository(_db);
         private ILikePostRepository _likePostRepository { get; set; }
         public ILikePostRepository LikePostRepository => _likePostRepository ??= new LikePostRepository(_db);
         private ISavePostRepository _savePostRepository { get; set; }

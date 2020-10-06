@@ -53,21 +53,21 @@ namespace Art_House.Web.Controllers
             }
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             GetUser.PostTexts = _db.PostTextRepository.Where(p => p.UserId == GetUser.Id).ToList();
-            GetUser.UserInUsers = _db.UserInUserRepository.Where(p => p.user == id).ToList();
+            //GetUser.UserInUsers = _db.UserInUserRepository.Where(p => p.user == id).ToList();
             GetUser.SavePosts = _db.SavePostRepository.Where(p => p.UserId == id).ToList();
-            foreach(var item in GetUser.UserInUsers)
-            {
-                if (userId == null)
-                {
-                    ViewBag.userinuser = 0;
-                    return View(GetUser);
-                }
-                if (item.UserId == userId)
-                {
-                    ViewBag.userinuser = 1;
-                    return View(GetUser);
-                }
-            }
+            //foreach(var item in GetUser.UserInUsers)
+            //{
+            //    if (userId == null)
+            //    {
+            //        ViewBag.userinuser = 0;
+            //        return View(GetUser);
+            //    }
+            //    if (item.UserId == userId)
+            //    {
+            //        ViewBag.userinuser = 1;
+            //        return View(GetUser);
+            //    }
+            //}
             foreach(var item in GetUser.SavePosts)
             {
                 item.PostTexts = _db.PostTextRepository.GetById(item.PostTextId);

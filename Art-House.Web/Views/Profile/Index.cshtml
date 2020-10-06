@@ -1,7 +1,7 @@
 ﻿@model User
 @{
     Layout = "~/Views/Shared/_ProfileLayout.cshtml";
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "پروفایل";
 }
 
 <div class="prof-main">
@@ -13,41 +13,41 @@
                 <h1>@Model.UserName</h1>
             </div>
         </div>
-        <div class="faloow">
-            @if (User.Identity.Name == Model.UserName)
-            {
-                @if (Model.UserInUsers == null)
+        @*<div class="faloow">
+                @if (User.Identity.Name == Model.UserName)
                 {
-                    <p>
-                        0 دنبال کننده
-                    </p>
-                }
+                    @if (Model.UserInUsers == null)
+                    {
+                        <p>
+                            0 دنبال کننده
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            @Model.UserInUsers.Count() دنبال کننده
+                        </p>
+                    } }
                 else
                 {
-                    <p>
-                        @Model.UserInUsers.Count() دنبال کننده
-                    </p>
-                } }
-            else
-            {
-                if (ViewBag.userinuser == 0)
-                {
-                    <h1 onclick="AddUserConnection(this)" attr="@Model.Id">دنبال کنید</h1>
+                    if (ViewBag.userinuser == 0&&User.Identity.IsAuthenticated)
+                    {
+                        <h1 onclick="AddUserConnection(this)" attr="@Model.Id">دنبال کنید</h1>
+                    }
+                    @if (ViewBag.userinuser == 0)
+                    {
+                        <p>
+                            @Model.UserInUsers.Count() دنبال کننده
+                        </p>
+                    }
+                    else
+                    {
+                        <p>
+                            @Model.UserInUsers.Count() دنبال کننده
+                        </p>
+                    }
                 }
-                @if (ViewBag.userinuser == 0)
-                {
-                    <p>
-                        @Model.UserInUsers.Count() دنبال کننده
-                    </p>
-                }
-                else
-                {
-                    <p>
-                        @Model.UserInUsers.Count() دنبال کننده
-                    </p>
-                }
-            }
-        </div>
+            </div>*@
     </div>
 </div>
 <div class="head-maiin">
@@ -57,15 +57,15 @@
         </h2>
         <i class="fa fa-caret-up"></i>
     </div>
-    @if (User.Identity.Name == Model.UserName)
-    {
-        <div class="list" attr="falow-me">
-            <h2>
-                دنبال کننده ها
-            </h2>
-            <i class="fa fa-caret-up"></i>
-        </div>
-    }
+    @*@if (User.Identity.Name == Model.UserName)
+        {
+            <div class="list" attr="falow-me">
+                <h2>
+                    دنبال کننده ها
+                </h2>
+                <i class="fa fa-caret-up"></i>
+            </div>
+        }*@
     @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
     {
         <div class="list" attr="Save-Post">
@@ -134,35 +134,35 @@
         <h2>هیچ پستی یافت نشد</h2>
     }
 </div>
-<div class="falow-me">
-    @if (Model.UserName == User.Identity.Name)
-    {
-        <h2>
-            دنبال کننده های شما
-        </h2>
-        @if (Model.UserInUsers != null)
+@*<div class="falow-me">
+        @if (Model.UserName == User.Identity.Name)
         {
-            foreach (var item in Model.UserInUsers)
+            <h2>
+                دنبال کننده های شما
+            </h2>
+            @if (Model.UserInUsers != null)
             {
-                <div class="falow-me-list" id="userr-@item.Id">
-                    <img src="~/ProfileImage/@item.User.ProfileImg" alt="">
-                    <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">@item.User.UserName</a>
-                    <div class="tools">
-                        <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">مشاهده پروفایل</a>
-                        <a id="delete-falow" style="cursor:pointer" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
+                foreach (var item in Model.UserInUsers)
+                {
+                    <div class="falow-me-list" id="userr-@item.Id">
+                        <img src="~/ProfileImage/@item.User.ProfileImg" alt="">
+                        <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">@item.User.UserName</a>
+                        <div class="tools">
+                            <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId">مشاهده پروفایل</a>
+                            <a id="delete-falow" style="cursor:pointer" attr="@item.Id" onclick="OpenDeleteUserModel(this)"> حذف از دنبال کننده</a>
+                        </div>
                     </div>
+                }
+            }
+            else
+            {
+                <div class="falow-me-list">
+                    <p>هیچ دنبال کننده ای وجود ندارد</p>
                 </div>
             }
         }
-        else
-        {
-            <div class="falow-me-list">
-                <p>هیچ دنبال کننده ای وجود ندارد</p>
-            </div>
-        }
-    }
 
-</div>
+    </div>*@
 <div class="Bio">
     <div class="Bio-me">
         <h2>درباره من :</h2>
@@ -227,19 +227,19 @@
     </div>
 </div>
 <!-- delete Modal UserInUser-->
-<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content" style="padding:10px">
-            <input type="hidden" id="DeleteUserID" name="name" value="" />
-            <label id="lal">
+@*<div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content" style="padding:10px">
+                <input type="hidden" id="DeleteUserID" name="name" value="" />
+                <label id="lal">
 
-            </label>
+                </label>
 
-            <br />
-            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDeletee">حذف</button>
+                <br />
+                <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDeletee">حذف</button>
+            </div>
         </div>
-    </div>
-</div>
+    </div>*@
 
 <!-- delete Modal savePost-->
 <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -275,23 +275,23 @@
 
                 })
             })
-            //حذف اتصال کاربر
-            $("#btnDeletee").click(function (e) {
-                e.preventDefault();
-                var id = $("#DeleteUserID").val();
-                $.ajax({
-                    type: "Post",
-                    url: "/Account/DeleteCommunicationWithUsers",
-                    data: { ID: id },
-                    success: function (result) {
-                        $("#exampleModal1").modal("hide");
-                        if (result != null) {
-                            debugger;
-                            $("#userr-" + result.id).remove();
-                        }
-                    }
-                })
-            })
+            ////حذف اتصال کاربر
+            //$("#btnDeletee").click(function (e) {
+            //    e.preventDefault();
+            //    var id = $("#DeleteUserID").val();
+            //    $.ajax({
+            //        type: "Post",
+            //        url: "/Account/DeleteCommunicationWithUsers",
+            //        data: { ID: id },
+            //        success: function (result) {
+            //            $("#exampleModal1").modal("hide");
+            //            if (result != null) {
+            //                debugger;
+            //                $("#userr-" + result.id).remove();
+            //            }
+            //        }
+            //    })
+            //})
             //حذف پست سیو شدع
             $("#btnDelet").click(function (e) {
                 e.preventDefault();
@@ -310,22 +310,22 @@
                 })
             })
         });
-        function OpenDeleteUserModel(obj) {
-            var attr = obj.getAttribute("attr");
-            $.ajax({
-                type: "Post",
-                url: "/Account/GetUserById",
-                data: { id: attr },
-                success: function (result) {
-                    $("#exampleModal1").modal("show");
-                    if (result != null) {
-                        debugger;
-                        $("#DeleteUserID").val(result.id);
-                        document.getElementById("lal").innerHTML = ' ایا از حذف ' + result.User.userName + ' اطمینان دارید؟';
-                    }
-                }
-            });
-        }
+        //function OpenDeleteUserModel(obj) {
+        //    var attr = obj.getAttribute("attr");
+        //    $.ajax({
+        //        type: "Post",
+        //        url: "/Account/GetUserById",
+        //        data: { id: attr },
+        //        success: function (result) {
+        //            $("#exampleModal1").modal("show");
+        //            if (result != null) {
+        //                debugger;
+        //                $("#DeleteUserID").val(result.id);
+        //                document.getElementById("lal").innerHTML = ' ایا از حذف ' + result.User.userName + ' اطمینان دارید؟';
+        //            }
+        //        }
+        //    });
+        //}
         function OpenDeleteModel(obj) {
             var attr = obj.getAttribute("attr");
             $.ajax({
@@ -342,18 +342,18 @@
             });
         }
 
-        // دنبال کردن
-        function AddUserConnection(obj) {
-            var attr = obj.getAttribute("attr");
-            $.ajax({
-                type: "Post",
-                url: "/Account/AddCommunicationWithUsers",
-                data: { id: attr },
-                success: function (result) {
-                    obj.remove();
-                }
-            });
-        }
+        //// دنبال کردن
+        //function AddUserConnection(obj) {
+        //    var attr = obj.getAttribute("attr");
+        //    $.ajax({
+        //        type: "Post",
+        //        url: "/Account/AddCommunicationWithUsers",
+        //        data: { id: attr },
+        //        success: function (result) {
+        //            obj.remove();
+        //        }
+        //    });
+        //}
 
 
         //SavePoSt
