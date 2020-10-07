@@ -165,6 +165,16 @@ namespace Art_House.Web.Controllers
                 {
                     _fileManager.DeleteImage(postText.Image, FileManagerType.FileType.PostTextImages);
                 }
+                var GetSavePost = _db.SavePostRepository.Where(p => p.PostTextId == postText.Id).ToList();
+                foreach(var iten in GetSavePost)
+                {
+                    _db.SavePostRepository.Delete(iten);
+                }
+                var GetPostVisit = _db.PostTextVisitRepository.Where(p => p.PostId == postText.Id).ToList();
+                foreach (var iten in GetPostVisit)
+                {
+                    _db.PostTextVisitRepository.Delete(iten);
+                }
                 _db.PostTextRepository.Delete(postText);
                 _db.SaveChange();
                 _notification.AddSuccessToastMessage($" {postText.Name} با موفقیت حذف شد.");

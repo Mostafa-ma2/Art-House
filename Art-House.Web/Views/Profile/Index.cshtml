@@ -267,6 +267,7 @@
                     url: "/PostText/DeletePostText",
                     data: { ID: id },
                     success: function (result) {
+                        debugger;
                         $("#exampleModal").modal("hide");
                         if (result != null) {
                             $("#Post-" + result.id).remove();

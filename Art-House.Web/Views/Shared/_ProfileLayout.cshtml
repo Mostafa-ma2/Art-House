@@ -19,9 +19,11 @@
         </div>
         <div class="Header-Search col-md-4 col-sm-4">
             <div class="s">
-                <input id="search" type="text" placeholder="جست و جو در مطالب و کاربران">
+                <input id="search" type="text" onchange="GetValues(this)" placeholder="جست و جو در مطالب و کاربران">
                 <div class="icon-search">
-                    <i class="fa fa-search"></i>
+                    <a asp-controller="Home" asp-action="Search" id="SerchTexts" asp-route-text="">
+                        <i class="fa fa-search"></i>
+                    </a>
                 </div>
                 <div class="icon-exit">
                     <i id="serchclose" onclick="rmovetext(this)" style="display: none" class="fa fa-close"></i>

@@ -1,0 +1,21 @@
+﻿@model IEnumerable<PostText>
+@{
+    ViewData["Title"] = "View";
+}
+
+    <div class="Visit">
+        <div class="visit-head">
+            <h1><i class="fa fa-eye"></i> پر بازدید ترین </h1>
+
+        </div>
+        @foreach (var item in Model)
+        {
+            <div class="visit-main">
+                <div class="visit-text">
+                    <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id" >نام @item.Groups.Name : @item.Name</a>
+                    <i class="fa fa-angle-double-left"></i>
+                </div>
+            </div>
+
+        }
+    </div>
