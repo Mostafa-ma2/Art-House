@@ -323,81 +323,173 @@ main {
                             background: #1b1be1a6;
                         }
 
-                main .main .main-text-list .text-list .main-text {
-                    border-bottom: 1px solid;
+                main .main .main-text-list .text-list .Short-Text {
+                    display: flex;
                 }
 
-                    main .main .main-text-list .text-list .main-text img {
+                    main .main .main-text-list .text-list .Short-Text h2 {
+                        position: absolute;
+                        left: 32%;
                         padding: 10px;
+                        top: -15px;
+                        background: #1b1be1a6;
+                        color: white;
+                        border-radius: 8px;
+                    }
+
+                    main .main .main-text-list .text-list .Short-Text .img {
                         width: 100%;
-                        height: 285px;
-                        border-radius: 14px;
                     }
 
-                    main .main .main-text-list .text-list .main-text p {
-                        padding-right: 11px;
-                        padding-bottom: 10px;
-                        word-break: break-word;
+                        main .main .main-text-list .text-list .Short-Text .img img {
+                            width: 100%;
+                            padding: 15px;
+                            height: 203px;
+                        }
+
+                    main .main .main-text-list .text-list .Short-Text .texts {
+                        width: 100%;
+                        padding: 8px;
+                        margin-top: 16px;
+                        position: relative;
+                        border-right: 2px dashed #1b1be1a6;
                     }
 
-                    main .main .main-text-list .text-list .main-text h1 {
-                        margin-right: 11px;
-                        margin-bottom: 9px;
-                    }
+                        main .main .main-text-list .text-list .Short-Text .texts p {
+                            padding: 4px;
+                        }
 
-                        main .main .main-text-list .text-list .main-text h1 span {
+                        main .main .main-text-list .text-list .Short-Text .texts span {
                             color: #1b1be1a6;
                         }
 
-                main .main .main-text-list .text-list .main-footer {
-                    display: flex;
-                    position: relative;
-                    padding: 10px;
-                }
-
-                    main .main .main-text-list .text-list .main-footer #nvisande {
-                        margin-left: 15px;
-                    }
-
-                    main .main .main-text-list .text-list .main-footer #bro {
-                        position: absolute;
-                        left: 19px;
-                        padding: 3px;
-                        padding-top: 5px;
-                        border-radius: 4px;
-                        padding-left: 22px;
-                        padding-right: 22px;
-                        color: white;
-                        background: #1b1be1a6;
-                    }
-
-                    main .main .main-text-list .text-list .main-footer #savepost {
-                        position: absolute;
-                        left: 21%;
-                        padding: 3px;
-                        padding-top: 5px;
-                        border-radius: 4px;
-                        padding-left: 22px;
-                        padding-right: 22px;
-                        color: white;
-                        background-color: green;
-                    }
-
-                        main .main .main-text-list .text-list .main-footer #savepost:hover {
-                            border: 1px solid green;
-                            background: white;
-                            color: green;
+                        main .main .main-text-list .text-list .Short-Text .texts #shorttexts {
+                            display: block;
+                            padding: 9px;
+                            margin-top: 9px;
+                            font-size: smaller;
+                            word-break: break-word;
+                            background: #1b1be1a6;
+                            color: white;
+                            height: 89px;
                         }
 
-                    main .main .main-text-list .text-list .main-footer p {
-                        cursor: pointer;
-                    }
+            main .main .main-text-list .Nazar {
+                padding: 25px;
+                background: white;
+                border-radius: 3px;
+                display: flex;
+            }
 
-                    main .main .main-text-list .text-list .main-footer #bro:hover {
-                        border: 1px solid #1b1be1a6;
-                        background: white;
+                main .main .main-text-list .Nazar img {
+                    width: 100px;
+                    border-radius: 50px;
+                    height: 95px;
+                }
+
+                main .main .main-text-list .Nazar h1 {
+                    display: inline;
+                    margin-top: 41px;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+
+                main .main .main-text-list .Nazar i {
+                    margin-top: 41px;
+                    margin-right: 13px;
+                }
+
+                main .main .main-text-list .Nazar .text {
+                    margin-top: 12px;
+                    border: 1px solid #1b1be1a6;
+                    padding: 12px;
+                    border-radius: 6px;
+                    width: 100%;
+                }
+
+            main .main .main-text-list .Text {
+                padding: 15px;
+                margin-top: 10px;
+                border: 1px solid #1b1be1a6;
+                border-radius: 2px;
+                background: white;
+            }
+
+            main .main .main-text-list .text-list .main-text {
+                border-bottom: 1px solid;
+            }
+
+                main .main .main-text-list .text-list .main-text img {
+                    padding: 10px;
+                    width: 100%;
+                    height: 285px;
+                    border-radius: 14px;
+                }
+
+                main .main .main-text-list .text-list .main-text p {
+                    padding-right: 11px;
+                    padding-bottom: 10px;
+                    word-break: break-word;
+                }
+
+                main .main .main-text-list .text-list .main-text h1 {
+                    margin-right: 11px;
+                    margin-bottom: 9px;
+                }
+
+                    main .main .main-text-list .text-list .main-text h1 span {
                         color: #1b1be1a6;
                     }
+
+            main .main .main-text-list .text-list .main-footer {
+                display: flex;
+                position: relative;
+                padding: 10px;
+            }
+
+                main .main .main-text-list .text-list .main-footer #nvisande {
+                    margin-left: 15px;
+                }
+
+                main .main .main-text-list .text-list .main-footer #bro {
+                    position: absolute;
+                    left: 19px;
+                    padding: 3px;
+                    padding-top: 5px;
+                    border-radius: 4px;
+                    padding-left: 22px;
+                    padding-right: 22px;
+                    color: white;
+                    background: #1b1be1a6;
+                }
+
+                main .main .main-text-list .text-list .main-footer #savepost {
+                    position: absolute;
+                    left: 21%;
+                    padding: 3px;
+                    padding-top: 5px;
+                    border-radius: 4px;
+                    padding-left: 22px;
+                    padding-right: 22px;
+                    color: white;
+                    background-color: green;
+                }
+
+                    main .main .main-text-list .text-list .main-footer #savepost:hover {
+                        border: 1px solid green;
+                        background: white;
+                        color: green;
+                    }
+
+                main .main .main-text-list .text-list .main-footer p {
+                    cursor: pointer;
+                }
+
+                main .main .main-text-list .text-list .main-footer #bro:hover {
+                    border: 1px solid #1b1be1a6;
+                    background: white;
+                    color: #1b1be1a6;
+                }
 
 
         /* =======================   main arshiv list */
@@ -626,6 +718,7 @@ main {
 
         main .main .main-arshiv-list {
             height: 100%;
+            display: contents;
         }
 
             main .main .main-arshiv-list .question {
@@ -688,6 +781,15 @@ main {
         top: 37%;
         color: #5a5af97a;
     }
+
+    main .main .main-text-list .text-list .Short-Text {
+        display: block;
+    }
+
+        main .main .main-text-list .text-list .Short-Text h2 {
+            left: 41%;
+            top: -17px;
+        }
 }
 
 @media (max-width: 427px) {

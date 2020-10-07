@@ -19,7 +19,6 @@ using NToastNotify;
 
 namespace Art_House.Web.Controllers
 {
-    [Authorize]
     public class PostTextController : Controller
     {
         //ساختن و ویرایش پست
@@ -38,6 +37,7 @@ namespace Art_House.Web.Controllers
 
         //get
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> AddPost()
         {
             ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -49,6 +49,7 @@ namespace Art_House.Web.Controllers
         //افزودن
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> AddPost(AddPostTextViewModel model, IFormFile image)
         {
             if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.Name) || string.IsNullOrEmpty(model.postText.ShortText)
@@ -79,6 +80,7 @@ namespace Art_House.Web.Controllers
 
         //ویرایش
         [HttpGet]
+        [Authorize]
         public async Task<IActionResult> EditPostText(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -98,6 +100,7 @@ namespace Art_House.Web.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public async Task<IActionResult> EditPostText(AddPostTextViewModel model, IFormFile image)
         {
             if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.Name) || string.IsNullOrEmpty(model.postText.ShortText)
@@ -142,6 +145,7 @@ namespace Art_House.Web.Controllers
         //گرفتن ایدی 
         [AjaxOnly]
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> GetPostTextById(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -156,6 +160,7 @@ namespace Art_House.Web.Controllers
         //حذف پست
         [AjaxOnly]
         [HttpPost]
+        [Authorize]
         public ActionResult DeletePostText(string id)
         {
             if (!string.IsNullOrEmpty(id))
@@ -187,6 +192,7 @@ namespace Art_House.Web.Controllers
         //سیو کردن پست برای کاربر
         [AjaxOnly]
         [HttpPost]
+        [Authorize]
         public async Task<ActionResult> AddSavePost(string id)
         {
             if (!string.IsNullOrEmpty(id))
@@ -210,6 +216,7 @@ namespace Art_House.Web.Controllers
         //گرفتن ایدی savePost
         [AjaxOnly]
         [HttpPost]
+        [Authorize]
         public async Task<IActionResult> GetSavePostById(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -224,6 +231,7 @@ namespace Art_House.Web.Controllers
         //حذف پست
         [AjaxOnly]
         [HttpPost]
+        [Authorize]
         public ActionResult DeleteSavePost(string id)
         {
             if (!string.IsNullOrEmpty(id))
@@ -249,8 +257,13 @@ namespace Art_House.Web.Controllers
                 return RedirectToAction("Home", "Index");
             }
             var Post = await _db.PostTextRepository.GetByIdAsync(id);
-            ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var userId= User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewBag.UserId = userId;
+            var savepost = _db.SavePostRepository.Where(p => p.UserId == userId).ToList();
+            ViewBag.UserCount = savepost.Count();
             var ip = HttpContext.Connection.RemoteIpAddress.ToString();
+            Post.Groups =await _db.GroupRepository.GetByIdAsync(Post.GroupId);
+            Post.Users = await _db.UserRepository.GetByIdAsync(Post.UserId);
             var GetVisit = _db.PostTextVisitRepository.Where(p => p.PostId == id && p.Ip == ip).ToList();
             if(GetVisit.Count == 0)
             {

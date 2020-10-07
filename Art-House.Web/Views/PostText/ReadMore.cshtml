@@ -5,7 +5,73 @@
 }
 
 
-<div>
-   
+<div class="main-text-list col-md-8 col-sm-12">
+    <div class="text-list">
+        <div class="top-pro">
+            <img src="~/ProfileImage/@Model.Users.ProfileImg" alt="">
+            <a asp-action="Index" asp-controller="Profile" asp-route-id="@Model.Id" id="name">@Model.Users.UserName</a>
+            @if (User.Identity.Name != Model.Users.UserName && User.Identity.IsAuthenticated)
+            {
+                @if (ViewBag.UserCount == 0)
+                {
+                    <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@Model.Id" id="fallow">ذخیره پست</a>
+
+                }
+            }
+        </div>
+        <div class="Short-Text">
+            <div class="img">
+                <img src="~/PostTextImages/@Model.Image" alt="Alternate Text" />
+            </div>
+            <div class="texts">
+                <h2><a asp-controller="Home" asp-action="Search" asp-route-group="@Model.Groups.Name" style="color:white">@Model.Groups.Name</a></h2>
+                <p style="margin-top: 10px;">نام : <span>@Model.Name</span></p>
+                <p>توضیح کوتاه : <span id="shorttexts">@Model.ShortText</span></p>
+                <div style="display:flex">
+                    <p>تاریخ ثبت : <span>@Model.CreatedTime.ToPersianDateString()</span></p>
+                    <p>بازدید : <span>@Model.Visit</span></p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="Text">
+        @Html.Raw(Model.Text)
+    </div>
+    <div class="Comment" style="margin-top: 10px;background:white;border-radius: 3px;">
+        <div class="AddComment" style="padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;">
+            <div class="form-group">
+                <label class="control-label padding-10">نظر خود را بنویسید :</label>
+                <input type="text" id="input-file-now" style="border: 1px solid #1b1be1a6;" name="" class="form-control" />
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" style="width:100%" name="name" value="افزودن کامنت" />
+            </div>
+        </div>
+        <div class="Nazar">
+            <img src="Image/scalebound_game-2560x1440.jpg" alt="">
+            <i class="fa fa-user"></i>
+            <h1>Alireza</h1>
+            <div class="text">
+                سلام من کاملا راضی هستم از کالا
+            </div>
+        </div>
+        <div class="Nazar">
+            <img src="Image/scalebound_game-2560x1440.jpg" alt="">
+            <i class="fa fa-user"></i>
+            <h1>Alireza</h1>
+            <div class="text">
+                سلام من کاملا راضی هستم از کالا
+            </div>
+        </div>
+        <div class="Nazar">
+            <img src="Image/scalebound_game-2560x1440.jpg" alt="">
+            <i class="fa fa-user"></i>
+            <h1>Alireza</h1>
+            <div class="text">
+                سلام من کاملا راضی هستم از کالا
+            </div>
+        </div>
+    </div>
 </div>
 

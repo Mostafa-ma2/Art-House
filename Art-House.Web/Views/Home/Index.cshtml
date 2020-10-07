@@ -11,7 +11,7 @@
             <div class="top-pro">
                 <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
                 <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId" id="name">@item.Users.UserName</a>
-                <a href="#" style="margin-top:10px">/@item.Groups.Name</a>
+                <a asp-controller="Home" asp-action="Search" asp-route-group="@item.Groups.Name" style="margin-top:10px">/@item.Groups.Name</a>
                 @if (User.Identity.Name != item.Users.UserName && User.Identity.IsAuthenticated)
                 {
                     @if (item.SavePosts.Where(p => p.UserId == ViewBag.UserId).Count() == 0)
@@ -22,10 +22,14 @@
                 }
             </div>
             <div class="main-text">
-                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                <h1 class="text-center" style="margin-top:10px">نام : <span>@item.Name</span></h1>
                 @if (item.Image != null)
                 {
                     <img src="~/PostTextImages/@item.Image" alt="">
+                }
+                else
+                {
+                    <h1 style="text-align:center;margin-bottom:10px;margin-top:10px;color:#1b1be1a6;">***</h1>
                 }
                 <p>
                     <span style="color:#1b1be1a6"> نوضیح :  </span>
