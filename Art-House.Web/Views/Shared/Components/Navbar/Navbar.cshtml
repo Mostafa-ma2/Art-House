@@ -6,7 +6,7 @@
     @foreach (var item in Model)
     {
         <div class="main-navbar-list">
-            <a href="#">@item.Name </a>
+            <a asp-controller="Home" asp-action="Search" asp-route-group="@item.Name">@item.Name </a>
         </div>
     }
     <div class="main-navbar-list">
@@ -15,6 +15,12 @@
     <div class="main-navbar-list">
         <a href="#">پیشنهاد به ما</a>
     </div>
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="main-navbar-list">
+            <a href="#">پنل مدیریتی</a>
+        </div>
+    }
     <div class="main-navbar-text">
         <a href="/PostText/AddPost">نویسنده شو !</a>
     </div>
@@ -22,15 +28,17 @@
         <i onclick="openlist()" class="fa fa-align-justify"></i>
         <div class="lists" id="lists" style="display:none">
             <div class="s">
-                <input id="search" type="text" placeholder="جست و جو در مطالب و کاربران">
+                <input onchange="GetValue(this)" id="search" type="text" placeholder="جست و جو در مطالب و کاربران">
                 <div class="icon-search">
-                    <i class="fa fa-search"></i>
+                    <a asp-controller="Home" asp-action="Search" id="SerchTExt" asp-route-text="">
+                        <i class="fa fa-search"></i>
+                    </a>
                 </div>
             </div>
             @foreach (var item in Model)
             {
                 <div class="main-navbar-lists">
-                    <a href="#">@item.Name </a>
+                    <a asp-controller="Home" asp-action="Index" asp-route-group="@item.Name">@item.Name </a>
                 </div>
             }
             <div class="main-navbar-lists">
@@ -39,7 +47,13 @@
             <div class="main-navbar-lists">
                 <a href="#">پیشنهاد به ما</a>
             </div>
+            @if (User.IsInRole("Admin"))
+            {
 
+                <div class="main-navbar-lists">
+                    <a href="/Admin/">پنل مدیریت</a>
+                </div>
+            }
         </div>
     </div>
 </div>

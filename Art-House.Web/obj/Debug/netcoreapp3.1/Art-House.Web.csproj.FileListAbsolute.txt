@@ -457,3 +457,4 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\User\User.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Profile\EditUser.cshtml.g.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\PostText\ReadMore.cshtml.g.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\obj\Debug\netcoreapp3.1\Razor\Views\Home\Search.cshtml.g.cs

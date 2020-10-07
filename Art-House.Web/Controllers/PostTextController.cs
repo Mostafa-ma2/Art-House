@@ -137,6 +137,8 @@ namespace Art_House.Web.Controllers
             _notification.AddSuccessToastMessage("با موفقیت ویرایش شد");
             return RedirectToAction("Home", "Index");
         }
+
+
         //گرفتن ایدی 
         [AjaxOnly]
         [HttpPost]

@@ -1,7 +1,7 @@
 // serch input
 var inputserch = document.getElementById("search");
 var closeicon = document.getElementById("serchclose");
-inputserch.addEventListener("keyup", function() {
+inputserch.addEventListener("keyup", function () {
     showclose(this);
 });
 
@@ -40,4 +40,12 @@ function openlist() {
     } else {
         lists.style.display = "none";
     }
+}
+function GetValue(obj) {
+    var btn = document.getElementById("SerchTExt");
+    btn.href = '/Home/Search?text=' + obj.value + '';
+}
+function GetValues(obj) {
+    var btn = document.getElementById("SerchTexts");
+    btn.href = '/Home/Search?text=' + obj.value + '';
 }

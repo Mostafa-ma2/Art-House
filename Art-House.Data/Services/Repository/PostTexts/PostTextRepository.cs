@@ -111,7 +111,7 @@ namespace Art_House.Data.Services.Repository.PostTexts
 
         public IEnumerable<PostText> Where(Expression<Func<PostText, bool>> where)
         {
-            IQueryable<PostText> entities = _db.PostText;
+            IQueryable<PostText> entities = _db.PostText.Include(p=>p.Users).Include(p=>p.Groups).Include(p=>p.SavePosts);
             if (where != null)
             {
                 entities = entities.Where(where);

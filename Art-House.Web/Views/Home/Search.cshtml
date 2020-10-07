@@ -1,0 +1,133 @@
+﻿@model SearchViewModel
+@{
+    ViewData["Title"] = "Search";
+}
+
+    <div class="main-text-list col-md-8 col-sm-12">
+        @if (!Model.PostTexts.Any() && !Model.Users.Any())
+        {
+            <div class="text-list">
+                <p style="text-align: center; padding: 12px;">هیچ پست یا کاربری یافت نشد</p>
+            </div>
+        }
+        else
+        {
+            if (Model.PostTexts == null)
+            {
+
+            }
+            else
+            {
+
+
+                @foreach (var item in Model.PostTexts)
+                {
+
+                    <div class="text-list">
+                        <div class="top-pro">
+                            <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
+                            <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.UserId" id="name">@item.Users.UserName</a>
+                            <a href="#" style="margin-top:10px">/@item.Groups.Name</a>
+                            @if (User.Identity.Name != item.Users.UserName && User.Identity.IsAuthenticated)
+                            {
+                                @if (item.SavePosts.Where(p => p.UserId == ViewBag.UserId).Count() == 0)
+                                {
+                                    <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@item.Id" id="fallow">ذخیره پست</a>
+
+                                }
+                            }
+                        </div>
+                        <div class="main-text">
+                            <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                            @if (item.Image != null)
+                            {
+                                <img src="~/PostTextImages/@item.Image" alt="">
+                            }
+                            <p>
+                                <span style="color:#1b1be1a6"> نوضیح :  </span>
+                                @item.ShortText
+                            </p>
+                        </div>
+                        <div class="main-footer">
+                            <p style="margin-left: 20px;"><span>بازدید :</span> @item.Visit</p>
+                            <p><span>تاریخ ثبت :</span> @item.CreatedTime.ToPersianDateString()</p>
+                            <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id" id="bro">ادامه داستان</a>
+                        </div>
+                    </div>
+                }
+            }
+            if (Model.Users == null)
+            {
+
+            }
+            else
+            {
+                @foreach (var item in Model.Users)
+                {
+
+                    <div class="text-list">
+                        <div class="top-pro">
+                            <img src="~/ProfileImage/@item.ProfileImg" alt="">
+                            <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.Id" id="name">@item.UserName</a>
+                            <a asp-action="Index" asp-controller="Profile" asp-route-id="@item.Id" id="fallow">مشاهده پروفایل</a>
+                        </div>
+                    </div>
+                }
+            }
+            <div class="row text-center" style="justify-content: center;">
+                <nav aria-label="Page navigation example">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            @if (ViewBag.PageID != 1)
+                            {
+                                var c = ViewBag.PageID - 1;
+                                <a class="page-link" href="/Home/Search?@ViewBag.group&&pageid=@c" aria-label="Previous">
+                                    <span aria-hidden="true">&laquo;</span>
+                                </a>
+                            }
+                        </li>
+                        @for (var i = 1; i <= ViewBag.CountPage; i++)
+                        {
+                            <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Home/Serch?@ViewBag.group&&pageid=@i">@i</a></li>
+
+                        }
+                        <li class="page-item">
+                            @if (ViewBag.CountPage>5)
+                            {
+                                var c = ViewBag.PageID + 1;
+                                <a class="page-link" href="/Home/Search?group=@ViewBag.group&&pageid=@c" aria-label="Previous">
+                                    <span aria-hidden="true">&raquo;</span>
+                                </a>
+                            }
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        }
+    </div>
+@section Scripts{
+    <script type="text/javascript">
+        //function AddUserConnection(obj) {
+        //    var attr = obj.getAttribute("attr");
+        //    $.ajax({
+        //        type: "Post",
+        //        url: "/Account/AddCommunicationWithUsers",
+        //        data: { id: attr },
+        //        success: function (result) {
+        //            obj.remove();
+        //        }
+        //    });
+        //}
+        function AddSavePost(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/PostText/AddSavePost",
+                data: { id: attr },
+                success: function (result) {
+                    obj.remove();
+                }
+            });
+        }
+    </script>
+}
