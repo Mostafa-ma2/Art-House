@@ -63,7 +63,7 @@ namespace Art_House.Web.Controllers
                     CreatedTime = DateTime.Now,
                     Email = model.Email,
                     ProfileImg = "male-user-profile-picture_318-37825.jpg",
-                    BackGroundImg= "Disposable-coffee-cup-pen-eyeglasses-spiral-notepad-thumbtack-pins-on-white-background-Top.jpg"
+                    BackGroundImg= "download.jpg"
                 };
 
                 var result = await _userManager.CreateAsync(user, model.Password);

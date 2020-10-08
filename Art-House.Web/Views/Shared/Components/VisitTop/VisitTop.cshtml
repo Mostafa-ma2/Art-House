@@ -12,7 +12,7 @@
         {
             <div class="visit-main">
                 <div class="visit-text">
-                    <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id" >نام @item.Groups.Name : @item.Name</a>
+                    <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id" > @item.Groups.Name : @item.ShortText.Substring(0,25)</a>
                     <i class="fa fa-angle-double-left"></i>
                 </div>
             </div>

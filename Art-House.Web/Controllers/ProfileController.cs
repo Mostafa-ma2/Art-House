@@ -26,7 +26,7 @@ namespace Art_House.Web.Controllers
         private readonly IToastNotification _notification;
         private readonly UserManager<User> _userManager;
         private readonly IFileManager _fileManager;
-        public ProfileController(IUnitOfWork db, IToastNotification notification,UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
+        public ProfileController(IUnitOfWork db, IToastNotification notification, UserManager<User> userManager, IWebHostEnvironment webHostEnvironment)
         {
             _db = db;
             _notification = notification;
@@ -37,7 +37,6 @@ namespace Art_House.Web.Controllers
 
         //Get
         [HttpGet]
-        [Route("/Profile/{id}")]
         public async Task<IActionResult> Index(string id)
         {
             if (string.IsNullOrEmpty(id))
@@ -45,7 +44,7 @@ namespace Art_House.Web.Controllers
                 _notification.AddWarningToastMessage("کاربر یات نشد دوبارع امتحان کنید");
                 return RedirectToAction("Index", "Home");
             }
-            var GetUser =await _db.UserRepository.GetByIdAsync(id);
+            var GetUser = await _db.UserRepository.GetByIdAsync(id);
             if (GetUser == null)
             {
                 _notification.AddWarningToastMessage("کاربر یات نشد دوبارع امتحان کنید");
@@ -68,7 +67,7 @@ namespace Art_House.Web.Controllers
             //        return View(GetUser);
             //    }
             //}
-            foreach(var item in GetUser.SavePosts)
+            foreach (var item in GetUser.SavePosts)
             {
                 item.PostTexts = _db.PostTextRepository.GetById(item.PostTextId);
             }
@@ -111,7 +110,7 @@ namespace Art_House.Web.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> EditUser(UserEditViewModel model, IFormFile image, IFormFile backImage)
         {
-            if (string.IsNullOrEmpty(model.userId)||string.IsNullOrEmpty(model.UserName)||string.IsNullOrEmpty(model.Email))
+            if (string.IsNullOrEmpty(model.userId) || string.IsNullOrEmpty(model.UserName) || string.IsNullOrEmpty(model.Email))
             {
                 _notification.AddWarningToastMessage("مقادیر را به درستی وارد نمایید");
                 return View(model);
@@ -134,7 +133,11 @@ namespace Art_House.Web.Controllers
             {
                 if (image.FileName != user.ProfileImg && user.ProfileImg != null)
                 {
-                    _fileManager.DeleteImage(user.ProfileImg, FileManagerType.FileType.ProfileImage);
+
+                    if (user.ProfileImg != "male-user-profile-picture_318-37825.jpg")
+                    {
+                        _fileManager.DeleteImage(user.ProfileImg, FileManagerType.FileType.ProfileImage);
+                    }
                     model.ProfileImg = await _fileManager.UploadImage(image,
                         FileManagerType.FileType.ProfileImage);
                 }
@@ -152,7 +155,10 @@ namespace Art_House.Web.Controllers
             {
                 if (backImage.FileName != user.BackGroundImg && user.BackGroundImg != null)
                 {
-                    _fileManager.DeleteImage(user.BackGroundImg, FileManagerType.FileType.ProfileImage);
+                    if (user.BackGroundImg != "download.jpg")
+                    {
+                        _fileManager.DeleteImage(user.BackGroundImg, FileManagerType.FileType.ProfileImage);
+                    }
                     model.BackGroundImg = await _fileManager.UploadImage(backImage,
                         FileManagerType.FileType.ProfileImage);
                 }

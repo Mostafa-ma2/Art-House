@@ -104,11 +104,11 @@ namespace Art_House.Web.Controllers
         [Authorize]
         public async Task<IActionResult> EditPostText(AddPostTextViewModel model, IFormFile image)
         {
-            if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.Name) || string.IsNullOrEmpty(model.postText.ShortText)
+            if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.ShortText)
             || string.IsNullOrEmpty(model.postText.Text))
             {
                 _notification.AddWarningToastMessage("لطفا مقادیر را به درستی پر کنید");
-                return RedirectToAction(nameof(AddPost));
+                return RedirectToAction("Index","Profile",new { id=model.postText.UserId});
             }
             var postText = (await _db.PostTextRepository.GetByIdAsync(model.postText.Id));
             if (image == null)
@@ -139,7 +139,7 @@ namespace Art_House.Web.Controllers
             _db.PostTextRepository.Update(postText);
             _db.SaveChange();
             _notification.AddSuccessToastMessage("با موفقیت ویرایش شد");
-            return RedirectToAction("Home", "Index");
+            return RedirectToAction("Index", "Profile", new { id = model.postText.UserId });
         }
 
 

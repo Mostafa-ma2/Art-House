@@ -427,8 +427,9 @@ main {
                 }
 
                 main .main .main-text-list .text-list .main-text p {
-                    padding-right: 11px;
-                    padding-bottom: 10px;
+                    line-height: 21px;
+                    text-align: justify;
+                    padding: 10px;
                     word-break: break-word;
                 }
 

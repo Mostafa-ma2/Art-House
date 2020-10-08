@@ -100,14 +100,21 @@
         {
             <div class="post-list col-md-4 col-sm-12 col-12" id="Post-@item.Id">
 
-                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.Name</span></h1>
+                @if (item.Name != null)
+                {
+                    @if (item.Groups.Name != "دلنوشته" && item.Groups.Name != "متن سنگین")
+                    {
+
+                        <h1 class="text-center" style="margin-top:10px">نام @item.Groups.Name : <span>@item.Name</span></h1>
+                    }
+                }
                 @if (item.Image != null)
                 {
                     <img src="~/PostTextImages/@item.Image" alt="">
                 }
 
                 <div class="text">
-                    <p>
+                    <p style="line-height: 21px; text-align: justify;">
                         <span style="color:#1b1be1a6"> نوضیح :  </span>
                         @item.ShortText
                     </p>
@@ -121,7 +128,7 @@
                         </div>
                     }
                     <div class="right">
-                        <a href="#">ادامه مطلب</a>
+                        <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id">ادامه مطلب</a>
                     </div>
 
                 </div>

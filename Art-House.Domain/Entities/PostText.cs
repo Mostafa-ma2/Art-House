@@ -2,12 +2,13 @@
 using EzGame.Domain.Core.Services.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Art_House.Domain.Entities
 {
-    public class PostText:BaseEntity<string>
+    public class PostText : BaseEntity<string>
     {
         public PostText()
         {
@@ -19,6 +20,8 @@ namespace Art_House.Domain.Entities
         public string Image { get; set; }
         public string GroupId { get; set; }
         public string Name { get; set; }
+        [MaxLength(250)]
+        [MinLength(25)]
         public string ShortText { get; set; }
         public string Text { get; set; }
         public ulong Visit { get; set; }
@@ -27,7 +30,7 @@ namespace Art_House.Domain.Entities
         public virtual Groups Groups { get; set; }
         [ForeignKey("UserId")]
         public virtual User Users { get; set; }
-        public  List<SavePost> SavePosts { get; set; }
+        public List<SavePost> SavePosts { get; set; }
         public List<PostTextVisit> PostTextVisits { get; set; }
         public List<Comment> Comments { get; set; }
         public List<likePost> likePost { get; set; }

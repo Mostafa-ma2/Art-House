@@ -104,7 +104,10 @@ namespace Art_House.Web.Areas.Admin.Controllers
             {
                 if (image.FileName != user.ProfileImg && user.ProfileImg != null)
                 {
-                    _fileManager.DeleteImage(user.ProfileImg, FileManagerType.FileType.ProfileImage);
+                    if (user.ProfileImg != "male-user-profile-picture_318-37825.jpg")
+                    {
+                        _fileManager.DeleteImage(user.ProfileImg, FileManagerType.FileType.ProfileImage);
+                    }
                     model.ProfileImg = await _fileManager.UploadImage(image,
                         FileManagerType.FileType.ProfileImage);
                 }
@@ -173,6 +176,20 @@ namespace Art_House.Web.Areas.Admin.Controllers
                     _db.SavePostRepository.Delete(item);
                 }
                 _db.SaveChange();
+                if (user.ProfileImg != null)
+                {
+                    if (user.ProfileImg != "male-user-profile-picture_318-37825.jpg")
+                    {
+                        _fileManager.DeleteImage(user.ProfileImg, FileManagerType.FileType.ProfileImage);
+                    }
+                }
+                if (user.BackGroundImg != null)
+                {
+                    if (user.BackGroundImg != "download.jpg")
+                    {
+                        _fileManager.DeleteImage(user.BackGroundImg, FileManagerType.FileType.ProfileImage);
+                    }
+                }
                 await _userManager.DeleteAsync(user);
                 _notification.AddSuccessToastMessage($"پلتفرم {user.UserName} با موفقیت حذف شد.");
                 return View(user);

@@ -22,6 +22,7 @@ namespace Art_House.Web.ViewComponents
         {
             var Post =await _db.PostTextRepository.GetAllAsync();
           var posts= Post.Take(4).OrderByDescending(p => p.Visit);
+
             return View("VisitTop", posts);
         }
     }
