@@ -69,6 +69,9 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("ParentID")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PostId")
                         .HasColumnType("nvarchar(450)");
 

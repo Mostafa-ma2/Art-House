@@ -7,16 +7,16 @@ namespace Art_House.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.AddColumn<string>(
-                name: "Image",
-                table: "PostText",
+                name: "ParentID",
+                table: "Comments",
                 nullable: true);
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "Image",
-                table: "PostText");
+                name: "ParentID",
+                table: "Comments");
         }
     }
 }

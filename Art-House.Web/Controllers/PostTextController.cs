@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Art_House.Common.Extensions;
 using Art_House.Common.Filters.ActionFilters;
 using Art_House.Common.ViewModels.PostTexts;
+using Art_House.Common.ViewModels.ReadMore;
 using Art_House.Data.Interfaces;
 using Art_House.Domain.Entities;
 using Art_House.Domain.Enums;
@@ -52,7 +53,7 @@ namespace Art_House.Web.Controllers
         [Authorize]
         public async Task<IActionResult> AddPost(AddPostTextViewModel model, IFormFile image)
         {
-            if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.Name) || string.IsNullOrEmpty(model.postText.ShortText)
+            if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.ShortText)
              || string.IsNullOrEmpty(model.postText.Text))
             {
                 _notification.AddWarningToastMessage("لطفا مقادیر را به درستی پر کنید");
@@ -277,7 +278,66 @@ namespace Art_House.Web.Controllers
                 _db.PostTextRepository.Update(Post);
                 _db.SaveChange();
             }
-            return View(Post);
+            var Comments = _db.CommentRepository.Where(p => p.PostId == Post.Id).OrderByDescending(p=>p.CreatedTime).ToList();
+            var viewModel = new ReadMoreViewModel()
+            {
+                PostText = Post,
+                Comments = Comments
+            };
+            return View(viewModel);
         }
+        
+        //افزودن کامنت
+        [HttpPost]
+        public async Task<IActionResult> AddComment(ReadMoreViewModel model)
+        {
+            if (string.IsNullOrEmpty(model.Comment.text))
+            {
+                _notification.AddWarningToastMessage("لطفا مقادیر را پر کنید");
+                return RedirectToAction("PostText", "ReadMore",model.Comment.PostId);
+            }
+            if (model.Comment.ParentID == null)
+            {
+                var comment = new Comment()
+                {
+                    PostId = model.Comment.PostId,
+                    UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                    text = model.Comment.text,
+                    CreatedTime = DateTime.Now
+                };
+                await _db.CommentRepository.InsertAsync(comment);
+            }
+            else
+            {
+                var comment = new Comment()
+                {
+                    PostId = model.Comment.PostId,
+                    UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value,
+                    text = model.Comment.text,
+                    CreatedTime = DateTime.Now,
+                    ParentID=model.Comment.ParentID
+                };
+                await _db.CommentRepository.InsertAsync(comment);
+            }
+            await _db.SaveChangeAsync();
+            return RedirectToAction("ReadMore", "PostText", model.Comment.PostId);
+        }
+
+
+        //حذف کامنت
+        [HttpGet]
+        public ActionResult DeleteComment(string id)
+        {
+            if (!string.IsNullOrEmpty(id))
+            {
+                var Comment = _db.CommentRepository.GetById(id);
+                _db.CommentRepository.Delete(Comment);
+                _db.SaveChange();
+                return RedirectToAction("ReadMore", "PostText", Comment.PostId);
+            }
+            _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
+            return RedirectToAction("Home", "Index");
+        }
+
     }
 }

@@ -19,6 +19,7 @@ namespace Art_House.Domain.Entities
         public string UserId { get; set; }
         public string PostId { get; set; }
         public string text { get; set; }
+        public string ParentID { get; set; }
         //relations
         [ForeignKey("UserId")]
         public virtual User Users { get; set; }

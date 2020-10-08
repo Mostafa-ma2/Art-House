@@ -790,6 +790,11 @@ main {
             left: 41%;
             top: -17px;
         }
+    main .main .main-text-list .Nazar img {
+        width: 11%;
+        height: 45px;
+        margin-top: 27px;
+    }
 }
 
 @media (max-width: 427px) {

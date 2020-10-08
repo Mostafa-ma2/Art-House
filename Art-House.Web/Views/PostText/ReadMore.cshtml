@@ -1,4 +1,4 @@
-﻿@model Art_House.Domain.Entities.PostText
+﻿@model ReadMoreViewModel
 
 @{
     ViewData["Title"] = "ادامه مطلب";
@@ -8,70 +8,135 @@
 <div class="main-text-list col-md-8 col-sm-12">
     <div class="text-list">
         <div class="top-pro">
-            <img src="~/ProfileImage/@Model.Users.ProfileImg" alt="">
-            <a asp-action="Index" asp-controller="Profile" asp-route-id="@Model.Id" id="name">@Model.Users.UserName</a>
-            @if (User.Identity.Name != Model.Users.UserName && User.Identity.IsAuthenticated)
+            <img src="~/ProfileImage/@Model.PostText.Users.ProfileImg" alt="">
+            <a asp-action="Index" asp-controller="Profile" asp-route-id="@Model.PostText.UserId" id="name">@Model.PostText.Users.UserName</a>
+            @if (User.Identity.Name != Model.PostText.Users.UserName && User.Identity.IsAuthenticated)
             {
                 @if (ViewBag.UserCount == 0)
                 {
-                    <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@Model.Id" id="fallow">ذخیره پست</a>
+                    <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@Model.PostText.Id" id="fallow">ذخیره پست</a>
 
                 }
             }
         </div>
         <div class="Short-Text">
             <div class="img">
-                <img src="~/PostTextImages/@Model.Image" alt="Alternate Text" />
+                <img src="~/PostTextImages/@Model.PostText.Image" alt="Alternate Text" />
             </div>
             <div class="texts">
-                <h2><a asp-controller="Home" asp-action="Search" asp-route-group="@Model.Groups.Name" style="color:white">@Model.Groups.Name</a></h2>
-                <p style="margin-top: 10px;">نام : <span>@Model.Name</span></p>
-                <p>توضیح کوتاه : <span id="shorttexts">@Model.ShortText</span></p>
+                <h2><a asp-controller="Home" asp-action="Search" asp-route-group="@Model.PostText.Groups.Name" style="color:white">@Model.PostText.Groups.Name</a></h2>
+                <p style="margin-top: 10px;">نام : <span>@Model.PostText.Name</span></p>
+                <p>توضیح کوتاه : <span id="shorttexts">@Model.PostText.ShortText</span></p>
                 <div style="display:flex">
-                    <p>تاریخ ثبت : <span>@Model.CreatedTime.ToPersianDateString()</span></p>
-                    <p>بازدید : <span>@Model.Visit</span></p>
+                    <p>تاریخ ثبت : <span>@Model.PostText.CreatedTime.ToPersianDateString()</span></p>
+                    <p>بازدید : <span>@Model.PostText.Visit</span></p>
                 </div>
             </div>
 
         </div>
     </div>
     <div class="Text">
-        @Html.Raw(Model.Text)
+        @Html.Raw(Model.PostText.Text)
     </div>
     <div class="Comment" style="margin-top: 10px;background:white;border-radius: 3px;">
-        <div class="AddComment" style="padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;">
-            <div class="form-group">
-                <label class="control-label padding-10">نظر خود را بنویسید :</label>
-                <input type="text" id="input-file-now" style="border: 1px solid #1b1be1a6;" name="" class="form-control" />
+        @if (User.Identity.IsAuthenticated && User.Identity.Name != Model.PostText.Users.UserName)
+        {
+            <form action="/PostText/AddComment" method="post">
+                <div class="AddComment" style="padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;">
+                    <input type="hidden" name="Comment.PostId" value="@Model.PostText.Id" />
+                    <input type="hidden" id="GetCommentID" name="Comment.ParentID" value="" />
+                    <div class="form-group">
+                        <label id="Lable" class="control-label padding-10">نظر خود را بنویسید :</label>
+                        <input type="text" id="input-file-now" style="border: 1px solid #1b1be1a6;" asp-for="Comment.text" class="form-control" />
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="btn btn-success" style="width:100%" name="name" value="افزودن کامنت" />
+                        <a onclick="Cancel(this)" id="cancel" class="btn btn-danger" style="width:100%;cursor:pointer;display:none">برگشت</a>
+
+                    </div>
+                </div>
+            </form>
+        }
+        else
+        {
+            <p style=" text-align: center; padding: 20px; background: #1b1be1a6; color: white;">
+                لطفا برای نوشتن توضیح وارد <a asp-action="Login" asp-controller="Account">اکانت</a> خود شوید
+            </p>
+        }
+        @if (!Model.Comments.Any())
+        {
+
+        }
+        else
+        {
+            <div id="comments">
+                @foreach (var item in Model.Comments.Where(p=>p.ParentID==null))
+                {
+                    <div class="Nazar" id="@item.Id">
+                        <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
+                        <i class="fa fa-user"></i>
+                        <h1 style="cursor:pointer" asp-action="Index" asp-controller="Profile" asp-route-id="@item.Users.Id" >@item.Users.UserName</h1>
+                        <div class="text">
+                            @item.text
+                            @foreach (var items in Model.Comments.Where(p => p.ParentID == item.Id))
+                            {
+                                <div class="Nazar" style=" padding-top: 0; padding-left: 0; padding-right: 0;" id="@items.Id">
+                                    <h1 style="margin-top: 29px;cursor: pointer;color: #1b1be1a6" asp-action="Index" asp-controller="Profile" asp-route-id="@items.Users.Id">@items.Users.UserName</h1>
+                                    <div class="text">
+                                        @items.text
+                                    </div>
+                                </div>
+                                @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin"))
+                                {
+                                    <a asp-action="DeleteComment" asp-route-id="@items.Id" style="padding-left: 28px; margin-top: -23px; padding-right: 28px;" class="btn btn-danger">حذف</a>
+                                }
+                            }
+                        </div>
+                    </div>
+                    <div class="Inputs">
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <a onclick="AddText(this)" style="padding-left: 28px; margin-top: -23px;
+                          padding-right: 28px;cursor: pointer" class="btn btn-success" attr="@item.Id">پاسخ</a>
+                            @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin"))
+                            {
+                                <a asp-action="DeleteComment" asp-route-id="@item.Id" style="padding-left: 28px; margin-top: -23px; padding-right: 28px;" class="btn btn-danger">حذف</a>
+                            }
+                        }
+                    </div>
+                }
             </div>
-            <div class="form-group">
-                <input type="submit" class="btn btn-success" style="width:100%" name="name" value="افزودن کامنت" />
-            </div>
-        </div>
-        <div class="Nazar">
-            <img src="Image/scalebound_game-2560x1440.jpg" alt="">
-            <i class="fa fa-user"></i>
-            <h1>Alireza</h1>
-            <div class="text">
-                سلام من کاملا راضی هستم از کالا
-            </div>
-        </div>
-        <div class="Nazar">
-            <img src="Image/scalebound_game-2560x1440.jpg" alt="">
-            <i class="fa fa-user"></i>
-            <h1>Alireza</h1>
-            <div class="text">
-                سلام من کاملا راضی هستم از کالا
-            </div>
-        </div>
-        <div class="Nazar">
-            <img src="Image/scalebound_game-2560x1440.jpg" alt="">
-            <i class="fa fa-user"></i>
-            <h1>Alireza</h1>
-            <div class="text">
-                سلام من کاملا راضی هستم از کالا
-            </div>
-        </div>
+        }
     </div>
 </div>
+@section Scripts{
+    <script type="text/javascript">
+        //function AddUserConnection(obj) {
+        //    var attr = obj.getAttribute("attr");
+        //    $.ajax({
+        //        type: "Post",
+        //        url: "/Account/AddCommunicationWithUsers",
+        //        data: { id: attr },
+        //        success: function (result) {
+        //            obj.remove();
+        //        }
+        //    });
+        //}
+        function AddText(obj) {
+            debugger;
+            var attr = obj.getAttribute("attr");
+            var coommentId = document.getElementById("GetCommentID");
+            coommentId.value = attr;
+            var Get = document.getElementById("comments").style.display = "none";
+            var Get = document.getElementById("Lable").innerHTML = "پاسخ خود را بنویسید";
+            var Get = document.getElementById("cancel").style.display = "block";
+
+        }
+        function Cancel(obj) {
+            var Get = document.getElementById("comments").style.display = "block";
+            var Get = document.getElementById("Lable").innerHTML = "نظر خود را بنویسید :";
+            obj.style.display = "none";
+        }
+    </script>
+}
 
