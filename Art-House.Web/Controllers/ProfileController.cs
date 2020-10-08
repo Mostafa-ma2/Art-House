@@ -171,7 +171,7 @@ namespace Art_House.Web.Controllers
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             await _userManager.UpdateAsync(user);
-            return RedirectToAction("Index","Profile",user.Id);
+            return RedirectToAction("Index", "Profile", new { id = user.Id });
         }
 
     }

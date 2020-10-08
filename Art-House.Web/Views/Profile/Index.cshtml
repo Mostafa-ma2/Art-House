@@ -51,7 +51,7 @@
     </div>
 </div>
 <div class="head-maiin">
-    <div class="list-active" attr="posts">
+    <div class="list-active" onclick="GetClass(this)" attr="posts">
         <h2>
             پست ها
         </h2>
@@ -68,16 +68,16 @@
         }*@
     @if (User.Identity.Name == Model.UserName || User.IsInRole("Admin"))
     {
-        <div class="list" attr="Save-Post">
+        <div class="list" onclick="GetClass(this)" attr="Save-Post">
             <h2>
                 ذخیره شده ها
             </h2>
             <i class="fa fa-caret-up"></i>
         </div>
     }
-    <div class="list" attr="Bio">
+    <div class="list" onclick="GetClass(this)" attr="Bio">
         <h2>
-            درباره
+            درباره من
         </h2>
         <i class="fa fa-caret-up"></i>
     </div>
@@ -93,7 +93,7 @@
         </div>
     }
 </div>
-<div class="posts" style="width:100%">
+<div class="posts-active" id="Post" style="width:100%">
     @if (Model.PostTexts.Any())
     {
         @foreach (var item in Model.PostTexts)
@@ -163,7 +163,7 @@
         }
 
     </div>*@
-<div class="Bio">
+<div class="Bio" id="Post">
     <div class="Bio-me">
         <h2>درباره من :</h2>
         <br />
@@ -172,7 +172,7 @@
         </p>
     </div>
 </div>
-<div class="Save-Post" style="width:100%">
+<div class="Save-Post" id="Post" style="width:100%">
     @if (Model.PostTexts.Any())
     {
         @foreach (var item in Model.SavePosts)

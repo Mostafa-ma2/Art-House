@@ -22,7 +22,10 @@
                 }
             </div>
             <div class="main-text">
-                <h1 class="text-center" style="margin-top:10px">نام : <span>@item.Name</span></h1>
+                @if (item.Groups.Name != "دلنوشته"&& item.Groups.Name != "متن سنگین")
+                {
+                    <h1 class="text-center" style="margin-top:10px">نام : <span>@item.Name</span></h1>
+                }
                 @if (item.Image != null)
                 {
                     <img src="~/PostTextImages/@item.Image" alt="">

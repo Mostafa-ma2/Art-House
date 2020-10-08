@@ -21,7 +21,7 @@ namespace Art_House.Domain.Entities
         public bool IsDeleted { get; set; }
         //relations
         public virtual IEnumerable<userAnswer> UserAnswers { get; set; }
-        public virtual IEnumerable<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
         public virtual IEnumerable<likePost> LikePosts { get; set; }
         public List<SavePost> SavePosts { get; set; }
         public List<PostText> PostTexts { get; set; }

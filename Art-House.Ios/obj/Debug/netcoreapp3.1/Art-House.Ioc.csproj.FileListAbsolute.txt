@@ -1,6 +1,5 @@
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\bin\Debug\netcoreapp3.1\Art-House.Ioc.deps.json
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\bin\Debug\netcoreapp3.1\Art-House.Ioc.dll
-C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.csprojAssemblyReference.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.AssemblyInfoInputs.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.AssemblyInfo.cs
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\bin\Debug\netcoreapp3.1\Art-House.Ioc.pdb

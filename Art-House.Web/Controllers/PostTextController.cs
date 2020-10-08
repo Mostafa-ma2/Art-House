@@ -279,6 +279,13 @@ namespace Art_House.Web.Controllers
                 _db.SaveChange();
             }
             var Comments = _db.CommentRepository.Where(p => p.PostId == Post.Id).OrderByDescending(p=>p.CreatedTime).ToList();
+            if (Comments != null)
+            {
+                foreach(var item in Comments)
+                {
+                    item.Users =await _db.UserRepository.GetByIdAsync(item.UserId);
+                }
+            }
             var viewModel = new ReadMoreViewModel()
             {
                 PostText = Post,
@@ -320,7 +327,7 @@ namespace Art_House.Web.Controllers
                 await _db.CommentRepository.InsertAsync(comment);
             }
             await _db.SaveChangeAsync();
-            return RedirectToAction("ReadMore", "PostText", model.Comment.PostId);
+            return RedirectToAction("ReadMore", "PostText", new { id=model.Comment.PostId });
         }
 
 
@@ -331,9 +338,17 @@ namespace Art_House.Web.Controllers
             if (!string.IsNullOrEmpty(id))
             {
                 var Comment = _db.CommentRepository.GetById(id);
+                var commentParentId = _db.CommentRepository.Where(p => p.ParentID == Comment.Id).ToList();
+                if (Comment.ParentID == null)
+                {
+                    foreach(var item in commentParentId)
+                    {
+                        _db.CommentRepository.Delete(item);
+                    }
+                }
                 _db.CommentRepository.Delete(Comment);
                 _db.SaveChange();
-                return RedirectToAction("ReadMore", "PostText", Comment.PostId);
+                return RedirectToAction("ReadMore", "PostText", new { id = Comment.PostId });
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return RedirectToAction("Home", "Index");

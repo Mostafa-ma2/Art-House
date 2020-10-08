@@ -403,12 +403,16 @@ main {
     /* ======================================= post */
 
     main .posts {
+        display: none;
+    }
+
+    main .posts-active {
         margin-top: 14px;
         display: inline-table;
         margin-bottom: 10px;
     }
 
-        main .posts .post-list {
+        main .posts-active .post-list {
             background: white;
             width: 359px;
             display: inline-block;
@@ -418,37 +422,37 @@ main {
             margin-bottom: 10px;
         }
 
-            main .posts .post-list img {
+            main .posts-active .post-list img {
                 width: 100%;
                 height: 201px;
                 padding: 3px;
                 border-radius: 5px;
             }
 
-            main .posts .post-list .post-info {
+            main .posts-active .post-list .post-info {
                 display: flex;
             }
 
-                main .posts .post-list .post-info span {
+                main .posts-active .post-list .post-info span {
                     color: black;
                 }
 
-                main .posts .post-list .post-info p {
+                main .posts-active .post-list .post-info p {
                     margin-left: 13px;
                     color: #1b1be1a6;
                     margin-bottom: 12px;
                 }
 
-            main .posts .post-list .text {
+            main .posts-active .post-list .text {
                 padding-bottom: 10px;
                 border-bottom: 1px solid;
             }
 
-            main .posts .post-list .footer {
+            main .posts-active .post-list .footer {
                 display: flex;
             }
 
-                main .posts .post-list .footer .left #update {
+                main .posts-active .post-list .footer .left #update {
                     border: 1px solid;
                     padding-left: 15px;
                     padding-right: 15px;
@@ -461,20 +465,25 @@ main {
                     border-radius: 4px;
                 }
 
-    main .Bio .Bio-me {
+    main .Bio {
+        display: none;
+    }
+
+    main .Bio-active .Bio-me {
         margin-top: 15px;
         background: white;
         padding: 16px;
         border-radius: 5px;
+        margin-bottom: 21px;
     }
 
-    main .posts .post-list .footer .left #update:hover {
+    main .posts-active .post-list .footer .left #update:hover {
         background: white;
         color: #179b17e8;
         border: 1px solid #179b17e8;
     }
 
-    main .posts .post-list .footer .left #delete {
+    main .posts-active .post-list .footer .left #delete {
         border: 1px solid;
         padding-left: 15px;
         padding-right: 15px;
@@ -488,20 +497,20 @@ main {
         border-radius: 4px;
     }
 
-        main .posts .post-list .footer .left #delete:hover {
+        main .posts-active .post-list .footer .left #delete:hover {
             background: white;
             color: #f90404c4;
             border: 1px solid #f90404c4;
         }
 
-    main .posts .post-list .footer .right {
+    main .posts-active .post-list .footer .right {
         left: 14px;
         width: 100%;
         margin-top: 8px;
         text-align: end;
     }
 
-        main .posts .post-list .footer .right a {
+        main .posts-active .post-list .footer .right a {
             border: 1px solid;
             padding-left: 15px;
             padding-right: 15px;
@@ -510,19 +519,19 @@ main {
             border-radius: 4px;
         }
 
-            main .posts .post-list .footer .right a:hover {
+            main .posts-active .post-list .footer .right a:hover {
                 background: white;
                 color: #1b1be1a6;
                 border: 1px solid #1b1be1a6;
             }
 
-    main .Save-Post .post-list .footer .left #update:hover {
+    main .Save-Post-active .post-list .footer .left #update:hover {
         background: white;
         color: #179b17e8;
         border: 1px solid #179b17e8;
     }
 
-    main .Save-Post .post-list .footer .left #delete {
+    main .Save-Post-active .post-list .footer .left #delete {
         border: 1px solid;
         padding-left: 15px;
         padding-right: 15px;
@@ -536,20 +545,20 @@ main {
         border-radius: 4px;
     }
 
-        main .Save-Post .post-list .footer .left #delete:hover {
+        main .Save-Post-active .post-list .footer .left #delete:hover {
             background: white;
             color: #f90404c4;
             border: 1px solid #f90404c4;
         }
 
-    main .Save-Post .post-list .footer .right {
+    main .Save-Post-active .post-list .footer .right {
         left: 14px;
         width: 100%;
         margin-top: 8px;
         text-align: end;
     }
 
-        main .Save-Post .post-list .footer .right a {
+        main .Save-Post-active .post-list .footer .right a {
             border: 1px solid;
             padding-left: 15px;
             padding-right: 15px;
@@ -558,19 +567,23 @@ main {
             border-radius: 4px;
         }
 
-            main .Save-Post .post-list .footer .right a:hover {
+            main .Save-Post-active .post-list .footer .right a:hover {
                 background: white;
                 color: #1b1be1a6;
                 border: 1px solid #1b1be1a6;
             }
 
     main .Save-Post {
+        display: none;
+    }
+
+    main .Save-Post-active {
         margin-top: 14px;
         display: inline-table;
         margin-bottom: 10px;
     }
 
-        main .Save-Post .post-list {
+        main .Save-Post-active .post-list {
             background: white;
             width: 359px;
             display: inline-block;
@@ -580,37 +593,37 @@ main {
             margin-bottom: 10px;
         }
 
-            main .Save-Post .post-list img {
+            main .Save-Post-active .post-list img {
                 width: 100%;
                 height: 201px;
                 padding: 3px;
                 border-radius: 5px;
             }
 
-            main .Save-Post .post-list .post-info {
+            main .Save-Post-active .post-list .post-info {
                 display: flex;
             }
 
-                main .Save-Post .post-list .post-info span {
+                main .Save-Post-active .post-list .post-info span {
                     color: black;
                 }
 
-                main .Save-Post .post-list .post-info p {
+                main .Save-Post-active .post-list .post-info p {
                     margin-left: 13px;
                     color: #1b1be1a6;
                     margin-bottom: 12px;
                 }
 
-            main .Save-Post .post-list .text {
+            main .Save-Post-active .post-list .text {
                 padding-bottom: 10px;
                 border-bottom: 1px solid;
             }
 
-            main .Save-Post .post-list .footer {
+            main .Save-Post-active.post-list .footer {
                 display: flex;
             }
 
-                main .Save-Post .post-list .footer .left #update {
+                main .Save-Post-active .post-list .footer .left #update {
                     border: 1px solid;
                     padding-left: 15px;
                     padding-right: 15px;

@@ -50,6 +50,9 @@
                         </span>
                     </a>
                 </div>
+                <ul class="nav navbar-top-links navbar-left">
+                    <li><a href="javascript:void(0)" class="open-close waves-effect waves-light visible-xs"><i class="ti-close ti-menu"></i></a></li>
+                </ul>
                 <!-- /Logo -->
                 <!-- Search input and Toggle icon -->
                 <ul class="nav navbar-top-links navbar-right pull-right">
@@ -86,7 +89,7 @@
                     </li>
                     <li>
                         <a href="/Admin/Group" class="waves-effect ">
-                            <i class="mdi mdi-human-greeting fa-fw" data-icon="v"></i>
+                            <i class="fa fa-book" data-icon="v"></i>
                             <span class="hide-menu">
                                 مدیریت گروه ها
                             </span>
@@ -101,8 +104,8 @@
                         </a>
                     </li>
                     <li>
-                        <a asp-area="Admin" asp-controller="Comment" asp-action="Index" class="waves-effect">
-                            <i class="mdi mdi-human-greeting fa-fw" data-icon="v"></i>
+                        <a href="/Admin/Comment"class="waves-effect">
+                            <i class="fa fa-comment-o" data-icon="v"></i>
                             <span class="hide-menu">
                                 مدیریت کامنت ها
                             </span>
@@ -110,7 +113,7 @@
                     </li>
                     <li>
                         <a href="/Admin/Post" class="waves-effect">
-                            <i class="mdi mdi-human-greeting fa-fw" data-icon="v"></i>
+                            <i class="fa fa-archive" data-icon="v"></i>
                             <span class="hide-menu">
                                 مدیریت پست ها
                             </span>
@@ -118,21 +121,13 @@
                     </li>
                     <li class="divider"></li>
                     <li>
-                        <a asp-area="Admin" asp-controller="Settings" asp-action="Index" class="waves-effect">
-                            <i class="mdi mdi-settings-box fa-fw" data-icon="v"></i>
-                            <span class="hide-menu">
-                                تنظیمات
-                            </span>
-                        </a>
-                    </li>
-                    <li>
                         <a href="/home/index" class="waves-effect">
                             <i class="mdi mdi-flip-to-back fa-fw"></i>
                             <span class="hide-menu">بازگشت به سایت</span>
                         </a>
                     </li>
                     <li>
-                        <a asp-action="LogOut" asp-area="" asp-controller="Account" class="waves-effect">
+                        <a asp-action="LogOut" asp-controller="Account" class="waves-effect">
                             <i class="mdi mdi-logout fa-fw"></i>
                             <span class="hide-menu">خروج</span>
                         </a>

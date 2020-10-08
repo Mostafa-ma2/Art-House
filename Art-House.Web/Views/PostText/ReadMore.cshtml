@@ -25,7 +25,10 @@
             </div>
             <div class="texts">
                 <h2><a asp-controller="Home" asp-action="Search" asp-route-group="@Model.PostText.Groups.Name" style="color:white">@Model.PostText.Groups.Name</a></h2>
-                <p style="margin-top: 10px;">نام : <span>@Model.PostText.Name</span></p>
+                @if (Model.PostText.Groups.Name != "دلنوشته" && Model.PostText.Groups.Name != "متن سنگین")
+                {
+                    <p style="margin-top: 10px;">نام : <span>@Model.PostText.Name</span></p>
+                }
                 <p>توضیح کوتاه : <span id="shorttexts">@Model.PostText.ShortText</span></p>
                 <div style="display:flex">
                     <p>تاریخ ثبت : <span>@Model.PostText.CreatedTime.ToPersianDateString()</span></p>
@@ -39,23 +42,30 @@
         @Html.Raw(Model.PostText.Text)
     </div>
     <div class="Comment" style="margin-top: 10px;background:white;border-radius: 3px;">
-        @if (User.Identity.IsAuthenticated && User.Identity.Name != Model.PostText.Users.UserName)
+        @if (User.Identity.IsAuthenticated)
         {
-            <form action="/PostText/AddComment" method="post">
-                <div class="AddComment" style="padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;">
-                    <input type="hidden" name="Comment.PostId" value="@Model.PostText.Id" />
-                    <input type="hidden" id="GetCommentID" name="Comment.ParentID" value="" />
-                    <div class="form-group">
-                        <label id="Lable" class="control-label padding-10">نظر خود را بنویسید :</label>
-                        <input type="text" id="input-file-now" style="border: 1px solid #1b1be1a6;" asp-for="Comment.text" class="form-control" />
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="btn btn-success" style="width:100%" name="name" value="افزودن کامنت" />
-                        <a onclick="Cancel(this)" id="cancel" class="btn btn-danger" style="width:100%;cursor:pointer;display:none">برگشت</a>
+            if (User.Identity.Name != Model.PostText.Users.UserName)
+            {
+                <form action="/PostText/AddComment" method="post">
+                    <div class="AddComment" style="padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;">
+                        <input type="hidden" name="Comment.PostId" value="@Model.PostText.Id" />
+                        <input type="hidden" id="GetCommentID" name="Comment.ParentID" value="" />
+                        <div class="form-group">
+                            <label id="Lable" class="control-label padding-10">نظر خود را بنویسید :</label>
+                            <input type="text" id="input-file-now" style="border: 1px solid #1b1be1a6;" asp-for="Comment.text" class="form-control" />
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="btn btn-success" style="width:100%" name="name" value="افزودن کامنت" />
+                            <a onclick="Cancel(this)" id="cancel" class="btn btn-danger" style="width:100%;cursor:pointer;display:none">برگشت</a>
 
+                        </div>
                     </div>
-                </div>
-            </form>
+                </form>
+            }
+            else
+            {
+
+            }
         }
         else
         {
@@ -70,12 +80,12 @@
         else
         {
             <div id="comments">
-                @foreach (var item in Model.Comments.Where(p=>p.ParentID==null))
+                @foreach (var item in Model.Comments.Where(p => p.ParentID == null))
                 {
                     <div class="Nazar" id="@item.Id">
                         <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
                         <i class="fa fa-user"></i>
-                        <h1 style="cursor:pointer" asp-action="Index" asp-controller="Profile" asp-route-id="@item.Users.Id" >@item.Users.UserName</h1>
+                        <h1 style="cursor:pointer" asp-action="Index" asp-controller="Profile" asp-route-id="@item.Users.Id">@item.Users.UserName</h1>
                         <div class="text">
                             @item.text
                             @foreach (var items in Model.Comments.Where(p => p.ParentID == item.Id))
@@ -137,6 +147,7 @@
             var Get = document.getElementById("Lable").innerHTML = "نظر خود را بنویسید :";
             obj.style.display = "none";
         }
+       
     </script>
 }
 

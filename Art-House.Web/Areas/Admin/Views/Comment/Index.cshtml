@@ -1,0 +1,115 @@
+﻿@model List<Comment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">مدیریت پست ها</div>
+            <div class="table-responsive">
+                <table class="table table-hover manage-u-table">
+                    <thead>
+                        <tr>
+                            <th width="70" class="text-center">تصویر</th>
+                            <th>نام کاربر</th>
+                            <th>پست</th>
+                            <th>متن</th>
+                            <th>وضعیت</th>
+                            <th width="300">مدیریت کردن</th>
+                        </tr>
+                    </thead>
+                    <tbody id="group-list">
+                        @foreach (var item in Model)
+                        {
+                            <tr id="@item.Id">
+                                <td class="text-center"><img src="~/ProfileImage/@item.Users.ProfileImg" width="105" height="105" alt="Alternate Text" /></td>
+                                <td id="Name-@item.Id">
+                                    @item.Users.UserName
+                                </td>
+                                <td>
+                                    @item.PostTexts.Name
+                                </td>
+                                <td>
+                                    @item.text
+                                </td>
+                                <td id="isActive-@item.IsDeleted ">
+                                    @if (item.IsDeleted == false)
+                                    {
+                                        <label>حذف نشده</label>
+                                    }
+                                    else
+                                    {
+                                        <label>حذف شده</label>
+                                    }
+                                </td>
+                                <td>
+                                    <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                        <i class="ti-trash"></i>
+                                    </button>
+                                    <a type="button" href="/PostText/ReadMore/@item.Id" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                        <i class="ti-pencil-alt"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- delete Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="DeleteID" name="name" value="" />
+            <label id="lal">
+
+            </label>
+
+            <br />
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelete">حذف</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //حذف
+            $("#btnDelete").click(function (e) {
+                e.preventDefault();
+                var id = $("#DeleteID").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/Admin/Comment/DeleteComment",
+                    data: { ID: id },
+                    success: function (result) {
+                        $("#exampleModal3").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            $("tr#" + result.id).remove();
+                        }
+                    }
+
+                })
+            })
+        });
+        function OpenDeleteModel(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Comment/GetCommentById",
+                data: { id: attr },
+                success: function (result) {
+                    if (result != null) {
+                        $("#exampleModal3").modal("show");
+                        $("#DeleteID").val(result.id);
+                        document.getElementById("lal").innerHTML = ' ایا از حذف ان اطمینان دارید؟';
+                    }
+                }
+            });
+        }
+    </script>
+}
