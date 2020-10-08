@@ -6,3 +6,4 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain.Core\obj\Debug\
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain.Core\obj\Debug\netcoreapp3.1\Art-House.Domain.Core.csproj.CoreCompileInputs.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain.Core\obj\Debug\netcoreapp3.1\Art-House.Domain.Core.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain.Core\obj\Debug\netcoreapp3.1\Art-House.Domain.Core.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain.Core\obj\Debug\netcoreapp3.1\Art-House.Domain.Core.csprojAssemblyReference.cache

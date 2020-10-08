@@ -267,7 +267,6 @@
                     url: "/PostText/DeletePostText",
                     data: { ID: id },
                     success: function (result) {
-                        debugger;
                         $("#exampleModal").modal("hide");
                         if (result != null) {
                             $("#Post-" + result.id).remove();
@@ -304,7 +303,6 @@
                     success: function (result) {
                         $("#exampleModal3").modal("hide");
                         if (result != null) {
-                            debugger;
                             $("#SavePost-" + result.id).remove();
                         }
                     }
@@ -367,7 +365,6 @@
                 success: function (result) {
                     $("#exampleModal3").modal("show");
                     if (result != null) {
-                        debugger;
                         $("#DeleteSavePostID").val(result.id);
                         document.getElementById("lale").innerHTML = 'ایا از حذف این پست سیو شده اطمینان دارید؟';
                     }

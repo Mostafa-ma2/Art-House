@@ -64,7 +64,7 @@
 
                 }
                 <li class="page-item">
-                    @if (ViewBag.PageID != ViewBag.CountPage)
+                    @if (ViewBag.PageID < ViewBag.CountPage)
                     {
                         var c = ViewBag.PageID + 1;
                         <a class="page-link" href="/Home/Index?pageid=@c" aria-label="Previous">

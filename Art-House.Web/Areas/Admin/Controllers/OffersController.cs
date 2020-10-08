@@ -12,14 +12,14 @@ namespace Art_House.Web.Areas.Admin.Controllers
 {
     [Area("Admin")]
     [Authorize(Roles = "Admin")]
-    public class CommentController : Controller
+    public class OffersController : Controller
     {
-        //مدیریت کامنت ها
+        //بخش ارتباط با کاربران
         #region ctor
 
         private readonly IUnitOfWork _db;
         private readonly IToastNotification _notification;
-        public CommentController(IUnitOfWork db, IToastNotification notification)
+        public OffersController(IUnitOfWork db, IToastNotification notification)
         {
             _db = db;
             _notification = notification;
@@ -30,48 +30,39 @@ namespace Art_House.Web.Areas.Admin.Controllers
         [HttpGet]
         public async Task<IActionResult> Index()
         {
-            var GetAll = await _db.CommentRepository.GetAllAsync();
-            return View(GetAll);
+            var getAll =(await _db.OffersRepository.GetAllAsync());
+            return View(getAll);
         }
 
         //گرفتن ایدی 
         [AjaxOnly]
         [HttpPost]
-        public async Task<IActionResult> GetCommentById(string id)
+        public async Task<IActionResult> GetOffersById(string id)
         {
             if (string.IsNullOrEmpty(id))
             {
-                _notification.AddWarningToastMessage("کامنت مورد نطر یافت نشد دوباره امتحان کنید");
+                _notification.AddWarningToastMessage("پیشنهاد مورد نطر یافت نشد دوباره امتحان کنید");
                 return RedirectToAction("Index");
             }
-            var comment = await _db.CommentRepository.GetByIdAsync(id);
-            return Json(comment);
+            var offers = await _db.OffersRepository.GetByIdAsync(id);
+            return Json(offers);
         }
 
         //حذف پست
         [AjaxOnly]
         [HttpPost]
-        public ActionResult DeleteComment(string id)
+        public ActionResult DeleteOffers(string id)
         {
             if (!string.IsNullOrEmpty(id))
             {
-                var comment = _db.CommentRepository.GetById(id);
-                var commentParentId = _db.CommentRepository.Where(p => p.ParentID == comment.Id).ToList();
-                if (comment.ParentID == null)
-                {
-                    foreach (var item in commentParentId)
-                    {
-                        _db.CommentRepository.Delete(item);
-                    }
-                }
-                _db.CommentRepository.Delete(comment);
+                var offers = _db.OffersRepository.GetById(id);
+                _db.OffersRepository.Delete(offers);
                 _db.SaveChange();
-                return Json(comment);
+                return Json(offers);
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return Json(null);
         }
-
 
     }
 }

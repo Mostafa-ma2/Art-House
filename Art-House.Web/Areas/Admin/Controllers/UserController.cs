@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Art_House.Common.Filters.ActionFilters;
 using Art_House.Common.ViewModels.Users;
+using Art_House.Data.Interfaces;
 using Art_House.Domain.Entities;
 using Art_House.Domain.Enums;
 using Art_House.Services.Interfaces;
@@ -23,14 +24,16 @@ namespace Art_House.Web.Areas.Admin.Controllers
     {
         //مدیریت کاربران
         #region ctor
+        private readonly IUnitOfWork _db;
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IToastNotification _notification;
         private readonly IFileManager _fileManager;
 
-        public UserController(UserManager<User> userManager, SignInManager<User> signInManager, IToastNotification notification,
-             IWebHostEnvironment webHostEnvironment)
+        public UserController(IUnitOfWork db, UserManager<User> userManager, SignInManager<User> signInManager,
+            IToastNotification notification, IWebHostEnvironment webHostEnvironment)
         {
+            _db = db;
             _userManager = userManager;
             _signInManager = signInManager;
             _notification = notification;
@@ -65,9 +68,9 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 FirstName = user.FirstName,
                 LastName = user.LastName,
                 UserName = user.UserName,
-                PhoonNumber=user.PhoneNumber,
-                ProfileImg=user.ProfileImg,
-                Bio=user.Bio,
+                PhoonNumber = user.PhoneNumber,
+                ProfileImg = user.ProfileImg,
+                Bio = user.Bio,
                 userId = user.Id
             };
             return View(User);
@@ -134,19 +137,48 @@ namespace Art_House.Web.Areas.Admin.Controllers
             return Json(null);
         }
 
-        [HttpPost]
-        [AjaxOnly]
+        [HttpGet]
         public async Task<IActionResult> DeleteUser(string id)
         {
             if (!string.IsNullOrEmpty(id))
             {
                 var user = await _userManager.FindByIdAsync(id);
+                var userInUser = _db.UserInUserRepository.Where(p => p.UserId == user.Id).ToList();
+                foreach (var item in userInUser)
+                {
+                    _db.UserInUserRepository.Delete(item);
+                }
+                var postText = _db.PostTextRepository.Where(p => p.UserId == user.Id).ToList();
+                foreach (var item in postText)
+                {
+                    if (item.Image != null)
+                    {
+                        _fileManager.DeleteImage(item.Image, FileManagerType.FileType.PostTextImages);
+                    }
+                    var GetSavePost = _db.SavePostRepository.Where(p => p.PostTextId == item.Id).ToList();
+                    foreach (var iten in GetSavePost)
+                    {
+                        _db.SavePostRepository.Delete(iten);
+                    }
+                    var GetPostVisit = _db.PostTextVisitRepository.Where(p => p.PostId == item.Id).ToList();
+                    foreach (var iten in GetPostVisit)
+                    {
+                        _db.PostTextVisitRepository.Delete(iten);
+                    }
+                    _db.PostTextRepository.Delete(item);
+                }
+               var savePost= _db.SavePostRepository.Where(p => p.UserId == user.Id).ToList();
+                foreach(var item in savePost)
+                {
+                    _db.SavePostRepository.Delete(item);
+                }
+                _db.SaveChange();
                 await _userManager.DeleteAsync(user);
                 _notification.AddSuccessToastMessage($"پلتفرم {user.UserName} با موفقیت حذف شد.");
-                return Json(user);
+                return View(user);
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
-            return Json(null);
+            return View(null);
         }
 
         [HttpGet]

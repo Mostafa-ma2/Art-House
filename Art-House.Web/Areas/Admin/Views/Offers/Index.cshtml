@@ -1,5 +1,4 @@
-﻿@model List<Comment>
-
+﻿@model IEnumerable<Offers>
 @{
     ViewData["Title"] = "Index";
 }
@@ -7,16 +6,14 @@
 <div class="row" style="margin-top:10px">
     <div class="col-md-12">
         <div class="panel">
-            <div class="panel-heading">مدیریت کامنت ها</div>
+            <div class="panel-heading">مدیریت پیشنهادات </div>
             <div class="table-responsive">
                 <table class="table table-hover manage-u-table">
                     <thead>
                         <tr>
-                            <th width="70" class="text-center">تصویر</th>
-                            <th>نام کاربر</th>
-                            <th>پست</th>
+                            <th width="70" class="text-center">#</th>
+                            <th>نام</th>
                             <th>متن</th>
-                            <th>وضعیت</th>
                             <th width="300">مدیریت کردن</th>
                         </tr>
                     </thead>
@@ -24,33 +21,19 @@
                         @foreach (var item in Model)
                         {
                             <tr id="@item.Id">
-                                <td class="text-center"><img src="~/ProfileImage/@item.Users.ProfileImg" width="105" height="105" alt="Alternate Text" /></td>
+                                <td class="text-center">@item.Id</td>
                                 <td id="Name-@item.Id">
                                     @item.Users.UserName
                                 </td>
-                                <td>
-                                    @item.PostTexts.Name
-                                </td>
-                                <td>
-                                    @item.text
-                                </td>
                                 <td id="isActive-@item.IsDeleted ">
-                                    @if (item.IsDeleted == false)
-                                    {
-                                        <label>حذف نشده</label>
-                                    }
-                                    else
-                                    {
-                                        <label>حذف شده</label>
-                                    }
+                                    <p style="word-break:break-word">
+                                        @item.OffersText
+                                    </p>
                                 </td>
                                 <td>
                                     <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
                                         <i class="ti-trash"></i>
                                     </button>
-                                    <a type="button" href="/PostText/ReadMore/@item.Id" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
-                                        <i class="ti-pencil-alt"></i>
-                                    </a>
                                 </td>
                             </tr>
                         }
@@ -83,7 +66,7 @@
                 var id = $("#DeleteID").val();
                 $.ajax({
                     type: "Post",
-                    url: "/Admin/Comment/DeleteComment",
+                    url: "/Admin/Offers/DeleteOffers",
                     data: { ID: id },
                     success: function (result) {
                         $("#exampleModal3").modal("hide");
@@ -100,7 +83,7 @@
             var attr = obj.getAttribute("attr");
             $.ajax({
                 type: "Post",
-                url: "/Admin/Comment/GetCommentById",
+                url: "/Admin/Offers/GetOffersById",
                 data: { id: attr },
                 success: function (result) {
                     if (result != null) {

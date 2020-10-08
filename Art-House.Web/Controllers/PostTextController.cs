@@ -240,6 +240,7 @@ namespace Art_House.Web.Controllers
                 var SavePost = _db.SavePostRepository.GetById(id);
                 _db.SavePostRepository.Delete(SavePost);
                 _db.SaveChange();
+                _notification.AddSuccessToastMessage("با موفقیت سیو شد");
                 return Json(SavePost);
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
@@ -327,6 +328,7 @@ namespace Art_House.Web.Controllers
                 await _db.CommentRepository.InsertAsync(comment);
             }
             await _db.SaveChangeAsync();
+            _notification.AddSuccessToastMessage("نظر شما ثبت شد");
             return RedirectToAction("ReadMore", "PostText", new { id=model.Comment.PostId });
         }
 

@@ -13,7 +13,7 @@
         <a href="#">ارتباط باما</a>
     </div>
     <div class="main-navbar-list">
-        <a href="#">پیشنهاد به ما</a>
+        <a asp-controller="Home" asp-action="Offers">پیشنهاد به ما</a>
     </div>
     @if (User.IsInRole("Admin"))
     {
@@ -45,7 +45,7 @@
                 <a href="#">ارتباط باما</a>
             </div>
             <div class="main-navbar-lists">
-                <a href="#">پیشنهاد به ما</a>
+                <a asp-controller="Home" asp-action="Offers">پیشنهاد به ما</a>
             </div>
             @if (User.IsInRole("Admin"))
             {

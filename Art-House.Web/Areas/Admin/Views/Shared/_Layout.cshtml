@@ -104,7 +104,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="/Admin/Comment"class="waves-effect">
+                        <a href="/Admin/Comment" class="waves-effect">
                             <i class="fa fa-comment-o" data-icon="v"></i>
                             <span class="hide-menu">
                                 مدیریت کامنت ها
@@ -116,6 +116,14 @@
                             <i class="fa fa-archive" data-icon="v"></i>
                             <span class="hide-menu">
                                 مدیریت پست ها
+                            </span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/Admin/Offers" class="waves-effect">
+                            <i class="fa fa-archive" data-icon="v"></i>
+                            <span class="hide-menu">
+                                مدیریت پیشنهاد ها
                             </span>
                         </a>
                     </li>
@@ -158,8 +166,6 @@
     <!-- Custom Theme JavaScript -->
     <script src="~/AdminTemplate/js/waves.js"></script>
     <script src="~/AdminTemplate/js/custom.js"></script>
-    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
-    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
     @await RenderSectionAsync("Scripts", false)
     @await Component.InvokeAsync("NToastNotify")
 </body>

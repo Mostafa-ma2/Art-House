@@ -36,22 +36,22 @@
             <div class="profile col-md-4 col-sm-4">
 
                 @*<div class="profile-use">
-                    <i onclick="checkthenews()" class="fa fa-bell"></i>
-                    <div class="profile-tedad">
-                        <p>2</p>
-                    </div>
-                    <div class="profile-check" id="sk">
-                        <div class="check-text">
-                            <a href="#">علیرضا شمارا دنبال می کند</a>
+                        <i onclick="checkthenews()" class="fa fa-bell"></i>
+                        <div class="profile-tedad">
+                            <p>2</p>
                         </div>
-                        <div class="check-text">
-                            <a href="#">علیرضا شمارا دنبال می کند</a>
+                        <div class="profile-check" id="sk">
+                            <div class="check-text">
+                                <a href="#">علیرضا شمارا دنبال می کند</a>
+                            </div>
+                            <div class="check-text">
+                                <a href="#">علیرضا شمارا دنبال می کند</a>
+                            </div>
+                            <div class="check-text">
+                                <a href="#">علیرضا شمارا دنبال می کند</a>
+                            </div>
                         </div>
-                        <div class="check-text">
-                            <a href="#">علیرضا شمارا دنبال می کند</a>
-                        </div>
-                    </div>
-                </div>*@
+                    </div>*@
                 <div class="profile-newtext">
                     <a href="/PostText/AddPost" alt="افزودن متن" title=" افزودن متن">بنویس !</a>
                 </div>
@@ -76,7 +76,7 @@
     <script src="~/SiteTemplate/js/bootstrap.min.js"></script>
     <script src="~/SiteTemplate/js/Profile.js"></script>
     @RenderSection("Scripts", required: false)
-
+    @await Component.InvokeAsync("NToastNotify")
 </body>
 
 </html>
