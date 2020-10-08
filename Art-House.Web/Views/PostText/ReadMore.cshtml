@@ -132,6 +132,17 @@
         //        }
         //    });
         //}
+        function AddSavePost(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/PostText/AddSavePost",
+                data: { id: attr },
+                success: function (result) {
+                    obj.remove();
+                }
+            });
+        }
         function AddText(obj) {
             debugger;
             var attr = obj.getAttribute("attr");
