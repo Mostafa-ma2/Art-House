@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Art_House.Data.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20200926195340_init")]
+    [Migration("20201009075306_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -69,6 +69,9 @@ namespace Art_House.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostId")
@@ -186,7 +189,8 @@ namespace Art_House.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
@@ -255,6 +259,9 @@ namespace Art_House.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("EndThePoll")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -266,6 +273,9 @@ namespace Art_House.Data.Migrations
 
                     b.Property<string>("QuestionText")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartThePoll")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

@@ -57,17 +57,17 @@ namespace Art_House.Data.Services.Repository.Questions
 
         public IEnumerable<Question> GetAll()
         {
-            return _db.Question.AsEnumerable();
+            return _db.Question.Include(p=>p.Asnwer).AsEnumerable();
         }
 
         public async Task<IEnumerable<Question>> GetAllAsync()
         {
-            return await _db.Question.ToListAsync();
+            return await _db.Question.Include(p => p.Asnwer).ToListAsync();
         }
 
         public async Task<ICollection<Question>> GetAllAsync(Expression<Func<Question, bool>> match)
         {
-            return await _db.Question.Where(match).ToListAsync();
+            return await _db.Question.Include(p => p.Asnwer).Where(match).ToListAsync();
         }
 
         public async Task<Question> GetAsync(Expression<Func<Question, bool>> where)

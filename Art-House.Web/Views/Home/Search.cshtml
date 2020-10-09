@@ -1,6 +1,6 @@
 ﻿@model SearchViewModel
 @{
-    ViewData["Title"] = "هنر خانه";
+    ViewData["Title"] = "خانه هنر";
 }
 
 <div class="main-text-list col-md-8 col-sm-12">
@@ -51,7 +51,7 @@
                             <h1 style="text-align: center;font-size: 32px;margin-top: 10px;color: #1b1be1a6;">***</h1>
                         }
                         <p>
-                            <span style="color:#1b1be1a6"> نوضیح :  </span>
+                            <span style="color:#1b1be1a6"> توضیح :  </span>
                             @item.ShortText
                         </p>
                     </div>
@@ -88,14 +88,14 @@
                         @if (ViewBag.PageID != 1)
                         {
                             var c = ViewBag.PageID - 1;
-                            <a class="page-link" href="/Home/Search?@ViewBag.group&&pageid=@c" aria-label="Previous">
+                            <a class="page-link" href="/Home/Search?group=@ViewBag.group&&pageid=@c" aria-label="Previous">
                                 <span aria-hidden="true">&laquo;</span>
                             </a>
                         }
                     </li>
                     @for (var i = 1; i <= ViewBag.CountPage; i++)
                     {
-                        <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Home/Serch?@ViewBag.group&&pageid=@i">@i</a></li>
+                        <li class="@(((int)ViewBag.PageID == i) ? "page-item active" : "page-item"))"><a class="page-link" href="/Home/Search?group=@ViewBag.group&&pageid=@i">@i</a></li>
 
                     }
                     <li class="page-item">

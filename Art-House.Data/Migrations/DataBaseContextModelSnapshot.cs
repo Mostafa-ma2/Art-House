@@ -187,7 +187,8 @@ namespace Art_House.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
@@ -256,6 +257,9 @@ namespace Art_House.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<DateTime>("EndThePoll")
+                        .HasColumnType("datetime2");
+
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
@@ -267,6 +271,9 @@ namespace Art_House.Data.Migrations
 
                     b.Property<string>("QuestionText")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("StartThePoll")
+                        .HasColumnType("datetime2");
 
                     b.HasKey("Id");
 

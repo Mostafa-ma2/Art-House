@@ -288,3 +288,4 @@ C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\bin\Debug\netcorea
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.csproj.CoreCompileInputs.cache
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.dll
 C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Ios\obj\Debug\netcoreapp3.1\Art-House.Ioc.csprojAssemblyReference.cache

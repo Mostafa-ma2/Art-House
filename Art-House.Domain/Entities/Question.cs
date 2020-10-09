@@ -2,6 +2,7 @@
 using EzGame.Domain.Core.Services.Entities;
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
 namespace Art_House.Domain.Entities
@@ -16,7 +17,12 @@ namespace Art_House.Domain.Entities
             LastModifiedTime = DateTime.Now;
         }
         public string QuestionText { get; set; }
+        public DateTime StartThePoll { get; set; }
+        public DateTime EndThePoll { get; set; }
+
+        public string AsnwerId { get; set; }
         //relations
+        [ForeignKey("AsnwerId")]
         public virtual Asnwer Asnwer { get; set; }
 
     }

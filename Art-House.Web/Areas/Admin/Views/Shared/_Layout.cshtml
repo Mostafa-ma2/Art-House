@@ -21,6 +21,7 @@
     <!-- This is a Custom CSS -->
     <link href="~/AdminTemplate/css/style.css" rel="stylesheet">
     <link href="~/AdminTemplate/css/colors/blue-dark.css" id="theme" rel="stylesheet">
+    <link type="text/css" rel="stylesheet" href="~/SiteTemplate/css/PersianDatePicker.min.css" />
     @await RenderSectionAsync("styles", false)
 </head>
 
@@ -127,6 +128,14 @@
                             </span>
                         </a>
                     </li>
+                    <li>
+                        <a href="/Admin/Offers/Questions" class="waves-effect">
+                            <i class="fa fa-archive" data-icon="v"></i>
+                            <span class="hide-menu">
+                                مدیریت نظر سنجی
+                            </span>
+                        </a>
+                    </li>
                     <li class="divider"></li>
                     <li>
                         <a href="/home/index" class="waves-effect">
@@ -166,6 +175,7 @@
     <!-- Custom Theme JavaScript -->
     <script src="~/AdminTemplate/js/waves.js"></script>
     <script src="~/AdminTemplate/js/custom.js"></script>
+    <script type="text/javascript" src="~/SiteTemplate/js/PersianDatePicker.min.js"></script>
     @await RenderSectionAsync("Scripts", false)
     @await Component.InvokeAsync("NToastNotify")
 </body>

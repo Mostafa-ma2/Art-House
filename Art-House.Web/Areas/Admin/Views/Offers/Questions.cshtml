@@ -1,0 +1,303 @@
+﻿@model IEnumerable<Question>
+@{
+    ViewData["Title"] = "نظر سنجی";
+}
+
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">مدیریت سوال ها <a style="float: left" id="OpenCreatModal" class="btn btn-primary">افرودن سوال</a></div>
+            <div class="table-responsive">
+                <table class="table table-hover manage-u-table">
+                    <thead>
+                        <tr>
+                            <th width="70" class="text-center">#</th>
+                            <th>متن</th>
+                            <th>شروع نظر سنجی</th>
+                            <th>پایان نظر سنجی</th>
+                            <th>نظر کاربران</th>
+                            <th width="300">مدیریت کردن</th>
+                        </tr>
+                    </thead>
+                    <tbody id="group-list">
+                        @foreach (var item in Model)
+                        {
+                        <tr id="@item.Id">
+                            <td class="text-center">@item.Id</td>
+                            <td id="Name-@item.Id">
+                                @item.QuestionText
+                            </td>
+                            <td id="StartThePoll-@item.Id">
+                                @item.StartThePoll.ToPersianDateStrings()
+                            </td>
+                            <td id="EndThePoll-@item.Id">
+                                @item.EndThePoll.ToPersianDateStrings()
+                            </td>
+                            <td id="isActive-@item.IsDeleted ">
+                                @if (item.AsnwerId != null)
+                                {
+                                    @if (item.Asnwer.Asnwers == 1)
+                                    {
+                                        <label>بله انجام دهید</label>
+                                    }
+                                    else
+                                    {
+                                        <label>نه انجام ندین</label>
+                                    }
+                                }
+                                else
+                                {
+                                    <p>__________</p>
+                                }
+
+                            </td>
+                            <td>
+                                <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                    <i class="ti-trash"></i>
+                                </button>
+                                <button type="button" attr="@item.Id" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                    <i class="ti-pencil-alt"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Add Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <div class="col-12 text-center">
+                <h3>
+                    افزودن سوال
+                </h3>
+                @ViewBag.Error
+            </div>
+            <div class="form-group">
+                <label for="">سوال :</label>
+                <input type="text" class="form-control" id="creatTextGroup" name="name" value="" />
+            </div>
+            <div class="form-group">
+                <label for="">زمان شروع :</label>
+                <input type="text" id="AddStartThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+            </div>
+            <div class="form-group">
+                <label for="">زمان اتمام :</label>
+                <input type="text" id="AddEndThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+            </div>
+            <div class="form-group">
+                <label for="">وضعیت :</label>
+                <select class="form-control" id="CreatIsDeletedGroup">
+                    <option>حذف نشده</option>
+                    <option>حذف شده</option>
+                </select>
+            </div>
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="save">افزودن</button>
+        </div>
+    </div>
+</div>
+<!-- Edit Modal -->
+<div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="UpdateidQuestion" name="name" value="" />
+            <div class="col-12 text-center">
+                <h3>
+                    ویرایش سوال
+                </h3>
+                @ViewBag.Error
+            </div>
+            <div class="form-group">
+                <label for="">سوال :</label>
+                <input type="text" class="form-control" id="UpdateTextQuestion" name="name" value="" />
+            </div>
+            <div class="form-group">
+                <label for="">زمان شروع :</label>
+                <input type="text" id="EditStartThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+            </div>
+            <div class="form-group">
+                <label for="">زمان اتمام :</label>
+                <input type="text" id="EditEndThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+            </div>
+            <div class="form-group">
+                <label for="">وضعیت :</label>
+                <select class="form-control" id="UpdateQuestionIsActive">
+                    <option>حذف نشده</option>
+                    <option>حذف شده</option>
+                </select>
+            </div>
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnUpdate">ویرایش</button>
+        </div>
+    </div>
+</div>
+<!-- delete Modal -->
+<div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content" style="padding:10px">
+            <input type="hidden" id="DeleteID" name="name" value="" />
+            <label id="lal">
+
+            </label>
+
+            <br />
+            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelete">حذف</button>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            //افزودن
+            $("#OpenCreatModal").click(function () {
+                $("#exampleModal").modal("show");
+                $("#creatTextGroup").val("");
+                $("#CreatIsDeletedGroup").val("");
+                $("#AddStartThePoll").val("");
+                $("#AddEndThePoll").val("");
+            });
+            $("#save").click(function (e) {
+                e.preventDefault();
+                var QuestionText = $("#creatTextGroup").val();
+                var QuestionIsDeleted = $("#CreatIsDeletedGroup").val();
+                var QuestionStartThePoll = $("#AddStartThePoll").val();
+                var QuestionEndThePoll = $("#AddEndThePoll").val();
+                $.ajax({
+                    type: "Post",
+                    data: { text: QuestionText, isDeleted: QuestionIsDeleted, startPoll: QuestionStartThePoll, endPoll: QuestionEndThePoll},
+                    url: "/Admin/Offers/AddQuestion",
+                    success: function (result) {
+                        $("#exampleModal").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            var html = '<tr id="' + result.id + '">'
+                            html += '<td class="text-center">' + result.id + '</td>'
+                            html += '<td id="Name-' + result.id + '">'
+                            html += '' + result.questionText + ''
+                            html += '</td>'
+                            html += '<td id="StartThePoll-' + result.id + '">'
+                            html += '' + result.startThePoll + ''
+                            html += ' </td>'
+                            html += '<td id="EndThePoll-' + result.id + '">'
+                            html += '' + result.endThePoll + ''
+                            html += '</td>'
+                            html += '  <td id="isActive-' + result.isDeleted + ' ">'
+                            if (result.asnwerId != null)
+                            {
+                                if (result.asnwer.asnwers == 1)
+                                {
+                                    html += '<label>بله انجام دهید</label>'
+                                }
+                                else {
+                                    html += '<label>نه انجام ندین</label>'
+                                }
+                            }
+                            else {
+                                html += '<p>__________</p>'
+                            }
+                            html +=' </td>'
+                            html +=' <td>'
+                            html +='<button type="button" attr="' + result.id + '" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">'
+                            html +='<i class="ti-trash"></i>'
+                            html += '</button>'
+                            html += '<button type="button" attr="' + result.id + '" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">'
+                            html +='<i class="ti-pencil-alt"></i>'
+                            html +='</button>'
+                            html +='</td>'
+                            html +='</tr>'
+                            $("#group-list").append(html);
+                        }
+                    }
+
+                });
+            })
+            //ویرایش کردن
+            $("#btnUpdate").click(function (e) {
+                var id = $("#UpdateidQuestion").val();
+                var isActive = $("#UpdateQuestionIsActive").val();
+                var Tetx = $("#UpdateTextQuestion").val();
+                var QuestionStartThePoll = $("#EditStartThePoll").val();
+                var QuestionEndThePoll =$("#EditEndThePoll").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/Admin/Offers/UpdateQuestion",
+                    data: { ID: id, isDeleted: isActive, text: Tetx, startPoll: QuestionStartThePoll, endPoll: QuestionEndThePoll },
+                    success: function (result) {
+                        $("#exampleModal2").modal("hide");
+                        if (result != null) {
+                            document.getElementById("StartThePoll-" + result.id).innerHTML = QuestionStartThePoll;
+                            document.getElementById("EndThePoll-" + result.id).innerHTML = QuestionEndThePoll;
+                            document.getElementById("Name-" + result.id).innerHTML = Tetx;
+                            if (result.isDeleted == true) {
+                                document.getElementById("isActive-" + result.id).innerHTML = "حذف شده";
+                            } else {
+                                document.getElementById("isActive-" + result.id).innerHTML = "حذف نشده";
+
+                            }
+                        }
+                    }
+
+                })
+            });
+            //حذف
+            $("#btnDelete").click(function (e) {
+                e.preventDefault();
+                var id = $("#DeleteID").val();
+                $.ajax({
+                    type: "Post",
+                    url: "/Admin/Offers/DeleteQuestion",
+                    data: { ID: id },
+                    success: function (result) {
+                        $("#exampleModal3").modal("hide");
+                        if (result != null) {
+                            debugger;
+                            $("tr#" + result.id).remove();
+                        }
+                    }
+
+                })
+            })
+        });
+        //گرفتن ایدی
+        function OpenUpdateModal(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Offers/GetQuestionById",
+                data: { id: attr },
+                success: function (result) {
+                    if (result != null) {
+                        $("#exampleModal2").modal("show");
+                        $("#UpdateidQuestion").val(result.id);
+                        $("#UpdateTextQuestion").val(result.questionText);
+                        $("#EditStartThePoll").val(result.startThePoll);
+                        $("#EditEndThePoll").val(result.endThePoll);
+                        if (result.isDeleted) {
+                            $("#UpdateQuestionIsActive").val("حذف شده");
+                        } else {
+                            $("#UpdateQuestionIsActive").val("حذف نشده");
+                        }
+                    }
+                }
+            });
+        }
+        function OpenDeleteModel(obj) {
+            var attr = obj.getAttribute("attr");
+            $.ajax({
+                type: "Post",
+                url: "/Admin/Offers/GetQuestionById",
+                data: { id: attr },
+                success: function (result) {
+                    if (result != null) {
+                        $("#exampleModal3").modal("show");
+                        $("#DeleteID").val(result.id);
+                        document.getElementById("lal").innerHTML = ' ایا از حذف ان اطمینان دارید؟';
+                    }
+                }
+            });
+        }
+    </script>
+}

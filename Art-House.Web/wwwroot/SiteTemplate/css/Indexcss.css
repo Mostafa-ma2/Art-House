@@ -371,7 +371,7 @@ main {
                             word-break: break-word;
                             background: #1b1be1a6;
                             color: white;
-                            height: 89px;
+                            height: 101px;
                         }
 
             main .main .main-text-list .Nazar {
@@ -678,6 +678,10 @@ main {
                             background: whitesmoke;
                         }
 
+    main #Mps {
+        display: none;
+    }
+
 @media (max-width: 769px) {
     header .Header-Search .s {
         display: none;
@@ -791,10 +795,22 @@ main {
             left: 41%;
             top: -17px;
         }
+
     main .main .main-text-list .Nazar img {
         width: 11%;
         height: 45px;
         margin-top: 27px;
+    }
+
+    main #MPS {
+        display: none
+    }
+
+    main #Mps {
+        margin-top: 16px;
+        text-align: center;
+        color: darkgray;
+        display: inline-block;
     }
 }
 

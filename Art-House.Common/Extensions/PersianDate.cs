@@ -34,7 +34,11 @@ namespace Art_House.Common.Extensions
             var day = persianCalendar.GetDayOfMonth(georgianDate).ToString().PadLeft(2, '0');
             return $"{year}/{month}/{day}";
         }
+        public static string ToPersianDateStrings(this DateTime georgianDate)
+        {
 
+            return $"{georgianDate.Year}-{georgianDate.Month}-{georgianDate.Day}";
+        }
         /// <summary>
         /// یک تعداد روز را از یک تاریخ شمسی کم میکند یا به آن آضافه میکند
         /// </summary>
@@ -46,6 +50,12 @@ namespace Art_House.Common.Extensions
             var dt = persianDate.ToGeorgianDateTime();
             dt = dt.AddDays(days);
             return dt.ToPersianDateString();
+        }
+        public static string AddDaysToShamsiDates(this string persianDate, int days)
+        {
+            var dt = persianDate.ToGeorgianDateTime();
+            dt = dt.AddDays(days);
+            return dt.ToPersianDateStrings();
         }
     }
 }

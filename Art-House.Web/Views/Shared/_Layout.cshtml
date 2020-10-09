@@ -91,23 +91,16 @@
                 }
                 @await Component.InvokeAsync("VisitTop")
 
-                <div class="question">
-                    <div class="question-head">
-                        <p><i class="fa fa-question"></i>نظر سنجی</p>
-                    </div>
-                    <div class="question-text">
-                        <p>نظرتون درباره افزودن قابلیت نوشتن متن گروهی چیست؟</p>
-                    </div>
-                    <div class="question-check">
-                        <h2>خوبه</h2>
-                        <h2>نه جالب نیست</h2>
-                    </div>
-                </div>
-                <div style="position: sticky; top: 606px;">
+                @await Component.InvokeAsync("Question")
+
+                <div id="MPS" style="position: sticky; top: 606px;">
                     <p style="font-size: small;text-align: center;color: darkgray;">تمامی حقوق برای گروه برنامه نویسی MPS محفوظ میباشد.</p>
                 </div>
             </div>
             @RenderBody()
+        </div>
+        <div id="Mps">
+            <p style="font-size: small;text-align: center;color: darkgray;">تمامی حقوق برای گروه برنامه نویسی MPS محفوظ میباشد.</p>
         </div>
     </main>
 

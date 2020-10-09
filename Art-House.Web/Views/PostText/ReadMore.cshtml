@@ -1,7 +1,7 @@
 ﻿@model ReadMoreViewModel
 
 @{
-    ViewData["Title"] = "هنر خانه";
+    ViewData["Title"] = "خانه هنر";
 }
 
 
@@ -29,7 +29,7 @@
                 {
                     <p style="margin-top: 10px;">نام : <span>@Model.PostText.Name</span></p>
                 }
-                <p>توضیح کوتاه : <span id="shorttexts">@Model.PostText.ShortText</span></p>
+                <p >توضیح کوتاه : <span id="shorttexts" style="line-height: 19px;">@Model.PostText.ShortText</span></p>
                 <div style="display:flex">
                     <p>تاریخ ثبت : <span>@Model.PostText.CreatedTime.ToPersianDateString()</span></p>
                     <p>بازدید : <span>@Model.PostText.Visit</span></p>
@@ -38,7 +38,7 @@
 
         </div>
     </div>
-    <div class="Text">
+    <div class="Text" style="line-height: 24px;">
         @Html.Raw(Model.PostText.Text)
     </div>
     <div class="Comment" style="margin-top: 10px;background:white;border-radius: 3px;">

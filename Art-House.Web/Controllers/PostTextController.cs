@@ -183,10 +183,8 @@ namespace Art_House.Web.Controllers
                 }
                 _db.PostTextRepository.Delete(postText);
                 _db.SaveChange();
-                _notification.AddSuccessToastMessage($" {postText.Name} با موفقیت حذف شد.");
                 return Json(postText);
             }
-            _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return Json(null);
         }
 
