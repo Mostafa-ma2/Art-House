@@ -12,6 +12,7 @@ using System.Security.Claims;
 using Art_House.Common.ViewModels.Search;
 using Art_House.Domain.Entities;
 using NToastNotify;
+using Art_House.Common.Filters.ActionFilters;
 
 namespace Art_House.Web.Controllers
 {
@@ -119,5 +120,20 @@ namespace Art_House.Web.Controllers
             ViewBag.Success = "<h2 style='text - align: center; padding: 10px; background: #1b1be1a6; color: white;border-radius: 10px;'>پیشنهاد شما ثبت شد با تشکر</h2>";
             return View("Offers");
         }
+
+        // گرفتن درصد برای نظر سنجی
+        [HttpPost]
+        [AjaxOnly]
+        public async Task<IActionResult> GetPercentage(string BtnId, string questionId)
+        {
+            var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            ViewBag.UserId = userId;
+            if (!string.IsNullOrEmpty(BtnId)&&!string.IsNullOrEmpty(questionId))
+            {
+             
+            }
+            return Json(null);
+        }
+
     }
 }

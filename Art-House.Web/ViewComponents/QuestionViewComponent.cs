@@ -1,4 +1,5 @@
 ﻿using Art_House.Common.Extensions;
+using Art_House.Common.ViewModels.Questions;
 using Art_House.Data.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using System;
@@ -21,11 +22,17 @@ namespace Art_House.Web.ViewComponents
 
         //Get
         [HttpGet]
-        public IViewComponentResult Invoke()
+        public async Task<IViewComponentResult> InvokeAsync()
         {
             var date = DateTime.Now.ToPersianDateString();
             var question =  _db.QuestionsRepository.Where(p=>p.StartThePoll <= Convert.ToDateTime(date)&&p.EndThePoll>= Convert.ToDateTime(date)).Take(1).ToList();
-            return (IViewComponentResult)View("Question", question);
+            var btnQuestions = await _db.BtnQuestionRepository.GetAllAsync();
+            var viewModel = new AddQuestionViewModel()
+            {
+                Question = question,
+                BtnQuestion = btnQuestions
+            };
+            return (IViewComponentResult)View("Question", viewModel);
         }
     }
 }

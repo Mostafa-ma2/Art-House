@@ -22,7 +22,7 @@ namespace Art_House.Data.Context
             optionsBuilder.UseSqlServer(@"Server=.;Database=Art-HouseDb;Trusted_Connection=True;MultipleActiveResultSets=true");
         }
         public DbSet<User> User { get; set; }
-        public DbSet<Asnwer> Asnwer { get; set; }
+        public DbSet<BtnQuestion> BtnQuestion { get; set; }
         public DbSet<Groups> Groups { get; set; }
         public DbSet<likePost> likePosts { get; set; }
         public DbSet<SavePost> SavePosts { get; set; }

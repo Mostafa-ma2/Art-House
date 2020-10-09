@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Question>
+﻿@model AddQuestionViewModel
 @{
     ViewData["Title"] = "نظر سنجی";
 }
@@ -15,51 +15,32 @@
                             <th>متن</th>
                             <th>شروع نظر سنجی</th>
                             <th>پایان نظر سنجی</th>
-                            <th>نظر کاربران</th>
                             <th width="300">مدیریت کردن</th>
                         </tr>
                     </thead>
                     <tbody id="group-list">
-                        @foreach (var item in Model)
+                        @foreach (var item in Model.Question)
                         {
-                        <tr id="@item.Id">
-                            <td class="text-center">@item.Id</td>
-                            <td id="Name-@item.Id">
-                                @item.QuestionText
-                            </td>
-                            <td id="StartThePoll-@item.Id">
-                                @item.StartThePoll.ToPersianDateStrings()
-                            </td>
-                            <td id="EndThePoll-@item.Id">
-                                @item.EndThePoll.ToPersianDateStrings()
-                            </td>
-                            <td id="isActive-@item.IsDeleted ">
-                                @if (item.AsnwerId != null)
-                                {
-                                    @if (item.Asnwer.Asnwers == 1)
-                                    {
-                                        <label>بله انجام دهید</label>
-                                    }
-                                    else
-                                    {
-                                        <label>نه انجام ندین</label>
-                                    }
-                                }
-                                else
-                                {
-                                    <p>__________</p>
-                                }
-
-                            </td>
-                            <td>
-                                <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
-                                    <i class="ti-trash"></i>
-                                </button>
-                                <button type="button" attr="@item.Id" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
-                                    <i class="ti-pencil-alt"></i>
-                                </button>
-                            </td>
-                        </tr>
+                            <tr id="@item.Id">
+                                <td class="text-center">@item.Id</td>
+                                <td id="Name-@item.Id">
+                                    @item.QuestionText
+                                </td>
+                                <td id="StartThePoll-@item.Id">
+                                    @item.StartThePoll.ToPersianDateStrings()
+                                </td>
+                                <td id="EndThePoll-@item.Id">
+                                    @item.EndThePoll.ToPersianDateStrings()
+                                </td>
+                                <td>
+                                    <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                        <i class="ti-trash"></i>
+                                    </button>
+                                    <button type="button" attr="@item.Id" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                        <i class="ti-pencil-alt"></i>
+                                    </button>
+                                </td>
+                            </tr>
                         }
                     </tbody>
                 </table>
@@ -104,33 +85,36 @@
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="padding:10px">
-            <input type="hidden" id="UpdateidQuestion" name="name" value="" />
-            <div class="col-12 text-center">
-                <h3>
-                    ویرایش سوال
-                </h3>
-                @ViewBag.Error
-            </div>
-            <div class="form-group">
-                <label for="">سوال :</label>
-                <input type="text" class="form-control" id="UpdateTextQuestion" name="name" value="" />
-            </div>
-            <div class="form-group">
-                <label for="">زمان شروع :</label>
-                <input type="text" id="EditStartThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
-            </div>
-            <div class="form-group">
-                <label for="">زمان اتمام :</label>
-                <input type="text" id="EditEndThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
-            </div>
-            <div class="form-group">
-                <label for="">وضعیت :</label>
-                <select class="form-control" id="UpdateQuestionIsActive">
-                    <option>حذف نشده</option>
-                    <option>حذف شده</option>
-                </select>
-            </div>
-            <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnUpdate">ویرایش</button>
+            <form action="/" method="post">
+                <input type="hidden" id="UpdateidQuestion" name="name" value="" />
+                @{ var b = 0;}
+                <div class="col-12 text-center">
+                    <h3>
+                        ویرایش سوال
+                    </h3>
+                    @ViewBag.Error
+                </div>
+                <div class="form-group">
+                    <label for="">سوال :</label>
+                    <input type="text" class="form-control" id="UpdateTextQuestion" name="name" value="" />
+                </div>
+                <div class="form-group">
+                    <label for="">زمان شروع :</label>
+                    <input type="text" id="EditStartThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+                </div>
+                <div class="form-group">
+                    <label for="">زمان اتمام :</label>
+                    <input type="text" id="EditEndThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+                </div>
+                <div class="form-group">
+                    <label for="">وضعیت :</label>
+                    <select class="form-control" id="UpdateQuestionIsActive">
+                        <option>حذف نشده</option>
+                        <option>حذف شده</option>
+                    </select>
+                </div>
+                <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnUpdate">ویرایش</button>
+            </form>
         </div>
     </div>
 </div>
@@ -142,12 +126,33 @@
             <label id="lal">
 
             </label>
-
             <br />
             <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelete">حذف</button>
         </div>
     </div>
 </div>
+<!-- Add Btn Modal -->
+<div class="modal fade" id="exampleModal32" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <form action="/Admin/Offers/AddBtnQuestions" method="post">
+            <div class="modal-content" style="padding:10px" id="CreateBtn">
+                <input type="hidden" id="BtnQuestionsId" name="questionId" value="" />
+                <div class="col-12 text-center">
+                    <h3>
+                        افزودن دکمه (بین 3 تا 4 تا امکان پذیر است)
+                    </h3>
+                    <label id="lall"></label>
+                </div>
+                <div class="form-group">
+                    <label for="">تعداد را وارد نمایید :</label>
+                    <input type="number" class="form-control" onkeyup="ShowTheBtn(this)" id="NumberBtn" name="name" value="" />
+                    <a style="width:100%;margin-top:10px;display:none" class="btn btn-success"  onclick="AddInputBtnQuestion(this)" id="btnQuestion">ساختن</a>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
 @section Scripts{
     <script type="text/javascript">
         $(document).ready(function () {
@@ -167,12 +172,11 @@
                 var QuestionEndThePoll = $("#AddEndThePoll").val();
                 $.ajax({
                     type: "Post",
-                    data: { text: QuestionText, isDeleted: QuestionIsDeleted, startPoll: QuestionStartThePoll, endPoll: QuestionEndThePoll},
+                    data: { text: QuestionText, isDeleted: QuestionIsDeleted, startPoll: QuestionStartThePoll, endPoll: QuestionEndThePoll },
                     url: "/Admin/Offers/AddQuestion",
                     success: function (result) {
-                        $("#exampleModal").modal("hide");
                         if (result != null) {
-                            debugger;
+                            $("#exampleModal").modal("hide");
                             var html = '<tr id="' + result.id + '">'
                             html += '<td class="text-center">' + result.id + '</td>'
                             html += '<td id="Name-' + result.id + '">'
@@ -184,31 +188,20 @@
                             html += '<td id="EndThePoll-' + result.id + '">'
                             html += '' + result.endThePoll + ''
                             html += '</td>'
-                            html += '  <td id="isActive-' + result.isDeleted + ' ">'
-                            if (result.asnwerId != null)
-                            {
-                                if (result.asnwer.asnwers == 1)
-                                {
-                                    html += '<label>بله انجام دهید</label>'
-                                }
-                                else {
-                                    html += '<label>نه انجام ندین</label>'
-                                }
-                            }
-                            else {
-                                html += '<p>__________</p>'
-                            }
-                            html +=' </td>'
-                            html +=' <td>'
-                            html +='<button type="button" attr="' + result.id + '" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">'
-                            html +='<i class="ti-trash"></i>'
+                            html += ' <td>'
+                            html += '<button type="button" attr="' + result.id + '" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">'
+                            html += '<i class="ti-trash"></i>'
                             html += '</button>'
                             html += '<button type="button" attr="' + result.id + '" onclick="OpenUpdateModal(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">'
-                            html +='<i class="ti-pencil-alt"></i>'
-                            html +='</button>'
-                            html +='</td>'
-                            html +='</tr>'
+                            html += '<i class="ti-pencil-alt"></i>'
+                            html += '</button>'
+                            html += '</td>'
+                            html += '</tr>'
                             $("#group-list").append(html);
+                            BtnQuestionsId
+                            $("#BtnQuestionsId").val(result.id);
+                            $("#exampleModal32").modal("show");
+
                         }
                     }
 
@@ -220,14 +213,14 @@
                 var isActive = $("#UpdateQuestionIsActive").val();
                 var Tetx = $("#UpdateTextQuestion").val();
                 var QuestionStartThePoll = $("#EditStartThePoll").val();
-                var QuestionEndThePoll =$("#EditEndThePoll").val();
+                var QuestionEndThePoll = $("#EditEndThePoll").val();
                 $.ajax({
                     type: "Post",
                     url: "/Admin/Offers/UpdateQuestion",
                     data: { ID: id, isDeleted: isActive, text: Tetx, startPoll: QuestionStartThePoll, endPoll: QuestionEndThePoll },
                     success: function (result) {
-                        $("#exampleModal2").modal("hide");
                         if (result != null) {
+                            $("#exampleModal2").modal("hide");
                             document.getElementById("StartThePoll-" + result.id).innerHTML = QuestionStartThePoll;
                             document.getElementById("EndThePoll-" + result.id).innerHTML = QuestionEndThePoll;
                             document.getElementById("Name-" + result.id).innerHTML = Tetx;
@@ -251,8 +244,8 @@
                     url: "/Admin/Offers/DeleteQuestion",
                     data: { ID: id },
                     success: function (result) {
-                        $("#exampleModal3").modal("hide");
                         if (result != null) {
+                            $("#exampleModal3").modal("hide");
                             debugger;
                             $("tr#" + result.id).remove();
                         }
@@ -298,6 +291,34 @@
                     }
                 }
             });
+        }
+        //گرفتن تعداد دکمه دکمه
+        function ShowTheBtn(obj) {
+            if (obj.value == "") {
+                document.getElementById("btnQuestion").style.display = "none";
+            } else {
+                document.getElementById("btnQuestion").style.display = "block";
+            }
+        }
+        //ساخت دکمه
+        function AddInputBtnQuestion(obj) {
+            obj.style.display = "none";
+            var number = $("#NumberBtn").val();
+            if (number <= 4 && number > 0) {
+                for (var i = 0; i < number; i++) {
+                    var html = '<div class="form-group">'
+                    html += '<label for="">نام دکمه را بنویسید :</label>'
+                    html += '<input type="text" class="form-control" name="BtnQuestion[' + i + '].name" value="" />'
+                    html += '</div>'
+                    $("#CreateBtn").append(html);
+                }
+                var htmls = '<br />'
+                htmls +='<button style="width:100%;margin-top:10px" class="btn btn-success">افزودن دکمه ها</button>'
+                $("#CreateBtn").append(htmls);
+
+            } else {
+                $("#lall").html("نمی تواند 0 یا بیشتر از 4 باشد");
+            }
         }
     </script>
 }

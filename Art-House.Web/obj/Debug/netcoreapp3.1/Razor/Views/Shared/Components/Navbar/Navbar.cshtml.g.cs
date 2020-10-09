@@ -63,20 +63,27 @@ using Art_House.Common.ViewModels.Search;
 #nullable disable
 #nullable restore
 #line 8 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
-using Art_House.Common.ViewModels.ReadMore;
+using Art_House.Common.ViewModels.Questions;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.ReadMore;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
 using Art_House.Common.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"351d9ea41eb6bc373656168c526dd2e8d3e4100b", @"/Views/Shared/Components/Navbar/Navbar.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"24a5d120ac5d98d698b34c540d63eccdce494112", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ed7c417c3cf19d7385814e1847bbc23dee3a9b36", @"/Views/_ViewImports.cshtml")]
     public class Views_Shared_Components_Navbar_Navbar : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Groups>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-controller", "Home", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -127,7 +134,7 @@ using Art_House.Common.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("        <div class=\"main-navbar-list\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b7092", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b7307", async() => {
 #nullable restore
 #line 9 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\Shared\Components\Navbar\Navbar.cshtml"
                                                                                  Write(item.Name);
@@ -175,7 +182,7 @@ using Art_House.Common.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("    <div class=\"main-navbar-list\">\r\n        <a href=\"#\">ارتباط باما</a>\r\n    </div>\r\n    <div class=\"main-navbar-list\">\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b10179", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b10394", async() => {
                 WriteLiteral("پیشنهاد به ما");
             }
             );
@@ -219,7 +226,7 @@ using Art_House.Common.Extensions;
                 <input onchange=""GetValue(this)"" id=""search"" type=""text"" placeholder=""جست و جو در مطالب و کاربران"">
                 <div class=""icon-search"">
                     ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b12661", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b12876", async() => {
                 WriteLiteral("\r\n                        <i class=\"fa fa-search\"></i>\r\n                    ");
             }
             );
@@ -253,7 +260,7 @@ using Art_House.Common.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("                <div class=\"main-navbar-lists\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b15093", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b15308", async() => {
 #nullable restore
 #line 41 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\Shared\Components\Navbar\Navbar.cshtml"
                                                                                         Write(item.Name);
@@ -301,7 +308,7 @@ using Art_House.Common.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("            <div class=\"main-navbar-lists\">\r\n                <a href=\"#\">ارتباط باما</a>\r\n            </div>\r\n            <div class=\"main-navbar-lists\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b18255", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "351d9ea41eb6bc373656168c526dd2e8d3e4100b18470", async() => {
                 WriteLiteral("پیشنهاد به ما");
             }
             );

@@ -11,11 +11,11 @@ using System.Threading.Tasks;
 
 namespace Art_House.Data.Services.Repository.Questions
 {
-   public class AsnwerRepository: IAsnwerRepository
+   public class BtnQuestionRepository: IBtnQuestionRepository
     {
         #region ctor
         private readonly DataBaseContext _db;
-        public AsnwerRepository(DataBaseContext db)
+        public BtnQuestionRepository(DataBaseContext db)
         {
             _db = db;
         }
@@ -24,7 +24,7 @@ namespace Art_House.Data.Services.Repository.Questions
 
         public async Task<int> CountAsync()
         {
-            return await _db.Asnwer.CountAsync();
+            return await _db.BtnQuestion.CountAsync();
         }
 
         public void Delete(object id)
@@ -37,81 +37,81 @@ namespace Art_House.Data.Services.Repository.Questions
             Delete(entity);
         }
 
-        public void Delete(Asnwer entity)
+        public void Delete(BtnQuestion entity)
         {
             if (_db.Entry(entity).State == EntityState.Detached)
             {
                 _db.Attach(entity);
             }
-            _db.Asnwer.Remove(entity);
+            _db.BtnQuestion.Remove(entity);
         }
 
-        public void Delete(Expression<Func<Asnwer, bool>> where)
+        public void Delete(Expression<Func<BtnQuestion, bool>> where)
         {
-            IEnumerable<Asnwer> entities = _db.Asnwer.Where(where);
+            IEnumerable<BtnQuestion> entities = _db.BtnQuestion.Where(where);
             foreach (var item in entities)
             {
                 Delete(item);
             }
         }
 
-        public IEnumerable<Asnwer> GetAll()
+        public IEnumerable<BtnQuestion> GetAll()
         {
-            return _db.Asnwer.AsEnumerable();
+            return _db.BtnQuestion.AsEnumerable();
         }
 
-        public async Task<IEnumerable<Asnwer>> GetAllAsync()
+        public async Task<IEnumerable<BtnQuestion>> GetAllAsync()
         {
-            return await _db.Asnwer.ToListAsync();
+            return await _db.BtnQuestion.ToListAsync();
         }
 
-        public async Task<ICollection<Asnwer>> GetAllAsync(Expression<Func<Asnwer, bool>> match)
+        public async Task<ICollection<BtnQuestion>> GetAllAsync(Expression<Func<BtnQuestion, bool>> match)
         {
-            return await _db.Asnwer.Where(match).ToListAsync();
+            return await _db.BtnQuestion.Where(match).ToListAsync();
         }
 
-        public async Task<Asnwer> GetAsync(Expression<Func<Asnwer, bool>> where)
+        public async Task<BtnQuestion> GetAsync(Expression<Func<BtnQuestion, bool>> where)
         {
-            return await _db.Asnwer.Where(where).FirstOrDefaultAsync();
+            return await _db.BtnQuestion.Where(where).FirstOrDefaultAsync();
         }
 
-        public Asnwer GetById(object id)
+        public BtnQuestion GetById(object id)
         {
-            return _db.Asnwer.Find(id);
+            return _db.BtnQuestion.Find(id);
         }
 
-        public async Task<Asnwer> GetByIdAsync(object id)
+        public async Task<BtnQuestion> GetByIdAsync(object id)
         {
-            return await _db.Asnwer.FindAsync(id);
+            return await _db.BtnQuestion.FindAsync(id);
         }
 
-        public void Insert(Asnwer entity)
+        public void Insert(BtnQuestion entity)
         {
-            _db.Asnwer.Add(entity);
+            _db.BtnQuestion.Add(entity);
         }
 
-        public async Task InsertAsync(Asnwer entity)
+        public async Task InsertAsync(BtnQuestion entity)
         {
-            await _db.Asnwer.AddAsync(entity);
+            await _db.BtnQuestion.AddAsync(entity);
         }
 
-        public IEnumerable<Asnwer> Take(int count)
+        public IEnumerable<BtnQuestion> Take(int count)
         {
-            return _db.Asnwer.Take(count);
+            return _db.BtnQuestion.Take(count);
         }
 
-        public void Update(Asnwer entity)
+        public void Update(BtnQuestion entity)
         {
             if (_db.Entry(entity).State == EntityState.Detached)
             {
-                _db.Asnwer.Attach(entity);
+                _db.BtnQuestion.Attach(entity);
             }
             _db.Entry(entity).State = EntityState.Modified;
         }
 
-        public IEnumerable<Asnwer> Where(Expression<Func<Asnwer, bool>> where)
+        public IEnumerable<BtnQuestion> Where(Expression<Func<BtnQuestion, bool>> where)
         {
-            IQueryable<Asnwer> entities = _db.Asnwer;
+            IQueryable<BtnQuestion> entities = _db.BtnQuestion;
             if (where != null)
             {
                 entities = entities.Where(where);
@@ -139,7 +139,7 @@ namespace Art_House.Data.Services.Repository.Questions
         }
 
         // TODO: override a finalizer only if Dispose(bool disposing) above has code to free unmanaged resources.
-        ~AsnwerRepository()
+        ~BtnQuestionRepository()
         {
             // Do not change this code. Put cleanup code in Dispose(bool disposing) above.
             Dispose(false);

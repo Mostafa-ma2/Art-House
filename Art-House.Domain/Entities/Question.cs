@@ -1,6 +1,7 @@
 ﻿using EzGame.Domain.Core.Services;
 using EzGame.Domain.Core.Services.Entities;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
@@ -20,10 +21,9 @@ namespace Art_House.Domain.Entities
         public DateTime StartThePoll { get; set; }
         public DateTime EndThePoll { get; set; }
 
-        public string AsnwerId { get; set; }
         //relations
-        [ForeignKey("AsnwerId")]
-        public virtual Asnwer Asnwer { get; set; }
+        public List<BtnQuestion> BtnQuestions { get; set; }
+        public List<userAnswer> userAnswers { get; set; }
 
     }
 }

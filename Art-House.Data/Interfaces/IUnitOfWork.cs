@@ -20,7 +20,7 @@ namespace Art_House.Data.Interfaces
         IUserAnswerRepository UserAnswerRepository { get; }
         IUserInUserRepository UserInUserRepository { get;  }
         IQuestionsRepository QuestionsRepository { get;  }
-        IAsnwerRepository AsnwerRepository { get; }
+        IBtnQuestionRepository BtnQuestionRepository { get; }
         IGroupRepository GroupRepository { get;  }
         ICommentRepository CommentRepository { get;  }
         IOffersRepository OffersRepository { get; }

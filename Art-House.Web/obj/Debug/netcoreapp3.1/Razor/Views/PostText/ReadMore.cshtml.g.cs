@@ -63,20 +63,27 @@ using Art_House.Common.ViewModels.Search;
 #nullable disable
 #nullable restore
 #line 8 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
-using Art_House.Common.ViewModels.ReadMore;
+using Art_House.Common.ViewModels.Questions;
 
 #line default
 #line hidden
 #nullable disable
 #nullable restore
 #line 9 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.ReadMore;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 10 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\_ViewImports.cshtml"
 using Art_House.Common.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0ced6d385b5d50dba70095908ec9f2668340c471", @"/Views/PostText/ReadMore.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"24a5d120ac5d98d698b34c540d63eccdce494112", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"ed7c417c3cf19d7385814e1847bbc23dee3a9b36", @"/Views/_ViewImports.cshtml")]
     public class Views_PostText_ReadMore : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<ReadMoreViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString(""), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -136,7 +143,7 @@ using Art_House.Common.Extensions;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<div class=\"main-text-list col-md-8 col-sm-12\">\r\n    <div class=\"text-list\">\r\n        <div class=\"top-pro\">\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0ced6d385b5d50dba70095908ec9f2668340c47111846", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0ced6d385b5d50dba70095908ec9f2668340c47112061", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -160,7 +167,7 @@ AddHtmlAttributeValue("", 222, Model.PostText.Users.ProfileImg, 222, 32, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47113459", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47113674", async() => {
 #nullable restore
 #line 12 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\PostText\ReadMore.cshtml"
                                                                                                       Write(Model.PostText.Users.UserName);
@@ -245,7 +252,7 @@ WriteAttributeValue("", 672, Model.PostText.Id, 672, 18, false);
 #line hidden
 #nullable disable
             WriteLiteral("        </div>\r\n        <div class=\"Short-Text\">\r\n            <div class=\"img\">\r\n                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0ced6d385b5d50dba70095908ec9f2668340c47117830", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0ced6d385b5d50dba70095908ec9f2668340c47118045", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -269,7 +276,7 @@ AddHtmlAttributeValue("", 879, Model.PostText.Image, 879, 21, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n            </div>\r\n            <div class=\"texts\">\r\n                <h2>");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47119500", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47119715", async() => {
 #nullable restore
 #line 27 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Views\PostText\ReadMore.cshtml"
                                                                                                                               Write(Model.PostText.Groups.Name);
@@ -377,7 +384,7 @@ AddHtmlAttributeValue("", 879, Model.PostText.Image, 879, 21, false);
 #line hidden
 #nullable disable
             WriteLiteral("                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47125252", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47125467", async() => {
                 WriteLiteral("\r\n                    <div class=\"AddComment\" style=\"padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;\">\r\n                        <input type=\"hidden\" name=\"Comment.PostId\"");
                 BeginWriteAttribute("value", " value=\"", 2383, "\"", 2409, 1);
 #nullable restore
@@ -392,7 +399,7 @@ WriteAttributeValue("", 2391, Model.PostText.Id, 2391, 18, false);
                 BeginWriteAttribute("value", " value=\"", 2501, "\"", 2509, 0);
                 EndWriteAttribute();
                 WriteLiteral(" />\r\n                        <div class=\"form-group\">\r\n                            <label id=\"Lable\" class=\"control-label padding-10\">نظر خود را بنویسید :</label>\r\n                            ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0ced6d385b5d50dba70095908ec9f2668340c47126553", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("input", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.SelfClosing, "0ced6d385b5d50dba70095908ec9f2668340c47126768", async() => {
                 }
                 );
                 __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.TagHelpers.InputTagHelper>();
@@ -458,7 +465,7 @@ __Microsoft_AspNetCore_Mvc_TagHelpers_InputTagHelper.For = ModelExpressionProvid
 #line hidden
 #nullable disable
             WriteLiteral("            <p style=\" text-align: center; padding: 20px; background: #1b1be1a6; color: white;\">\r\n                لطفا برای نوشتن توضیح وارد ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47130700", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47130915", async() => {
                 WriteLiteral("اکانت");
             }
             );
@@ -515,7 +522,7 @@ WriteAttributeValue("", 3874, item.Id, 3874, 8, false);
 #nullable disable
             EndWriteAttribute();
             WriteLiteral(">\r\n                        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0ced6d385b5d50dba70095908ec9f2668340c47133353", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "0ced6d385b5d50dba70095908ec9f2668340c47133568", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -619,7 +626,7 @@ WriteAttributeValue("", 4673, items.Users.Id, 4673, 15, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47138814", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47139029", async() => {
                 WriteLiteral("حذف");
             }
             );
@@ -696,7 +703,7 @@ WriteAttributeValue("", 5705, item.Id, 5705, 8, false);
 #line hidden
 #nullable disable
             WriteLiteral("                                ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47143024", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "0ced6d385b5d50dba70095908ec9f2668340c47143239", async() => {
                 WriteLiteral("حذف");
             }
             );

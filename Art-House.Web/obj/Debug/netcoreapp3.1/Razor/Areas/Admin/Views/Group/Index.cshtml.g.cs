@@ -35,13 +35,20 @@ using Art_House.Common.ViewModels.Users;
 #nullable disable
 #nullable restore
 #line 4 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.Questions;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 5 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
 using Art_House.Common.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"8d76960fa16b7df84df1b74cfa3a9206ff8e972a", @"/Areas/Admin/Views/Group/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"e43afc6fa1274b611e5b93978ad7ce2659e1f139", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1b87508004bbd64b10612d35827bd65c3ec5a0e2", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Group_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<Groups>>
     {
         #line hidden
@@ -239,7 +246,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             BeginWriteAttribute("for", " for=\"", 3138, "\"", 3144, 0);
             EndWriteAttribute();
             WriteLiteral(">وضعیت :</label>\r\n                <select class=\"form-control\" id=\"CreatIsDeletedGroup\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a11123", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a11349", async() => {
                 WriteLiteral("حذف نشده");
             }
             );
@@ -253,7 +260,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a12104", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a12330", async() => {
                 WriteLiteral("حذف شده");
             }
             );
@@ -290,7 +297,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             BeginWriteAttribute("for", " for=\"", 4258, "\"", 4264, 0);
             EndWriteAttribute();
             WriteLiteral(">وضعیت :</label>\r\n                <select class=\"form-control\" id=\"UpdateGroupIsActive\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a14714", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a14940", async() => {
                 WriteLiteral("حذف نشده");
             }
             );
@@ -304,7 +311,7 @@ WriteAttributeValue("", 2045, item.Id, 2045, 8, false);
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a15695", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "8d76960fa16b7df84df1b74cfa3a9206ff8e972a15921", async() => {
                 WriteLiteral("حذف شده");
             }
             );

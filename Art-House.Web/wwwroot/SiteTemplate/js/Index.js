@@ -49,3 +49,16 @@ function GetValues(obj) {
     var btn = document.getElementById("SerchTexts");
     btn.href = '/Home/Search?text=' + obj.value + '';
 }
+
+function GetPercentage(obj) {
+    var attr = obj.getAttribute("attr");
+    var attrr = obj.getAttribute("attrr");
+    $.ajax({
+        type: "Post",
+        url: "/Home/GetPercentage",
+        data: { BtnId: attr, questionId: attrr},
+        success: function (result) {
+
+        }
+    })
+}

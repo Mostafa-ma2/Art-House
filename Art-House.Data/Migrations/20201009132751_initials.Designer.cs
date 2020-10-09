@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Art_House.Data.Migrations
 {
     [DbContext(typeof(DataBaseContext))]
-    [Migration("20200924134438_initials")]
+    [Migration("20201009132751_initials")]
     partial class initials
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -21,14 +21,11 @@ namespace Art_House.Data.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("Art_House.Domain.Entities.Asnwer", b =>
+            modelBuilder.Entity("Art_House.Domain.Entities.BtnQuestion", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<byte>("Asnwers")
-                        .HasColumnType("tinyint");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
@@ -45,9 +42,17 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("QuestionId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Asnwer");
+                    b.HasIndex("QuestionId");
+
+                    b.ToTable("BtnQuestion");
                 });
 
             modelBuilder.Entity("Art_House.Domain.Entities.Comment", b =>
@@ -69,6 +74,9 @@ namespace Art_House.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ParentID")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PostId")
@@ -186,13 +194,17 @@ namespace Art_House.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ShortText")
-                        .HasColumnType("nvarchar(max)");
+                        .HasColumnType("nvarchar(250)")
+                        .HasMaxLength(250);
 
                     b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
+
+                    b.Property<decimal>("Visit")
+                        .HasColumnType("decimal(20,0)");
 
                     b.HasKey("Id");
 
@@ -203,19 +215,53 @@ namespace Art_House.Data.Migrations
                     b.ToTable("PostText");
                 });
 
-            modelBuilder.Entity("Art_House.Domain.Entities.Question", b =>
+            modelBuilder.Entity("Art_House.Domain.Entities.PostTextVisit", b =>
                 {
                     b.Property<string>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("AsnwerId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Ip")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("LastModifiedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("ModifiedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("PostId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PostId");
+
+                    b.ToTable("PostTextVisits");
+                });
+
+            modelBuilder.Entity("Art_House.Domain.Entities.Question", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("CreatedBy")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedTime")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("EndThePoll")
                         .HasColumnType("datetime2");
 
                     b.Property<bool>("IsDeleted")
@@ -230,9 +276,10 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("QuestionText")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Id");
+                    b.Property<DateTime>("StartThePoll")
+                        .HasColumnType("datetime2");
 
-                    b.HasIndex("AsnwerId");
+                    b.HasKey("Id");
 
                     b.ToTable("Question");
                 });
@@ -355,6 +402,9 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("AsnwerId")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("BtnQuestionId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("CreatedBy")
                         .HasColumnType("nvarchar(max)");
 
@@ -370,12 +420,17 @@ namespace Art_House.Data.Migrations
                     b.Property<string>("ModifiedBy")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("QuestionId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("AsnwerId");
+
+                    b.HasIndex("QuestionId");
 
                     b.HasIndex("UserId");
 
@@ -612,6 +667,13 @@ namespace Art_House.Data.Migrations
                     b.HasDiscriminator().HasValue("User");
                 });
 
+            modelBuilder.Entity("Art_House.Domain.Entities.BtnQuestion", b =>
+                {
+                    b.HasOne("Art_House.Domain.Entities.Question", "Questions")
+                        .WithMany("BtnQuestions")
+                        .HasForeignKey("QuestionId");
+                });
+
             modelBuilder.Entity("Art_House.Domain.Entities.Comment", b =>
                 {
                     b.HasOne("Art_House.Domain.Entities.PostText", "PostTexts")
@@ -641,11 +703,11 @@ namespace Art_House.Data.Migrations
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("Art_House.Domain.Entities.Question", b =>
+            modelBuilder.Entity("Art_House.Domain.Entities.PostTextVisit", b =>
                 {
-                    b.HasOne("Art_House.Domain.Entities.Asnwer", "Asnwer")
-                        .WithMany("Questions")
-                        .HasForeignKey("AsnwerId");
+                    b.HasOne("Art_House.Domain.Entities.PostText", "PostText")
+                        .WithMany("PostTextVisits")
+                        .HasForeignKey("PostId");
                 });
 
             modelBuilder.Entity("Art_House.Domain.Entities.SavePost", b =>
@@ -679,9 +741,13 @@ namespace Art_House.Data.Migrations
 
             modelBuilder.Entity("Art_House.Domain.Entities.userAnswer", b =>
                 {
-                    b.HasOne("Art_House.Domain.Entities.Asnwer", "Asnwer")
+                    b.HasOne("Art_House.Domain.Entities.BtnQuestion", "BtnQuestion")
                         .WithMany("UserAnswers")
                         .HasForeignKey("AsnwerId");
+
+                    b.HasOne("Art_House.Domain.Entities.Question", "Questions")
+                        .WithMany("userAnswers")
+                        .HasForeignKey("QuestionId");
 
                     b.HasOne("Art_House.Domain.Entities.User", "User")
                         .WithMany("UserAnswers")

@@ -659,7 +659,7 @@ main {
 
                 main .main .main-arshiv-list .question .question-check {
                     padding: 10px;
-                    display: flex;
+                    display: block;
                 }
 
                     main .main .main-arshiv-list .question .question-check h2 {
@@ -667,6 +667,7 @@ main {
                         background: white;
                         padding: 14px;
                         border-radius: 7px;
+                        text-align:center;
                         border: 1px solid;
                         padding-right: 30px;
                         padding-left: 30px;

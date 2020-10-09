@@ -39,8 +39,8 @@ namespace Art_House.Data.Services
         public IUserAnswerRepository UserAnswerRepository => _userAnswerRepository ??= new UserAnswerReposiitory(_db);
         private IQuestionsRepository _questionsRepository { get; set; }
         public IQuestionsRepository QuestionsRepository => _questionsRepository ??= new QuestionRepository(_db);
-        private IAsnwerRepository _asnwerRepository { get; set; }
-        public IAsnwerRepository AsnwerRepository => _asnwerRepository ??= new AsnwerRepository(_db);
+        private IBtnQuestionRepository _btnQuestionRepository { get; set; }
+        public IBtnQuestionRepository BtnQuestionRepository => _btnQuestionRepository ??= new BtnQuestionRepository(_db);
         private IGroupRepository _groupRepository { get; set; }
         public IGroupRepository GroupRepository => _groupRepository ??= new GroupsRepository(_db);
         private ICommentRepository _commentRepository { get; set; }

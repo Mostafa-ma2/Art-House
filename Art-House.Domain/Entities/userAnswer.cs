@@ -16,12 +16,15 @@ namespace Art_House.Domain.Entities
             LastModifiedTime = DateTime.Now;
         }
         public string UserId { get; set; }
-        public string AsnwerId { get; set; }
+        public string BtnQuestionId { get; set; }
+        public string QuestionId { get; set; }
         //relastion
         [ForeignKey("UserId")]
         public virtual User User { get; set; }
         [ForeignKey("AsnwerId")]
-        public virtual Asnwer Asnwer { get; set; }
+        public virtual BtnQuestion BtnQuestion { get; set; }
+        [ForeignKey("QuestionId")]
+        public Question Questions { get; set; }
 
     }
 }

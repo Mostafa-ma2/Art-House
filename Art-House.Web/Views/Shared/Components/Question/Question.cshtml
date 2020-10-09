@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Question>
+﻿@model AddQuestionViewModel
 @{
     ViewData["Title"] = "Question";
 }
@@ -7,7 +7,7 @@
     <div class="question-head">
         <p><i class="fa fa-question"></i>نظر سنجی</p>
     </div>
-    @if (!Model.Any())
+    @if (!Model.Question.Any())
     {
         <div class="question-text">
 
@@ -17,18 +17,31 @@
     }
     else
     {
-        @foreach (var item in Model.Take(1))
+
+        if (User.Identity.IsAuthenticated)
+        {
+            @foreach (var item in Model.Question.Take(1))
+            {
+                <div class="question-text">
+
+                    <p style="line-height: 20px; word-break: break-word; text-align: justify;">@item.QuestionText</p>
+                </div>
+                <div class="question-check">
+                    @foreach (var iten in Model.BtnQuestion.Where(p => p.QuestionId == item.Id))
+                    {
+                        <h2 onclick="GetPercentage(this)" attr="@iten.Id" attrr="@item.Id">@iten.Name</h2>
+                    }
+                </div>
+            }
+
+        }
+        else
         {
             <div class="question-text">
 
-                <p style="line-height: 20px; word-break: break-word; text-align: justify;">@item.QuestionText</p>
-            </div>
-
-
-            <div class="question-check">
-                <h2>خوبه</h2>
-                <h2>نه جالب نیست</h2>
+                <p style="line-height: 20px; word-break: break-word; text-align: justify;">برای شرکت در نظر سنجی وارد اکانت خود شوید</p>
             </div>
         }
+
     }
 </div>
