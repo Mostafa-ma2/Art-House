@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Art_House.Web.ViewComponents
 {
-    public class QuestionViewComponent:ViewComponent
+    public class QuestionViewComponent : ViewComponent
     {
         //گرفتن گروه ها
         #region
@@ -25,8 +25,12 @@ namespace Art_House.Web.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var date = DateTime.Now.ToPersianDateString();
-            var question =  _db.QuestionsRepository.Where(p=>p.StartThePoll <= Convert.ToDateTime(date)&&p.EndThePoll>= Convert.ToDateTime(date)).Take(1).ToList();
+            var question = _db.QuestionsRepository.Where(p => p.StartThePoll <= Convert.ToDateTime(date) && p.EndThePoll >= Convert.ToDateTime(date)).Take(1).ToList();
             var btnQuestions = await _db.BtnQuestionRepository.GetAllAsync();
+            foreach(var item in btnQuestions)
+            {
+                item.UserAnswer = _db.UserAnswerRepository.Where(p => p.BtnQuestionId == item.Id);
+            }
             var viewModel = new AddQuestionViewModel()
             {
                 Question = question,

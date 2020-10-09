@@ -6,7 +6,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Art_House.Domain.Entities
 {
-    public class BtnQuestion:BaseEntity<string>
+    public class BtnQuestion : BaseEntity<string>
     {
         //دکمه های نظرسنجی
         public BtnQuestion()
@@ -18,9 +18,8 @@ namespace Art_House.Domain.Entities
         public string Name { get; set; }
         public string QuestionId { get; set; }
         //relations
-        public virtual IEnumerable<userAnswer>  UserAnswers{ get; set; }
         [ForeignKey("QuestionId")]
-        public Question  Questions{ get; set; }
-
+        public Question Questions { get; set; }
+        public IEnumerable<userAnswer> UserAnswer { get; set; }
     }
 }

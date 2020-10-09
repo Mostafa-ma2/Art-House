@@ -122,17 +122,31 @@ namespace Art_House.Web.Controllers
         }
 
         // گرفتن درصد برای نظر سنجی
-        [HttpPost]
-        [AjaxOnly]
+        [HttpGet]
+        [Route("/Home/GetPercentage/BtnId={BtnId}/questionId={questionId}")]
         public async Task<IActionResult> GetPercentage(string BtnId, string questionId)
         {
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewBag.UserId = userId;
             if (!string.IsNullOrEmpty(BtnId)&&!string.IsNullOrEmpty(questionId))
             {
-             
+                var userAsnwer = _db.UserAnswerRepository.Where(p => p.UserId == userId && p.QuestionId== questionId).ToList();
+                if(userAsnwer.Count == 0)
+                {
+                    var addUserAsnwer = new userAnswer()
+                    {
+                        UserId = userId,
+                        QuestionId = questionId,
+                        BtnQuestionId = BtnId
+                    };
+                    await _db.UserAnswerRepository.InsertAsync(addUserAsnwer);
+                    await _db.SaveChangeAsync();
+                    _notification.AddSuccessToastMessage("نظر شما ثبت شد");
+                    return Redirect("/");
+                }
             }
-            return Json(null);
+            _notification.AddWarningToastMessage("شما قبلا نظر دادید");
+            return Redirect("/");
         }
 
     }

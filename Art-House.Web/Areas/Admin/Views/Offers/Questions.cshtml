@@ -19,7 +19,7 @@
                         </tr>
                     </thead>
                     <tbody id="group-list">
-                        @foreach (var item in Model.Question)
+                        @foreach (var item in Model.Question.OrderByDescending(p=>p.StartThePoll))
                         {
                             <tr id="@item.Id">
                                 <td class="text-center">@item.Id</td>
@@ -87,7 +87,6 @@
         <div class="modal-content" style="padding:10px">
             <form action="/" method="post">
                 <input type="hidden" id="UpdateidQuestion" name="name" value="" />
-                @{ var b = 0;}
                 <div class="col-12 text-center">
                     <h3>
                         ویرایش سوال

@@ -173,6 +173,11 @@ namespace Art_House.Web.Areas.Admin.Controllers
                         _db.BtnQuestionRepository.Delete(item);
                     }
                 }
+                var userAswner = _db.UserAnswerRepository.Where(p => p.QuestionId == question.Id).ToList();
+                foreach(var item in userAswner)
+                {
+                    _db.UserAnswerRepository.Delete(item);
+                }
                 _db.QuestionsRepository.Delete(question);
                 _db.SaveChange();
                 _notification.AddSuccessToastMessage($"سوال  با موفقیت حذف شد.");
@@ -199,7 +204,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 }
                 await _db.SaveChangeAsync();
                 _notification.AddSuccessToastMessage("با موفقیت دکمه ها به سوال اضافه شد");
-                return RedirectToRoute("/Admin/Offers/Questions");
+                return Redirect("/Admin/Offers/Questions");
             }
             return View();
         }

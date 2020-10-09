@@ -58,7 +58,10 @@ function GetPercentage(obj) {
         url: "/Home/GetPercentage",
         data: { BtnId: attr, questionId: attrr},
         success: function (result) {
-
+            if (result != null) {
+                debugger;
+                $("#" + attr).html('(' + result + ')')
+            }
         }
     })
 }

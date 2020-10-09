@@ -175,6 +175,16 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 {
                     _db.SavePostRepository.Delete(item);
                 }
+                var userasnwer = _db.UserAnswerRepository.Where(p => p.UserId == user.Id).ToList();
+                foreach(var item in userasnwer)
+                {
+                    _db.UserAnswerRepository.Delete(item);
+                }
+                var comment = _db.CommentRepository.Where(p => p.UserId == user.Id).ToList();
+                foreach(var item in comment)
+                {
+                    _db.CommentRepository.Delete(item);
+                }
                 _db.SaveChange();
                 if (user.ProfileImg != null)
                 {
@@ -192,7 +202,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 }
                 await _userManager.DeleteAsync(user);
                 _notification.AddSuccessToastMessage($"پلتفرم {user.UserName} با موفقیت حذف شد.");
-                return View(user);
+                return Redirect("/Admin/User");
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return View(null);

@@ -6,6 +6,7 @@
 <div class="question">
     <div class="question-head">
         <p><i class="fa fa-question"></i>نظر سنجی</p>
+        <h2>@ViewBag.Sucses</h2>
     </div>
     @if (!Model.Question.Any())
     {
@@ -29,7 +30,7 @@
                 <div class="question-check">
                     @foreach (var iten in Model.BtnQuestion.Where(p => p.QuestionId == item.Id))
                     {
-                        <h2 onclick="GetPercentage(this)" attr="@iten.Id" attrr="@item.Id">@iten.Name</h2>
+                        <a href="/Home/GetPercentage/BtnId=@iten.Id/questionId=@item.Id">@iten.Name <span id="@iten.Id">(@iten.UserAnswer.Count())</span></a>
                     }
                 </div>
             }
