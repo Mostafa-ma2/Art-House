@@ -139,7 +139,7 @@ namespace Art_House.Web.Controllers
             _db.PostTextRepository.Update(postText);
             _db.SaveChange();
             _notification.AddSuccessToastMessage("با موفقیت ویرایش شد");
-            return RedirectToAction("Index", "Profile", new { id = model.postText.UserId });
+            return RedirectToAction("Index", "Profile", new { id = postText.UserId });
         }
 
 
