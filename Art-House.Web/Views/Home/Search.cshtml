@@ -85,7 +85,7 @@
             <nav aria-label="Page navigation example">
                 <ul class="pagination">
                     <li class="page-item">
-                        @if (ViewBag.PageID != 1)
+                        @if (ViewBag.PageID > 1)
                         {
                             var c = ViewBag.PageID - 1;
                             <a class="page-link" href="/Home/Search?group=@ViewBag.group&&pageid=@c" aria-label="Previous">

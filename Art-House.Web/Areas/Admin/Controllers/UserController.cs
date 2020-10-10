@@ -185,6 +185,11 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 {
                     _db.CommentRepository.Delete(item);
                 }
+                var offers = _db.OffersRepository.Where(p => p.UserId == user.Id).ToList();
+                foreach (var item in offers)
+                {
+                    _db.OffersRepository.Delete(item);
+                }
                 _db.SaveChange();
                 if (user.ProfileImg != null)
                 {

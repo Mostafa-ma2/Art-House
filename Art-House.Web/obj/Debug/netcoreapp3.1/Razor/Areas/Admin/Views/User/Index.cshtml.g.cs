@@ -42,13 +42,20 @@ using Art_House.Common.ViewModels.Questions;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.DashBoard;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
 using Art_House.Common.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"d5f55b3668162a94b491febb239f4b5984b2d037", @"/Areas/Admin/Views/User/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1b87508004bbd64b10612d35827bd65c3ec5a0e2", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fc5217e02e2867d29d6b2e3b4e260952d2f985e4", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_User_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<IEnumerable<User>>
     {
         #pragma warning disable 1998

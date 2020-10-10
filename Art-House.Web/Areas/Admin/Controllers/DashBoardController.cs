@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Art_House.Common.ViewModels.DashBoard;
 using Art_House.Data.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -26,9 +27,20 @@ namespace Art_House.Web.Areas.Admin.Controllers
 
         //Get
         [HttpGet]
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-             return View();
+            var getCommentAll = (await _db.CommentRepository.GetAllAsync());
+            var getPostTextAll = (await _db.PostTextRepository.GetAllAsync());
+            var getOffersAll=(await _db.OffersRepository.GetAllAsync());
+            var getUserAll = (await _db.UserRepository.GetAllAsync());
+            var viewModel = new DashBoardViewModel()
+            {
+                comments = getCommentAll,
+                postTexts = getPostTextAll,
+                offers = getOffersAll,
+                Users = getUserAll
+            };
+             return View(viewModel);
         }
     }
 }

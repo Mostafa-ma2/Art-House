@@ -118,7 +118,7 @@
                 }
 
                 <div class="text">
-                    <p style="line-height: 21px; text-align: justify;">
+                    <p style="line-height: 21px;text-align: justify;height: 124px;">
                         <span style="color:#1b1be1a6"> توضیح :  </span>
                         @item.ShortText
                     </p>
@@ -184,7 +184,7 @@
     </div>
 </div>
 <div class="Save-Post" id="Post" style="width:100%">
-    @if (Model.PostTexts.Any())
+    @if (Model.SavePosts.Any())
     {
         @foreach (var item in Model.SavePosts)
         {
@@ -200,7 +200,7 @@
                     <h1 style="text-align: center;font-size: 32px;margin-top: 10px;color: #1b1be1a6;padding: 82px;">***</h1>
                 }
 
-                <div class="text">
+                <div class="text" style="line-height: 21px;text-align: justify;height: 124px;">
                     <p>
                         <span style="color:#1b1be1a6"> توضیح :  </span>
                         @item.PostTexts.ShortText

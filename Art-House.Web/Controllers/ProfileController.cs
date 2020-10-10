@@ -177,6 +177,7 @@ namespace Art_House.Web.Controllers
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             await _userManager.UpdateAsync(user);
+            _notification.AddSuccessToastMessage($"{user.UserName} با موفقیت ویرایش شد");
             return RedirectToAction("Index", "Profile", new { id = user.Id });
         }
 

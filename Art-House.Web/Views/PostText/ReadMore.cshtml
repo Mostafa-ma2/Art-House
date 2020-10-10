@@ -44,8 +44,6 @@
     <div class="Comment" style="margin-top: 10px;background:white;border-radius: 3px;">
         @if (User.Identity.IsAuthenticated)
         {
-            if (User.Identity.Name != Model.PostText.Users.UserName)
-            {
                 <form action="/PostText/AddComment" method="post">
                     <div class="AddComment" style="padding:10px;margin-bottom:7px;border-bottom: 1px dashed ;">
                         <input type="hidden" name="Comment.PostId" value="@Model.PostText.Id" />
@@ -61,16 +59,11 @@
                         </div>
                     </div>
                 </form>
-            }
-            else
-            {
-
-            }
         }
         else
         {
             <p style=" text-align: center; padding: 20px; background: #1b1be1a6; color: white;">
-                لطفا برای نوشتن توضیح وارد <a asp-action="Login" asp-controller="Account">اکانت</a> خود شوید
+                لطفا برای نوشتن نظر وارد <a asp-action="Login" asp-controller="Account">اکانت</a> خود شوید
             </p>
         }
         @if (!Model.Comments.Any())

@@ -75,7 +75,7 @@ namespace Art_House.Web.Controllers
             };
             await _db.PostTextRepository.InsertAsync(PostText);
             await _db.SaveChangeAsync();
-            _notification.AddSuccessToastMessage("با موفقیت انجام شد");
+            _notification.AddSuccessToastMessage("پست شما با موفقیت ثبت شد");
             return RedirectToAction("Index", "Home");
         }
 
@@ -181,6 +181,11 @@ namespace Art_House.Web.Controllers
                 {
                     _db.PostTextVisitRepository.Delete(iten);
                 }
+                var getCommentPost = _db.CommentRepository.Where(p => p.PostId == postText.Id).ToList();
+                foreach (var iten in getCommentPost)
+                {
+                    _db.CommentRepository.Delete(iten);
+                }
                 _db.PostTextRepository.Delete(postText);
                 _db.SaveChange();
                 return Json(postText);
@@ -238,7 +243,7 @@ namespace Art_House.Web.Controllers
                 var SavePost = _db.SavePostRepository.GetById(id);
                 _db.SavePostRepository.Delete(SavePost);
                 _db.SaveChange();
-                _notification.AddSuccessToastMessage("با موفقیت سیو شد");
+                _notification.AddSuccessToastMessage("با موفقیت پست سیو شدع حذف شد");
                 return Json(SavePost);
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");

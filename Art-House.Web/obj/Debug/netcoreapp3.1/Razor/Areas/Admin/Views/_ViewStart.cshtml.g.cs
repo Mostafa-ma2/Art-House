@@ -42,13 +42,20 @@ using Art_House.Common.ViewModels.Questions;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.DashBoard;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
 using Art_House.Common.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"3db38eb7b4fc6b5b7b59225c4aaadc1da658b7fc", @"/Areas/Admin/Views/_ViewStart.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1b87508004bbd64b10612d35827bd65c3ec5a0e2", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fc5217e02e2867d29d6b2e3b4e260952d2f985e4", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views__ViewStart : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

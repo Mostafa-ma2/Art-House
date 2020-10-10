@@ -1,47 +1,275 @@
-﻿
+﻿@model DashBoardViewModel
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "صفحه اصلی";
 }
 
-    <div class="row" style="margin-top:10px">
-        <div class="col-sm-12">
-            <div class="white-box">
-                <div class="row row-in">
-                    <div class="col-lg-4 col-sm-6 b-r-none">
-                        <ul class="col-in">
-                            <li>
-                                <span class="circle circle-md bg-info"><i class="ti-wallet"></i></span>
-                            </li>
-                            <li class="col-last"><h3 class="counter text-right m-t-15">@*@ViewBag.GameCount*@</h3></li>
-                            <li class="col-middle">
-                                <h4>کل بازی ها</h4>
-                            </li>
+<div class="row" style="margin-top:10px">
+    <div class="col-sm-12">
+        <div class="white-box">
+            <div class="row row-in">
+                <div class="col-lg-4 col-sm-6 b-r-none">
+                    <ul class="col-in">
+                        <li>
+                            <span class="circle circle-md bg-info"><i class="ti-wallet"></i></span>
+                        </li>
+                        <li class="col-last"><h3 class="counter text-right m-t-15">@Model.postTexts.Count()</h3></li>
+                        <li class="col-middle">
+                            <h4>تعداد کل پست ها</h4>
+                        </li>
 
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 row-in-br">
-                        <ul class="col-in">
-                            <li>
-                                <span class="circle circle-md bg-success"><i class=" ti-shopping-cart"></i></span>
-                            </li>
-                            <li class="col-last"><h3 class="counter text-right m-t-15">@*@ViewBag.CommentCoun*@t</h3></li>
-                            <li class="col-middle">
-                                <h4>تعداد کامنت ها</h4>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 row-in-br">
-                        <ul class="col-in">
-                            <li>
-                                <span class="circle circle-md bg-warning"><i class="fa fa-dollar"></i></span>
-                            </li>
-                            <li class="col-last"><h3 class="counter text-right m-t-15">@*@ViewBag.UserCount*@</h3></li>
-                            <li class="col-middle">
-                                <h4>تعداد کاربران</h4>
-                            </li>
-                        </ul>
-                    </div>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-sm-6 row-in-br">
+                    <ul class="col-in">
+                        <li>
+                            <span class="circle circle-md bg-success"><i class=" ti-shopping-cart"></i></span>
+                        </li>
+                        <li class="col-last"><h3 class="counter text-right m-t-15">@Model.Users.Count()</h3></li>
+                        <li class="col-middle">
+                            <h4>تعداد کل کاربران</h4>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-4 col-sm-6 row-in-br">
+                    <ul class="col-in">
+                        <li>
+                            <span class="circle circle-md bg-warning"><i class="fa fa-dollar"></i></span>
+                        </li>
+                        <li class="col-last"><h3 class="counter text-right m-t-15">@Model.comments.Count()</h3></li>
+                        <li class="col-middle">
+                            <h4>تعداد کامنت ها</h4>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
     </div>
+</div>
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">پیشنهاد های امروز</div>
+            <div class="table-responsive">
+                <table class="table table-hover manage-u-table">
+                    <thead>
+                        <tr>
+                            <th width="70" class="text-center">#</th>
+                            <th>نام</th>
+                            <th>متن</th>
+                        </tr>
+                    </thead>
+                    <tbody id="group-list">
+                        @if (!Model.offers.Any())
+                        {
+                            <tr>
+                                <td>
+                                    <p>پیشنهادی وجود ندارد</p>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @if (Model.offers.Where(p => p.CreatedTime.ToPersianDateString() == DateTime.Now.ToPersianDateString()).Count() != 0)
+                            {
+                                @foreach (var item in Model.offers.Where(p => p.CreatedTime.ToPersianDateString() == DateTime.Now.ToPersianDateString()))
+                                {
+                                    <tr id="@item.Id">
+                                        <td class="text-center">@item.Id</td>
+                                        <td id="Name-@item.Id">
+                                            @if (item.Users.UserName == null)
+                                            {
+                                                <p>+=======</p>
+                                            }
+                                            else
+                                            {
+                                                @item.Users.UserName
+
+                                            }
+                                        </td>
+                                        <td id="isActive-@item.IsDeleted ">
+                                            <p style="word-break:break-word">
+                                                @item.OffersText
+                                            </p>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        <p>هیچ پیشنهادی امروز وجود نداشت</p>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">پست های امروز</div>
+            <div class="table-responsive">
+                <table class="table table-hover manage-u-table">
+                    <thead>
+                        <tr>
+                            <th width="70" class="text-center">تصویر</th>
+                            <th>نام</th>
+                            <th>متن کوتاه</th>
+                            <th>گروه</th>
+                            <th>وضعیت</th>
+                            <th width="300">مدیریت کردن</th>
+                        </tr>
+                    </thead>
+                    <tbody id="group-list">
+                        @if (!Model.postTexts.Any())
+                        {
+                            <tr>
+                                <td>
+                                    <p>پستی وجود ندارد</p>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @if (Model.postTexts.Where(p => p.CreatedTime.ToPersianDateString() == DateTime.Now.ToPersianDateString()).Count() != 0)
+                            {
+                                @foreach (var item in Model.postTexts.Where(p => p.CreatedTime.ToPersianDateString() == DateTime.Now.ToPersianDateString()))
+                                {
+                                    <tr id="@item.Id">
+                                        <td class="text-center"><img src="~/PostTextImages/@item.Image" width="105" height="105" alt="Alternate Text" /></td>
+                                        <td id="Name-@item.Id">
+                                            @item.Name
+                                        </td>
+                                        <td>
+                                            @item.ShortText.Substring(0,25)
+                                        </td>
+                                        <td>
+                                            @item.Groups.Name
+                                        </td>
+                                        <td id="isActive-@item.IsDeleted ">
+                                            @if (item.IsDeleted == false)
+                                            {
+                                                <label>حذف نشده</label>
+                                            }
+                                            else
+                                            {
+                                                <label>حذف شده</label>
+                                            }
+                                        </td>
+                                        <td>
+                                            <a type="button" href="/PostText/EditPostText/@item.Id" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                                <i class="ti-pencil-alt"></i>
+                                            </a>
+                                            <a type="button" href="/PostText/ReadMore/@item.Id" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                                <i class="ti-pin2"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        <p>هیچ پستی امروز قرار نگرفت</p>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="row" style="margin-top:10px">
+    <div class="col-md-12">
+        <div class="panel">
+            <div class="panel-heading">کامنت های امروز</div>
+            <div class="table-responsive">
+                <table class="table table-hover manage-u-table">
+                    <thead>
+                        <tr>
+                            <th width="70" class="text-center">تصویر</th>
+                            <th>نام کاربر</th>
+                            <th>پست</th>
+                            <th>متن</th>
+                            <th>وضعیت</th>
+                            <th width="300">مدیریت کردن</th>
+                        </tr>
+                    </thead>
+                    <tbody id="group-list">
+                        @if (!Model.comments.Any())
+                        {
+                            <tr>
+                                <td>
+                                    <p>کامنتی وجود ندارد</p>
+                                </td>
+                            </tr>
+                        }
+                        else
+                        {
+                            @if (Model.comments.Where(p => p.CreatedTime.ToPersianDateString() == DateTime.Now.ToPersianDateString()).Count() != 0)
+                            {
+
+                                @foreach (var item in Model.comments.Where(p => p.CreatedTime.ToPersianDateString() == DateTime.Now.ToPersianDateString()))
+                                {
+                                    <tr id="@item.Id">
+                                        <td class="text-center"><img src="~/ProfileImage/@item.Users.ProfileImg" width="105" height="105" alt="Alternate Text" /></td>
+                                        <td id="Name-@item.Id">
+                                            @item.Users.UserName
+                                        </td>
+                                        <td>
+                                            @if (@item.PostTexts.Name != null)
+                                            {
+                                                @item.PostTexts.Name
+                                            }
+                                            else
+                                            {
+                                                <p>============</p>
+                                            }
+                                        </td>
+                                        <td>
+                                            @item.text
+                                        </td>
+                                        <td id="isActive-@item.IsDeleted ">
+                                            @if (item.IsDeleted == false)
+                                            {
+                                                <label>حذف نشده</label>
+                                            }
+                                            else
+                                            {
+                                                <label>حذف شده</label>
+                                            }
+                                        </td>
+                                        <td>
+                                            <button type="button" attr="@item.Id" onclick="OpenDeleteModel(this)" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                                <i class="ti-trash"></i>
+                                            </button>
+                                            <a type="button" href="/PostText/ReadMore/@item.PostTexts.Id" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                                <i class="ti-pencil-alt"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            }
+                            else
+                            {
+                                <tr>
+                                    <td>
+                                        <p>امروز کامنتی گزاشته نشد</p>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

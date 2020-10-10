@@ -42,13 +42,20 @@ using Art_House.Common.ViewModels.Questions;
 #nullable disable
 #nullable restore
 #line 5 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
+using Art_House.Common.ViewModels.DashBoard;
+
+#line default
+#line hidden
+#nullable disable
+#nullable restore
+#line 6 "C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Web\Areas\Admin\Views\_ViewImports.cshtml"
 using Art_House.Common.Extensions;
 
 #line default
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"4625cec03a655356c32ca017c41d65befc8544db", @"/Areas/Admin/Views/Offers/Questions.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"1b87508004bbd64b10612d35827bd65c3ec5a0e2", @"/Areas/Admin/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fc5217e02e2867d29d6b2e3b4e260952d2f985e4", @"/Areas/Admin/Views/_ViewImports.cshtml")]
     public class Areas_Admin_Views_Offers_Questions : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<AddQuestionViewModel>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("action", new global::Microsoft.AspNetCore.Html.HtmlString("/"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -289,7 +296,7 @@ WriteAttributeValue("", 3512, DateTime.Now.ToPersianDateString(), 3512, 35, fals
             BeginWriteAttribute("for", " for=\"", 3636, "\"", 3642, 0);
             EndWriteAttribute();
             WriteLiteral(">وضعیت :</label>\r\n                <select class=\"form-control\" id=\"CreatIsDeletedGroup\">\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db15119", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db15345", async() => {
                 WriteLiteral("حذف نشده");
             }
             );
@@ -303,7 +310,7 @@ WriteAttributeValue("", 3512, DateTime.Now.ToPersianDateString(), 3512, 35, fals
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db16100", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db16326", async() => {
                 WriteLiteral("حذف شده");
             }
             );
@@ -328,7 +335,7 @@ WriteAttributeValue("", 3512, DateTime.Now.ToPersianDateString(), 3512, 35, fals
     <div class=""modal-dialog"" role=""document"">
         <div class=""modal-content"" style=""padding:10px"">
             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db17541", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db17767", async() => {
                 WriteLiteral("\r\n                <input type=\"hidden\" id=\"UpdateidQuestion\" name=\"name\"");
                 BeginWriteAttribute("value", " value=\"", 4385, "\"", 4393, 0);
                 EndWriteAttribute();
@@ -382,7 +389,7 @@ WriteAttributeValue("", 5285, DateTime.Now.ToPersianDateString(), 5285, 35, fals
                 BeginWriteAttribute("for", " for=\"", 5421, "\"", 5427, 0);
                 EndWriteAttribute();
                 WriteLiteral(">وضعیت :</label>\r\n                    <select class=\"form-control\" id=\"UpdateQuestionIsActive\">\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db21394", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db21620", async() => {
                     WriteLiteral("حذف نشده");
                 }
                 );
@@ -396,7 +403,7 @@ WriteAttributeValue("", 5285, DateTime.Now.ToPersianDateString(), 5285, 35, fals
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                        ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db22435", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db22661", async() => {
                     WriteLiteral("حذف شده");
                 }
                 );
@@ -450,7 +457,7 @@ WriteAttributeValue("", 5285, DateTime.Now.ToPersianDateString(), 5285, 35, fals
 <div class=""modal fade"" id=""exampleModal32"" tabindex=""-1"" role=""dialog"" aria-labelledby=""exampleModalLabel"" aria-hidden=""true"">
     <div class=""modal-dialog"" role=""document"">
         ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db25876", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "4625cec03a655356c32ca017c41d65befc8544db26102", async() => {
                 WriteLiteral("\r\n            <div class=\"modal-content\" style=\"padding:10px\" id=\"CreateBtn\">\r\n                <input type=\"hidden\" id=\"BtnQuestionsId\" name=\"questionId\"");
                 BeginWriteAttribute("value", " value=\"", 6821, "\"", 6829, 0);
                 EndWriteAttribute();
