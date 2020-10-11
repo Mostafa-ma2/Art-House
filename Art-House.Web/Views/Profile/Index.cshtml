@@ -118,8 +118,8 @@
                 }
 
                 <div class="text">
-                    <p style="line-height: 21px;text-align: justify;height: 124px;">
-                        <span style="color:#1b1be1a6"> توضیح :  </span>
+                    <p style="line-height: 21px;text-align: justify;height: 124px;word-break: break-word;">
+                        <span style="color: #1b1be1a6;display: block;"> توضیح :  </span>
                         @item.ShortText
                     </p>
                 </div>
@@ -190,7 +190,6 @@
         {
             <div class="post-list col-md-4 col-sm-12 col-12" id="SavePost-@item.Id">
 
-                <h1 class="text-center" style="margin-top:10px">نام داستان : <span>@item.PostTexts.Name</span></h1>
                 @if (item.PostTexts.Image != null)
                 {
                     <img src="~/PostTextImages/@item.PostTexts.Image" alt="">
@@ -200,9 +199,9 @@
                     <h1 style="text-align: center;font-size: 32px;margin-top: 10px;color: #1b1be1a6;padding: 82px;">***</h1>
                 }
 
-                <div class="text" style="line-height: 21px;text-align: justify;height: 124px;">
-                    <p>
-                        <span style="color:#1b1be1a6"> توضیح :  </span>
+                <div class="text" style="line-height: 21px;text-align: justify;height: 124px">
+                    <p style=" word-break: break-word;">
+                        <span style="color: #1b1be1a6;display: block;"> توضیح :  </span>
                         @item.PostTexts.ShortText
                     </p>
                 </div>
@@ -282,11 +281,9 @@
                     url: "/PostText/DeletePostText",
                     data: { ID: id },
                     success: function (result) {
-                        if (result != null) {
-                            debugger;
-                            $("#exampleModal").modal("hide");
-                            $("#Post-" + result.id).remove();
-                        }
+                        debugger;
+                        $("#exampleModal").modal("hide");
+                        $("#Post-" + result.id).remove();
                     }
 
                 })
@@ -351,7 +348,7 @@
                     $("#exampleModal").modal("show");
                     if (result != null) {
                         $("#DeleteID").val(result.id);
-                        document.getElementById("lal").innerHTML = ' ایا از حذف ' + result.name + ' اطمینان دارید؟';
+                        document.getElementById("lal").innerHTML = ' ایا از حذف ان اطمینان دارید؟';
                     }
                 }
             });

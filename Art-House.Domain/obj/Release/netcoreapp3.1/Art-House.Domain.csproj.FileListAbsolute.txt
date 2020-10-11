@@ -1,0 +1,12 @@
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\bin\Release\netcoreapp3.1\Art-House.Domain.deps.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\bin\Release\netcoreapp3.1\Art-House.Domain.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\bin\Release\netcoreapp3.1\Art-House.Domain.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\bin\Release\netcoreapp3.1\Art-House.Domain.Core.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\bin\Release\netcoreapp3.1\Art-House.Domain.Core.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.csprojAssemblyReference.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.AssemblyInfoInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.AssemblyInfo.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.csproj.CoreCompileInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.csproj.CopyComplete
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Domain\obj\Release\netcoreapp3.1\Art-House.Domain.pdb

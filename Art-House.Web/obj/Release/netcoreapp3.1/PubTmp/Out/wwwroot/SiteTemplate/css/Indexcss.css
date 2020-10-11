@@ -1,0 +1,866 @@
+@font-face {
+    font-family: "name";
+    src: url("../fonts/Farsi-Digits/Vazir-FD.eot");
+    src: url("../fonts/Farsi-Digits/Vazir-FD.eot?#iefix") format("embedded-opentype"), /* IE6-8 /
+    url('../Fonts/IrasnSANSE/Iran-Sans.woff2') format('woff2'), / Chrome36+, Opera24+/
+    url('../Fonts/IrasnSANSE/Iran-Sans.woff') format('woff'), / FF3.6+, IE9, Chrome6+, Saf5.1+*/
+    url("../fonts/Farsi-Digits/Vazir-FD.ttf") format("truetype");
+}
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+.padding-10 {
+    padding: 10px;
+}
+
+margin-10 {
+    margin-top: 10px;
+}
+
+.back-white {
+    background-color: white;
+    border-radius: 4px;
+}
+
+.heg-100 {
+    height: 100%;
+}
+
+body {
+    font-family: "name";
+    direction: rtl;
+    background: #9e9e9e47;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    color: #1a1f59;
+}
+
+    a,
+    a:hover {
+        transition: all 0.2s ease;
+        text-decoration: none !important;
+    }
+
+
+/* ========================   Header top */
+
+header {
+    background: white;
+    display: flex;
+}
+
+    header .Header-logo img {
+        width: 162px;
+        height: 70px;
+    }
+
+    header .Header-Search input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 14px;
+        padding-right: 26px;
+        background: #dcdcdc6e;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+
+        header .Header-Search input:hover {
+            background: white;
+            border: 1px solid #5a5af97a;
+        }
+
+    header .Header-Search .icon-search {
+        position: absolute;
+        top: 35%;
+        right: 25px;
+    }
+
+        header .Header-Search .icon-search i {
+            color: gray;
+        }
+
+    header .Header-Search .icon-exit {
+        position: absolute;
+        left: 6%;
+        top: 37%;
+        color: #5a5af97a;
+    }
+
+    header .Header-login {
+        text-align: center;
+        margin-top: 29px;
+    }
+
+        header .Header-login a {
+            padding: 10px;
+            padding-left: 43px;
+            padding-right: 43px;
+            border-radius: 4px;
+        }
+
+        header .Header-login #Login {
+            border: 1px solid #1b1be1a6;
+            color: #1b1be1a6;
+        }
+
+            header .Header-login #Login:hover {
+                color: white;
+                background: #1b1be1a6;
+            }
+
+        header .Header-login #Rigester {
+            color: white;
+            background: #1b1be1a6;
+        }
+
+            header .Header-login #Rigester:hover {
+                border: 1px solid #1b1be1a6;
+                color: #1b1be1a6;
+                background: white;
+            }
+
+    header .profile {
+        display: inline-flex;
+        justify-content: flex-end;
+        margin-top: 7px;
+    }
+
+        header .profile .profile-newtext {
+            border: 1px solid #1b1be1a6;
+            display: inline-table;
+            padding: 13px;
+            padding-left: 45px;
+            border-radius: 4px;
+            margin-top: 8px;
+            padding-right: 45px;
+        }
+
+            header .profile .profile-newtext:hover {
+                background: #1b1be1a6;
+            }
+
+            header .profile .profile-newtext a {
+                color: #1b1be1a6;
+            }
+
+            header .profile .profile-newtext:hover a {
+                color: white;
+            }
+
+        header .profile .profile-use {
+            padding: 20px;
+            position: relative;
+        }
+
+            header .profile .profile-use i {
+                cursor: pointer;
+            }
+
+            header .profile .profile-use .profile-tedad {
+                position: absolute;
+                right: 6px;
+                top: 26px;
+            }
+
+                header .profile .profile-use .profile-tedad p {
+                    padding: 3px;
+                    background: #1b1be1a6;
+                    color: white;
+                    font-size: 10px;
+                    border-radius: 16px;
+                }
+
+        header .profile img {
+            width: 55px;
+            cursor: pointer;
+            border-radius: 18px;
+            border: 3px solid darkgray;
+        }
+
+        header .profile .profile-use .profile-check {
+            position: absolute;
+            z-index: 1;
+            background: #1b1be1a6;
+            width: 187px;
+            right: -59px;
+            top: 75%;
+            border-radius: 3px;
+            opacity: 0;
+        }
+
+            header .profile .profile-use .profile-check .check-text {
+                padding: 10px;
+                border-bottom: 1px solid;
+            }
+
+                header .profile .profile-use .profile-check .check-text:hover {
+                    background: blueviolet;
+                }
+
+                header .profile .profile-use .profile-check .check-text a {
+                    color: white;
+                }
+
+
+/* ============================== main nav */
+
+main {
+    margin-top: 19px;
+}
+
+    main .main-navbar {
+        position: relative;
+        background: white;
+        border-radius: 5px;
+        display: flex;
+    }
+
+        main .main-navbar .main-navbar-list {
+            padding: 11px;
+        }
+
+            main .main-navbar .main-navbar-list a {
+                padding-bottom: 7px;
+                color: black;
+            }
+
+        main .main-navbar .main-navbar-e {
+            display: none;
+        }
+
+        main .main-navbar .main-navbar-list a:hover {
+            color: #1b1be1a6;
+            border-bottom: 2px solid #1b1be1a6;
+        }
+
+        main .main-navbar .main-navbar-text {
+            position: absolute;
+            left: 12px;
+            margin-top: 10px;
+        }
+
+            main .main-navbar .main-navbar-text a {
+                padding: 2px;
+                padding-left: 29px;
+                border-radius: 4px;
+                padding-right: 29px;
+                background: #1b1be1a6;
+                color: white;
+            }
+
+                main .main-navbar .main-navbar-text a:hover {
+                    border: 1px solid #1b1be1a6;
+                    color: #1b1be1a6;
+                    background: white;
+                }
+
+
+    /* =======================    main text list */
+
+    main .main {
+        padding: 10px;
+        display: flex;
+        margin-top: 14px;
+    }
+
+        main .main .main-text-list {
+            margin-left: 9px;
+            border-radius: 4px;
+            height: 100px;
+            border: 1px solid #dcdcdc6e;
+            width: 100px;
+        }
+
+            main .main .main-text-list .text-list {
+                background: white;
+                margin-bottom: 10px;
+                border-radius: 4px;
+                padding-bottom: 10px;
+            }
+
+                main .main .main-text-list .text-list .top-pro {
+                    display: flex;
+                    position: relative;
+                    padding: 9px;
+                    border-bottom: 1px solid;
+                }
+
+                    main .main .main-text-list .text-list .top-pro img {
+                        width: 42px;
+                        border-radius: 43px;
+                        height: 42px;
+                        border: 1px solid gray;
+                    }
+
+                    main .main .main-text-list .text-list .top-pro #name {
+                        margin-top: 11px;
+                        margin-right: 9px;
+                        color: black;
+                    }
+
+                    main .main .main-text-list .text-list .top-pro #fallow {
+                        position: absolute;
+                        left: 12px;
+                        border-radius: 4px;
+                        top: 10px;
+                        border: 1px solid #1b1be1a6;
+                        padding: 9px;
+                        padding-right: 35px;
+                        padding-left: 35px;
+                        color: #1b1be1a6;
+                    }
+
+                        main .main .main-text-list .text-list .top-pro #fallow:hover {
+                            color: white;
+                            background: #1b1be1a6;
+                        }
+
+                main .main .main-text-list .text-list .Short-Text {
+                    display: flex;
+                }
+
+                    main .main .main-text-list .text-list .Short-Text h2 {
+                        position: absolute;
+                        left: 32%;
+                        padding: 10px;
+                        top: -15px;
+                        background: #1b1be1a6;
+                        color: white;
+                        border-radius: 8px;
+                    }
+
+                    main .main .main-text-list .text-list .Short-Text .img {
+                        width: 100%;
+                    }
+
+                        main .main .main-text-list .text-list .Short-Text .img img {
+                            width: 100%;
+                            padding: 15px;
+                            height: 203px;
+                        }
+
+                    main .main .main-text-list .text-list .Short-Text .texts {
+                        width: 100%;
+                        padding: 8px;
+                        margin-top: 16px;
+                        position: relative;
+                        border-right: 2px dashed #1b1be1a6;
+                    }
+
+                        main .main .main-text-list .text-list .Short-Text .texts p {
+                            padding: 4px;
+                        }
+
+                        main .main .main-text-list .text-list .Short-Text .texts span {
+                            color: #1b1be1a6;
+                        }
+
+                        main .main .main-text-list .text-list .Short-Text .texts #shorttexts {
+                            display: block;
+                            padding: 9px;
+                            margin-top: 9px;
+                            font-size: smaller;
+                            word-break: break-word;
+                            background: #1b1be1a6;
+                            color: white;
+                            height: 101px;
+                        }
+
+            main .main .main-text-list .Nazar {
+                padding: 25px;
+                background: white;
+                border-radius: 3px;
+                display: flex;
+            }
+
+                main .main .main-text-list .Nazar img {
+                    width: 100px;
+                    border-radius: 50px;
+                    height: 95px;
+                }
+
+                main .main .main-text-list .Nazar h1 {
+                    display: inline;
+                    margin-top: 41px;
+                    margin-right: 10px;
+                    margin-left: 10px;
+                }
+
+                main .main .main-text-list .Nazar i {
+                    margin-top: 41px;
+                    margin-right: 13px;
+                }
+
+                main .main .main-text-list .Nazar .text {
+                    margin-top: 12px;
+                    border: 1px solid #1b1be1a6;
+                    padding: 12px;
+                    border-radius: 6px;
+                    width: 100%;
+                }
+
+            main .main .main-text-list .Text {
+                padding: 15px;
+                margin-top: 10px;
+                border: 1px solid #1b1be1a6;
+                border-radius: 2px;
+                background: white;
+            }
+
+            main .main .main-text-list .text-list .main-text {
+                border-bottom: 1px solid;
+            }
+
+                main .main .main-text-list .text-list .main-text img {
+                    padding: 10px;
+                    width: 100%;
+                    height: 285px;
+                    border-radius: 14px;
+                }
+
+                main .main .main-text-list .text-list .main-text p {
+                    line-height: 21px;
+                    text-align: justify;
+                    padding: 10px;
+                    word-break: break-word;
+                }
+
+                main .main .main-text-list .text-list .main-text h1 {
+                    margin-right: 11px;
+                    margin-bottom: 9px;
+                }
+
+                    main .main .main-text-list .text-list .main-text h1 span {
+                        color: #1b1be1a6;
+                    }
+
+            main .main .main-text-list .text-list .main-footer {
+                display: flex;
+                position: relative;
+                padding: 10px;
+            }
+
+                main .main .main-text-list .text-list .main-footer #nvisande {
+                    margin-left: 15px;
+                }
+
+                main .main .main-text-list .text-list .main-footer #bro {
+                    position: absolute;
+                    left: 19px;
+                    padding: 3px;
+                    padding-top: 5px;
+                    border-radius: 4px;
+                    padding-left: 22px;
+                    padding-right: 22px;
+                    color: white;
+                    background: #1b1be1a6;
+                }
+
+                main .main .main-text-list .text-list .main-footer #savepost {
+                    position: absolute;
+                    left: 21%;
+                    padding: 3px;
+                    padding-top: 5px;
+                    border-radius: 4px;
+                    padding-left: 22px;
+                    padding-right: 22px;
+                    color: white;
+                    background-color: green;
+                }
+
+                    main .main .main-text-list .text-list .main-footer #savepost:hover {
+                        border: 1px solid green;
+                        background: white;
+                        color: green;
+                    }
+
+                main .main .main-text-list .text-list .main-footer p {
+                    cursor: pointer;
+                }
+
+                main .main .main-text-list .text-list .main-footer #bro:hover {
+                    border: 1px solid #1b1be1a6;
+                    background: white;
+                    color: #1b1be1a6;
+                }
+
+
+        /* =======================   main arshiv list */
+
+        main .main .main-arshiv-list {
+            border: 1px solid #dcdcdc6e;
+            height: 2497px;
+        }
+
+            main .main .main-arshiv-list .profiles .login {
+                text-align: center;
+                padding-top: 88px;
+            }
+
+                main .main .main-arshiv-list .profiles .login a {
+                    padding-top: 13px;
+                    border: 1px solid #1b1be1a6;
+                    color: #1b1be1a6;
+                    border-radius: 6px;
+                    padding-left: 53px;
+                    padding-right: 53px;
+                    padding-bottom: 13px;
+                }
+
+                    main .main .main-arshiv-list .profiles .login a:hover {
+                        color: white;
+                        background: #1b1be1a6;
+                    }
+
+            main .main .main-arshiv-list .profiles .register-box {
+                text-align: center;
+                padding-top: 39px;
+                padding-bottom: 88px;
+            }
+
+                main .main .main-arshiv-list .profiles .register-box a {
+                    padding-top: 13px;
+                    color: white;
+                    background: #1b1be1a6;
+                    border-radius: 6px;
+                    padding-left: 43px;
+                    padding-right: 43px;
+                    padding-bottom: 13px;
+                }
+
+                    main .main .main-arshiv-list .profiles .register-box a:hover {
+                        border: 1px solid #1b1be1a6;
+                        color: #1b1be1a6;
+                        background-color: white;
+                    }
+
+            main .main .main-arshiv-list .profiles {
+                background: white;
+                border-radius: 4px;
+                margin-bottom: 10px;
+                position: sticky;
+                top: 5px;
+            }
+
+                main .main .main-arshiv-list .profiles .profiles-head {
+                    text-align: center;
+                    padding: 10px;
+                }
+
+                    main .main .main-arshiv-list .profiles .profiles-head img {
+                        width: 77px;
+                        height: 77px;
+                        border: 1px solid black;
+                        border-radius: 10px;
+                    }
+
+                    main .main .main-arshiv-list .profiles .profiles-head h3 {
+                        color: black;
+                        margin-top: 6px;
+                        cursor: pointer;
+                    }
+
+                main .main .main-arshiv-list .profiles .profiles-main .text {
+                    padding: 11px;
+                    border-bottom: 1px solid;
+                    border-top: 1px solid;
+                    transition: all 0.3s ease-out;
+                }
+
+                    main .main .main-arshiv-list .profiles .profiles-main .text:hover {
+                        background: #1b1be1a6;
+                    }
+
+                main .main .main-arshiv-list .profiles .profiles-main a {
+                    padding: 10px;
+                    color: black;
+                    padding-left: 28%;
+                }
+
+                main .main .main-arshiv-list .profiles .profiles-main:hover a {
+                    color: white;
+                }
+
+            main .main .main-arshiv-list .Visit {
+                background: white;
+                border-radius: 4px;
+                position: sticky;
+                top: 260px;
+            }
+
+                main .main .main-arshiv-list .Visit .visit-head {
+                    padding: 10px;
+                }
+
+                main .main .main-arshiv-list .Visit .visit-main {
+                    margin-top: 5px;
+                }
+
+                    main .main .main-arshiv-list .Visit .visit-main .visit-text {
+                        padding: 8px;
+                        border-bottom: 1px solid;
+                        position: relative;
+                        transition: all 0.3s ease-out;
+                    }
+
+                        main .main .main-arshiv-list .Visit .visit-main .visit-text i {
+                            position: absolute;
+                            left: 15px;
+                            opacity: 0;
+                        }
+
+                        main .main .main-arshiv-list .Visit .visit-main .visit-text a {
+                            color: black;
+                            display: inline-block;
+                            width: 100%;
+                        }
+
+                        main .main .main-arshiv-list .Visit .visit-main .visit-text:hover {
+                            background: #1b1be1a6;
+                        }
+
+                            main .main .main-arshiv-list .Visit .visit-main .visit-text:hover a {
+                                color: white;
+                            }
+
+                            main .main .main-arshiv-list .Visit .visit-main .visit-text:hover i {
+                                opacity: 1;
+                                color: white;
+                            }
+
+            main .main .main-arshiv-list .question {
+                margin-top: 11px;
+                position: sticky;
+                top: 453px;
+                background: #1b1be1a6;
+                border-radius: 4px;
+            }
+
+                main .main .main-arshiv-list .question .question-head {
+                    padding: 10px;
+                }
+
+                    main .main .main-arshiv-list .question .question-head p {
+                        color: white;
+                    }
+
+                main .main .main-arshiv-list .question .question-text {
+                    color: white;
+                    padding: 10px;
+                }
+
+                main .main .main-arshiv-list .question .question-check {
+                    padding: 10px;
+                    display: block;
+                }
+
+                    main .main .main-arshiv-list .question .question-check a {
+                        margin-left: 21px;
+                        background: white;
+                        padding: 14px;
+                        border-radius: 7px;
+                        text-align:center;
+                        border: 1px solid;
+                        display:block;
+                        padding-right: 30px;
+                        padding-left: 30px;
+                        cursor: pointer;
+                        transition: all 0.4s ease;
+                    }
+
+                        main .main .main-arshiv-list .question .question-check a:hover {
+                            background: whitesmoke;
+                        }
+
+    main #Mps {
+        display: none;
+    }
+
+@media (max-width: 769px) {
+    header .Header-Search .s {
+        display: none;
+    }
+
+    main .main-navbar .main-navbar-list {
+        display: none;
+    }
+
+    main .main-navbar .main-navbar-e {
+        display: block;
+        font-size: 22px;
+        padding: 7px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    main .main-navbar .lists {
+        background: #1b1be1a6;
+        margin-top: 5px;
+    }
+
+    main .main-navbar .main-navbar-lists {
+        padding: 10px;
+        font-size: 18px;
+    }
+
+        main .main-navbar .main-navbar-lists:hover {
+            background: darkslateblue;
+        }
+
+        main .main-navbar .main-navbar-lists a {
+            color: white;
+        }
+
+    main .main {
+        display: inline;
+    }
+
+        main .main .main-arshiv-list {
+            height: 100%;
+            display: contents;
+        }
+
+            main .main .main-arshiv-list .question {
+                position: initial;
+            }
+
+            main .main .main-arshiv-list .Visit {
+                position: initial;
+            }
+
+            main .main .main-arshiv-list .profiles {
+                position: initial;
+            }
+
+        main .main .main-text-list {
+            display: contents;
+        }
+
+            main .main .main-text-list .text-list {
+                margin-top: 10px;
+            }
+
+    header .profile .profile-newtext {
+        padding-left: 27px;
+        padding-right: 27px;
+    }
+
+    header .profile .profile-newtext {
+        padding: 9px;
+    }
+
+    main .main-navbar input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 14px;
+        padding-right: 26px;
+        background: #dcdcdc6e;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+
+        main .main-navbar input:hover {
+            background: white;
+            border: 1px solid #5a5af97a;
+        }
+
+    main .main-navbar .icon-search {
+        position: absolute;
+        top: 17%;
+        right: 12px;
+    }
+
+        main .main-navbar .icon-search i {
+            color: gray;
+        }
+
+    main .main-navbar .icon-exit {
+        position: absolute;
+        left: 6%;
+        top: 37%;
+        color: #5a5af97a;
+    }
+
+    main .main .main-text-list .text-list .Short-Text {
+        display: block;
+    }
+
+        main .main .main-text-list .text-list .Short-Text h2 {
+            left: 41%;
+            top: -17px;
+        }
+
+    main .main .main-text-list .Nazar img {
+        width: 11%;
+        height: 45px;
+        margin-top: 27px;
+    }
+
+    main #MPS {
+        display: none
+    }
+
+    main #Mps {
+        margin-top: 16px;
+        text-align: center;
+        color: darkgray;
+        display: inline-block;
+    }
+}
+
+@media (max-width: 427px) {
+    main .main .main-text-list .text-list .main-footer {
+        display: inherit;
+    }
+
+        main .main .main-text-list .text-list .main-footer p {
+            display: table;
+            margin-top: 10px;
+        }
+
+        main .main .main-text-list .text-list .main-footer #bro {
+            top: 28px;
+        }
+}
+
+@media (max-width: 851px) {
+
+    header .Header-login {
+        display: none;
+    }
+
+    main .main .main-text-list .text-list .main-footer #savepost {
+        position: absolute;
+        left: 35%;
+        padding: 3px;
+        padding-top: 5px;
+        border-radius: 4px;
+        padding-left: 22px;
+        padding-right: 22px;
+        color: white;
+        background-color: green;
+    }
+}
+
+@media (max-width: 1199px) {
+
+    main .main .main-text-list .text-list .main-footer #savepost {
+        position: absolute;
+        left: 34%;
+        padding: 3px;
+        padding-top: 5px;
+        border-radius: 4px;
+        padding-left: 22px;
+        padding-right: 22px;
+        color: white;
+        background-color: green;
+    }
+}

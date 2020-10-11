@@ -30,7 +30,7 @@ namespace Art_House.Web
                 .AddNToastNotifyNoty();
             services.AddDbContext<DataBaseContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetSection("connectionString").GetSection("defaultConnection").Value);
+                options.UseSqlServer(Configuration.GetSection("connectionString").GetSection("defaultConnection").Value.Replace("/",@"\"));
             });
             services.AddScoped<DataBaseContext, DataBaseContext>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();

@@ -19,10 +19,13 @@ namespace Art_House.Domain.Entities
         public string UserId { get; set; }
         public string Image { get; set; }
         public string GroupId { get; set; }
+        [MaxLength(60,ErrorMessage ="نمی تواند بیشتر 60 حروف باشد")]
         public string Name { get; set; }
         [MaxLength(250)]
         [MinLength(25)]
+        [Required(ErrorMessage ="نمی تواند کمتر از 25 حروف و بیشتر از 250 تا باشد")]
         public string ShortText { get; set; }
+        [Required(ErrorMessage = "نمی تواند خالی باشد")]
         public string Text { get; set; }
         public ulong Visit { get; set; }
         //relations

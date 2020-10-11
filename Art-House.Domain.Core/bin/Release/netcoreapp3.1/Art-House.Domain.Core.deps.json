@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v3.1",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v3.1": {
+      "Art-House.Domain.Core/1.0.0": {
+        "runtime": {
+          "Art-House.Domain.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "Art-House.Domain.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

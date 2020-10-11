@@ -43,7 +43,7 @@ namespace Art_House.Web.Controllers
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewBag.UserId = userId;
             //foreach (var item in Post)
-            //{
+            //{Data is Null.
             //    item.Users.UserInUsers = _db.UserInUserRepository.Where(p => p.user == item.UserId&&p.UserId== userId).ToList();
             //}
             return View(Post);
@@ -83,8 +83,8 @@ namespace Art_House.Web.Controllers
                 };
                 return View(viemodel);
             }
-
-            return View();
+            _notification.AddWarningToastMessage("چیزی وارد نکردید");
+            return RedirectToAction(nameof(Index));
         }
 
         //پیشنهاد ها

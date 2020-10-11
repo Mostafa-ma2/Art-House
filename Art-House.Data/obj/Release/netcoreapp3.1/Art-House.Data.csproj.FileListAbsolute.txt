@@ -1,0 +1,17 @@
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Data.deps.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Data.runtimeconfig.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Data.runtimeconfig.dev.json
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Data.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Data.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Domain.Core.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Domain.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Domain.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\bin\Release\netcoreapp3.1\Art-House.Domain.Core.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.csprojAssemblyReference.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.AssemblyInfoInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.AssemblyInfo.cs
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.csproj.CoreCompileInputs.cache
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.csproj.CopyComplete
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.dll
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.pdb
+C:\Users\Mostafa\Downloads\Csharp_Web\Art-House\Art-House.Data\obj\Release\netcoreapp3.1\Art-House.Data.genruntimeconfig.cache

@@ -1,0 +1,95 @@
+    @font-face {
+        font-family: "name";
+        src: url("../fonts/Farsi-Digits/Vazir-FD.eot");
+        src: url("../fonts/Farsi-Digits/Vazir-FD.eot?#iefix") format("embedded-opentype"), /* IE6-8 /
+    url('../Fonts/IrasnSANSE/Iran-Sans.woff2') format('woff2'), / Chrome36+, Opera24+/
+    url('../Fonts/IrasnSANSE/Iran-Sans.woff') format('woff'), / FF3.6+, IE9, Chrome6+, Saf5.1+*/
+        url("../fonts/Farsi-Digits/Vazir-FD.ttf") format("truetype");
+    }
+    
+    * {
+        padding: 0;
+        margin: 0;
+    }
+    
+    body {
+        font-family: "name";
+        direction: rtl;
+        background: #9e9e9e47;
+    }
+    
+    li {
+        list-style: none;
+    }
+    
+    a {
+        color: #1a1f59;
+    }
+    
+    a,
+    a:hover {
+        transition: all 0.2s ease;
+        text-decoration: none !important;
+    }
+    /* ================================== lg */
+    
+    .log {
+        background: #1b1be1a6;
+        height: 754px;
+        text-align: center;
+    }
+    
+    .log .infos img {
+        height: 297px;
+    }
+    
+    .log .infos h2 {
+        font-size: 44px;
+        color: azure;
+        margin-top: -74px;
+    }
+    
+    .log .infos p {
+        font-size: 22px;
+        margin-top: 20px;
+    }
+    
+    .form-log {
+        text-align: center;
+        background: white;
+        margin-top: 141px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px black;
+        padding: 15px;
+    }
+    
+    .form-log label {
+        font-size: 22px;
+        margin-bottom: 19px;
+        color: #1b1be1a6;
+    }
+    
+    .form-log input {
+        border: 1px solid;
+        border-radius: 6px;
+        width: 233px;
+        padding: 3px;
+        margin-left: 42px;
+        margin-bottom: 10px;
+    }
+    
+    .form-log #submit {
+        text-align: center;
+        margin-right: 57px;
+        width: 253px;
+        padding: 7px;
+        margin-top: 23px;
+        background: #05a505cf;
+        color: white;
+    }
+    
+    .form-log #submit:hover {
+        background: white;
+        color: #05a505cf;
+        border: 1px solid #05a505cf;
+    }

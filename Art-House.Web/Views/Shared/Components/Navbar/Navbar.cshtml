@@ -3,6 +3,9 @@
     ViewData["Title"] = "Navbar";
 }
 <div class="main-navbar">
+    <div class="main-navbar-list">
+        <a href="/">صفحه اصلی</a>
+    </div>
     @foreach (var item in Model)
     {
         <div class="main-navbar-list">
@@ -10,8 +13,8 @@
         </div>
     }
     @*<div class="main-navbar-list">
-        <a href="#">ارتباط باما</a>
-    </div>*@
+            <a href="#">ارتباط باما</a>
+        </div>*@
     <div class="main-navbar-list">
         <a asp-controller="Home" asp-action="Offers">پیشنهاد به ما</a>
     </div>
@@ -35,6 +38,9 @@
                     </a>
                 </div>
             </div>
+            <div class="main-navbar-list">
+                <a href="/">صفحه اصلی</a>
+            </div>
             @foreach (var item in Model)
             {
                 <div class="main-navbar-lists">
@@ -42,8 +48,8 @@
                 </div>
             }
             @*<div class="main-navbar-lists">
-                <a href="#">ارتباط باما</a>
-            </div>*@
+                    <a href="#">ارتباط باما</a>
+                </div>*@
             <div class="main-navbar-lists">
                 <a asp-controller="Home" asp-action="Offers">پیشنهاد به ما</a>
             </div>

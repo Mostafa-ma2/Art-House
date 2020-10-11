@@ -53,11 +53,13 @@ namespace Art_House.Web.Controllers
         [Authorize]
         public async Task<IActionResult> AddPost(AddPostTextViewModel model, IFormFile image)
         {
+            ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.ShortText)
              || string.IsNullOrEmpty(model.postText.Text))
             {
                 _notification.AddWarningToastMessage("لطفا مقادیر را به درستی پر کنید");
-                return RedirectToAction(nameof(AddPost));
+                model.groups = (await _db.GroupRepository.GetAllAsync(a => !a.IsDeleted));
+                return View(model);
             }
             if (image != null)
                 model.postText.Image = await _fileManager.UploadImage(image, FileManagerType.FileType.PostTextImages);
@@ -353,6 +355,7 @@ namespace Art_House.Web.Controllers
                 }
                 _db.CommentRepository.Delete(Comment);
                 _db.SaveChange();
+                _notification.AddSuccessToastMessage("با موفقیت حذف شد");
                 return RedirectToAction("ReadMore", "PostText", new { id = Comment.PostId });
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");

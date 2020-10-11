@@ -17,10 +17,10 @@ namespace Art_House.Data.Context
         {
 
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            optionsBuilder.UseSqlServer(@"Server=.;Database=Art-HouseDb;Trusted_Connection=True;MultipleActiveResultSets=true");
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    optionsBuilder.UseSqlServer(@"Server=.;Database=Art-HouseDb;Trusted_Connection=True;MultipleActiveResultSets=true");
+        //}
         public DbSet<User> User { get; set; }
         public DbSet<BtnQuestion> BtnQuestion { get; set; }
         public DbSet<Groups> Groups { get; set; }
