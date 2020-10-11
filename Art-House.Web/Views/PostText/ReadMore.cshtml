@@ -21,7 +21,16 @@
         </div>
         <div class="Short-Text">
             <div class="img">
-                <img src="~/PostTextImages/@Model.PostText.Image" alt="Alternate Text" />
+                @if (Model.PostText.Image != null)
+                {
+                    <img src="~/PostTextImages/@Model.PostText.Image" alt="Alternate Text" />
+
+                }
+                else
+                {
+                    <h1 style="text-align: center;font-size: 32px;margin-top: 10px;color: #1b1be1a6;padding: 82px;">***</h1>
+
+                }
             </div>
             <div class="texts">
                 <h2><a asp-controller="Home" asp-action="Search" asp-route-group="@Model.PostText.Groups.Name" style="color:white">@Model.PostText.Groups.Name</a></h2>
@@ -72,19 +81,21 @@
         }
         else
         {
-            <div id="comments">
+            <div id="comments" style="padding:10px">
                 @foreach (var item in Model.Comments.Where(p => p.ParentID == null))
                 {
                     <div class="Nazar" id="@item.Id">
                         <img src="~/ProfileImage/@item.Users.ProfileImg" alt="">
                         <i class="fa fa-user"></i>
-                        <h1 style="cursor:pointer" asp-action="Index" asp-controller="Profile" asp-route-id="@item.Users.Id">@item.Users.UserName</h1>
+                        <h1 style="cursor: pointer; width: 21%; margin-top: 42px; text-align: justify; word-break: break-word;" asp-action="Index" asp-controller="Profile" asp-route-id="@item.Users.Id">@item.Users.UserName</h1>
                         <div class="text">
-                            @item.text
+                            <p style=" word-break: break-word; text-align: justify;">
+                                @item.text
+                            </p>
                             @foreach (var items in Model.Comments.Where(p => p.ParentID == item.Id))
                             {
-                                <div class="Nazar" style=" padding-top: 0; padding-left: 0; padding-right: 0;" id="@items.Id">
-                                    <h1 style="margin-top: 29px;cursor: pointer;color: #1b1be1a6" asp-action="Index" asp-controller="Profile" asp-route-id="@items.Users.Id">@items.Users.UserName</h1>
+                                <div class="Nazar" id="@items.Id">
+                                    <h1 asp-action="Index" asp-controller="Profile" asp-route-id="@items.Users.Id">@items.Users.UserName</h1>
                                     <div class="text">
                                         @items.text
                                     </div>

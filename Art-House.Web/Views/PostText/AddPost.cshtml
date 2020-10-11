@@ -29,17 +29,17 @@
         <div class="form-group">
             <label class="control-label padding-10">موضوع یا نام :</label>
             <input asp-for="postText.Name" class="form-control" />
-            <span asp-validation-for="postText.Name" class="text-danger"></span>
+            <span asp-validation-for="postText.Name" style="padding:6px" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label class="control-label padding-10">متن کوتاه (توضیح کوتاه):</label>
             <input asp-for="postText.ShortText" class="form-control" />
-            <span asp-validation-for="postText.ShortText" class="text-danger"></span>
+            <span asp-validation-for="postText.ShortText" style="padding:6px" class="text-danger"></span>
         </div>
         <div class="form-group">
             <label class="control-label padding-10">متن :</label>
             <textarea class="form-control text-box multi-line ckEditor" data-val="true" asp-for="postText.Text"></textarea>
-            <span asp-validation-for="postText.Text" class="text-danger"></span>
+            <span asp-validation-for="postText.Text" style="padding:6px" class="text-danger"></span>
         </div>
         <div class="form-group">
             <input type="submit" value="افزودن" style="width:100%" class="btn btn-success" />

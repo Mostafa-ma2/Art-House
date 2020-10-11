@@ -106,11 +106,13 @@ namespace Art_House.Web.Controllers
         [Authorize]
         public async Task<IActionResult> EditPostText(AddPostTextViewModel model, IFormFile image)
         {
+            ViewBag.UserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (!ModelState.IsValid || string.IsNullOrEmpty(model.postText.ShortText)
             || string.IsNullOrEmpty(model.postText.Text))
             {
                 _notification.AddWarningToastMessage("لطفا مقادیر را به درستی پر کنید");
-                return RedirectToAction("Index","Profile",new { id=model.postText.UserId});
+                model.groups = (await _db.GroupRepository.GetAllAsync());
+                return View(model);
             }
             var postText = (await _db.PostTextRepository.GetByIdAsync(model.postText.Id));
             if (image == null)
@@ -164,11 +166,11 @@ namespace Art_House.Web.Controllers
         [AjaxOnly]
         [HttpPost]
         [Authorize]
-        public ActionResult DeletePostText(string id)
+        public async Task<IActionResult> DeletePostText(string id)
         {
             if (!string.IsNullOrEmpty(id))
             {
-                var postText = _db.PostTextRepository.GetById(id);
+                var postText =await _db.PostTextRepository.GetByIdAsync(id);
                 if (postText.Image != null)
                 {
                     _fileManager.DeleteImage(postText.Image, FileManagerType.FileType.PostTextImages);
@@ -189,7 +191,7 @@ namespace Art_House.Web.Controllers
                     _db.CommentRepository.Delete(iten);
                 }
                 _db.PostTextRepository.Delete(postText);
-                _db.SaveChange();
+                await _db.SaveChangeAsync();
                 return Json(postText);
             }
             return Json(null);
