@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
-namespace Art_House.Common.Identity
+namespace EzGame.Common.Identity
 {
     public class PersianIdentityErrorDescriber : IdentityErrorDescriber
     {

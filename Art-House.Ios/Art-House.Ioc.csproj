@@ -10,4 +10,11 @@
     <PackageReference Include="NToastNotify" Version="7.0.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Art-House.Common\Art-House.Common.csproj" />
+    <ProjectReference Include="..\Art-House.Data\Art-House.Data.csproj" />
+    <ProjectReference Include="..\Art-House.Domain\Art-House.Domain.csproj" />
+    <ProjectReference Include="..\Art-House.Services\Art-House.Services.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -411,9 +411,7 @@ main {
         display: inline-table;
         margin-bottom: 10px;
     }
-        main .posts-active:hover {
-            filter: drop-shadow(2px 4px 8px black);
-        }
+
 
         main .posts-active .post-list {
             background: white;
@@ -424,6 +422,10 @@ main {
             padding: 10px;
             margin-bottom: 10px;
         }
+
+            main .posts-active .post-list:hover {
+                filter: drop-shadow(2px 4px 8px black);
+            }
 
             main .posts-active .post-list img {
                 width: 100%;
@@ -585,9 +587,7 @@ main {
         display: inline-table;
         margin-bottom: 10px;
     }
-        main .Save-Post-active:hover {
-            filter: drop-shadow(2px 4px 8px black);
-        }
+
         main .Save-Post-active .post-list {
             background: white;
             width: 359px;
@@ -597,6 +597,10 @@ main {
             padding: 10px;
             margin-bottom: 10px;
         }
+
+            main .Save-Post-active .post-list:hover {
+                filter: drop-shadow(2px 4px 8px black);
+            }
 
             main .Save-Post-active .post-list img {
                 width: 100%;

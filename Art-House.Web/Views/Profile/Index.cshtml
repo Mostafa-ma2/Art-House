@@ -118,7 +118,7 @@
                 }
 
                 <div class="text">
-                    <p style="line-height: 21px;text-align: justify;height: 124px;word-break: break-word;">
+                    <p style="line-height: 21px;text-align: justify;word-break: break-word;">
                         <span style="color: #1b1be1a6;display: block;"> توضیح :  </span>
                         @item.ShortText
                     </p>
@@ -213,7 +213,7 @@
                         </div>
                     }
                     <div class="right">
-                        <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.Id">ادامه مطلب</a>
+                        <a asp-controller="PostText" asp-action="ReadMore" asp-route-id="@item.PostTextId">ادامه مطلب</a>
                     </div>
                 </div>
 

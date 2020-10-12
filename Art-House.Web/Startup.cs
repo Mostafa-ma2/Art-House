@@ -2,6 +2,7 @@ using Art_House.Data.Context;
 using Art_House.Data.Interfaces;
 using Art_House.Data.Services;
 using Art_House.Domain.Entities;
+using EzGame.Common.Identity;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,7 +31,7 @@ namespace Art_House.Web
                 .AddNToastNotifyNoty();
             services.AddDbContext<DataBaseContext>(options =>
             {
-                options.UseSqlServer(Configuration.GetSection("connectionString").GetSection("defaultConnection").Value.Replace("/",@"\"));
+                options.UseSqlServer(Configuration.GetSection("connectionString").GetSection("defaultConnection").Value.Replace("/", @"\"));
             });
             services.AddScoped<DataBaseContext, DataBaseContext>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -43,10 +44,13 @@ namespace Art_House.Web
             {
                 options.Password.RequiredUniqueChars = 0;
                 options.User.RequireUniqueEmail = true;
+                options.User.AllowedUserNameCharacters =
+                       "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-._";
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(15);
             })
                            .AddEntityFrameworkStores<DataBaseContext>()
-                           .AddDefaultTokenProviders();
+                           .AddDefaultTokenProviders()
+            .AddErrorDescriber<PersianIdentityErrorDescriber>();
 
         }
 

@@ -287,6 +287,9 @@
         "frameworks": {
           "netcoreapp3.1": {
             "projectReferences": {
+              "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Data\\Art-House.Data.csproj": {
+                "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Data\\Art-House.Data.csproj"
+              },
               "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj": {
                 "projectPath": "C:\\Users\\Mostafa\\Downloads\\Csharp_Web\\Art-House\\Art-House.Domain\\Art-House.Domain.csproj"
               }

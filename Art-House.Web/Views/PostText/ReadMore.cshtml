@@ -89,7 +89,7 @@
                         <i class="fa fa-user"></i>
                         <h1 style="cursor: pointer; width: 21%; margin-top: 42px; text-align: justify; word-break: break-word;" asp-action="Index" asp-controller="Profile" asp-route-id="@item.Users.Id">@item.Users.UserName</h1>
                         <div class="text">
-                            <p style=" word-break: break-word; text-align: justify;">
+                            <p style="word-break: break-word;text-align: justify;line-height: 23px;">
                                 @item.text
                             </p>
                             @foreach (var items in Model.Comments.Where(p => p.ParentID == item.Id))
@@ -102,7 +102,7 @@
                                 </div>
                                 @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin")||item.Users.UserName==User.Identity.Name)
                                 {
-                                    <a asp-action="DeleteComment" asp-route-id="@items.Id" style="padding-left: 28px; margin-top: -23px; padding-right: 28px;" class="btn btn-danger">حذف</a>
+                                    <a asp-action="DeleteComment" asp-route-id="@items.Id" id="deletecomments" style="padding-left: 28px; margin-top: -23px; padding-right: 28px;" class="btn btn-danger">حذف</a>
                                 }
                             }
                         </div>

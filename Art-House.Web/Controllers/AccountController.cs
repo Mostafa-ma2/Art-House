@@ -55,38 +55,40 @@ namespace Art_House.Web.Controllers
         [HttpPost]
         public async Task<IActionResult> Register(RegisterViewModel model)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                var user = new User()
-                {
-                    UserName = model.UserName,
-                    CreatedTime = DateTime.Now,
-                    Email = model.Email,
-                    ProfileImg = "male-user-profile-picture_318-37825.jpg",
-                    BackGroundImg= "download.jpg"
-                };
-
-                var result = await _userManager.CreateAsync(user, model.Password);
-
-                if (result.Succeeded)
-                {
-                    var emailConfirmationToken =
-                        await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    var emailMessage =
-                        Url.Action("ConfirmEmail", "Account",
-                            new { username = user.Email, token = emailConfirmationToken },
-                            Request.Scheme);
-
-                    TempData["UserId"] = user.Id;
-                    return RedirectToAction("EditProfile", "Account");
-                }
-
-                foreach (var error in result.Errors)
-                {
-                    ModelState.AddModelError("", error.Description);
-                }
-
+                _notification.AddWarningToastMessage("لطفا مقادیر را به درستی وارد نمایید");
+                return View(model);
             }
+            var user = new User()
+            {
+                UserName = model.UserName,
+                CreatedTime = DateTime.Now,
+                Email = model.Email,
+                ProfileImg = "male-user-profile-picture_318-37825.jpg",
+                BackGroundImg = "download.jpg"
+            };
+
+            var result = await _userManager.CreateAsync(user, model.Password);
+
+            if (result.Succeeded)
+            {
+                var emailConfirmationToken =
+                    await _userManager.GenerateEmailConfirmationTokenAsync(user);
+                var emailMessage =
+                    Url.Action("ConfirmEmail", "Account",
+                        new { username = user.Email, token = emailConfirmationToken },
+                        Request.Scheme);
+
+                TempData["UserId"] = user.Id;
+                return RedirectToAction("EditProfile", "Account");
+            }
+
+            foreach (var error in result.Errors)
+            {
+                ModelState.AddModelError("", error.Description);
+            }
+            SetErrors(result);
             return View(model);
         }
 
@@ -203,7 +205,7 @@ namespace Art_House.Web.Controllers
                 _notification.AddWarningToastMessage("پست مورد نطر یافت نشد دوباره امتحان کنید");
                 return RedirectToAction("Home", "Index");
             }
-            var GetUserId=User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
+            var GetUserId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             if (string.IsNullOrEmpty(GetUserId))
             {
                 _notification.AddWarningToastMessage("کاربر مورد نطر یافت نشد دوباره امتحان کنید");
@@ -253,6 +255,13 @@ namespace Art_House.Web.Controllers
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
             return Json(null);
+        }
+        public void SetErrors(IdentityResult results)
+        {
+            foreach (var item in results.Errors)
+            {
+                ModelState.AddModelError("", item.Description);
+            }
         }
         #region Helper
         //ایمیل چک میشه

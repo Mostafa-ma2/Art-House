@@ -9,10 +9,14 @@ namespace Art_House.Common.ViewModels.Account
 {
     public class LoginViewModel
     {
-        [Required, Display(Name = "نام کاربری")]
+        [Display(Name = "نام کاربری")]
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
+        [EmailAddress(ErrorMessage = "لطفا ایمیل را به درستی وارد نمایید")]
         public string Email { get; set; }
+        [Required(ErrorMessage = "لطفا {0} را وارد کنید")]
 
-        [Required, Display(Name = "رمز عبور")]
+
+        [ Display(Name = "رمز عبور")]
         public string Password { get; set; }
 
         [Display(Name = "مرا به خاطر بسپار")]
