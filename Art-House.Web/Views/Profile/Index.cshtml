@@ -229,15 +229,17 @@
 <!-- delete Modal PostText -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
-        <div class="modal-content" style="padding:10px">
-            <input type="hidden" id="DeleteID" name="name" value="" />
-            <label id="lal">
+        <form action="/PostText/DeletePostText" method="post">
+            <div class="modal-content" style="padding:10px">
+                <input type="hidden"name="id" id="DeleteID" value="" />
+                <label id="lal">
 
-            </label>
+                </label>
 
-            <br />
-            <a style="width:100%;margin-top:10px" class="btn btn-success" id="btnDelete">حذف</a>
-        </div>
+                <br />
+                <button style="width:100%;margin-top:10px" class="btn btn-success">حذف</button>
+            </div>
+        </form>
     </div>
 </div>
 <!-- delete Modal UserInUser-->
@@ -281,7 +283,6 @@
                     url: "/PostText/DeletePostText",
                     data: { ID: id },
                     success: function (result) {
-                        debugger;
                         $("#exampleModal").modal("hide");
                         $("#Post-" + result.id).remove();
                     }
@@ -317,6 +318,7 @@
                         $("#exampleModal3").modal("hide");
                         if (result != null) {
                             $("#SavePost-" + result.id).remove();
+                            alert("با موفقیت حذف شد");
                         }
                     }
                 })

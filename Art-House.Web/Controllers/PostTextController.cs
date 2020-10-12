@@ -163,7 +163,6 @@ namespace Art_House.Web.Controllers
         }
 
         //حذف پست
-        [AjaxOnly]
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> DeletePostText(string id)
@@ -192,9 +191,11 @@ namespace Art_House.Web.Controllers
                 }
                 _db.PostTextRepository.Delete(postText);
                 await _db.SaveChangeAsync();
-                return Json(postText);
+                _notification.AddSuccessToastMessage("پست با موفقیت حذف شد");
+                return Redirect("/Profile/Index/"+postText.UserId);
             }
-            return Json(null);
+            _notification.AddErrorToastMessage("پست یافت نشد دوبارع امتحان کنید");
+            return View();
         }
 
         //سیو کردن پست برای کاربر

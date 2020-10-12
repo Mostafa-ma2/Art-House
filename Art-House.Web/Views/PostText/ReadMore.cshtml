@@ -36,7 +36,7 @@
                 <h2><a asp-controller="Home" asp-action="Search" asp-route-group="@Model.PostText.Groups.Name" style="color:white">@Model.PostText.Groups.Name</a></h2>
                 @if (Model.PostText.Groups.Name != "دلنوشته" && Model.PostText.Groups.Name != "متن سنگین")
                 {
-                    <p style="margin-top: 10px;">نام : <span>@Model.PostText.Name</span></p>
+                    <p style="margin-top: 10px;word-break: break-word;">نام : <span>@Model.PostText.Name</span></p>
                 }
                 <p >توضیح کوتاه : <span id="shorttexts" style="line-height: 19px;">@Model.PostText.ShortText</span></p>
                 <div style="display:flex">
@@ -47,7 +47,7 @@
 
         </div>
     </div>
-    <div class="Text" style="line-height: 24px;">
+    <div class="Text" style="line-height: 24px;word-break: break-word;">
         @Html.Raw(Model.PostText.Text)
     </div>
     <div class="Comment" style="margin-top: 10px;background:white;border-radius: 3px;">
@@ -100,7 +100,7 @@
                                         @items.text
                                     </div>
                                 </div>
-                                @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin"))
+                                @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin")||item.Users.UserName==User.Identity.Name)
                                 {
                                     <a asp-action="DeleteComment" asp-route-id="@items.Id" style="padding-left: 28px; margin-top: -23px; padding-right: 28px;" class="btn btn-danger">حذف</a>
                                 }
@@ -112,7 +112,7 @@
                         {
                             <a onclick="AddText(this)" style="padding-left: 28px; margin-top: -23px;
                           padding-right: 28px;cursor: pointer" class="btn btn-success" attr="@item.Id">پاسخ</a>
-                            @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin"))
+                            @if (User.Identity.Name == Model.PostText.Users.UserName || User.IsInRole("Admin") || item.Users.UserName == User.Identity.Name)
                             {
                                 <a asp-action="DeleteComment" asp-route-id="@item.Id" style="padding-left: 28px; margin-top: -23px; padding-right: 28px;" class="btn btn-danger">حذف</a>
                             }
@@ -144,6 +144,7 @@
                 data: { id: attr },
                 success: function (result) {
                     obj.remove();
+                    alert("با موفقیت ذخیره شد");
                 }
             });
         }

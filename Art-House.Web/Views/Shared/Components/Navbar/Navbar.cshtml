@@ -38,13 +38,13 @@
                     </a>
                 </div>
             </div>
-            <div class="main-navbar-list">
+            <div class="main-navbar-lists">
                 <a href="/">صفحه اصلی</a>
             </div>
             @foreach (var item in Model)
             {
                 <div class="main-navbar-lists">
-                    <a asp-controller="Home" asp-action="Index" asp-route-group="@item.Name">@item.Name </a>
+                    <a asp-controller="Home" asp-action="Search" asp-route-group="@item.Name">@item.Name </a>
                 </div>
             }
             @*<div class="main-navbar-lists">
@@ -55,7 +55,6 @@
             </div>
             @if (User.IsInRole("Admin"))
             {
-
                 <div class="main-navbar-lists">
                     <a href="/Admin/">پنل مدیریت</a>
                 </div>

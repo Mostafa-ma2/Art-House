@@ -378,6 +378,9 @@ main {
                 padding: 25px;
                 background: white;
                 border-radius: 3px;
+                padding-top: 0;
+                padding-left: 0;
+                padding-right: 0;
                 display: flex;
             }
 
@@ -389,7 +392,13 @@ main {
 
                 main .main .main-text-list .Nazar h1 {
                     display: inline;
-                    margin-top: 41px;
+                    margin-top: 29px;
+                    cursor: pointer;
+                    width: 43%;
+                    color: #1b1be1a6;
+                    margin-top: 29px;
+                    cursor: pointer;
+                    color: #1b1be1a6;
                     margin-right: 10px;
                     margin-left: 10px;
                 }
@@ -403,6 +412,8 @@ main {
                     margin-top: 12px;
                     border: 1px solid #1b1be1a6;
                     padding: 12px;
+                    word-break: break-word;
+                    text-align: justify;
                     border-radius: 6px;
                     width: 100%;
                 }
@@ -774,7 +785,7 @@ main {
 
     main .main-navbar .icon-search {
         position: absolute;
-        top: 17%;
+        top: 20%;
         right: 12px;
     }
 
@@ -813,6 +824,9 @@ main {
         text-align: center;
         color: darkgray;
         display: inline-block;
+    }
+    main .main .main-text-list form{
+        margin-top:10px;
     }
 }
 

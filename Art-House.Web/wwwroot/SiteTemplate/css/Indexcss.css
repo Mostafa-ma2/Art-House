@@ -785,7 +785,7 @@ main {
 
     main .main-navbar .icon-search {
         position: absolute;
-        top: 17%;
+        top: 20%;
         right: 12px;
     }
 
@@ -824,6 +824,9 @@ main {
         text-align: center;
         color: darkgray;
         display: inline-block;
+    }
+    main .main .main-text-list form{
+        margin-top:10px;
     }
 }
 
