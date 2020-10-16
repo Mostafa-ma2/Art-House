@@ -2839,6 +2839,7 @@
       },
       "Art-House.Services/1.0.0": {
         "dependencies": {
+          "Art-House.Data": "1.0.0",
           "Art-House.Domain": "1.0.0",
           "Microsoft.AspNetCore.Http.Features": "3.1.8",
           "Microsoft.Extensions.Identity.Core": "3.1.8",

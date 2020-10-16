@@ -21,8 +21,8 @@ namespace Art_House.Domain.Entities
         public string GroupId { get; set; }
         [MaxLength(60,ErrorMessage ="نمی تواند بیشتر 60 حروف باشد")]
         public string Name { get; set; }
-        [MaxLength(250)]
-        [MinLength(25)]
+        [MaxLength(250,ErrorMessage ="نمی تواند بیتشر از 250 حروف باشد")]
+        [MinLength(25,ErrorMessage ="نمی تواندی کمتر 25 حروف باشد")]
         [Required(ErrorMessage ="نمی تواند کمتر از 25 حروف و بیشتر از 250 تا باشد")]
         public string ShortText { get; set; }
         [Required(ErrorMessage = "نمی تواند خالی باشد")]

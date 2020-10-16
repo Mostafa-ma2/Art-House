@@ -85,8 +85,8 @@
 <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content" style="padding:10px">
-            <form action="/" method="post">
-                <input type="hidden" id="UpdateidQuestion" name="name" value="" />
+            <form action="/Admin/Offers/UpdateQuestion" method="post">
+                <input type="hidden" id="id" name="id" value="" />
                 <div class="col-12 text-center">
                     <h3>
                         ویرایش سوال
@@ -95,24 +95,24 @@
                 </div>
                 <div class="form-group">
                     <label for="">سوال :</label>
-                    <input type="text" class="form-control" id="UpdateTextQuestion" name="name" value="" />
+                    <input type="text" class="form-control" id="text" name="text" value="" />
                 </div>
                 <div class="form-group">
                     <label for="">زمان شروع :</label>
-                    <input type="text" id="EditStartThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+                    <input type="text" id="startPoll" name="startPoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
                 </div>
                 <div class="form-group">
                     <label for="">زمان اتمام :</label>
-                    <input type="text" id="EditEndThePoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
+                    <input type="text" id="endPoll" name="endPoll" onclick="PersianDatePicker.Show(this, '@DateTime.Now.ToPersianDateString()');" />
                 </div>
                 <div class="form-group">
                     <label for="">وضعیت :</label>
-                    <select class="form-control" id="UpdateQuestionIsActive">
+                    <select class="form-control" id="isDeleted" name="isDeleted">
                         <option>حذف نشده</option>
                         <option>حذف شده</option>
                     </select>
                 </div>
-                <button style="width:100%;margin-top:10px" class="btn btn-success" id="btnUpdate">ویرایش</button>
+                <button style="width:100%;margin-top:10px" class="btn btn-success">ویرایش</button>
             </form>
         </div>
     </div>
@@ -206,34 +206,7 @@
 
                 });
             })
-            //ویرایش کردن
-            $("#btnUpdate").click(function (e) {
-                var id = $("#UpdateidQuestion").val();
-                var isActive = $("#UpdateQuestionIsActive").val();
-                var Tetx = $("#UpdateTextQuestion").val();
-                var QuestionStartThePoll = $("#EditStartThePoll").val();
-                var QuestionEndThePoll = $("#EditEndThePoll").val();
-                $.ajax({
-                    type: "Post",
-                    url: "/Admin/Offers/UpdateQuestion",
-                    data: { ID: id, isDeleted: isActive, text: Tetx, startPoll: QuestionStartThePoll, endPoll: QuestionEndThePoll },
-                    success: function (result) {
-                        if (result != null) {
-                            $("#exampleModal2").modal("hide");
-                            document.getElementById("StartThePoll-" + result.id).innerHTML = QuestionStartThePoll;
-                            document.getElementById("EndThePoll-" + result.id).innerHTML = QuestionEndThePoll;
-                            document.getElementById("Name-" + result.id).innerHTML = Tetx;
-                            if (result.isDeleted == true) {
-                                document.getElementById("isActive-" + result.id).innerHTML = "حذف شده";
-                            } else {
-                                document.getElementById("isActive-" + result.id).innerHTML = "حذف نشده";
-
-                            }
-                        }
-                    }
-
-                })
-            });
+            
             //حذف
             $("#btnDelete").click(function (e) {
                 e.preventDefault();
@@ -263,14 +236,14 @@
                 success: function (result) {
                     if (result != null) {
                         $("#exampleModal2").modal("show");
-                        $("#UpdateidQuestion").val(result.id);
-                        $("#UpdateTextQuestion").val(result.questionText);
-                        $("#EditStartThePoll").val(result.startThePoll);
-                        $("#EditEndThePoll").val(result.endThePoll);
+                        $("#id").val(result.id);
+                        $("#text").val(result.questionText);
+                        $("#startPoll").val(result.startThePoll);
+                        $("#endPoll").val(result.endThePoll);
                         if (result.isDeleted) {
-                            $("#UpdateQuestionIsActive").val("حذف شده");
+                            $("#isDeleted").val("حذف شده");
                         } else {
-                            $("#UpdateQuestionIsActive").val("حذف نشده");
+                            $("#isDeleted").val("حذف نشده");
                         }
                     }
                 }

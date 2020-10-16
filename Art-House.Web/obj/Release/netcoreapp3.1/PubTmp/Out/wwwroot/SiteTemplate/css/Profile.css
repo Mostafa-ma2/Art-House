@@ -741,15 +741,7 @@ main {
     }
 }
 
-@media (max-width: 769px) {
-    header .Header-Search .s {
-        display: none;
-    }
-
-    main .main-navbar .main-navbar-list {
-        display: none;
-    }
-
+@media (max-width: 992px) {
     main .main-navbar .main-navbar-e {
         display: block;
         font-size: 22px;
@@ -757,7 +749,9 @@ main {
         cursor: pointer;
         width: 100%;
     }
-
+    main .main-navbar .main-navbar-list {
+        display: none;
+    }
     main .main-navbar .lists {
         background: #1b1be1a6;
         margin-top: 5px;
@@ -800,6 +794,13 @@ main {
         main .main-navbar .icon-search i {
             color: gray;
         }
+}
+@media (max-width: 769px) {
+    header .Header-Search .s {
+        display: none;
+    }
+
+   
 
     main .head-maiin {
         display: grid;

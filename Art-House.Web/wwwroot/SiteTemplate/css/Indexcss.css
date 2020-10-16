@@ -379,8 +379,7 @@ main {
                 border-radius: 3px;
                 padding-top: 0;
                 padding-left: 0;
-                    margin-top: 10px;
-
+                margin-top: 10px;
                 padding-right: 0;
                 display: flex;
             }
@@ -632,6 +631,7 @@ main {
                             color: black;
                             display: inline-block;
                             width: 100%;
+                            word-break: break-word;
                         }
 
                         main .main .main-arshiv-list .Visit .visit-main .visit-text:hover {
@@ -695,21 +695,17 @@ main {
         display: none;
     }
 
-@media (max-width: 769px) {
-    header .Header-Search .s {
-        display: none;
-    }
-
-    main .main-navbar .main-navbar-list {
-        display: none;
-    }
-
+@media (max-width: 992px) {
     main .main-navbar .main-navbar-e {
         display: block;
         font-size: 22px;
         padding: 7px;
         cursor: pointer;
         width: 100%;
+    }
+
+    main .main-navbar .main-navbar-list {
+        display: none;
     }
 
     main .main-navbar .lists {
@@ -729,6 +725,44 @@ main {
         main .main-navbar .main-navbar-lists a {
             color: white;
         }
+
+    main .main-navbar input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 14px;
+        padding-right: 26px;
+        background: #dcdcdc6e;
+        border: 1px solid lightgray;
+        border-radius: 5px;
+    }
+
+        main .main-navbar input:hover {
+            background: white;
+            border: 1px solid #5a5af97a;
+        }
+
+    main .main-navbar .icon-search {
+        position: absolute;
+        top: 20%;
+        right: 12px;
+    }
+
+        main .main-navbar .icon-search i {
+            color: gray;
+        }
+
+    main .main-navbar .icon-exit {
+        position: absolute;
+        left: 6%;
+        top: 37%;
+        color: #5a5af97a;
+    }
+}
+
+@media (max-width: 769px) {
+    header .Header-Search .s {
+        display: none;
+    }
 
     main .main {
         display: inline;
@@ -768,37 +802,6 @@ main {
         padding: 9px;
     }
 
-    main .main-navbar input {
-        width: 100%;
-        padding: 10px;
-        margin-top: 14px;
-        padding-right: 26px;
-        background: #dcdcdc6e;
-        border: 1px solid lightgray;
-        border-radius: 5px;
-    }
-
-        main .main-navbar input:hover {
-            background: white;
-            border: 1px solid #5a5af97a;
-        }
-
-    main .main-navbar .icon-search {
-        position: absolute;
-        top: 20%;
-        right: 12px;
-    }
-
-        main .main-navbar .icon-search i {
-            color: gray;
-        }
-
-    main .main-navbar .icon-exit {
-        position: absolute;
-        left: 6%;
-        top: 37%;
-        color: #5a5af97a;
-    }
 
     main .main .main-text-list .text-list .Short-Text {
         display: block;
@@ -849,7 +852,6 @@ main {
             margin-top: -15px;
             padding-right: 28px;
         }
-
 }
 
 @media (max-width: 427px) {

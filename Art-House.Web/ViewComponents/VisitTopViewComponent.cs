@@ -21,7 +21,7 @@ namespace Art_House.Web.ViewComponents
         public async Task<IViewComponentResult> InvokeAsync()
         {
             var Post =await _db.PostTextRepository.GetAllAsync();
-          var posts= Post.Take(4).OrderByDescending(p => p.Visit);
+          var posts= Post.OrderByDescending(p => p.Visit).Take(4);
 
             return View("VisitTop", posts);
         }

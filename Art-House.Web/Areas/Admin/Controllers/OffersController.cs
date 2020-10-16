@@ -125,9 +125,8 @@ namespace Art_House.Web.Areas.Admin.Controllers
             _notification.AddErrorToastMessage("دوباره امتحان کنید");
             return Json(null);
         }
-      
+
         //.یرایش سوال
-        [AjaxOnly]
         [HttpPost]
         public ActionResult UpdateQuestion(string id, string text, string isDeleted, string startPoll, string endPoll)
         {
@@ -139,22 +138,24 @@ namespace Art_House.Web.Areas.Admin.Controllers
 
                 var TimestartPoll = _db.QuestionsRepository.Where(p => p.StartThePoll.Date <= startPollConvert && p.EndThePoll >= startPollConvert).ToList();
                 var TimeEndPoll = _db.QuestionsRepository.Where(p => p.StartThePoll.Date <= endPollConvert && p.EndThePoll >= endPollConvert).ToList();
-                if (TimestartPoll.Count != 0 || TimeEndPoll.Count != 0)
+                if (TimestartPoll.Count != 0 && TimestartPoll[0].Id != id || TimeEndPoll.Count != 0 && TimeEndPoll[0].Id != id)
                 {
-                    ViewBag.Error = "در این زمان نظر سنجی موجود است";
-                    return Json(ViewBag.Error);
+                    _notification.AddWarningToastMessage("در این زمان نظر سنجی موجود است");
+                    return Redirect("/Admin/Offers/Questions");
                 }
                 var question = _db.QuestionsRepository.GetById(id);
                 question.IsDeleted = isDeleted == "حذف شده";
                 question.QuestionText = text;
+                question.EndThePoll = endPollConvert;
+                question.StartThePoll = startPollConvert;
                 question.LastModifiedTime = DateTime.Now;
                 _db.QuestionsRepository.Update(question);
                 _db.SaveChange();
                 _notification.AddSuccessToastMessage($"سوال  با موفقیت ویرایش شد.");
-                return Json(question);
+                return Redirect("/Admin/Offers/Questions");
             }
             _notification.AddErrorToastMessage("مقادیر نمی توانند خالی باشند");
-            return Json(null);
+            return Redirect("/Admin/Offers/Questions");
         }
 
         //حذف سوال
@@ -168,13 +169,13 @@ namespace Art_House.Web.Areas.Admin.Controllers
                 var btnQuestion = _db.BtnQuestionRepository.Where(p => p.QuestionId == question.Id).ToList();
                 if (btnQuestion.Count != 0)
                 {
-                    foreach(var item in btnQuestion)
+                    foreach (var item in btnQuestion)
                     {
                         _db.BtnQuestionRepository.Delete(item);
                     }
                 }
                 var userAswner = _db.UserAnswerRepository.Where(p => p.QuestionId == question.Id).ToList();
-                foreach(var item in userAswner)
+                foreach (var item in userAswner)
                 {
                     _db.UserAnswerRepository.Delete(item);
                 }
@@ -188,11 +189,11 @@ namespace Art_House.Web.Areas.Admin.Controllers
         }
         //ساختن دکمه
         [HttpPost]
-        public async Task<IActionResult> AddBtnQuestions(AddQuestionViewModel model,string questionId)
+        public async Task<IActionResult> AddBtnQuestions(AddQuestionViewModel model, string questionId)
         {
             if (model.BtnQuestion.Any())
             {
-                foreach(var item in model.BtnQuestion)
+                foreach (var item in model.BtnQuestion)
                 {
                     var btnQuedtion = new BtnQuestion()
                     {
@@ -200,7 +201,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
                         QuestionId = questionId,
                         CreatedTime = DateTime.Now,
                     };
-                   await _db.BtnQuestionRepository.InsertAsync(btnQuedtion);
+                    await _db.BtnQuestionRepository.InsertAsync(btnQuedtion);
                 }
                 await _db.SaveChangeAsync();
                 _notification.AddSuccessToastMessage("با موفقیت دکمه ها به سوال اضافه شد");
