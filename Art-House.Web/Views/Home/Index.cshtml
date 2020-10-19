@@ -16,13 +16,13 @@
                 {
                     @if (item.SavePosts.Where(p => p.UserId == ViewBag.UserId).Count() == 0)
                     {
-                        <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@item.Id"  id="fallow">ذخیره پست</a>
+                        <a onclick="AddSavePost(this)" style="cursor:pointer" attr="@item.Id" id="fallow">ذخیره پست</a>
 
                     }
                 }
             </div>
             <div class="main-text">
-                @if (item.Groups.Name != "دلنوشته"&& item.Groups.Name != "متن سنگین")
+                @if (item.Groups.Name != "دلنوشته" && item.Groups.Name != "متن سنگین")
                 {
                     <h1 class="text-center" style="margin-top:10px">نام : <span>@item.Name</span></h1>
                 }
@@ -105,9 +105,9 @@
 }
 
 @*if (User.Identity.Name != item.Users.UserName && User.Identity.IsAuthenticated)
-{
-    if (item.Users.UserInUsers.Count == 0)
     {
-        <a onclick="AddUserConnection(this)" style="cursor:pointer" attr="@item.UserId" id="fallow">ذخیره پست</a>
-    }
-}*@
+        if (item.Users.UserInUsers.Count == 0)
+        {
+            <a onclick="AddUserConnection(this)" style="cursor:pointer" attr="@item.UserId" id="fallow">ذخیره پست</a>
+        }
+    }*@

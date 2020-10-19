@@ -125,7 +125,7 @@ namespace Art_House.Web.Areas.Admin.Controllers
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
             await _userManager.UpdateAsync(user);
-            return RedirectToAction(nameof(Index));
+            return Redirect("/Admin/User/");
         }
         [HttpPost]
         [AjaxOnly]

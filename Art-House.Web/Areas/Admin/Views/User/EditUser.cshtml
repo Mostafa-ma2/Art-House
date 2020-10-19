@@ -7,7 +7,7 @@
 
 <div class="row bg-white p-10" style="border-radius:4px;margin-top:10px">
     <div class="col-md-4">
-        <form asp-action="EditUser" method="POST" enctype="multipart/form-data">
+        <form action="/Admin/User/EditUser" method="POST" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
             <input type="hidden" asp-for="userId" />
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>

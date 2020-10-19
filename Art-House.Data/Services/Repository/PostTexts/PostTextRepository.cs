@@ -121,14 +121,14 @@ namespace Art_House.Data.Services.Repository.PostTexts
         }
         public IEnumerable<PostText> Paging(int pageid,int take, IEnumerable<PostText> post)
         {
-            var skip = (pageid - 1) * 25;
-            return post.Where(p => !p.IsDeleted).Take(take).Skip(skip).OrderByDescending(p => p.CreatedTime);
+            var skip = (pageid - 1) * take;
+            return post.Where(p => !p.IsDeleted).OrderByDescending(p => p.CreatedTime).Skip(skip).Take(take);
         }
 
         public IEnumerable<PostText> Paging(int pageid,int take)
         {
             var skip = (pageid - 1) * take;
-            return _db.PostText.Where(a => !a.IsDeleted).Skip(skip).Take(take).OrderByDescending(p=>p.CreatedTime).ToList();
+            return _db.PostText.Where(a => !a.IsDeleted).OrderByDescending(p => p.CreatedTime).Skip(skip).Take(take).ToList();
         }
 
         #region IDisposable Support

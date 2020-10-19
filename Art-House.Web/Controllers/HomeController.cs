@@ -38,7 +38,15 @@ namespace Art_House.Web.Controllers
         {
             ViewBag.PageID = pageId;
             var getall = _db.PostTextRepository.GetAll();
-            ViewBag.CountPage = getall.Count() / 3;
+            var count = getall.Count() / 5;
+            if (getall.Count() % 5 != 0)
+            {
+                ViewBag.CountPage = count + 1;
+            }
+            else
+            {
+                ViewBag.CountPage = count;
+            }
             var Post = _db.PostTextRepository.Paging(pageId, 5);
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
             ViewBag.UserId = userId;
@@ -72,7 +80,15 @@ namespace Art_House.Web.Controllers
                 var Post = _db.PostTextRepository.Where(p => p.Groups.Name == group).OrderByDescending(p => p.CreatedTime).ToList();
                 var User = _db.UserRepository.Where(p => p.UserName.Contains(group)).ToList();
                 ViewBag.PageID = pageId;
-                ViewBag.CountPage = Post.Count() / 3;
+                var count = Post.Count() / 5;
+                if (Post.Count() % 5 != 0)
+                {
+                    ViewBag.CountPage = count + 1;
+                }
+                else
+                {
+                    ViewBag.CountPage = count;
+                }
                 var Posts = _db.PostTextRepository.Paging(pageId, 5, Post);
                 ViewBag.group = group;
                 var viemodel = new SearchViewModel()

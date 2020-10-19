@@ -51,7 +51,7 @@ namespace Art_House.Web.Controllers
                 return RedirectToAction("Index", "Home");
             }
             var userId = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-            GetUser.PostTexts = _db.PostTextRepository.Where(p => p.UserId == GetUser.Id).ToList();
+            GetUser.PostTexts = _db.PostTextRepository.Where(p => p.UserId == GetUser.Id).OrderByDescending(p=>p.CreatedTime).ToList();
             //GetUser.UserInUsers = _db.UserInUserRepository.Where(p => p.user == id).ToList();
             GetUser.SavePosts = _db.SavePostRepository.Where(p => p.UserId == id).ToList();
             //foreach(var item in GetUser.UserInUsers)
